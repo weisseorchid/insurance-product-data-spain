@@ -1,0 +1,2 @@
+BASE_STORAGE_PATH: str = "data"
+INSURANCE_COMPANIES_STORAGE_PATH: str = BASE_STORAGE_PATH + "/insurance_companies"
