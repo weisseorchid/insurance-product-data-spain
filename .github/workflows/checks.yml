@@ -1,0 +1,88 @@
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Install Python Dependencies
+        run: uv sync --frozen --all-extras
+
+      - name: Check style
+        run: |
+          echo "--- Running pre-commit style checks ---"
+          uv run pre-commit run --all-files
+
+  build-package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --frozen --all-extras
+
+      - name: Build package
+        run: uv build
+
+      - name: Check content of wheel
+        run: |
+          if ls dist/*.whl 1> /dev/null 2>&1; then
+            unzip -l dist/*.whl
+          else
+            echo "No wheel files found in dist/"
+            exit 1
+          fi
+
+      - name: Store the distribution packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  test-package:
+    needs:
+      - build-package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+      - name: Download all the dists
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          activate-environment: true
+          enable-cache: false
+
+      - name: Install and verify package
+        run: |
+          uv pip install dist/*.whl
+          uv run insurance-product-data-spain --help
+          echo "Package installed and CLI command works correctly"

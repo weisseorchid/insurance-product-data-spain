@@ -5,9 +5,9 @@ A reliable and public source of information for the insurance policy market in S
 ## Overview
 
 This repository contains:
-- **Python package** (`insurance_data_spain`) for fetching insurance data from the Spanish regulator website
+- **Python package** (`insurance_product_data_spain`) for fetching insurance data from the Spanish regulator website
 - **Collected data** in JSON format and organized folder structure
-- **API modules** to retrieve insurance companies, distributors, and their details
+- **Service modules** to retrieve insurance companies, distributors, and their details
 
 ## Installation
 
@@ -39,7 +39,7 @@ uv sync --extra dev
 ### Fetch Insurance Companies
 
 ```python
-from insurance_data_spain import get_insurance_companies
+from insurance_product_data_spain import get_insurance_companies, enrich_insurance_companies
 
 # Get all active insurance companies
 companies = get_insurance_companies()
@@ -49,21 +49,27 @@ companies = get_insurance_companies(search_params={
     "Descripcion": "Allianz",
     "Situacion": "1"  # active
 })
+
+# Enrich companies with detailed information
+enriched = enrich_insurance_companies(companies)
 ```
 
 ### Fetch Insurance Distributors
 
 ```python
-from insurance_data_spain.api.v1.get_insurance_distributors import get_insurance_distributors
+from insurance_product_data_spain import get_insurance_distributors, enrich_insurance_distributors
 
 # Get all active distributors
 distributors = get_insurance_distributors()
+
+# Enrich distributors with detailed information
+enriched = enrich_insurance_distributors(distributors)
 ```
 
 ### Sync Company Folders
 
 ```python
-from insurance_data_spain import sync_insurance_company_folders
+from insurance_product_data_spain import sync_insurance_company_folders
 
 # Create folder structure from JSON data
 sync_insurance_company_folders()
@@ -73,19 +79,21 @@ sync_insurance_company_folders()
 
 ```
 insurance-product-data-SP/
-├── src/
-│   └── insurance_data_spain/
-│       ├── api/
-│       │   └── v1/
-│       │       ├── get_insurance_companies.py
-│       │       ├── get_insurance_distributors.py
-│       │       └── sync_insurco_data_folders.py
-│       ├── constants/
-│       │   ├── api_headers.py
-│       │   └── public_urls.py
-│       └── utils/
-│           ├── data_extraction.py
-│           └── text_transformations.py
+├── insurance_product_data_spain/
+│   ├── core/
+│   │   ├── config.py          # Configuration (paths, settings)
+│   │   ├── logging.py         # Logging setup
+│   │   └── storage.py         # Data storage abstraction
+│   ├── services/
+│   │   └── v1/
+│   │       ├── insurance_companies/
+│   │       │   ├── get_insurance_companies.py
+│   │       │   └── sync_insurco_data_folders.py
+│   │       └── insurance_distributors/
+│   │           └── get_insurance_distributors.py
+│   ├── models/                # Pydantic data models
+│   ├── constants/             # API headers, URLs, storage routes
+│   └── utils/                 # Data extraction and text utilities
 ├── data/
 │   ├── insurance_companies.json
 │   └── insurance_companies/
@@ -144,7 +152,7 @@ You can run the checks manually before committing:
 uv run ruff check .
 
 # Run mypy
-uv run mypy src/
+uv run mypy insurance_product_data_spain/
 ```
 
 ## License
@@ -154,5 +162,4 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 ## Links
 
 - **Homepage**: https://github.com/weisseorchid/insurance-product-data-SP
-- **Documentation**: https://insurance-product-data-sp.readthedocs.io
 - **Issues**: https://github.com/weisseorchid/insurance-product-data-SP/issues

@@ -52,10 +52,10 @@ Repository = "https://github.com/weisseorchid/insurance-product-data-SP"
 Issues = "https://github.com/weisseorchid/insurance-product-data-SP/issues"
 
 [tool.hatch.version]
-path = "src/insurance_data_spain/__version__.py"
+path = "insurance_product_data_spain/__version__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/insurance_data_spain"]
+packages = ["insurance_product_data_spain"]
 
 [tool.mypy]
 explicit_package_bases = true
