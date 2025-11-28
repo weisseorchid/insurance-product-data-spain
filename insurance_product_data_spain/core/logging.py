@@ -2,10 +2,10 @@ import sys
 
 from loguru import logger
 
-# Remove default logger
+# Remove default logger to avoid duplicate logging
 logger.remove()
 
-# 1) Console logging (pretty, colored)
+# Add console logger
 logger.add(
     sys.stderr,
     level="INFO",
@@ -15,11 +15,3 @@ logger.add(
            "<level>{message}</level>",
 )
 
-logger.add(
-    "logs/app.log",
-    level="DEBUG",
-    rotation="1 day",
-    retention="14 days",
-    compression="zip",
-    enqueue=True,
-)

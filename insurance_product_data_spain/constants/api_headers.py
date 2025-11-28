@@ -1,4 +1,4 @@
-from src.insurance_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
+from .public_urls import INSURANCE_REGULATOR_SPAIN_URL
 
 base_url = INSURANCE_REGULATOR_SPAIN_URL
 
