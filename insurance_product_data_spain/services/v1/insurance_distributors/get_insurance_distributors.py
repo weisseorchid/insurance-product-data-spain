@@ -2,19 +2,24 @@ import time
 from datetime import datetime
 from typing import Any
 
-import requests
 from bs4 import BeautifulSoup
+from pydantic import ValidationError
 
-from src.core.logging import logger
-from src.insurance_data_spain.__version__ import __version__
-from src.insurance_data_spain.constants.api_headers import mineco_headers, mineco_params
-from src.insurance_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
-from src.insurance_data_spain.utils.data_extraction import extract_js_data, extract_label_value
+from insurance_product_data_spain.__version__ import __version__
+from insurance_product_data_spain.clients.http_client import get_http_client
+from insurance_product_data_spain.constants.api_headers import mineco_headers, mineco_params
+from insurance_product_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
+from insurance_product_data_spain.core.logging import logger
+from insurance_product_data_spain.schemas.insurance_distributors import (
+    InsuranceDistributorBase,
+    InsuranceDistributorDetails,
+)
+from insurance_product_data_spain.utils.data_extraction import extract_js_data, extract_label_value
 
-# Module metadata for traceability
 MODULE_VERSION = __version__
 MODULE_LAST_MODIFIED = datetime.now().isoformat()
-SOURCE_URL = INSURANCE_REGULATOR_SPAIN_URL
+
+# TODO: Query with concurrent requests using asyncio and aiohttp
 
 def get_insurance_distributors(
     base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
@@ -55,10 +60,24 @@ def get_insurance_distributors(
 
     headers = mineco_headers
 
-    response = requests.post(url, data=search_params, params=params, headers=headers)
+    response = get_http_client().post(url, data=search_params, params=params, headers=headers)
     response.raise_for_status()
 
     result: dict[str, Any] = response.json()
+
+    # Validate response if it's a list of distributors
+    if isinstance(result, list):
+        validated_distributors = []
+        for distributor_data in result:
+            try:
+                validated_distributor = InsuranceDistributorBase.model_validate(distributor_data)
+                validated_distributors.append(validated_distributor.model_dump(by_alias=False))
+            except ValidationError as e:
+                logger.warning(f"Validation error for distributor data: {e.errors()}")
+                # Include invalid data but log the warning
+                validated_distributors.append(distributor_data)
+        return validated_distributors
+
     return result
 
 
@@ -80,25 +99,15 @@ def get_insurance_distributor_details(
     """
     url = f"{base_url}/MEDIADOR/GetMediador/"
 
-    params = {
-        "culture": "es-ES",
-        "ui-culture": "es-ES",
-        "clave": distributor_key
-    }
+    params = mineco_params
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36", # noqa: E501
-        "Accept": "text/html, */*; q=0.01",
-        "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": f"{base_url}/?culture=es-ES&ui-culture=es-ES"
-    }
+    headers = mineco_headers
 
     # Add delay to avoid overwhelming the server
     if delay > 0:
         time.sleep(delay)
 
-    response = requests.get(url, params=params, headers=headers)
+    response = get_http_client().get(url, params=params, headers=headers)
     response.raise_for_status()
 
     # Check if response is empty
@@ -136,7 +145,14 @@ def get_insurance_distributor_details(
     # Extract contracts data from JavaScript variables
     details['agency_contracts'] = extract_js_data(soup, 'loadGridContratos') or []
 
-    return details
+    # Validate the details against the schema
+    try:
+        validated_details = InsuranceDistributorDetails.model_validate(details)
+        return validated_details.model_dump(by_alias=False)
+    except ValidationError as e:
+        logger.warning(f"Validation error for distributor details (key: {distributor_key}): {e.errors()}")
+        # Return the original data even if validation fails
+        return details
 
 
 def enrich_insurance_distributors(
@@ -176,7 +192,16 @@ def enrich_insurance_distributors(
 
             # Merge the original distributor data with the detailed information
             enriched_distributor = {**distributor, **details}
-            enriched_distributors.append(enriched_distributor)
+
+            # Validate the enriched distributor against the schema
+            try:
+                validated_distributor = InsuranceDistributorDetails.model_validate(enriched_distributor)
+                enriched_distributors.append(validated_distributor.model_dump(by_alias=False))
+            except ValidationError as e:
+                if verbose:
+                    logger.warning(f"Validation error for enriched distributor {distributor_key}: {e.errors()}")
+                # Include the enriched distributor even if validation fails
+                enriched_distributors.append(enriched_distributor)
 
         except Exception as e:
             if verbose:
