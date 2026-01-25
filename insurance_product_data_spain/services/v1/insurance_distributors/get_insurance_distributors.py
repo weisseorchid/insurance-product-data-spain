@@ -7,7 +7,7 @@ from pydantic import ValidationError
 
 from insurance_product_data_spain.__version__ import __version__
 from insurance_product_data_spain.clients.http_client import get_http_client
-from insurance_product_data_spain.constants.api_headers import mineco_headers, mineco_params
+from insurance_product_data_spain.constants.api_headers import mineco_html_headers, mineco_params
 from insurance_product_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
 from insurance_product_data_spain.core.logging import logger
 from insurance_product_data_spain.schemas.insurance_distributors import (
@@ -24,7 +24,7 @@ MODULE_LAST_MODIFIED = datetime.now().isoformat()
 def get_insurance_distributors(
     base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
     search_params: dict[str, Any] | None = None
-) -> dict[str, Any]:
+) -> list[dict[str, Any]] | dict[str, Any]:
     """
     Fetch insurance distributor/mediator data from the Spanish insurance regulator website.
 
@@ -58,7 +58,7 @@ def get_insurance_distributors(
     # Add culture parameters
     params = mineco_params
 
-    headers = mineco_headers
+    headers = mineco_html_headers
 
     response = get_http_client().post(url, data=search_params, params=params, headers=headers)
     response.raise_for_status()
@@ -99,9 +99,13 @@ def get_insurance_distributor_details(
     """
     url = f"{base_url}/MEDIADOR/GetMediador/"
 
-    params = mineco_params
+    # Add distributor_key (clave) to request params
+    params = {
+        **mineco_params,
+        "clave": distributor_key
+    }
 
-    headers = mineco_headers
+    headers = mineco_html_headers
 
     # Add delay to avoid overwhelming the server
     if delay > 0:

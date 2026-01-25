@@ -15,3 +15,4 @@ INSURANCE_DISTRIBUTORS_JSON: Path = BASE_STORAGE_PATH / "insurance_distributors.
 DEFAULT_REQUEST_DELAY: float = 0.1  # seconds between requests
 DEFAULT_TIMEOUT: int = 30  # seconds for HTTP requests
 MAX_RETRIES: int = 3 # number of retries for HTTP requests
+
