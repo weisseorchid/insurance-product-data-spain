@@ -1,4 +1,4 @@
-"""Simple storage abstraction for data persistence."""
+"""Storage utilities for JSON file operations."""
 
 import json
 from pathlib import Path
@@ -54,4 +54,3 @@ def load_json(file_path: Path | str) -> Any:
 
     logger.debug(f"Loaded data from {path}")
     return data
-

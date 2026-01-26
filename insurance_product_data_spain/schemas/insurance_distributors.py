@@ -1,6 +1,20 @@
-from typing import Any
 
 from pydantic import BaseModel, Field
+
+
+class AgencyContract(BaseModel):
+    """Model for an agency contract between a distributor and an insurer."""
+
+    contract_id: int = Field(..., alias="idContrato", description="Contract identifier")
+    operator_id: str = Field(..., alias="idOperador", description="Operator identifier")
+    company_key: str = Field(..., alias="claveDGSFP", description="Reference to the insurer (company key)")
+    denomination: str | None = Field(None, description="Company denomination/name")
+    start_date: str = Field(..., alias="fechaAlta", description="Contract start date")
+    end_date: str | None = Field(None, alias="fechaBaja", description="Contract end date (if terminated)")
+    contract_type: str = Field(..., alias="tipo", description="Contract type (e.g., 'Principal')")
+
+    class ConfigDict:
+        populate_by_name = True  # Allow both alias and field name
 
 
 class InsuranceDistributorBase(BaseModel):
@@ -14,7 +28,7 @@ class InsuranceDistributorBase(BaseModel):
     registration_key: str | None = Field(None, description="Registration key (Clave Registro)")
     lei_code: str | None = Field(None, description="Legal Entity Identifier code")
 
-    class Config:
+    class ConfigDict:
         populate_by_name = True  # Allow both alias and field name
 
 
@@ -40,12 +54,12 @@ class InsuranceDistributorDetails(InsuranceDistributorBase):
     country_of_origin: str | None = Field(None, description="Country of origin (País de Origen)")
     website: str | None = Field(None, description="Website URL (Dirección Web)")
 
-    # Nested structures (lists of dictionaries from JavaScript data)
-    agency_contracts: list[dict[str, Any]] = Field(
+    # Nested structures - now strictly typed
+    agency_contracts: list[AgencyContract] = Field(
         default_factory=list,
-        description="List of agency contracts (Contratos) extracted from JavaScript grid data",
+        description="List of agency contracts (Contratos) between this distributor and insurers",
     )
 
-    class Config:
+    class ConfigDict:
         populate_by_name = True  # Allow both alias and field name
 

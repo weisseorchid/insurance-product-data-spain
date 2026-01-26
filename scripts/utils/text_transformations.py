@@ -1,3 +1,5 @@
+"""Text transformation utilities."""
+
 import re
 
 

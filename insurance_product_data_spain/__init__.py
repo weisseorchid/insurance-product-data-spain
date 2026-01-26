@@ -1,23 +1,87 @@
-from .__version__ import __version__
-from .services.v1.insurance_companies.get_insurance_companies import (
-    enrich_insurance_companies,
-    get_insurance_companies,
-    get_insurance_company_details,
+"""Insurance Product Data Spain - A pycountry-style library for Spanish insurance data.
+
+This package provides easy access to Spanish insurance market data including:
+- Insurance companies (aseguradoras)
+- Insurance distributors (mediadores)
+- Insurance branches/lines of business (ramos)
+
+Example usage:
+    >>> from insurance_product_data_spain import companies, distributors
+    >>>
+    >>> # Get a company by key
+    >>> company = companies.get(company_key="C0001")
+    >>> print(company.denomination)
+
+    >>> # Search for active companies
+    >>> active = companies.search(status="Activa")
+    >>> print(f"Found {len(active)} active companies")
+
+    >>> # Iterate over all distributors
+    >>> for distributor in distributors:
+    ...     print(distributor.name)
+"""
+
+from insurance_product_data_spain.__version__ import __version__
+from insurance_product_data_spain.core.db import (
+    BranchStore,
+    CompanyStore,
+    Database,
+    DistributorStore,
 )
-from .services.v1.insurance_companies.sync_insurco_data_folders import sync_insurance_company_folders
-from .services.v1.insurance_distributors.get_insurance_distributors import (
-    enrich_insurance_distributors,
-    get_insurance_distributor_details,
-    get_insurance_distributors,
+from insurance_product_data_spain.schemas.insurance_companies import (
+    InsuranceCompanyBase,
+    InsuranceCompanyDetails,
+)
+from insurance_product_data_spain.schemas.insurance_distributors import (
+    AgencyContract,
+    InsuranceDistributorBase,
+    InsuranceDistributorDetails,
 )
 
+# Lazy-loaded module-level data stores
+_companies: CompanyStore | None = None
+_distributors: DistributorStore | None = None
+_branches: BranchStore | None = None
+
+
+def __getattr__(name: str):
+    """Lazy load data stores on first access."""
+    global _companies, _distributors, _branches
+
+    if name == "companies":
+        if _companies is None:
+            _companies = Database.companies()
+        return _companies
+
+    if name == "distributors":
+        if _distributors is None:
+            _distributors = Database.distributors()
+        return _distributors
+
+    if name == "branches":
+        if _branches is None:
+            _branches = Database.branches()
+        return _branches
+
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
 __all__ = [
+    # Version
     "__version__",
-    "get_insurance_companies",
-    "get_insurance_company_details",
-    "enrich_insurance_companies",
-    "sync_insurance_company_folders",
-    "get_insurance_distributors",
-    "get_insurance_distributor_details",
-    "enrich_insurance_distributors",
+    # Data stores (pycountry-style)
+    "companies",
+    "distributors",
+    "branches",
+    # Store classes (for type hints)
+    "CompanyStore",
+    "DistributorStore",
+    "BranchStore",
+    "Database",
+    # Schema models (for type hints)
+    "InsuranceCompanyBase",
+    "InsuranceCompanyDetails",
+    "InsuranceDistributorBase",
+    "InsuranceDistributorDetails",
+    "AgencyContract",
 ]

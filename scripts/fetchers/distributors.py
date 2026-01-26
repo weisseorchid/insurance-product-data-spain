@@ -1,25 +1,22 @@
+"""Fetcher for insurance distributors from the Spanish insurance regulator website."""
+
 import time
-from datetime import datetime
 from typing import Any
 
 from bs4 import BeautifulSoup
 from pydantic import ValidationError
 
-from insurance_product_data_spain.__version__ import __version__
-from insurance_product_data_spain.clients.http_client import get_http_client
-from insurance_product_data_spain.constants.api_headers import mineco_html_headers, mineco_params
-from insurance_product_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
-from insurance_product_data_spain.core.logging import logger
 from insurance_product_data_spain.schemas.insurance_distributors import (
+    AgencyContract,
     InsuranceDistributorBase,
     InsuranceDistributorDetails,
 )
-from insurance_product_data_spain.utils.data_extraction import extract_js_data, extract_label_value
+from scripts.clients.http_client import get_http_client
+from scripts.constants.api_headers import mineco_html_headers, mineco_params
+from scripts.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
+from insurance_product_data_spain.core.logging import logger
+from scripts.utils.data_extraction import extract_js_data, extract_label_value
 
-MODULE_VERSION = __version__
-MODULE_LAST_MODIFIED = datetime.now().isoformat()
-
-# TODO: Query with concurrent requests using asyncio and aiohttp
 
 def get_insurance_distributors(
     base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
@@ -147,7 +144,22 @@ def get_insurance_distributor_details(
     details['website'] = extract_label_value(soup, 'Dirección Web:')
 
     # Extract contracts data from JavaScript variables
-    details['agency_contracts'] = extract_js_data(soup, 'loadGridContratos') or []
+    contracts_raw = extract_js_data(soup, 'loadGridContratos') or []
+
+    # Validate and convert contracts to AgencyContract models
+    # Store as dicts for now; Pydantic will validate them when creating InsuranceDistributorDetails
+    validated_contracts = []
+    for contract_dict in contracts_raw:
+        try:
+            contract = AgencyContract.model_validate(contract_dict)
+            # Store as dict for the details dict, Pydantic will re-validate when creating the full model
+            validated_contracts.append(contract.model_dump(by_alias=False))
+        except ValidationError as e:
+            logger.warning(f"Validation error for contract in distributor {distributor_key}: {e.errors()}")
+            # Skip invalid contracts but continue processing
+            continue
+
+    details['agency_contracts'] = validated_contracts
 
     # Validate the details against the schema
     try:
@@ -190,7 +202,7 @@ def enrich_insurance_distributors(
 
         try:
             if verbose:
-                logger.info(f"Fetching details for {distributor_key} ({idx}/{total})...", end="\r")
+                logger.info(f"Fetching details for {distributor_key} ({idx}/{total})...")
 
             details = get_insurance_distributor_details(distributor_key, base_url, delay)
 
@@ -213,34 +225,11 @@ def enrich_insurance_distributors(
                 # Truncate very long error messages
                 if len(error_msg) > 200:
                     error_msg = error_msg[:200] + "..."
-                logger.error(f"\nError fetching details for {distributor_key}: {error_msg}")
+                logger.error(f"Error fetching details for {distributor_key}: {error_msg}")
             # Keep the original distributor data if details fetch fails
             enriched_distributors.append(distributor)
 
     if verbose:
-        logger.info(f"\nCompleted: Enriched {len(enriched_distributors)} distributors")
+        logger.info(f"Completed: Enriched {len(enriched_distributors)} distributors")
 
     return enriched_distributors
-
-"""
-# Example usage:
-if __name__ == "__main__":
-    data = get_insurance_distributors()
-
-    if isinstance(data, dict) and "error" in data:
-        logger.error(f"Error: {data['error']}")
-        exit(1)
-
-    if not isinstance(data, list):
-        logger.error(f"Unexpected response type: {type(data).__name__}")
-        exit(1)
-
-    logger.info(f"Found {len(data)} insurance distributors")
-
-    enriched_data = enrich_insurance_distributors(data, delay=0.1, verbose=True)
-
-    with open('data/insurance_distributors.json', 'w', encoding='utf-8') as f:
-        json.dump(enriched_data, f, indent=2, ensure_ascii=False)
-
-    logger.info(f"Saved {len(enriched_data)} to data/insurance_distributors.json")
- """

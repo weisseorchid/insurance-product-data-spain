@@ -1,12 +1,17 @@
+"""Script to sync insurance company folder structure.
+
+This creates folders for each insurance company based on the JSON data.
+This is a legacy script that may be useful for organizing raw data.
+
+Run with: uv run python -m scripts.sync_folders
+"""
+
 from pathlib import Path
 
-from insurance_product_data_spain.core.config import (
-    INSURANCE_COMPANIES_JSON,
-    INSURANCE_COMPANIES_STORAGE_PATH,
-)
+from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.core.storage import ensure_directory, load_json
-from insurance_product_data_spain.utils.text_transformations import text_to_snake_case
+from scripts.utils.storage import ensure_directory, load_json
+from scripts.utils.text_transformations import text_to_snake_case
 
 
 def sync_insurance_company_folders(
@@ -50,8 +55,5 @@ def sync_insurance_company_folders(
             logger.info(f"Folder already exists: {folder_path}")
 
 
-"""
-# Example usage:
 if __name__ == "__main__":
     sync_insurance_company_folders()
-"""

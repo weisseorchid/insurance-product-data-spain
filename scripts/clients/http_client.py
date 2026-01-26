@@ -1,8 +1,10 @@
+"""Centralized HTTP client with retry logic and connection pooling."""
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from insurance_product_data_spain.core.config import DEFAULT_TIMEOUT, MAX_RETRIES
+from scripts.config import DEFAULT_TIMEOUT, MAX_RETRIES
 from insurance_product_data_spain.core.logging import logger
 
 
@@ -48,6 +50,7 @@ class HTTPClient:
 
 
 _http_client: HTTPClient | None = None
+
 
 def get_http_client() -> HTTPClient:
     """Get or create the global HTTP client instance."""

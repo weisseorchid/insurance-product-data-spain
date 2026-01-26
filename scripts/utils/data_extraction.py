@@ -1,3 +1,5 @@
+"""Data extraction utilities for HTML parsing."""
+
 import json
 import re
 from typing import Any

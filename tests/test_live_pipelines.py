@@ -2,11 +2,11 @@ from typing import Any
 
 import pytest
 
-from insurance_product_data_spain.services.v1.insurance_companies.get_insurance_companies import (
+from scripts.fetchers.companies import (
     get_insurance_companies,
     get_insurance_company_details,
 )
-from insurance_product_data_spain.services.v1.insurance_distributors.get_insurance_distributors import (
+from scripts.fetchers.distributors import (
     get_insurance_distributor_details,
     get_insurance_distributors,
 )
@@ -20,7 +20,7 @@ def _extract_key(item: dict[str, Any], *keys: str) -> str | None:
     return None
 
 
-@pytest.mark.live
+@pytest.mark.live()
 def test_companies_pipeline_live() -> None:
     companies = get_insurance_companies()
     assert isinstance(companies, list)
@@ -34,7 +34,7 @@ def test_companies_pipeline_live() -> None:
     assert details.get("company_key") == company_key or details.get("company_key")
 
 
-@pytest.mark.live
+@pytest.mark.live()
 def test_distributors_pipeline_live() -> None:
     distributors = get_insurance_distributors()
     assert isinstance(distributors, list)

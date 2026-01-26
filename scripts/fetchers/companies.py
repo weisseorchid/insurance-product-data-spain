@@ -1,23 +1,21 @@
+"""Fetcher for insurance companies from the Spanish insurance regulator website."""
+
 import time
-from datetime import datetime
 from typing import Any
 
 from bs4 import BeautifulSoup, Tag
 from pydantic import ValidationError
 
-from insurance_product_data_spain.__version__ import __version__
-from insurance_product_data_spain.clients.http_client import get_http_client
-from insurance_product_data_spain.constants.api_headers import mineco_headers, mineco_html_headers, mineco_params
-from insurance_product_data_spain.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
-from insurance_product_data_spain.core.logging import logger
 from insurance_product_data_spain.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
 )
-from insurance_product_data_spain.utils.data_extraction import extract_js_data, extract_label_value
+from scripts.clients.http_client import get_http_client
+from scripts.constants.api_headers import mineco_headers, mineco_html_headers, mineco_params
+from scripts.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
+from insurance_product_data_spain.core.logging import logger
+from scripts.utils.data_extraction import extract_js_data, extract_label_value
 
-MODULE_VERSION = __version__
-MODULE_LAST_MODIFIED = datetime.now().isoformat()
 
 def get_insurance_companies(
     base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
@@ -237,7 +235,7 @@ def enrich_insurance_companies(
 
         try:
             if verbose:
-                logger.info(f"Fetching details for {company_key} ({idx}/{total})...", end="\r")
+                logger.info(f"Fetching details for {company_key} ({idx}/{total})...")
 
             details = get_insurance_company_details(company_key, base_url, delay)
 
@@ -260,42 +258,11 @@ def enrich_insurance_companies(
                 # Truncate very long error messages
                 if len(error_msg) > 200:
                     error_msg = error_msg[:200] + "..."
-                logger.error(f"\nError fetching details for {company_key}: {error_msg}")
+                logger.error(f"Error fetching details for {company_key}: {error_msg}")
             # Keep the original company data if details fetch fails
             enriched_companies.append(company)
 
     if verbose:
-        logger.info(f"\nCompleted: Enriched {len(enriched_companies)} companies")
+        logger.info(f"Completed: Enriched {len(enriched_companies)} companies")
 
     return enriched_companies
-
-"""
-# Example usage:
-if __name__ == "__main__":
-    # Step 1: Search for all active insurance companies
-    logger.info("Step 1: Fetching list of all insurance companies...")
-    data = get_insurance_companies()
-
-    # Check if response contains an error
-    if isinstance(data, dict) and "error" in data:
-        logger.error(f"Error: {data['error']}")
-        exit(1)
-
-    if not isinstance(data, list):
-        logger.error(f"Unexpected response type: {type(data).__name__}")
-        exit(1)
-
-    logger.info(f"Found {len(data)} insurance companies")
-
-    # Step 2: Enrich each company with detailed information
-    logger.info("\nStep 2: Fetching detailed information for each company...")
-    enriched_data = enrich_insurance_companies(data, delay=0.1, verbose=True)
-
-    # Step 3: Save enriched data to JSON file
-    logger.info("\nStep 3: Saving enriched data to JSON file...")
-    with open('data/insurance_companies.json', 'w', encoding='utf-8') as f:
-        json.dump(enriched_data, f, indent=2, ensure_ascii=False)
-
-    logger.info(f"Saved {len(enriched_data)} to data/insurance_companies.json")
-
-"""
