@@ -392,18 +392,18 @@ name = "insurance-product-data-sp"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "beautifulsoup4" },
-    { name = "loguru" },
     { name = "pydantic" },
-    { name = "requests" },
 ]
 
 [package.optional-dependencies]
 dev = [
+    { name = "beautifulsoup4" },
     { name = "black" },
+    { name = "loguru" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
+    { name = "requests" },
     { name = "ruff" },
     { name = "ty" },
 ]
@@ -411,17 +411,25 @@ docs = [
     { name = "sphinx" },
     { name = "sphinx-rtd-theme" },
 ]
+sync = [
+    { name = "beautifulsoup4" },
+    { name = "loguru" },
+    { name = "requests" },
+]
 
 [package.metadata]
 requires-dist = [
-    { name = "beautifulsoup4", specifier = ">=4.12.0" },
+    { name = "beautifulsoup4", marker = "extra == 'dev'", specifier = ">=4.12.0" },
+    { name = "beautifulsoup4", marker = "extra == 'sync'", specifier = ">=4.12.0" },
     { name = "black", marker = "extra == 'dev'", specifier = ">=23.0.0" },
-    { name = "loguru", specifier = ">=0.7.3" },
+    { name = "loguru", marker = "extra == 'dev'", specifier = ">=0.7.3" },
+    { name = "loguru", marker = "extra == 'sync'", specifier = ">=0.7.3" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.0.0" },
     { name = "pydantic", specifier = ">=2.0.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0.0" },
-    { name = "requests", specifier = ">=2.32.5" },
+    { name = "requests", marker = "extra == 'dev'", specifier = ">=2.32.5" },
+    { name = "requests", marker = "extra == 'sync'", specifier = ">=2.32.5" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
     { name = "sphinx", marker = "extra == 'docs'", specifier = ">=7.0.0" },
     { name = "sphinx-rtd-theme", marker = "extra == 'docs'", specifier = ">=1.3.0" },

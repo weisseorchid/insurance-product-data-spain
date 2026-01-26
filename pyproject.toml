@@ -5,14 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "insurance-product-data-sp"
 dynamic = ["version"]
-description = "Reliable and public source of insurance market data for Spain with automated collection and manual curation"
+description = "A pycountry-style library providing Spanish insurance market data (companies, distributors, products)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache 2.0"}
 authors = [
     {name = "weisseorchid", email = "weisseorchid@gmail.com"}
 ]
-keywords = ["insurance", "spain", "data", "regulatory", "dgsfp"]
+keywords = ["insurance", "spain", "data", "regulatory", "dgsfp", "pycountry"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -22,16 +22,22 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
 ]
 
+# Core dependencies - minimal for the data access library
 dependencies = [
-    "requests>=2.32.5",
-    "beautifulsoup4>=4.12.0",
-    "pydantic>=2.0.0", # For data validation
-    "loguru>=0.7.3",
+    "pydantic>=2.0.0",  # For data validation and type safety
 ]
 
 [project.optional-dependencies]
+# Dependencies for running sync scripts (not needed for library usage)
+sync = [
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.12.0",
+    "loguru>=0.7.3",
+]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
@@ -39,6 +45,10 @@ dev = [
     "ruff>=0.1.0",
     "ty>=0.0.13",
     "pre-commit>=3.0.0",
+    # Include sync deps for development
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.12.0",
+    "loguru>=0.7.3",
 ]
 docs = [
     "sphinx>=7.0.0",
@@ -57,6 +67,16 @@ path = "insurance_product_data_spain/__version__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["insurance_product_data_spain"]
 
+# Include bundled data files in the package
+[tool.hatch.build.targets.wheel.force-include]
+"insurance_product_data_spain/data" = "insurance_product_data_spain/data"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "insurance_product_data_spain/**/*.py",
+    "insurance_product_data_spain/data/*.json",
+]
+
 [tool.ruff]
 target-version = "py310"
 line-length = 120
@@ -73,3 +93,4 @@ lint.ignore = []
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+"scripts/**/*.py" = ["E501"]  # Allow longer lines in scripts
