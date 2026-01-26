@@ -1,165 +1,166 @@
 # Insurance Product Data - Spain
 
-A reliable and public source of information for the insurance policy market in Spain. This project provides automated collection and manual curation of data from different data sources in a structured manner.
-
-## Overview
-
-This repository contains:
-- **Python package** (`insurance_product_data_spain`) for fetching insurance data from the Spanish regulator website
-- **Collected data** in JSON format and organized folder structure
-- **Service modules** to retrieve insurance companies, distributors, and their details
+A pycountry-style Python library providing Spanish insurance market data. Access insurance companies, distributors, and product information with simple, intuitive APIs.
 
 ## Installation
 
-### Requirements
-
-- Python 3.10 or higher
-- `uv` package manager or compatible with pyproject.toml files.
-
-### Setup
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/weisseorchid/insurance-product-data-SP.git
-cd insurance-product-data-SP
+pip install insurance-product-data-sp
 ```
 
-2. Install the package in development mode:
-```bash
-uv sync
-```
-
-3. Install development dependencies (optional):
-```bash
-uv sync --extra dev
-```
-
-## Usage
-
-### Fetch Insurance Companies
+## Quick Start
 
 ```python
-from insurance_product_data_spain import get_insurance_companies, enrich_insurance_companies
+from insurance_product_data_spain import companies, distributors
 
-# Get all active insurance companies
-companies = get_insurance_companies()
+# Get a company by key
+company = companies.get(company_key="C0001")
+print(company.denomination)  # ASEGURADORES AGRUPADOS, SOCIEDAD ANONIMA DE SEGUROS
 
-# Search with custom parameters
-companies = get_insurance_companies(search_params={
-    "Descripcion": "Allianz",
-    "Situacion": "1"  # active
-})
+# Get a company by NIF
+company = companies.get(nif="A28007748")
 
-# Enrich companies with detailed information
-enriched = enrich_insurance_companies(companies)
+# Search companies
+active = companies.search(status="Activa")
+print(f"Found {len(active)} active companies")
+
+# Iterate over all companies
+for company in companies:
+    print(f"{company.company_key}: {company.denomination}")
+
+# Work with distributors
+for distributor in distributors:
+    print(f"{distributor.distributor_key}: {distributor.name}")
+    
+    # Access agency contracts
+    for contract in distributor.agency_contracts:
+        insurer = companies.get(company_key=contract.company_key)
+        print(f"  Contract with: {insurer.denomination if insurer else 'Unknown'}")
 ```
 
-### Fetch Insurance Distributors
+## API Reference
+
+### Data Stores
+
+The library provides three main data stores:
+
+| Store | Description | Primary Key |
+|-------|-------------|-------------|
+| `companies` | Insurance companies (aseguradoras) | `company_key` |
+| `distributors` | Insurance distributors (mediadores) | `distributor_key` |
+| `branches` | Insurance branches/lines (ramos) | `ramo` |
+
+### Methods
+
+All data stores support these methods:
 
 ```python
-from insurance_product_data_spain import get_insurance_distributors, enrich_insurance_distributors
+# Get by indexed field (returns None if not found)
+company = companies.get(company_key="C0001")
+company = companies.get(nif="A28007748")
 
-# Get all active distributors
-distributors = get_insurance_distributors()
+# Lookup by indexed field (raises KeyError if not found)
+company = companies.lookup(company_key="C0001")
 
-# Enrich distributors with detailed information
-enriched = enrich_insurance_distributors(distributors)
+# Search by any field (returns list)
+results = companies.search(status="Activa")
+results = companies.search(province="Madrid")
+
+# Iteration and length
+for company in companies:
+    ...
+print(len(companies))
+
+# Membership test
+"C0001" in companies  # True
 ```
 
-### Sync Company Folders
+### Synthetic Entity Resolution
+
+For graph resilience, `companies` supports resolving unknown keys to synthetic entities:
 
 ```python
-from insurance_product_data_spain import sync_insurance_company_folders
-
-# Create folder structure from JSON data
-sync_insurance_company_folders()
+# Never returns None - creates synthetic entity for unknown keys
+company = companies.resolve("UNKNOWN_KEY")
+print(company.is_synthetic)  # True
+print(company.denomination)  # "Entity UNKNOWN_KEY (Unmapped)"
 ```
+
+## Data Models
+
+### InsuranceCompanyDetails
+
+Key fields:
+- `company_key`: Unique identifier (e.g., "C0001")
+- `denomination`: Company name
+- `nif`: Tax identification number
+- `status`: Company status (e.g., "Activa")
+- `insurance_branches`: List of authorized products/lines
+- `executives`, `shareholders`, `agencies`: Related entities
+
+### InsuranceDistributorDetails
+
+Key fields:
+- `distributor_key`: Unique identifier
+- `name`: Distributor name
+- `mediator_class`: Type of mediator
+- `agency_contracts`: List of contracts with insurers
 
 ## Project Structure
 
 ```
-insurance-product-data-SP/
-├── insurance_product_data_spain/
+insurance-product-data-spain/
+├── insurance_product_data_spain/    # Package (pip installable)
+│   ├── __init__.py                  # Public API
 │   ├── core/
-│   │   ├── config.py          # Configuration (paths, settings)
-│   │   ├── logging.py         # Logging setup
-│   │   └── storage.py         # Data storage abstraction
-│   ├── services/
-│   │   └── v1/
-│   │       ├── insurance_companies/
-│   │       │   ├── get_insurance_companies.py
-│   │       │   └── sync_insurco_data_folders.py
-│   │       └── insurance_distributors/
-│   │           └── get_insurance_distributors.py
-│   ├── models/                # Pydantic data models
-│   ├── constants/             # API headers, URLs, storage routes
-│   └── utils/                 # Data extraction and text utilities
-├── data/
-│   ├── insurance_companies.json
-│   └── insurance_companies/
-│       └── [company folders]/
-└── pyproject.toml
+│   │   └── db.py                    # Data stores
+│   ├── schemas/                     # Pydantic models
+│   └── data/                        # Bundled JSON data
+│       ├── insurance_companies.json
+│       └── insurance_distributors.json
+│
+├── scripts/                         # Data sync scripts (not in package)
+│   ├── sync_data.py                 # Main sync script
+│   └── fetchers/                    # Web scrapers
+│
+└── data/                            # Original data files
 ```
 
-## Data
+## Updating Data
 
-The `data/` directory contains:
-- `insurance_companies.json`: Complete dataset of insurance companies with detailed information
-- `insurance_companies/`: Individual folders for each insurance company (snake_case naming)
+Data is bundled with the package. To update from the Spanish regulator:
 
-## Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-### Before Contributing
-
-1. **Fork the repository** and create a branch for your feature
-2. **Install pre-commit hooks** to ensure code quality:
 ```bash
-uv run pre-commit install
+# Install sync dependencies
+pip install insurance-product-data-sp[sync]
+
+# Run sync script
+python -m scripts.sync_data
 ```
 
-### Code Quality Standards
-
-- All code must pass **ruff** linting checks
-- All code must pass **mypy** type checking
-- Follow existing code style and patterns
-- Add type hints to all functions
-- Write clear docstrings for public functions
-
-### Pre-commit Hooks
-
-The repository includes pre-commit hooks that automatically run:
-- `ruff` for linting and code formatting
-- `mypy` for type checking
-
-These checks run automatically before commits. If they fail, fix the issues before pushing.
-
-### Pull Request Process
-
-1. Ensure all pre-commit checks pass
-2. Test your changes thoroughly
-3. Update documentation if needed
-4. Submit a pull request with a clear description
-5. Ensure your PR passes all CI checks
-
-### Running Checks Manually
-
-You can run the checks manually before committing:
+## Development
 
 ```bash
-# Run ruff
+# Clone and install
+git clone https://github.com/weisseorchid/insurance-product-data-SP.git
+cd insurance-product-data-SP
+uv sync --extra dev
+
+# Run tests
+uv run pytest
+
+# Run linting
 uv run ruff check .
 
-# Run mypy
-uv run mypy insurance_product_data_spain/
+# Run type checker
+uv run ty check
 ```
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+Apache License 2.0 - see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- **Homepage**: https://github.com/weisseorchid/insurance-product-data-SP
+- **Repository**: https://github.com/weisseorchid/insurance-product-data-SP
 - **Issues**: https://github.com/weisseorchid/insurance-product-data-SP/issues
