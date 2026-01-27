@@ -123,9 +123,14 @@ insurance-product-data-spain/
 │   └── fetchers/                    # Web scrapers
 │
 └── data/                            # Data files
-    ├── insurance_companies.json
-    ├── insurance_distributors.json
-    └── products_by_insurance_company/  # Product documents and analysis
+    ├── insurance_companies.json     # Collection of insurance companies
+    ├── insurance_distributors.json  # Collection of insurnace distributors
+    └── products_by_insurance_company/  
+        └── {insurance_company_name}/
+            ├── index.json            # Index of the products for the company
+            ├── analysis/             # Products
+            ├── metadata/             # Processes metadata
+            └── sources/              # Product documentation
 ```
 
 ## Data Sources
