@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "analyzed_at": "2026-01-27T13:41:14.791224+00:00",
+  "analyzer": {
+    "name": "analyze_products",
+    "version": "1.0.0",
+    "model": "gemini-2.5-flash-preview-05-20"
+  },
+  "company_key": "C0737",
+  "summary": {
+    "total_products": 8,
+    "successful": 8,
+    "failed": 0,
+    "total_markdown_files": 29
+  },
+  "products": [
+    {
+      "product_name": "seguro_vida_familia",
+      "product_id": "urn:C0737-00",
+      "success": true,
+      "markdown_files_processed": 3,
+      "error": null
+    },
+    {
+      "product_name": "seguro_hogar",
+      "product_id": "urn:C0737-01",
+      "success": true,
+      "markdown_files_processed": 3,
+      "error": null
+    },
+    {
+      "product_name": "contigo_autonomo",
+      "product_id": "urn:C0737-02",
+      "success": true,
+      "markdown_files_processed": 4,
+      "error": null
+    },
+    {
+      "product_name": "contigo_pyme",
+      "product_id": "urn:C0737-03",
+      "success": true,
+      "markdown_files_processed": 7,
+      "error": null
+    },
+    {
+      "product_name": "salud_completo_autonomos",
+      "product_id": "urn:C0737-04",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    },
+    {
+      "product_name": "seguro_auto",
+      "product_id": "urn:C0737-05",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "seguro_para_negocios",
+      "product_id": "urn:C0737-06",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "seguro_salud_completo",
+      "product_id": "urn:C0737-07",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    }
+  ]
+}

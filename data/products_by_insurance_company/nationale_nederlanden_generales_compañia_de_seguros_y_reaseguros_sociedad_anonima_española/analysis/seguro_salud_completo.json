@@ -1,0 +1,309 @@
+{
+  "product_name": "seguro_salud_completo",
+  "product_branch": [
+    "05",
+    "06"
+  ],
+  "product_id": "urn:C0737-07",
+  "source_urls": [
+    "https://www.nnespana.es/seguros/seguro-salud-completo"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:41:14.789577+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Salud",
+      "target_audience": "Particulares",
+      "description_es": "Salud Completo es un seguro de asistencia sanitaria de primer nivel comercializado por Nationale-Nederlanden en asociación con Sanitas. Ofrece acceso a un amplio cuadro médico, especialidades, hospitalización, urgencias y servicios digitales avanzados sin copagos adicionales.",
+      "description_en": "Salud Completo is a premium health insurance product marketed by Nationale-Nederlanden in partnership with Sanitas. It offers access to a wide medical network, specialists, hospitalization, emergencies, and advanced digital services without additional copayments.",
+      "key_benefits": [
+        "Cuadro médico completo de Sanitas",
+        "Sin copagos adicionales",
+        "Asistencia en el extranjero hasta 12.000€",
+        "Videoconsultas médicas 24h y especialistas",
+        "Programas de salud personalizados (nutrición, psicología, etc.)",
+        "Cobertura dental básica incluida"
+      ],
+      "insurance_company": "NATIONALE-NEDERLANDEN GENERALES, COMPAÑIA DE SEGUROS Y REASEGUROS, SOCIEDAD ANONIMA ESPAÑOLA",
+      "administrative_code": "C-0737"
+    },
+    "coverages": [
+      {
+        "name": "Medicina Primaria",
+        "category": "basic",
+        "description": "Incluye medicina general, pediatría y servicios de enfermería.",
+        "covered_events": [
+          "Enfermedad común",
+          "Asistencia pediátrica"
+        ],
+        "benefits": [
+          "Consultas médicas",
+          "Servicio de enfermería en centro y domicilio"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Especialidades Médicas y Quirúrgicas",
+        "category": "basic",
+        "description": "Acceso a todas las especialidades reconocidas por la Organización Médica Colegial.",
+        "covered_events": [
+          "Necesidad de consulta especializada",
+          "Intervenciones quirúrgicas"
+        ],
+        "benefits": [
+          "Consultas con especialistas",
+          "Pruebas diagnósticas",
+          "Tratamientos especializados"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 90,
+        "conditions": [
+          "3 meses para intervenciones grupos 0-II",
+          "10 meses para intervenciones grupos III-VIII"
+        ]
+      },
+      {
+        "name": "Hospitalización",
+        "category": "basic",
+        "description": "Ingreso en centro hospitalario en habitación individual con cama de acompañante.",
+        "covered_events": [
+          "Intervenciones quirúrgicas",
+          "Tratamientos médicos que requieran internamiento"
+        ],
+        "benefits": [
+          "Habitación individual",
+          "Cama de acompañante",
+          "Gastos de quirófano y medicación en hospital"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 300,
+        "conditions": null
+      },
+      {
+        "name": "Urgencias",
+        "category": "basic",
+        "description": "Asistencia de urgencia 24 horas, 365 días al año.",
+        "covered_events": [
+          "Urgencia vital",
+          "Urgencia médica"
+        ],
+        "benefits": [
+          "Atención en centros de urgencia",
+          "Urgencia domiciliaria",
+          "Videoconsulta de urgencia"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Cobertura Dental",
+        "category": "basic",
+        "description": "Servicios dentales básicos de prevención y urgencia.",
+        "covered_events": [
+          "Urgencia dental",
+          "Necesidad de higiene bucodental"
+        ],
+        "benefits": [
+          "Consulta de odontología general",
+          "Higiene bucodental",
+          "Extracción de pieza simple o restos radiculares"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia de Urgencias en el Extranjero",
+        "category": "basic",
+        "description": "Cobertura de gastos médicos urgentes durante viajes al extranjero.",
+        "covered_events": [
+          "Enfermedad sobrevenida o accidente en el extranjero"
+        ],
+        "benefits": [
+          "Gastos médicos y quirúrgicos",
+          "Traslado o repatriación sanitaria",
+          "Prolongación de estancia en hotel para acompañante"
+        ],
+        "capital_or_limit": "12.000€",
+        "waiting_period_days": 0,
+        "conditions": [
+          "Máximo 90 días consecutivos por viaje",
+          "Debe ser comunicado previamente a la compañía"
+        ]
+      },
+      {
+        "name": "Segunda Opinión Médica",
+        "category": "included_service",
+        "description": "Acceso a expertos internacionales para valorar diagnósticos de enfermedades graves.",
+        "covered_events": [
+          "Enfermedades crónicas o graves diagnosticadas"
+        ],
+        "benefits": [
+          "Informe médico de expertos internacionales"
+        ],
+        "capital_or_limit": "unlimited",
+        "waiting_period_days": 0,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Enfermedades, dolencias o defectos preexistentes al alta del asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Asistencia derivada de accidentes de tráfico (salvo urgencia vital).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Lesiones producidas por guerras, terrorismo, epidemias oficiales o radiación nuclear.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica de deportes de riesgo (submarinismo, escalada, paracaidismo, etc.).",
+        "category": "Actividades",
+        "legal_reference": null
+      },
+      {
+        "description": "Tratamientos estéticos o cosméticos y sus complicaciones.",
+        "category": "Médica",
+        "legal_reference": null
+      },
+      {
+        "description": "Cirugía bariátrica para el tratamiento de la obesidad.",
+        "category": "Quirúrgica",
+        "legal_reference": null
+      },
+      {
+        "description": "Interrupción voluntaria del embarazo.",
+        "category": "Ginecología",
+        "legal_reference": null
+      },
+      {
+        "description": "Medicamentos no comercializados en España o suministrados fuera del ingreso hospitalario (salvo quimioterapia).",
+        "category": "Farmacia",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Psicología",
+        "limit_type": "maximum_amount",
+        "limit_value": "4 consultas/mes y 15 sesiones/año",
+        "conditions": "Requiere prescripción médica."
+      },
+      {
+        "coverage_name": "Psiquiatría",
+        "limit_type": "days_per_year",
+        "limit_value": "50 días",
+        "conditions": "Limitado al tratamiento de brotes agudos en régimen de ingreso."
+      },
+      {
+        "coverage_name": "Podología",
+        "limit_type": "sessions_per_year",
+        "limit_value": "12 sesiones",
+        "conditions": "Exclusivamente Quiropodia."
+      },
+      {
+        "coverage_name": "Logopedia y Foniatría",
+        "limit_type": "sessions_per_year",
+        "limit_value": "80 sesiones",
+        "conditions": "Sólo para patologías orgánicas o accidentes cerebrovasculares agudos."
+      },
+      {
+        "coverage_name": "Asistencia en EE.UU.",
+        "limit_type": "maximum_amount",
+        "limit_value": "30.000€",
+        "conditions": "24.000€ para hospitalización y 6.000€ para extrahospitalaria."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Contestar verazmente al cuestionario de salud.",
+        "Pagar las primas correspondientes.",
+        "Presentar la tarjeta de asegurado y DNI para acceder a los servicios.",
+        "Comunicar cambios de residencia fiscal fuera de España."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Solicitar autorización previa para hospitalizaciones e intervenciones.",
+        "Notificar urgencias en el extranjero antes de recibir asistencia (salvo riesgo vital).",
+        "Facilitar informes médicos para la valoración de prestaciones."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Fallecimiento del tomador o último asegurado.",
+        "Impago de la prima.",
+        "Pérdida de residencia fiscal en España.",
+        "Fraude u ocultación en el cuestionario de salud.",
+        "Asegurado menor de 3 años que quede solo en la póliza."
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "mensual",
+        "trimestral",
+        "semestral",
+        "anual"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Sin copagos (Producto Completo)",
+      "pricing_factors": [
+        "Edad de los asegurados",
+        "Código postal de residencia",
+        "Tamaño de la unidad familiar"
+      ],
+      "discounts": [
+        "Descuentos por forma de pago anual (implícito en recargos por fraccionamiento)"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Asistencia de urgencias en el extranjero"
+      ],
+      "special_conditions_abroad": "La asistencia en el extranjero tiene un límite de 12.000€ y requiere contacto previo con el servicio de asistencia."
+    },
+    "source_documents": [
+      {
+        "filename": "ccgg-salud-completo1023sinnopoliza.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ccll-salud-completo1023sinnopoliza.md",
+        "document_type": "limiting_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "folleto-salud-completo01.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "guia-de-uso-salud-completo-0124.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 0.9
+      },
+      {
+        "filename": "ipid-salud-Completo_1023.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

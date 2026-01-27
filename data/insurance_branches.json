@@ -1,0 +1,122 @@
+[
+  {
+    "code": "00",
+    "name_es": "Vida",
+    "name_en": "Life",
+    "category": "life"
+  },
+  {
+    "code": "01",
+    "name_es": "Accidentes",
+    "name_en": "Accidents",
+    "category": "non_life"
+  },
+  {
+    "code": "02",
+    "name_es": "Enfermedad",
+    "name_en": "Health / Illness",
+    "category": "non_life"
+  },
+  {
+    "code": "03",
+    "name_es": "Vehículos terrestres no ferroviarios",
+    "name_en": "Non-railway land vehicles",
+    "category": "non_life"
+  },
+  {
+    "code": "04",
+    "name_es": "Vehículos ferroviarios",
+    "name_en": "Railway vehicles",
+    "category": "non_life"
+  },
+  {
+    "code": "05",
+    "name_es": "Vehículos aéreos",
+    "name_en": "Aircraft",
+    "category": "non_life"
+  },
+  {
+    "code": "06",
+    "name_es": "Vehículos marítimos, lacustres y fluviales",
+    "name_en": "Maritime, lake and river vessels",
+    "category": "non_life"
+  },
+  {
+    "code": "07",
+    "name_es": "Mercancías transportadas",
+    "name_en": "Goods in transit",
+    "category": "non_life"
+  },
+  {
+    "code": "08",
+    "name_es": "Incendio y elementos naturales",
+    "name_en": "Fire and natural forces",
+    "category": "non_life"
+  },
+  {
+    "code": "09",
+    "name_es": "Otros daños a los bienes",
+    "name_en": "Other property damage",
+    "category": "non_life"
+  },
+  {
+    "code": "10",
+    "name_es": "Responsabilidad civil vehículos terrestres automóviles",
+    "name_en": "Motor vehicle liability",
+    "category": "non_life"
+  },
+  {
+    "code": "11",
+    "name_es": "Responsabilidad civil vehículos aéreos",
+    "name_en": "Aircraft liability",
+    "category": "non_life"
+  },
+  {
+    "code": "12",
+    "name_es": "Responsabilidad civil vehículos marítimos, lacustres y fluviales",
+    "name_en": "Maritime, lake and river vessel liability",
+    "category": "non_life"
+  },
+  {
+    "code": "13",
+    "name_es": "Responsabilidad civil general",
+    "name_en": "General liability",
+    "category": "non_life"
+  },
+  {
+    "code": "14",
+    "name_es": "Crédito",
+    "name_en": "Credit",
+    "category": "non_life"
+  },
+  {
+    "code": "15",
+    "name_es": "Caución",
+    "name_en": "Suretyship",
+    "category": "non_life"
+  },
+  {
+    "code": "16",
+    "name_es": "Pérdidas pecuniarias diversas",
+    "name_en": "Miscellaneous financial loss",
+    "category": "non_life"
+  },
+  {
+    "code": "17",
+    "name_es": "Defensa jurídica",
+    "name_en": "Legal expenses",
+    "category": "non_life"
+  },
+  {
+    "code": "18",
+    "name_es": "Asistencia",
+    "name_en": "Assistance",
+    "category": "non_life"
+  },
+  {
+    "code": "19",
+    "name_es": "Decesos",
+    "name_en": "Funeral expenses",
+    "category": "non_life"
+  }
+]

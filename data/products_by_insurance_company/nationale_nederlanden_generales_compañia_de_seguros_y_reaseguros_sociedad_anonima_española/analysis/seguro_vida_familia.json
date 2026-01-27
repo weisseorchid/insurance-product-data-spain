@@ -1,0 +1,298 @@
+{
+  "product_name": "seguro_vida_familia",
+  "product_branch": "00",
+  "product_id": "urn:C0737-00",
+  "source_urls": [
+    "https://www.nnespana.es/seguros/seguro-vida-familia"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:37:33.355313+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida y Salud",
+      "target_audience": "Particulares y Autónomos",
+      "description_es": "Seguro de vida flexible y modular diseñado para cubrir fallecimiento, invalidez, incapacidad laboral temporal y enfermedades graves. El producto permite personalizar coberturas y capitales según las necesidades del cliente.",
+      "description_en": "Flexible and modular life insurance designed to cover death, disability, temporary work incapacity, and serious illnesses. The product allows for customization of coverages and capital limits based on customer needs.",
+      "key_benefits": [
+        "Coberturas acumulativas e independientes",
+        "Flexibilidad para modificar coberturas y capitales",
+        "Descuentos de hasta el 20% por hábitos saludables y capitales elevados",
+        "Servicios digitales de salud (Chat médico 24h) incluidos",
+        "Cobertura específica para autónomos (Incapacidad Laboral Temporal)"
+      ],
+      "insurance_company": "NATIONALE-NEDERLANDEN GENERALES, COMPAÑIA DE SEGUROS Y REASEGUROS, SOCIEDAD ANONIMA ESPAÑOLA",
+      "administrative_code": null
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento",
+        "category": "basic",
+        "description": "Cobertura principal obligatoria que garantiza un capital constante en caso de muerte por cualquier causa.",
+        "covered_events": [
+          "Fallecimiento del asegurado por cualquier causa"
+        ],
+        "benefits": [
+          "Pago del capital estipulado a los beneficiarios",
+          "Anticipo de hasta el 50% del capital (máximo 40 días tras solicitud)"
+        ],
+        "capital_or_limit": "Variable según edad (16.000€ - 2.000€)",
+        "waiting_period_days": 0,
+        "conditions": [
+          "Edad de contratación entre 18 y 65 años",
+          "Vencimiento a los 70 años"
+        ]
+      },
+      {
+        "name": "Fallecimiento Plus",
+        "category": "optional",
+        "description": "Capital adicional que complementa la cobertura de fallecimiento principal.",
+        "covered_events": [
+          "Fallecimiento por cualquier causa"
+        ],
+        "benefits": [
+          "Pago del capital adicional contratado"
+        ],
+        "capital_or_limit": "Hasta 1.000.000€",
+        "waiting_period_days": 0,
+        "conditions": [
+          "Sujeto a revalorización anual por IPC"
+        ]
+      },
+      {
+        "name": "Invalidez Permanente Absoluta (IPA)",
+        "category": "optional",
+        "description": "Situación física o mental irreversible que impide el mantenimiento de toda actividad laboral.",
+        "covered_events": [
+          "Invalidez absoluta por cualquier causa"
+        ],
+        "benefits": [
+          "Pago del capital asegurado"
+        ],
+        "capital_or_limit": "Hasta 1.000.000€",
+        "waiting_period_days": 0,
+        "conditions": [
+          "Debe ser reconocida antes de los 67 años",
+          "Declarada por el INSS u organismo competente"
+        ]
+      },
+      {
+        "name": "Incapacidad Laboral Temporal (ILT)",
+        "category": "optional",
+        "description": "Prestación diaria para autónomos en caso de baja laboral por enfermedad o accidente según baremo.",
+        "covered_events": [
+          "Enfermedad o accidente que impida transitoriamente la actividad profesional"
+        ],
+        "benefits": [
+          "Pago único basado en los días estipulados en el baremo oficial de la póliza"
+        ],
+        "capital_or_limit": "Hasta 200€ diarios (según grupo profesional)",
+        "waiting_period_days": 60,
+        "conditions": [
+          "Solo para autónomos dados de alta en el RETA",
+          "Carencia de 6 meses para cirugía y 12 meses para problemas de espalda"
+        ]
+      },
+      {
+        "name": "Primer Diagnóstico de Enfermedad Grave",
+        "category": "optional",
+        "description": "Capital garantizado ante el primer diagnóstico de una de las 11 enfermedades graves listadas.",
+        "covered_events": [
+          "Infarto, ACV, Trasplantes, Esclerosis Múltiple, Parkinson, Alzheimer, entre otras"
+        ],
+        "benefits": [
+          "Pago del capital asegurado íntegro"
+        ],
+        "capital_or_limit": "Hasta 300.000€",
+        "waiting_period_days": 180,
+        "conditions": [
+          "Periodo de sobrevivencia de 7 días tras el diagnóstico"
+        ]
+      },
+      {
+        "name": "Servicio Meeting Doctors",
+        "category": "included_service",
+        "description": "App de salud con chat médico 24 horas y especialistas.",
+        "covered_events": [
+          "Consultas médicas generales y especialidades"
+        ],
+        "benefits": [
+          "Respuesta inmediata",
+          "Receta médica digital"
+        ],
+        "capital_or_limit": "Ilimitado",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Servicios onLygal",
+        "category": "included_service",
+        "description": "Servicios de soporte legal, informático y fisioterapia para autónomos con ILT.",
+        "covered_events": [
+          "Asesoramiento legal, incidencias informáticas, rehabilitación física"
+        ],
+        "benefits": [
+          "5 sesiones de fisioterapia al año por siniestro de ILT aceptado",
+          "Asesoramiento jurídico telefónico ilimitado",
+          "Asistencia informática remota 24x7"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 0,
+        "conditions": [
+          "Fisioterapia sujeta a la aceptación del siniestro de ILT"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Enfermedades o accidentes originados antes de la entrada en vigor de la póliza (preexistencias).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Dolo o culpa grave del asegurado y actos delictivos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Suicidio o intento de suicidio durante el primer año de vigencia.",
+        "category": "Fallecimiento / Fallecimiento Plus",
+        "legal_reference": null
+      },
+      {
+        "description": "Uso de drogas, alcohol (tasa superior a la legal o 0.5g/l en no conductores) o medicamentos sin prescripción.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Invalidez permanente absoluta o total declarada fuera de la Unión Europea.",
+        "category": "Invalidez",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica de deportes de riesgo o profesionales no declarados (boxeo, submarinismo, rafting, etc.).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conflictos armados, guerra, motines y fenómenos de la naturaleza extraordinarios (cubiertos por el Consorcio).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Bajas por tratamientos de infertilidad, interrupción del embarazo o cirugía estética.",
+        "category": "Incapacidad Laboral Temporal",
+        "legal_reference": null
+      },
+      {
+        "description": "Patologías de espalda (lumbalgias, cervicalgias) sin síntomas objetivos comprobables clínicamente.",
+        "category": "Incapacidad Laboral Temporal",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos derivados de profesiones específicas no declaradas o excluidas (Militar en zona de conflicto, periodismo de guerra, etc.).",
+        "category": "Profesional",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Incapacidad Laboral Temporal",
+        "limit_type": "days_per_year",
+        "limit_value": "365 días",
+        "conditions": "Máximo de 365 días por anualidad o por un mismo diagnóstico de por vida."
+      },
+      {
+        "coverage_name": "ILT - Patologías de espalda",
+        "limit_type": "days_per_year",
+        "limit_value": "120 días",
+        "conditions": "Límite para hernias discales, lumbalgias y similares."
+      },
+      {
+        "coverage_name": "Invalidez / Enfermedades Graves",
+        "limit_type": "maximum_age",
+        "limit_value": "67 años",
+        "conditions": "La cobertura cesa al cumplir esta edad."
+      },
+      {
+        "coverage_name": "Suma de Capitales de Fallecimiento",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500.000€",
+        "conditions": "Límite total para la suma de todas las coberturas de fallecimiento."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar todas las circunstancias conocidas que influyan en la valoración del riesgo (Cuestionario de salud).",
+        "Comunicar cualquier agravación del riesgo (cambio de profesión, deportes de riesgo).",
+        "Pago de las primas en los plazos estipulados.",
+        "Comunicar el cambio de residencia fiscal."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Emplear medios para minorar las consecuencias del siniestro.",
+        "Someterse a reconocimientos médicos de la compañía si se solicita.",
+        "Aportar documentación médica completa y resoluciones oficiales del INSS."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con renovación automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Impago de primas",
+        "Cumplimiento de la edad máxima de vencimiento",
+        "Pago de la prestación por fallecimiento",
+        "Pérdida de residencia fiscal en España",
+        "Fraude en la contratación o siniestro"
+      ],
+      "payment_method": "Domiciliación bancaria (no se admite efectivo)",
+      "payment_frequency": [
+        "mensual",
+        "anual"
+      ]
+    },
+    "pricing": {
+      "base_premium": "Desde 5,25€ al mes",
+      "copay_info": null,
+      "pricing_factors": [
+        "Edad del asegurado (creciente por edad para opcionales)",
+        "Capital asegurado",
+        "Hábitos saludables",
+        "Actividad profesional",
+        "Práctica de deportes"
+      ],
+      "discounts": [
+        "Hasta 10% por capital superior a 100.000€",
+        "10% por capital igual a 20.000€ en enfermedades graves",
+        "10% preferente por hábitos saludables"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Fallecimiento (con exclusiones en países en conflicto)"
+      ],
+      "special_conditions_abroad": "La Invalidez (IPA/IPT) solo está cubierta si es declarada en países de la Unión Europea."
+    },
+    "source_documents": [
+      {
+        "filename": "condiciones-limitativas-contigo-familia.md",
+        "document_type": "limiting_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "NN-Contigo-Familia-Condiciones-Generales_.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "NN-Contigo-Familia-Folleto.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.95
+      }
+    ]
+  }
+}

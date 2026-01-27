@@ -1,0 +1,224 @@
+{
+  "product_name": "seguro_auto",
+  "product_branch": "03",
+  "product_id": "urn:C0737-05",
+  "source_urls": [
+    "https://www.nnespana.es/seguros/seguro-automovil"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:39:55.054564+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Coche y Moto",
+      "target_audience": "Particulares",
+      "description_es": "Seguro para coche o moto que ofrece Nationale-Nederlanden en colaboración con Mutua Madrileña, proporcionando diversas modalidades desde terceros básico hasta todo riesgo.",
+      "description_en": "Car and motorcycle insurance offered by Nationale-Nederlanden in collaboration with Mutua Madrileña, providing various coverage levels from basic third-party to comprehensive coverage.",
+      "key_benefits": [
+        "Asistencia en viaje desde el Km 0 con Autoclub Mutua",
+        "Valor a nuevo durante los 2 primeros años del vehículo",
+        "Recuperación de puntos del permiso de conducción",
+        "Gestión y recurso de multas",
+        "Revisión anual gratuita para motos"
+      ],
+      "insurance_company": "Nationale-Nederlanden Generales, Compañía de Seguros y Reaseguros, S.A.E.",
+      "administrative_code": "M0083"
+    },
+    "coverages": [
+      {
+        "name": "Asistencia en viaje Km 0",
+        "category": "basic",
+        "description": "Asistencia en carretera desde el kilómetro cero proporcionada por Autoclub Mutua.",
+        "covered_events": [
+          "Avería mecánica",
+          "Accidente"
+        ],
+        "benefits": [
+          "Servicio de grúa",
+          "Asistencia en carretera"
+        ],
+        "capital_or_limit": "Km 0",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Recuperación de puntos",
+        "category": "included_service",
+        "description": "Servicio para la recuperación de los puntos del permiso de conducción.",
+        "covered_events": [
+          "Pérdida de puntos del carnet"
+        ],
+        "benefits": [
+          "Gestión del trámite de recuperación"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Recursos de multas",
+        "category": "included_service",
+        "description": "Gestión y defensa ante multas de tráfico.",
+        "covered_events": [
+          "Sanciones de tráfico"
+        ],
+        "benefits": [
+          "Asesoramiento jurídico",
+          "Recurso de sanciones"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo, Incendio y Lunas",
+        "category": "optional",
+        "description": "Coberturas adicionales incluidas en la modalidad de Terceros Ampliado.",
+        "covered_events": [
+          "Robo del vehículo",
+          "Incendio accidental",
+          "Rotura de cristales/lunas"
+        ],
+        "benefits": [
+          "Reparación o indemnización por robo o incendio",
+          "Sustitución de lunas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Seguro a conductor y ocupantes",
+        "category": "basic",
+        "description": "Protección para el conductor y los pasajeros en caso de accidente (especificado para motos).",
+        "covered_events": [
+          "Accidente de circulación"
+        ],
+        "benefits": [
+          "Indemnización por daños personales"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Revisión anual gratuita",
+        "category": "included_service",
+        "description": "Revisión técnica anual sin coste para asegurados de moto.",
+        "covered_events": [
+          "Mantenimiento preventivo"
+        ],
+        "benefits": [
+          "Revisión mecánica"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Curso de recuperación del carnet",
+        "category": "included_service",
+        "description": "Facilidades para realizar el curso de recuperación del carnet para motoristas.",
+        "covered_events": [
+          "Pérdida total de puntos"
+        ],
+        "benefits": [
+          "Acceso a curso de recuperación"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Ciclomotores (en la modalidad de motos)",
+        "category": "Vehículos excluidos",
+        "legal_reference": null
+      },
+      {
+        "description": "Vehículos con peso superior a 3.500 Kg",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Vehículos sin matrícula española",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Uso no particular del vehículo",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Valor a nuevo",
+        "limit_type": "maximum_duration",
+        "limit_value": "2 años",
+        "conditions": "Aplicable solo durante los dos primeros años desde la matriculación del vehículo"
+      },
+      {
+        "coverage_name": "Todo Riesgo con Franquicia",
+        "limit_type": "maximum_amount",
+        "limit_value": "250€, 550€ o 900€",
+        "conditions": "Importe que el asegurado asume por siniestro según la opción elegida"
+      },
+      {
+        "coverage_name": "Elegibilidad Moto",
+        "limit_type": "legal_requirement",
+        "limit_value": "Tomador debe ser propietario y conductor",
+        "conditions": "Condición indispensable para la contratación del seguro de moto"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "El vehículo debe ser de uso particular",
+        "El vehículo debe poseer matrícula española",
+        "Para motos, el tomador debe ser el propietario y el conductor principal"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Notificar el siniestro a la compañía (Mutua Madrileña/Nationale-Nederlanden)"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Impago de prima",
+        "Venta del vehículo"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Tipo de vehículo",
+        "Modalidad elegida (con o sin franquicia)",
+        "Historial de siniestralidad"
+      ],
+      "discounts": [
+        "Mejores condiciones de renovación"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Requiere matrícula española para la contratación"
+    },
+    "source_documents": [
+      {
+        "filename": "NN_Seguro-Auto_Folleto.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}
