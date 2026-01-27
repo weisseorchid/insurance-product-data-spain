@@ -14,8 +14,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_BY_INSURER_STORAGE_PATH
 from insurance_product_data_spain.core.logging import logger
+from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
 
@@ -98,7 +98,7 @@ def setup_company_structure(
         Path to the company folder
     """
     if base_path is None:
-        base_path = PRODUCTS_BY_INSURER_STORAGE_PATH
+        base_path = INSURANCE_COMPANIES_STORAGE_PATH
 
     company_key = company_data.get("company_key", "")
     company_name = company_data.get("denomination", "")
@@ -168,7 +168,7 @@ def setup_example_companies(
         Dictionary mapping company_key -> folder_path
     """
     json_path = Path(json_file_path) if json_file_path else INSURANCE_COMPANIES_JSON
-    base = Path(base_path) if base_path else PRODUCTS_BY_INSURER_STORAGE_PATH
+    base = Path(base_path) if base_path else INSURANCE_COMPANIES_STORAGE_PATH
 
     # Load companies
     companies_data = load_json(json_path)

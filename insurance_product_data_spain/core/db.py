@@ -13,6 +13,7 @@ from typing import Any, Generic, TypeVar
 
 from pydantic import BaseModel
 
+from insurance_product_data_spain.schemas.insurance_branches import InsuranceBranch
 from insurance_product_data_spain.schemas.insurance_companies import InsuranceCompanyDetails
 from insurance_product_data_spain.schemas.insurance_distributors import InsuranceDistributorDetails
 
@@ -21,7 +22,7 @@ T = TypeVar("T", bound=BaseModel)
 
 def _get_data_path() -> Path:
     """Get the path to bundled data files."""
-    return Path(__file__).parent.parent / "data"
+    return Path(__file__).parent.parent.parent / "data"
 
 
 class BaseDatabase(Generic[T]):
@@ -155,38 +156,52 @@ class DistributorDatabase(BaseDatabase[InsuranceDistributorDetails]):
         )
 
 
-class BranchDatabase:
-    """Database for insurance branches (extracted from companies)."""
+class BranchDatabase(BaseDatabase[InsuranceBranch]):
+    """Database for insurance branches (ramos)."""
 
-    def __init__(self, companies: CompanyDatabase):
-        self._branches: dict[str, dict[str, Any]] = {}
-        self._is_loaded = False
-        self._companies = companies
+    def __init__(self):
+        super().__init__(
+            "insurance_branches.json",
+            InsuranceBranch,
+            "code",
+        )
+        # Additional index for normalized codes (without leading zero)
+        self._normalized_index: dict[str, InsuranceBranch] = {}
 
-    def _ensure_loaded(self) -> None:
-        if self._is_loaded:
-            return
-        for company in self._companies:
-            for branch in company.insurance_branches:
-                ramo = branch.get("ramo", "")
-                if ramo and ramo not in self._branches:
-                    self._branches[ramo] = {
-                        "ramo": ramo,
-                        "codigo": branch.get("codigo", ""),
-                    }
-        self._is_loaded = True
+    def _load(self) -> None:
+        """Load data and build normalized index."""
+        super()._load()
+        # Build normalized index for codes without leading zeros
+        for obj in self._objects:
+            normalized = str(int(obj.code)) if obj.code.isdigit() else obj.code
+            self._normalized_index[normalized] = obj
 
-    def __iter__(self) -> Iterator[dict[str, Any]]:
+    def get_by_code(self, code: str) -> InsuranceBranch | None:
+        """Get branch by code, supporting both '01' and '1' formats.
+
+        Args:
+            code: Branch code (e.g., "01", "1", "00", "0")
+
+        Returns:
+            InsuranceBranch or None if not found
+        """
         self._ensure_loaded()
-        return iter(self._branches.values())
+        # Try exact match first
+        result = self._indices.get("code", {}).get(code)
+        if result is not None:
+            return result
+        # Try normalized (without leading zero)
+        return self._normalized_index.get(code.strip())
 
-    def __len__(self) -> int:
+    def list_life(self) -> list[InsuranceBranch]:
+        """Return all life insurance branches."""
         self._ensure_loaded()
-        return len(self._branches)
+        return [b for b in self._objects if b.is_life]
 
-    def get(self, ramo: str) -> dict[str, Any] | None:
+    def list_non_life(self) -> list[InsuranceBranch]:
+        """Return all non-life insurance branches."""
         self._ensure_loaded()
-        return self._branches.get(ramo)
+        return [b for b in self._objects if b.is_non_life]
 
 
 # Singleton instances
@@ -216,7 +231,7 @@ class _Database:
     def branches() -> BranchDatabase:
         global _branches
         if _branches is None:
-            _branches = BranchDatabase(_Database.companies())
+            _branches = BranchDatabase()
         return _branches
 
     @staticmethod

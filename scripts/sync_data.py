@@ -13,6 +13,7 @@ from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
+from insurance_product_data_spain.core.logging import logger
 from insurance_product_data_spain.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
@@ -33,7 +34,6 @@ from scripts.fetchers import (
     get_insurance_companies,
     get_insurance_distributors,
 )
-from insurance_product_data_spain.core.logging import logger
 from scripts.utils.storage import ensure_directory, save_json
 
 

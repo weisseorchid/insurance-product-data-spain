@@ -6,6 +6,7 @@ from typing import Any
 from bs4 import BeautifulSoup
 from pydantic import ValidationError
 
+from insurance_product_data_spain.core.logging import logger
 from insurance_product_data_spain.schemas.insurance_distributors import (
     AgencyContract,
     InsuranceDistributorBase,
@@ -14,7 +15,6 @@ from insurance_product_data_spain.schemas.insurance_distributors import (
 from scripts.clients.http_client import get_http_client
 from scripts.constants.api_headers import mineco_html_headers, mineco_params
 from scripts.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
-from insurance_product_data_spain.core.logging import logger
 from scripts.utils.data_extraction import extract_js_data, extract_label_value
 
 

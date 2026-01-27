@@ -28,6 +28,7 @@ from insurance_product_data_spain.core.db import (
     Database,
     DistributorStore,
 )
+from insurance_product_data_spain.schemas.insurance_branches import InsuranceBranch
 from insurance_product_data_spain.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
@@ -37,7 +38,6 @@ from insurance_product_data_spain.schemas.insurance_distributors import (
     InsuranceDistributorBase,
     InsuranceDistributorDetails,
 )
-from insurance_product_data_spain.schemas.insurance_branches import InsuranceBranch
 
 # Lazy-loaded module-level data stores
 _companies: CompanyStore | None = None

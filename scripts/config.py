@@ -7,9 +7,8 @@ PROJECT_ROOT = Path(__file__).parent.parent
 BASE_STORAGE_PATH: Path = PROJECT_ROOT / "data"
 
 # Legacy paths (for folder sync)
-INSURANCE_COMPANIES_STORAGE_PATH: Path = BASE_STORAGE_PATH / "insurance_companies"
+INSURANCE_COMPANIES_STORAGE_PATH: Path = BASE_STORAGE_PATH / "products_by_insurance_company"
 INSURANCE_DISTRIBUTORS_STORAGE_PATH: Path = BASE_STORAGE_PATH / "insurance_distributors"
-PRODUCTS_BY_INSURER_STORAGE_PATH: Path = BASE_STORAGE_PATH / "products_by_insurer"
 
 # Data file paths - these are the source files that get synced to the package
 INSURANCE_COMPANIES_JSON: Path = BASE_STORAGE_PATH / "insurance_companies.json"
