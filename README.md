@@ -112,30 +112,37 @@ Key fields:
 insurance-product-data-spain/
 ├── insurance_product_data_spain/    # Package (pip installable)
 │   ├── __init__.py                  # Public API
-│   ├── core/
-│   │   └── db.py                    # Data stores
+│   ├── core/                        # Data stores and utilities
 │   ├── schemas/                     # Pydantic models
 │   └── data/                        # Bundled JSON data
-│       ├── insurance_companies.json
-│       └── insurance_distributors.json
 │
-├── scripts/                         # Data sync scripts (not in package)
-│   ├── sync_data.py                 # Main sync script
+├── scripts/                         # Data processing scripts
+│   ├── sync_data.py                 # Sync regulatory data
+│   ├── analyze_products.py          # AI-powered product analysis
+│   ├── process_pdfs.py              # PDF processing
 │   └── fetchers/                    # Web scrapers
 │
-└── data/                            # Original data files
+└── data/                            # Data files
+    ├── insurance_companies.json
+    ├── insurance_distributors.json
+    └── products_by_insurance_company/  # Product documents and analysis
 ```
 
-## Updating Data
+## Data Sources
 
-Data is bundled with the package. To update from the Spanish regulator:
+The library provides two types of data:
+
+1. **Regulatory Data** (companies, distributors, branches): Fetched from the Spanish regulator (DGSFP/Mineco) via `scripts/sync_data.py`
+2. **Product Documents**: Stored in `data/products_by_insurance_company/` with AI-powered analysis via `scripts/analyze_products.py`
+
+### Updating Regulatory Data
 
 ```bash
 # Install sync dependencies
 pip install insurance-product-data-sp[sync]
 
 # Run sync script
-python -m scripts.sync_data
+uv run python -m scripts.sync_data
 ```
 
 ## Development
@@ -149,8 +156,9 @@ uv sync --extra dev
 # Run tests
 uv run pytest
 
-# Run linting
+# Run linting and formatting
 uv run ruff check .
+uv run ruff format .
 
 # Run type checker
 uv run ty check

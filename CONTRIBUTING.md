@@ -1,8 +1,6 @@
-## Contributing In General
-Our project welcomes external contributions. If you have an itch, please feel
-free to scratch it.
+## Contributing
 
-For more details on the contributing guidelines head to the Docling Project [community repository](https://github.com/docling-project/community).
+We welcome contributions! If you have an idea for improvement or find a bug, please feel free to open an issue or submit a pull request.
 
 ## Developing
 
@@ -48,7 +46,7 @@ uv add [OPTIONS] <PACKAGES|--requirements <REQUIREMENTS>>
 We use the following tools to enforce code style:
 
 - [Ruff](https://docs.astral.sh/ruff/), as linter and code formatter
-- [MyPy](https://mypy.readthedocs.io), as static type checker
+- [ty](https://github.com/pre-commit/mirrors-ty), as static type checker
 
 A set of styling checks, as well as regression tests, are defined and managed through the [pre-commit](https://pre-commit.com/) framework.
 To ensure that those scripts run automatically before a commit is finalized, install `pre-commit` on your local repository:
@@ -69,14 +67,7 @@ Note: Checks like `Ruff` will "fail" if they modify files. This is because `pre-
 
 When submitting a new feature or fix, please consider adding a short test for it.
 
-### Reference test documents
-
-When a change improves the conversion results, multiple reference documents must be regenerated and reviewed.
-
-The reference data can be regenerated with
-
-```sh
-DOCLING_GEN_TEST_DATA=1 uv run pytest
+```bash
+# Run tests
+uv run pytest
 ```
-
-All PRs modifying the reference test data require a double review to guarantee we don't miss edge cases.
