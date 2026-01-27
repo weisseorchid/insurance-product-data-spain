@@ -37,6 +37,7 @@ from insurance_product_data_spain.schemas.insurance_distributors import (
     InsuranceDistributorBase,
     InsuranceDistributorDetails,
 )
+from insurance_product_data_spain.schemas.insurance_branches import InsuranceBranch
 
 # Lazy-loaded module-level data stores
 _companies: CompanyStore | None = None
@@ -69,19 +70,20 @@ def __getattr__(name: str):
 __all__ = [
     # Version
     "__version__",
-    # Data stores (pycountry-style)
+    # Data stores
     "companies",
     "distributors",
     "branches",
-    # Store classes (for type hints)
+    # Store classes
     "CompanyStore",
     "DistributorStore",
     "BranchStore",
     "Database",
-    # Schema models (for type hints)
+    # Schema models
     "InsuranceCompanyBase",
     "InsuranceCompanyDetails",
     "InsuranceDistributorBase",
     "InsuranceDistributorDetails",
+    "InsuranceBranch",
     "AgencyContract",
 ]
