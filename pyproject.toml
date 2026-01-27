@@ -5,14 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "insurance-product-data-sp"
 dynamic = ["version"]
-description = "Reliable and public source of insurance market data for Spain with automated collection and manual curation"
+description = "A pycountry-style library providing Spanish insurance market data (companies, distributors, products)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache 2.0"}
 authors = [
     {name = "weisseorchid", email = "weisseorchid@gmail.com"}
 ]
-keywords = ["insurance", "spain", "data", "regulatory", "dgsfp"]
+keywords = ["insurance", "spain", "data", "regulatory", "dgsfp", "pycountry"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -22,23 +22,35 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
 ]
 
+# Core dependencies
 dependencies = [
-    "requests>=2.32.5",
-    "beautifulsoup4>=4.12.0",
-    "pydantic>=2.0.0", # For data validation
-    "loguru>=0.7.3",
+    "markitdown[pdf]>=0.1.4",
+    "pydantic>=2.0.0",
 ]
 
 [project.optional-dependencies]
+sync = [
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.12.0",
+    "loguru>=0.7.3",
+]
+ai = [
+    "google-genai>=1.0.0",
+    "python-dotenv>=1.0.0",
+]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
-    "black>=23.0.0",
     "ruff>=0.1.0",
     "ty>=0.0.13",
     "pre-commit>=3.0.0",
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.12.0",
+    "loguru>=0.7.3",
 ]
 docs = [
     "sphinx>=7.0.0",
@@ -46,8 +58,6 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/weisseorchid/insurance-product-data-SP"
-Documentation = "https://insurance-product-data-sp.readthedocs.io"
 Repository = "https://github.com/weisseorchid/insurance-product-data-SP"
 Issues = "https://github.com/weisseorchid/insurance-product-data-SP/issues"
 
@@ -56,6 +66,11 @@ path = "insurance_product_data_spain/__version__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["insurance_product_data_spain"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "insurance_product_data_spain/**/*.py",
+]
 
 [tool.ruff]
 target-version = "py310"
@@ -73,3 +88,4 @@ lint.ignore = []
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+"scripts/**/*.py" = ["E501"]  # Allow longer lines in scripts

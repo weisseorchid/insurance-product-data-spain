@@ -1,0 +1,58 @@
+[
+    {
+        "fetched_at": "2026-01-27T00:00:00Z",
+        "version": "1.0",
+        "company_key": "C0737",
+        "status": "Active",
+        "products": [
+            {
+                "product_branch": "00",
+                "product_name": "seguro_vida_familia",
+                "prduct_id": "urn:C0737-00",
+                "source_url": "https://www.nnespana.es/seguros/seguro-vida-familia"
+            },
+            {
+                "product_branch": "09",
+                "product_name": "seguro_hogar",
+                "prduct_id": "urn:C0737-01",
+                "source_url": "https://www.nnespana.es/seguro-hogar"
+            },
+            {
+                "product_branch": "01",
+                "product_name": "contigo_autonomo",
+                "prduct_id": "urn:C0737-02",
+                "source_url": "https://www.nnespana.es/seguros/seguro-baja-laboral-autonomos"
+            },
+            {
+                "product_branch": ["00", "01", "02"],
+                "product_name": "contigo_pyme",
+                "prduct_id": "urn:C0737-03",
+                "source_url": "https://www.nnespana.es/eb/contigo-pyme"
+            },            
+            {
+                "product_branch": "00",
+                "product_name": "salud_completo_autonomos",
+                "prduct_id": "urn:C0737-04",
+                "source_url": "https://www.nnespana.es/seguros/seguro-vida-familia"
+            },
+            {
+                "product_branch": "03",
+                "product_name": "seguro_auto",
+                "prduct_id": "urn:C0737-05",
+                "source_url": "https://www.nnespana.es/seguros/seguro-automovil"
+            },
+            {
+                "product_branch": "04",
+                "product_name": "seguro_para_negocios",
+                "prduct_id": "urn:C0737-06",
+                "source_url": "https://www.nnespana.es/seguros/seguro-para-negocios"
+            },
+            {
+                "product_branch": ["05", "06"],
+                "product_name": "seguro_salud_completo",
+                "prduct_id": "urn:C0737-07",
+                "source_url": "https://www.nnespana.es/seguros/seguro-salud-completo"
+            }
+        ]
+    }
+]

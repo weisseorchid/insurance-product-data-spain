@@ -1,0 +1,284 @@
+{
+  "product_name": "salud_completo_autonomos",
+  "product_branch": "00",
+  "product_id": "urn:C0737-04",
+  "source_urls": [
+    "https://www.nnespana.es/seguros/seguro-vida-familia"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:39:35.631728+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Salud",
+      "target_audience": "Autónomos y sus familias",
+      "description_es": "Seguro de asistencia sanitaria completa para profesionales autónomos que incluye acceso a cuadro médico, especialidades, hospitalización, pruebas diagnósticas y coberturas específicas para el bienestar profesional como protección en caso de baja.",
+      "description_en": "Comprehensive health insurance for self-employed professionals including medical network access, specialties, hospitalization, diagnostic tests, and specific professional protection coverages such as sick leave assistance.",
+      "key_benefits": [
+        "Cuadro médico completo con libre acceso a especialistas",
+        "Videoconsultas de urgencia 24h y especialidades",
+        "Protección Total para profesionales (asistencia en caso de baja >72h)",
+        "Cobertura dental incluida",
+        "Asistencia en el extranjero hasta 12.000€"
+      ],
+      "insurance_company": "NATIONALE-NEDERLANDEN GENERALES, COMPAÑIA DE SEGUROS Y REASEGUROS, SOCIEDAD ANONIMA ESPAÑOLA",
+      "administrative_code": "C-0737"
+    },
+    "coverages": [
+      {
+        "name": "Asistencia Primaria",
+        "category": "basic",
+        "description": "Incluye medicina familiar, pediatría (hasta 15 años), puericultura y servicio de enfermería.",
+        "covered_events": [
+          "Consulta médica",
+          "Asistencia a domicilio si el estado del paciente lo impide"
+        ],
+        "benefits": [
+          "Indicación y prescripción de pruebas diagnósticas básicas"
+        ],
+        "capital_or_limit": "Ilimitado",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Hospitalización",
+        "category": "basic",
+        "description": "Asistencia en régimen de internamiento en clínica u hospital.",
+        "covered_events": [
+          "Intervenciones quirúrgicas",
+          "Tratamientos médicos en hospitalización"
+        ],
+        "benefits": [
+          "Habitación individual con cama de acompañante",
+          "Gastos de quirófano y medicación hospitalaria",
+          "Manutención del enfermo"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 300,
+        "conditions": [
+          "10 meses para hospitalización e intervenciones de Grupo III al VIII",
+          "3 meses para intervenciones del Grupo 0 al II"
+        ]
+      },
+      {
+        "name": "Protección Total para Profesionales",
+        "category": "basic",
+        "description": "Garantías de asistencia global cuando el asegurado requiere hospitalización o inmovilización por baja médica de más de 72 horas.",
+        "covered_events": [
+          "Baja médica certificada > 72 horas",
+          "Inmovilización en domicilio",
+          "Hospitalización > 72 horas"
+        ],
+        "benefits": [
+          "Auxiliar a domicilio (máx 30h/mes)",
+          "Envío de medicamentos",
+          "Asistencia informática remota",
+          "Garantía de movilidad (2 servicios taxi/semana)",
+          "Protección de pagos (mensualidad de prima, máx 200€/año)",
+          "Fisioterapia a domicilio (máx 20h/año)"
+        ],
+        "capital_or_limit": "200€ anuales para protección de pagos",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia de Urgencias en el Extranjero",
+        "category": "basic",
+        "description": "Cobertura de urgencias médicas por enfermedad o accidente durante viajes.",
+        "covered_events": [
+          "Enfermedad sobrevenida en el extranjero",
+          "Accidente en el extranjero"
+        ],
+        "benefits": [
+          "Gastos médicos y quirúrgicos",
+          "Gastos odontológicos de urgencia (máx 300€)",
+          "Traslado o repatriación",
+          "Prolongación de estancia en hotel"
+        ],
+        "capital_or_limit": "12.000€ por asegurado y año",
+        "waiting_period_days": 0,
+        "conditions": [
+          "Válido para estancias de hasta 90 días consecutivos"
+        ]
+      },
+      {
+        "name": "Decesos por Accidente",
+        "category": "basic",
+        "description": "Gestión y prestación de servicios funerarios en caso de fallecimiento por causa accidental.",
+        "covered_events": [
+          "Fallecimiento accidental"
+        ],
+        "benefits": [
+          "Servicio fúnebre completo",
+          "Traslado nacional al cementerio designado"
+        ],
+        "capital_or_limit": "5.250€",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Cobertura Dental",
+        "category": "basic",
+        "description": "Acceso a servicios odontológicos básicos.",
+        "covered_events": [],
+        "benefits": [
+          "Consultas de odontología general",
+          "Higiene bucodental",
+          "Extracciones simples",
+          "Urgencias dentales"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 0,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Enfermedades o lesiones preexistentes a la fecha de alta no declaradas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Asistencia en centros de la Seguridad Social o del Sistema Nacional de Salud.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Deportes de riesgo (submarinismo, paracaidismo, escalada, etc.) y competiciones profesionales.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Tratamientos estéticos o cosméticos, salvo reconstrucción mamaria por cáncer.",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Interrupción voluntaria del embarazo.",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Alcoholismo crónico, drogadicción e intoxicaciones por abuso de sustancias.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Cirugía robótica, bariátrica y radiocirugía.",
+        "category": "Específica",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Psicología",
+        "limit_type": "sessions_per_year",
+        "limit_value": "15 sesiones",
+        "conditions": "Requiere prescripción de psiquiatra, médico de familia, oncólogo o pediatra."
+      },
+      {
+        "coverage_name": "Psiquiatría",
+        "limit_type": "days_per_year",
+        "limit_value": "50 días",
+        "conditions": "Solo para brotes agudos en régimen de ingreso."
+      },
+      {
+        "coverage_name": "Podología",
+        "limit_type": "sessions_per_year",
+        "limit_value": "12 sesiones",
+        "conditions": "Exclusivamente quiropodia."
+      },
+      {
+        "coverage_name": "Logopedia y Foniatría",
+        "limit_type": "sessions_per_year",
+        "limit_value": "80 sesiones",
+        "conditions": "Solo para patologías orgánicas o procesos tras accidente cerebrovascular agudo."
+      },
+      {
+        "coverage_name": "Asistencia en el extranjero",
+        "limit_type": "days_per_year",
+        "limit_value": "90 días",
+        "conditions": "Límite de días consecutivos por viaje."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar con veracidad el estado de salud en el cuestionario",
+        "Pago de la prima anual o fraccionada",
+        "Pago de los copagos por uso de servicios",
+        "Comunicar cambio de residencia fiscal"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Presentar la tarjeta sanitaria y DNI para recibir servicios",
+        "Notificar ingreso urgente en centros ajenos en máx. 7 días",
+        "Aportar informes médicos cuando sean requeridos para autorizaciones"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Fallecimiento del tomador",
+        "Impago de la prima",
+        "Pérdida de residencia fiscal en España",
+        "Fraude en la contratación",
+        "Decisión unilateral al vencimiento con preaviso"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "mensual",
+        "trimestral",
+        "semestral",
+        "anual"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Producto con copago proporcional al uso de servicios médicos.",
+      "pricing_factors": [
+        "Edad de los asegurados",
+        "Código postal de la unidad familiar"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Asistencia de urgencias en el extranjero",
+        "Segunda opinión médica internacional"
+      ],
+      "special_conditions_abroad": "Máximo 12.000€ y 90 días por viaje. Se requiere contacto previo con la plataforma de asistencia."
+    },
+    "source_documents": [
+      {
+        "filename": "ccggsalud-completo-copago-autonomo.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ccllsalud-completo-copago-autonomo.md",
+        "document_type": "limiting_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "folleto-salud-completo-copago-autonomo.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "guia-de-uso-del-segurosalud-completo-copago-autonomo.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipidsalud-completo-copago-autonomo.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

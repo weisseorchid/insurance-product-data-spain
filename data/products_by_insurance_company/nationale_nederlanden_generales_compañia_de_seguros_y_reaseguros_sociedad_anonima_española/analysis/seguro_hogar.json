@@ -1,0 +1,377 @@
+{
+  "product_name": "seguro_hogar",
+  "product_branch": "09",
+  "product_id": "urn:C0737-01",
+  "source_urls": [
+    "https://www.nnespana.es/seguro-hogar"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:38:05.213552+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Hogar",
+      "target_audience": "Particulares (propietarios o inquilinos de viviendas habituales o secundarias)",
+      "description_es": "Seguro de hogar multirriesgo con estructura flexible que permite personalizar la protección mediante coberturas básicas y módulos opcionales (Plus Vivienda, Asistencia y Servicios adicionales).",
+      "description_en": "Multi-risk home insurance with a flexible structure that allows customization of protection through basic coverages and optional modules.",
+      "key_benefits": [
+        "Personalización flexible de coberturas",
+        "Servicio de manitas hogar y tecnológico incluido",
+        "Asistencia veterinaria para mascotas opcional",
+        "Defensa jurídica con testamento online",
+        "Descuentos por contratación de coberturas adicionales"
+      ],
+      "insurance_company": "Nationale-Nederlanden Generales, Compañía de Seguros y Reaseguros, S.A.E.",
+      "administrative_code": "C-0737"
+    },
+    "coverages": [
+      {
+        "name": "Incendio, Humo y Explosión",
+        "category": "basic",
+        "description": "Cubre daños por combustión, abrasamiento, acción del humo y explosiones.",
+        "covered_events": [
+          "Incendio accidental",
+          "Humo procedente de incendios o fugas repentinas",
+          "Explosión de gases o vapores"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": "100% suma asegurada",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Fenómenos atmosféricos",
+        "category": "basic",
+        "description": "Daños causados directamente por agentes climáticos extremos.",
+        "covered_events": [
+          "Rayo",
+          "Lluvia (>40 l/m2/h)",
+          "Viento (>80 km/h)",
+          "Granizo",
+          "Nieve"
+        ],
+        "benefits": [
+          "Reparación de daños en vivienda y mobiliario"
+        ],
+        "capital_or_limit": "100% suma asegurada",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños eléctricos",
+        "category": "basic",
+        "description": "Daños por corrientes anormales o cortocircuitos en la instalación y aparatos.",
+        "covered_events": [
+          "Cortocircuitos",
+          "Corrientes eléctricas anormales"
+        ],
+        "benefits": [
+          "Reparación de instalaciones fijas",
+          "Reparación de aparatos eléctricos (antigüedad < 5 años)"
+        ],
+        "capital_or_limit": "100% suma asegurada",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños por agua",
+        "category": "basic",
+        "description": "Cubre daños por roturas, escapes en conducciones fijas u omisión de cierre de grifos.",
+        "covered_events": [
+          "Rotura de tuberías",
+          "Escapes de electrodomésticos",
+          "Olvido de grifos abiertos"
+        ],
+        "benefits": [
+          "Localización y reparación de la avería",
+          "Reparación de daños estéticos derivados"
+        ],
+        "capital_or_limit": "300€ para localización puntual sin daños visibles",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo y Hurto",
+        "category": "basic",
+        "description": "Apoderamiento ilegítimo de bienes mediante fuerza o sin ella (hurto solo interior).",
+        "covered_events": [
+          "Robo con fuerza en las cosas",
+          "Expoliación/Atraco",
+          "Hurto en el interior de la vivienda"
+        ],
+        "benefits": [
+          "Indemnización por bienes desaparecidos",
+          "Daños por intento de robo"
+        ],
+        "capital_or_limit": "Hurto: máximo 1.500€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil",
+        "category": "basic",
+        "description": "Indemnizaciones a terceros por daños corporales o materiales.",
+        "covered_events": [
+          "Daños causados por la vivienda",
+          "RC privada y familiar",
+          "RC por mascotas no peligrosas",
+          "RC por personal doméstico"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones",
+          "Costas y gastos judiciales",
+          "Fianzas judiciales"
+        ],
+        "capital_or_limit": "100.000€ (ampliable a 200.000€)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Servicio de Manitas",
+        "category": "included_service",
+        "description": "Pequeños trabajos de mantenimiento del hogar y soporte tecnológico.",
+        "covered_events": [
+          "Bricolaje menor (colgar cuadros, sellado silicona, purgar radiadores)",
+          "Asistencia informática remota y a domicilio"
+        ],
+        "benefits": [
+          "2 intervenciones al año",
+          "Máximo 3 horas de mano de obra por visita",
+          "Pequeño material incluido hasta 5€"
+        ],
+        "capital_or_limit": "2 servicios/año",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa Jurídica",
+        "category": "basic",
+        "description": "Protección jurídica y reclamación de daños.",
+        "covered_events": [
+          "Conflictos de vivienda (alquiler, comunidad)",
+          "Reclamación de daños",
+          "Defensa penal"
+        ],
+        "benefits": [
+          "Asesoramiento jurídico telefónico",
+          "Testamento online gratuito",
+          "Gastos de abogado y procurador"
+        ],
+        "capital_or_limit": "3.000€ por siniestro",
+        "waiting_period_days": 90,
+        "conditions": null
+      },
+      {
+        "name": "Mascotas",
+        "category": "optional",
+        "description": "Servicios para perros y gatos de compañía.",
+        "covered_events": [
+          "Enfermedad o accidente de la mascota"
+        ],
+        "benefits": [
+          "Orientación telefónica",
+          "Precios baremados en centros veterinarios",
+          "Asistencia telefónica urgente 24h"
+        ],
+        "capital_or_limit": "Según baremo anexo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "optional",
+        "description": "Cobertura para imprevistos durante desplazamientos fuera del domicilio.",
+        "covered_events": [
+          "Enfermedad en el extranjero",
+          "Robo de equipaje",
+          "Necesidad de repatriación"
+        ],
+        "benefits": [
+          "Gastos médicos extranjero hasta 9.000€",
+          "Repatriación sanitaria ilimitada",
+          "Indemnización equipaje hasta 150€"
+        ],
+        "capital_or_limit": "9.000€ gastos médicos",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Reparación de electrodomésticos",
+        "category": "optional",
+        "description": "Instalación o reparación de electrodomésticos de gama blanca.",
+        "covered_events": [
+          "Avería mecánica o eléctrica",
+          "Golpe accidental"
+        ],
+        "benefits": [
+          "Desplazamiento",
+          "Hasta 3 horas de mano de obra"
+        ],
+        "capital_or_limit": "3 horas por servicio",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Dolo o culpa grave del tomador o asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos cubiertos por el Consorcio de Compensación de Seguros (terrorismo, catástrofes naturales extraordinarias).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por vicio propio, defecto de construcción o falta de mantenimiento.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños originados antes de la fecha de efecto de la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Mobiliario del personal doméstico o inquilinos si no son tomadores.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Aparatos eléctricos con antigüedad superior a 5 años en la cobertura de daños eléctricos.",
+        "category": "Daños Eléctricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Joyas y dinero fuera de la vivienda principal o en dependencias anexas.",
+        "category": "Robo",
+        "legal_reference": null
+      },
+      {
+        "description": "Perros potencialmente peligrosos (PPP) en la cobertura de Responsabilidad Civil básica.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fenómenos atmosféricos (Viento)",
+        "limit_type": "maximum_amount",
+        "limit_value": "> 80 km/h",
+        "conditions": "Debe acreditarse mediante certificado meteorológico."
+      },
+      {
+        "coverage_name": "Fenómenos atmosféricos (Lluvia)",
+        "limit_type": "maximum_amount",
+        "limit_value": "> 40 l/m2/h",
+        "conditions": "Debe acreditarse mediante certificado meteorológico."
+      },
+      {
+        "coverage_name": "Joyas y objetos de valor",
+        "limit_type": "maximum_amount",
+        "limit_value": "10% del mobiliario (máx 3.000€)",
+        "conditions": "En viviendas secundarias el límite se reduce a 600€."
+      },
+      {
+        "coverage_name": "Dinero en efectivo",
+        "limit_type": "maximum_amount",
+        "limit_value": "300€",
+        "conditions": "Límite conjunto para efectivo, tarjetas y cheques."
+      },
+      {
+        "coverage_name": "Daños Estéticos",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Ampliable a 3.000€. Solo aplica al continente (vivienda)."
+      },
+      {
+        "coverage_name": "Deterioro de alimentos refrigerados",
+        "limit_type": "maximum_amount",
+        "limit_value": "150€/año",
+        "conditions": "Requiere fallo eléctrico superior a 6 horas."
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Duración)",
+        "limit_type": "days_per_year",
+        "limit_value": "60 días",
+        "conditions": "Máximo por desplazamiento."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima en las fechas de vencimiento.",
+        "Comunicar la agravación del riesgo.",
+        "Declarar fielmente las características y protecciones de la vivienda."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Emplear medios para aminorar las consecuencias del siniestro.",
+        "Denunciar a las autoridades en caso de robo, atraco o vandalismo.",
+        "Conservar restos y vestigios hasta la tasación.",
+        "Remitir relación de objetos dañados en los 5 días siguientes a la comunicación."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Impago de prima",
+        "Decisión de cualquiera de las partes con preaviso legal",
+        "Transmisión de la vivienda/objetos asegurados",
+        "Desistimiento en contratos a distancia (14 días)"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "anual",
+        "semestral",
+        "trimestral",
+        "mensual"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "No aplica copagos, pero existen límites por baremo en servicios veterinarios.",
+      "pricing_factors": [
+        "Tipo de vivienda (piso, unifamiliar)",
+        "Uso (habitual, secundario, alquiler)",
+        "Medidas de seguridad (alarma conectada, puerta blindada)",
+        "Capitales asegurados de continente y contenido"
+      ],
+      "discounts": [
+        "10% de descuento al contratar 2 coberturas adicionales.",
+        "20% de descuento al contratar 5 coberturas adicionales."
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Responsabilidad Civil",
+        "Asistencia en Viaje (opcional)"
+      ],
+      "special_conditions_abroad": "La RC cubre desplazamientos ocasionales de carácter privado no superiores a 3 meses."
+    },
+    "source_documents": [
+      {
+        "filename": "NN_Condiciones_Generales_Mihogar_seguro.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "NN_Folleto_Mihogar_Seguro.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "PID_MIHOGAR_SEGURO.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

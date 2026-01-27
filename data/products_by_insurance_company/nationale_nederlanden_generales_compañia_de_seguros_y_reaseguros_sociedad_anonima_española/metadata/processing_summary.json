@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0",
+  "processed_at": "2026-01-27T13:36:25.770180+00:00",
+  "processor": {
+    "name": "process_pdfs",
+    "version": "1.0.0",
+    "converter": "markitdown[pdf]"
+  },
+  "company_key": "C0737",
+  "summary": {
+    "total_files": 29,
+    "successful": 29,
+    "failed": 0
+  },
+  "products": [
+    {
+      "product_name": "contigo_autonomo",
+      "total_files": 4,
+      "successful": 4,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones-generales-contigo-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "condiciones-limitativas-contigo-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "condiciones-uso-servicios-onlygal.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "folleto-contigo-autonomo.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "contigo_pyme",
+      "total_files": 7,
+      "successful": 7,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "Folleto_Contigo_Pyme.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN_Contigo-Pymes_Condiciones-Generales_Accidentes-Ampliado.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN_Contigo-Pymes_Condiciones-Generales_Accidentes.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN_Contigo-Pymes_Condiciones-Generales_Vida-Ampliado.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN_Contigo-Pymes_Condiciones-Generales_Vida.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "PID_CONTIGO_PYME_CONVENIO.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "PID_CONTIGO_PYME_OPCIONAL.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "salud_completo_autonomos",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ccggsalud-completo-copago-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ccllsalud-completo-copago-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "folleto-salud-completo-copago-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-de-uso-del-segurosalud-completo-copago-autonomo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipidsalud-completo-copago-autonomo.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_auto",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "NN_Seguro-Auto_Folleto.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_hogar",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "NN_Condiciones_Generales_Mihogar_seguro.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN_Folleto_Mihogar_Seguro.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "PID_MIHOGAR_SEGURO.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_para_negocios",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "NN_Seguros Caser_folleto_A5_web.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_salud_completo",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ccgg-salud-completo1023sinnopoliza.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ccll-salud-completo1023sinnopoliza.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "folleto-salud-completo01.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-de-uso-salud-completo-0124.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-salud-Completo_1023.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_vida_familia",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones-limitativas-contigo-familia.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN-Contigo-Familia-Condiciones-Generales_.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "NN-Contigo-Familia-Folleto.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

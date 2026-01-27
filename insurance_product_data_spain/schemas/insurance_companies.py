@@ -12,8 +12,10 @@ class InsuranceCompanyBase(BaseModel):
     denomination: str | None = Field(None, description="Company denomination/name")
     nif: str | None = Field(None, description="NIF (Tax Identification Number)")
     status: str | None = Field(None, description="Company status (Situación)")
+    # --- Synthetic Entity Pattern ---
+    is_synthetic: bool = Field(False, description="Whether this is a synthetic/virtual entity")
 
-    class Config:
+    class ConfigDict:
         populate_by_name = True  # Allow both alias and field name
 
 
@@ -73,6 +75,6 @@ class InsuranceCompanyDetails(InsuranceCompanyBase):
         None, description="Customer service information (SAC - Servicio de atención al cliente)"
     )
 
-    class Config:
+    class ConfigDict:
         populate_by_name = True  # Allow both alias and field name
 

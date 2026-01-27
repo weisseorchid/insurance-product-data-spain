@@ -1,0 +1,223 @@
+{
+  "product_name": "seguro_para_negocios",
+  "product_branch": "04",
+  "product_id": "urn:C0737-06",
+  "source_urls": [
+    "https://www.nnespana.es/seguros/seguro-para-negocios"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:40:25.116269+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro para Negocios (Multirriesgo Pyme, Comercio y Responsabilidad Civil)",
+      "target_audience": "Pymes, Comercios y Autónomos",
+      "description_es": "Soluciones de protección integral para negocios que abarcan riesgos industriales, almacenamiento, actividades comerciales e inmobiliarias, ofrecidas por Nationale-Nederlanden en colaboración con Caser Seguros. Incluye modalidades específicas para Pymes, Comercios y seguros de Responsabilidad Civil General y para Autónomos.",
+      "description_en": "Comprehensive business protection solutions covering industrial risks, storage, commercial, and real estate activities, offered by Nationale-Nederlanden in collaboration with Caser Seguros. Includes specific modalities for SMEs, Shops, and General and Self-employed Liability insurance.",
+      "key_benefits": [
+        "Flexibilidad en la contratación: pago solo por las garantías necesarias",
+        "Asistencia 24 horas, los 365 días del año",
+        "Solución integral con coberturas adaptables",
+        "Precio competitivo y adaptado a requerimientos autonómicos en RC",
+        "Compensación y revalorización automática de capitales"
+      ],
+      "insurance_company": "NATIONALE-NEDERLANDEN GENERALES, COMPAÑIA DE SEGUROS Y REASEGUROS, SOCIEDAD ANONIMA ESPAÑOLA",
+      "administrative_code": null
+    },
+    "coverages": [
+      {
+        "name": "Incendio, explosión y caída de rayo",
+        "category": "basic",
+        "description": "Cobertura básica contra daños materiales por fuego, explosiones o rayos.",
+        "covered_events": [
+          "Incendio",
+          "Explosión",
+          "Caída de rayo"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Gastos derivados del siniestro",
+        "category": "basic",
+        "description": "Gastos necesarios tras un siniestro cubierto, como salvamento o desescombro.",
+        "covered_events": [
+          "Siniestros cubiertos por la póliza"
+        ],
+        "benefits": [
+          "Gastos de salvamento",
+          "Gastos de desescombro"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa jurídica básica",
+        "category": "basic",
+        "description": "Garantiza el pago de gastos ocasionados por intervención en procedimientos administrativos, judiciales o arbitrales.",
+        "covered_events": [
+          "Procedimiento administrativo",
+          "Procedimiento judicial",
+          "Procedimiento arbitral"
+        ],
+        "benefits": [
+          "Pago de gastos de defensa"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños por agua e inundación",
+        "category": "optional",
+        "description": "Extensión de garantías para cubrir daños causados por agua o inundaciones.",
+        "covered_events": [
+          "Daños por agua",
+          "Inundación"
+        ],
+        "benefits": [
+          "Reparación o indemnización de daños por agua"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo y expoliación",
+        "category": "optional",
+        "description": "Cobertura contra el robo y la expoliación en el negocio, incluyendo a clientes y empleados.",
+        "covered_events": [
+          "Robo",
+          "Expoliación"
+        ],
+        "benefits": [
+          "Indemnización por bienes robados",
+          "Protección a clientes y empleados"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil de Explotación",
+        "category": "basic",
+        "description": "Protección del patrimonio ante reclamaciones de terceros derivadas de la actividad del negocio.",
+        "covered_events": [
+          "Reclamaciones de terceros por daños causados durante la explotación"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones a terceros"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en el comercio",
+        "category": "included_service",
+        "description": "Servicio de ayuda inmediata que incluye profesionales de diversos gremios.",
+        "covered_events": [
+          "Urgencias en el local",
+          "Necesidad de seguridad"
+        ],
+        "benefits": [
+          "Envío de profesionales",
+          "Cerrajería urgente",
+          "Personal de seguridad"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia informática",
+        "category": "included_service",
+        "description": "Servicio de asistencia para problemas informáticos disponible todo el año.",
+        "covered_events": [
+          "Incidencias informáticas"
+        ],
+        "benefits": [
+          "Soporte técnico informático"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 365,
+        "conditions": [
+          "Disponible los 365 días del año"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Garantías no contratadas expresamente por el cliente.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Asistencia en el comercio",
+        "limit_type": "days_per_year",
+        "limit_value": "365 días",
+        "conditions": "Disponible las 24 horas"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "Gastos ocasionados por intervención",
+        "conditions": "Sujeto a los límites establecidos en las condiciones particulares"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar el riesgo de forma veraz",
+        "Pagar las primas correspondientes",
+        "Comunicar cualquier modificación del riesgo"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Emplear los medios a su alcance para aminorar las consecuencias del siniestro (salvamento)"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con renovación automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Incumplimiento del pago de la prima",
+        "Comunicación de no renovación por cualquiera de las partes"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Tipo de actividad (industrial, comercial, autónomo)",
+        "Capitales asegurados",
+        "Coberturas opcionales seleccionadas",
+        "Ubicación y medidas de seguridad"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "NN_Seguros Caser_folleto_A5_web.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

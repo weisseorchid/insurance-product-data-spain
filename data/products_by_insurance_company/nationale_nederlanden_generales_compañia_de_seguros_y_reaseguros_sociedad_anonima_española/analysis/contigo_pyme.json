@@ -1,0 +1,355 @@
+{
+  "product_name": "contigo_pyme",
+  "product_branch": [
+    "00",
+    "01",
+    "02"
+  ],
+  "product_id": "urn:C0737-03",
+  "source_urls": [
+    "https://www.nnespana.es/eb/contigo-pyme"
+  ],
+  "metadata": {
+    "analyzed_at": "2026-01-27T13:39:05.647193+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro colectivo de vida y/o accidentes",
+      "target_audience": "PYMES, autónomos y empresas para sus empleados",
+      "description_es": "Contigo Pyme es un seguro colectivo diseñado para proteger a los empleados de pequeñas y medianas empresas frente a contingencias como el fallecimiento o la incapacidad. Ofrece soluciones adaptadas tanto a los requerimientos de los convenios colectivos como a la implementación de beneficios sociales voluntarios para mejorar la protección de la plantilla.",
+      "description_en": "Contigo Pyme is a collective insurance policy designed to protect SME employees against contingencies such as death or disability. It offers solutions adapted both to collective bargaining agreement requirements and to the implementation of voluntary social benefits to improve staff protection.",
+      "key_benefits": [
+        "Adaptación a los requerimientos del convenio colectivo",
+        "Posibilidad de mejora de beneficios sociales a precio reducido",
+        "Contratación sencilla sin reconocimientos médicos ni cuestionarios de salud",
+        "Cobertura flexible: jornada laboral, in itinere o 24 horas",
+        "Actualización automática de garantías y capitales según convenio"
+      ],
+      "insurance_company": "NATIONALE-NEDERLANDEN GENERALES, COMPAÑIA DE SEGUROS Y REASEGUROS, SOCIEDAD ANONIMA ESPAÑOLA",
+      "administrative_code": "C-0737 / C-0736"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por cualquier causa",
+        "category": "basic",
+        "description": "Pago del capital asegurado en caso de fallecimiento del asegurado por accidente o enfermedad.",
+        "covered_events": [
+          "Fallecimiento por enfermedad común",
+          "Fallecimiento por enfermedad profesional",
+          "Fallecimiento por accidente"
+        ],
+        "benefits": [
+          "Indemnización del capital asegurado a los beneficiarios"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares o Convenio",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Fallecimiento por accidente",
+        "category": "basic",
+        "description": "Indemnización adicional o específica en caso de muerte por causa violenta, súbita y externa.",
+        "covered_events": [
+          "Accidente corporal",
+          "Agresiones o atentados",
+          "Asfixia por gases o inmersión",
+          "Septicemia por accidente"
+        ],
+        "benefits": [
+          "Capital por fallecimiento inmediato o hasta 5 años después del accidente"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Incapacidad Permanente Absoluta (IPA)",
+        "category": "basic",
+        "description": "Situación física e irreversible que inhabilita por completo para toda profesión u oficio.",
+        "covered_events": [
+          "Enfermedad",
+          "Accidente"
+        ],
+        "benefits": [
+          "Pago del capital asegurado al asegurado"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": [
+          "Debe ser declarada por los organismos competentes de la Seguridad Social con carácter firme"
+        ]
+      },
+      {
+        "name": "Incapacidad Permanente Total (IPT)",
+        "category": "optional",
+        "description": "Inhabilitación para la realización de las tareas fundamentales de la profesión habitual.",
+        "covered_events": [
+          "Enfermedad común",
+          "Enfermedad profesional",
+          "Accidente"
+        ],
+        "benefits": [
+          "Pago del capital asegurado"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Gran Invalidez",
+        "category": "optional",
+        "description": "Situación de incapacidad permanente donde el trabajador necesita la asistencia de otra persona para los actos esenciales de la vida.",
+        "covered_events": [
+          "Pérdidas anatómicas o funcionales graves por accidente o enfermedad"
+        ],
+        "benefits": [
+          "Indemnización de capital"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Incapacidad Permanente Parcial por Accidente",
+        "category": "optional",
+        "description": "Disminución no inferior al 33% en el rendimiento normal para la profesión habitual.",
+        "covered_events": [
+          "Accidente con secuelas irreversibles según baremo"
+        ],
+        "benefits": [
+          "Indemnización según baremo de porcentajes (ej. pérdida de un brazo 70%, un ojo 30%)"
+        ],
+        "capital_or_limit": "Proporcional según baremo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Fallecimiento por Infarto de Miocardio",
+        "category": "optional",
+        "description": "Cobertura específica para el fallecimiento por infarto, incluso si no es considerado accidente laboral por la Seguridad Social.",
+        "covered_events": [
+          "Infarto de miocardio"
+        ],
+        "benefits": [
+          "Pago del capital asegurado"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Gastos de Asistencia Sanitaria por Accidente",
+        "category": "included_service",
+        "description": "Reembolso de gastos médicos, farmacéuticos y hospitalarios derivados de un accidente cubierto.",
+        "covered_events": [
+          "Accidente que requiera tratamiento médico"
+        ],
+        "benefits": [
+          "Asistencia médico-farmacéutica",
+          "Intervenciones quirúrgicas",
+          "Estancia en clínicas y traslado"
+        ],
+        "capital_or_limit": "Importe máximo indicado en Particulares",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Accidente de Circulación (Doble Capital)",
+        "category": "optional",
+        "description": "Garantía que cubre accidentes como peatón, conductor o pasajero de vehículos terrestres o transporte público.",
+        "covered_events": [
+          "Accidente de tráfico",
+          "Accidente en transporte público (terrestre, marítimo o aéreo)"
+        ],
+        "benefits": [
+          "Capital específico o incrementado por fallecimiento o incapacidad"
+        ],
+        "capital_or_limit": "Suele ser el doble del capital base",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Gastos de Sepelio",
+        "category": "optional",
+        "description": "Capital adicional destinado a cubrir los costes del sepelio en caso de fallecimiento por accidente.",
+        "covered_events": [
+          "Fallecimiento accidental"
+        ],
+        "benefits": [
+          "Capital adicional de gastos de sepelio"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Accidentes ocurridos durante actividades criminales del asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Actos de imprudencia temeraria o negligencia grave declarada judicialmente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en apuestas, duelos o riñas (salvo legítima defensa).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica de deportes de competición, lucha, submarinismo con aparato, deportes aéreos, escalada, espeleología, puenting y esquí fuera de pista.",
+        "category": "Deportes de riesgo",
+        "legal_reference": null
+      },
+      {
+        "description": "Uso y conducción de motocicletas o ciclomotores de más de 125cc.",
+        "category": "Vehículos",
+        "legal_reference": null
+      },
+      {
+        "description": "Estado de embriaguez o bajo influencia de drogas no prescritas (superando límites de tráfico).",
+        "category": "Estado del asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Reacciones nucleares, radiactividad o contaminación radiactiva.",
+        "category": "Extraordinarios",
+        "legal_reference": null
+      },
+      {
+        "description": "Guerra (declarada o no), motín, revolución o tumulto popular.",
+        "category": "Social/Político",
+        "legal_reference": null
+      },
+      {
+        "description": "Lesiones permanentes no invalidantes que no constituyan incapacidad permanente parcial.",
+        "category": "Específica Accidentes",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes o enfermedades originados con anterioridad a la entrada en vigor del seguro.",
+        "category": "Preexistencias",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Toda la póliza",
+        "limit_type": "maximum_age",
+        "limit_value": "67 años",
+        "conditions": "La cobertura finaliza en el aniversario más próximo al cumplimiento de esta edad."
+      },
+      {
+        "coverage_name": "Fallecimiento por accidente",
+        "limit_type": "time_limit",
+        "limit_value": "5 años",
+        "conditions": "El fallecimiento debe ocurrir inmediatamente o dentro de los 5 años siguientes al accidente."
+      },
+      {
+        "coverage_name": "Incapacidad Permanente por accidente",
+        "limit_type": "time_limit",
+        "limit_value": "2.5 años",
+        "conditions": "Debe sobrevenir dentro del plazo máximo de dos años y medio desde la fecha del accidente."
+      },
+      {
+        "coverage_name": "Incapacidad Permanente Parcial",
+        "limit_type": "maximum_amount",
+        "limit_value": "100% del capital",
+        "conditions": "Suma de porcentajes según baremo sin exceder el capital asegurado."
+      },
+      {
+        "coverage_name": "Seguridad Social",
+        "limit_type": "administrative_requirement",
+        "limit_value": "Alta en TC-2",
+        "conditions": "El asegurado debe estar debidamente inscrito en el Régimen General de la Seguridad Social."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar las primas en las fechas de vencimiento",
+        "Comunicar cualquier modificación en las declaraciones iniciales que agraven el riesgo",
+        "Facilitar la información fiscal necesaria para el pago de prestaciones",
+        "Facilitar el número de asegurados actualizados dos meses antes de la renovación",
+        "Tener a disposición de la compañía los documentos TC-2 de los últimos 12 meses"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro en un plazo máximo de 7 días",
+        "Proporcionar información sobre las circunstancias y consecuencias del siniestro",
+        "Emplear medios para aminorar las consecuencias del siniestro",
+        "Someterse a reconocimientos médicos solicitados por la Compañía",
+        "Aportar certificados de defunción, testamentos o resoluciones del INSS según el caso"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Temporal Anual Renovable",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Decisión de cualquiera de las partes con preaviso",
+        "Impago de primas",
+        "Cumplimiento de los 67 años por parte del asegurado"
+      ],
+      "payment_method": "Domiciliación bancaria (implícito por el entorno de seguros colectivos)",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionada (si se pacta, con derecho a deducción de primas pendientes en siniestro)"
+      ]
+    },
+    "pricing": {
+      "base_premium": "Según cotización y colectivo",
+      "copay_info": "No aplica (seguro de capitales)",
+      "pricing_factors": [
+        "Número de asegurados",
+        "Garantías contratadas",
+        "Capitales asegurados",
+        "Riesgo de la actividad profesional (CNAE/Convenio)",
+        "Edad del colectivo"
+      ],
+      "discounts": [
+        "Precio reducido por implementación de beneficio social social frente a seguros individuales"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "Mundial",
+      "worldwide_coverage": [
+        "Fallecimiento",
+        "Incapacidad Permanente",
+        "Accidentes"
+      ],
+      "special_conditions_abroad": "Los riesgos extraordinarios en el extranjero están cubiertos por el Consorcio si el asegurado tiene residencia habitual en España."
+    },
+    "source_documents": [
+      {
+        "filename": "Folleto_Contigo_Pyme.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "NN_Contigo-Pymes_Condiciones-Generales_Accidentes-Ampliado.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "NN_Contigo-Pymes_Condiciones-Generales_Vida-Ampliado.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "PID_CONTIGO_PYME_CONVENIO.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "PID_CONTIGO_PYME_OPCIONAL.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}
