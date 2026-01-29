@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-from insurance_product_data_spain.schemas import ProductAnalysis
+from src.schemas.product_analysis import ProductAnalysis
 
 load_dotenv()
 

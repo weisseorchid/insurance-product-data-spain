@@ -13,9 +13,9 @@ from typing import Any, Generic, TypeVar
 
 from pydantic import BaseModel
 
-from insurance_product_data_spain.schemas.insurance_branches import InsuranceBranch
-from insurance_product_data_spain.schemas.insurance_companies import InsuranceCompanyDetails
-from insurance_product_data_spain.schemas.insurance_distributors import InsuranceDistributorDetails
+from src.schemas.insurance_branches import InsuranceBranch
+from src.schemas.insurance_companies import InsuranceCompanyDetails
+from src.schemas.insurance_distributors import InsuranceDistributorDetails
 
 T = TypeVar("T", bound=BaseModel)
 

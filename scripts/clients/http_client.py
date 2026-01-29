@@ -4,7 +4,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from insurance_product_data_spain.core.logging import logger
+from src.core.logging import logger
 from scripts.config import DEFAULT_TIMEOUT, MAX_RETRIES
 
 

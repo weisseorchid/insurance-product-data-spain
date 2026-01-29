@@ -5,7 +5,7 @@ from typing import NamedTuple
 
 from markitdown import MarkItDown
 
-from insurance_product_data_spain.core.logging import logger
+from src.core.logging import logger
 
 
 class PDFConversionResult(NamedTuple):

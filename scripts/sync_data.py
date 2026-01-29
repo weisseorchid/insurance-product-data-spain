@@ -13,12 +13,12 @@ from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
-from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.schemas.insurance_companies import (
+from src.core.logging import logger
+from src.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
 )
-from insurance_product_data_spain.schemas.insurance_distributors import (
+from src.schemas.insurance_distributors import (
     InsuranceDistributorBase,
     InsuranceDistributorDetails,
 )

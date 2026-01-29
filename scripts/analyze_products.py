@@ -15,8 +15,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.schemas import InsuranceProduct, ProductAnalysis
+from src.core.logging import logger
+from src.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GeminiClient
 from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json, save_json
