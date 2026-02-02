@@ -13,7 +13,7 @@ import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.core.logging import logger
+from insurance_product_data_sp.core.logging import logger
 from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
 from scripts.utils.storage import ensure_directory, load_json, save_json
@@ -186,9 +186,7 @@ def process_company_pdfs(
     return all_results
 
 
-def generate_processing_summary(
-    company_key: str, results: dict[str, list[PDFConversionResult]]
-) -> dict:
+def generate_processing_summary(company_key: str, results: dict[str, list[PDFConversionResult]]) -> dict:
     """
     Generate a summary of the PDF processing results.
 
@@ -250,9 +248,7 @@ def generate_processing_summary(
 
 def main():
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(
-        description="Process PDFs for an insurance company and convert to markdown"
-    )
+    parser = argparse.ArgumentParser(description="Process PDFs for an insurance company and convert to markdown")
     parser.add_argument(
         "--company-key",
         "-k",

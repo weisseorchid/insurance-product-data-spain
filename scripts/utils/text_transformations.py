@@ -15,9 +15,9 @@ def text_to_snake_case(text: str) -> str:
     """
 
     text = text.lower()
-    text = re.sub(r'[^\w\s-]', '', text)
-    text = re.sub(r'[\s-]+', '_', text)
-    text = re.sub(r'_+', '_', text)
-    text = text.strip('_')
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s-]+", "_", text)
+    text = re.sub(r"_+", "_", text)
+    text = text.strip("_")
 
     return text

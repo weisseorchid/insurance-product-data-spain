@@ -8,7 +8,7 @@ Run with: uv run python -m scripts.sync_folders
 
 from pathlib import Path
 
-from src.core.logging import logger
+from insurance_product_data_sp.core.logging import logger
 from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json
 from scripts.utils.text_transformations import text_to_snake_case
@@ -38,7 +38,7 @@ def sync_insurance_company_folders(
 
     # Iterate through each company and create folders for each company
     for company in companies:
-        company_name = company.get('descripcion', '')
+        company_name = company.get("descripcion", "")
 
         if not company_name:
             logger.warning(f"Company {company.get('clave')} has no name, skipping...")

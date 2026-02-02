@@ -15,9 +15,10 @@ INSURANCE_COMPANIES_JSON: Path = BASE_STORAGE_PATH / "insurance_companies.json"
 INSURANCE_DISTRIBUTORS_JSON: Path = BASE_STORAGE_PATH / "insurance_distributors.json"
 
 # Package data paths - where bundled data lives in the installed package
-PACKAGE_DATA_PATH: Path = PROJECT_ROOT / "insurance_product_data_spain" / "data"
+PACKAGE_DATA_PATH: Path = PROJECT_ROOT / "insurance_product_data_sp" / "data"
 PACKAGE_COMPANIES_JSON: Path = PACKAGE_DATA_PATH / "insurance_companies.json"
 PACKAGE_DISTRIBUTORS_JSON: Path = PACKAGE_DATA_PATH / "insurance_distributors.json"
+PACKAGE_DATABASE_PATH: Path = PACKAGE_DATA_PATH / "insurance.db"
 
 # API settings
 DEFAULT_REQUEST_DELAY: float = 0.1  # seconds between requests

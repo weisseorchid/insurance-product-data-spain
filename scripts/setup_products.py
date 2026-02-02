@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from src.core.logging import logger
+from insurance_product_data_sp.core.logging import logger
 from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
@@ -139,9 +139,7 @@ def setup_company_structure(
     save_json(company_info, processed_path / "company_info.json")
 
     # Save structured layer
-    normalized_products = [
-        normalize_product(p, company_key, company_name) for p in products
-    ]
+    normalized_products = [normalize_product(p, company_key, company_name) for p in products]
     save_json(normalized_products, structured_path / "products.json")
 
     company_index = build_company_index(company_data, products)

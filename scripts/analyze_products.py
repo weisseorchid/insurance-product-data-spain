@@ -15,8 +15,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.core.logging import logger
-from src.schemas import InsuranceProduct, ProductAnalysis
+from insurance_product_data_sp.core.logging import logger
+from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GeminiClient
 from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json, save_json
@@ -384,9 +384,7 @@ def generate_analysis_summary(
 
 def main():
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(
-        description="Analyze insurance products using Gemini AI"
-    )
+    parser = argparse.ArgumentParser(description="Analyze insurance products using Gemini AI")
     parser.add_argument(
         "--company-key",
         "-k",
