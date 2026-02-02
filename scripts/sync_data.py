@@ -13,15 +13,16 @@ from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
-from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.schemas.insurance_companies import (
+from insurance_product_data_sp.core.logging import logger
+from insurance_product_data_sp.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
 )
-from insurance_product_data_spain.schemas.insurance_distributors import (
+from insurance_product_data_sp.schemas.insurance_distributors import (
     InsuranceDistributorBase,
     InsuranceDistributorDetails,
 )
+from scripts.build_db import build_database
 from scripts.config import (
     INSURANCE_COMPANIES_JSON,
     INSURANCE_DISTRIBUTORS_JSON,
@@ -62,9 +63,7 @@ def _validate_items(
             logger.warning(f"Validation error for {label} item: {exc.errors()}")
             validated.append(item)
 
-    logger.info(
-        f"Validated {label}: {len(items) - invalid_count} ok, {invalid_count} invalid"
-    )
+    logger.info(f"Validated {label}: {len(items) - invalid_count} ok, {invalid_count} invalid")
     return validated, invalid_count
 
 
@@ -113,9 +112,7 @@ def run() -> int:
     logger.info("Step 3: Fetching insurance distributors")
     distributors = get_insurance_distributors()
     if isinstance(distributors, dict) and "error" in distributors:
-        raise RuntimeError(
-            f"Error response from distributors endpoint: {distributors['error']}"
-        )
+        raise RuntimeError(f"Error response from distributors endpoint: {distributors['error']}")
 
     distributors_list = _require_list(distributors, "distributors")
     validated_distributors, invalid_distributors = _validate_items(
@@ -146,6 +143,15 @@ def run() -> int:
             "Validation finished with errors: "
             f"{invalid_total_companies} companies, {invalid_total_distributors} distributors"
         )
+        return 1
+
+    # Rebuild SQLite database
+    logger.info("Step 5: Rebuilding SQLite database")
+    try:
+        db_path = build_database()
+        logger.info(f"Database rebuilt at: {db_path}")
+    except Exception as exc:
+        logger.error(f"Failed to rebuild database: {exc}")
         return 1
 
     logger.info("Sync completed successfully")

@@ -13,8 +13,8 @@ import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-from insurance_product_data_spain.core.logging import logger
-from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
+from insurance_product_data_sp.core.logging import logger
+from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
@@ -55,7 +55,7 @@ def find_company_folder(company_key: str) -> Path | None:
         return None
 
     folder_name = text_to_snake_case(company_name)
-    company_folder = INSURANCE_COMPANIES_STORAGE_PATH / folder_name
+    company_folder = PRODUCTS_STORAGE_PATH / folder_name
 
     if not company_folder.exists():
         logger.error(f"Company folder not found: {company_folder}")
@@ -186,9 +186,7 @@ def process_company_pdfs(
     return all_results
 
 
-def generate_processing_summary(
-    company_key: str, results: dict[str, list[PDFConversionResult]]
-) -> dict:
+def generate_processing_summary(company_key: str, results: dict[str, list[PDFConversionResult]]) -> dict:
     """
     Generate a summary of the PDF processing results.
 
@@ -250,9 +248,7 @@ def generate_processing_summary(
 
 def main():
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(
-        description="Process PDFs for an insurance company and convert to markdown"
-    )
+    parser = argparse.ArgumentParser(description="Process PDFs for an insurance company and convert to markdown")
     parser.add_argument(
         "--company-key",
         "-k",

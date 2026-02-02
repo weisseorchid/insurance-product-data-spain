@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-from insurance_product_data_spain.schemas import ProductAnalysis
+from insurance_product_data_sp.schemas.insurance_product import ProductAnalysis
 
 load_dotenv()
 
@@ -91,9 +91,9 @@ class GeminiClient:
         if product_context:
             context_str = f"""
 Product context:
-- Product name: {product_context.get('product_name', 'Unknown')}
-- Product branch: {product_context.get('product_branch', 'Unknown')}
-- Company: {product_context.get('company', 'Unknown')}
+- Product name: {product_context.get("product_name", "Unknown")}
+- Product branch: {product_context.get("product_branch", "Unknown")}
+- Company: {product_context.get("company", "Unknown")}
 """
 
         user_prompt = f"""Analyze the following insurance policy documents and extract comprehensive information about the insurance product.

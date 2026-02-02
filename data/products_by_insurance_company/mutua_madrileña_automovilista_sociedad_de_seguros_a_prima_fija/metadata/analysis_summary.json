@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "analyzed_at": "2026-02-02T11:18:34.044409+00:00",
+  "analyzer": {
+    "name": "analyze_products",
+    "version": "1.0.0",
+    "model": "gemini-2.5-flash-preview-05-20"
+  },
+  "company_key": "M0083",
+  "summary": {
+    "total_products": 8,
+    "successful": 8,
+    "failed": 0,
+    "total_markdown_files": 23
+  },
+  "products": [
+    {
+      "product_name": "auto_todo_riesgo",
+      "product_id": "urn:M0083-01",
+      "success": true,
+      "markdown_files_processed": 6,
+      "error": null
+    },
+    {
+      "product_name": "moto_terceros_plus",
+      "product_id": "urn:M0083-02",
+      "success": true,
+      "markdown_files_processed": 4,
+      "error": null
+    },
+    {
+      "product_name": "hogar_alquiler",
+      "product_id": "urn:M0083-03",
+      "success": true,
+      "markdown_files_processed": 4,
+      "error": null
+    },
+    {
+      "product_name": "salud_enfermedad",
+      "product_id": "urn:M0083-04",
+      "success": true,
+      "markdown_files_processed": 3,
+      "error": null
+    },
+    {
+      "product_name": "vida_riesgo",
+      "product_id": "urn:M0083-05",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "accidentes_plus",
+      "product_id": "urn:M0083-06",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "decesos_completo",
+      "product_id": "urn:M0083-07",
+      "success": true,
+      "markdown_files_processed": 2,
+      "error": null
+    },
+    {
+      "product_name": "ahorro_garantia",
+      "product_id": "urn:M0083-08",
+      "success": true,
+      "markdown_files_processed": 2,
+      "error": null
+    }
+  ]
+}

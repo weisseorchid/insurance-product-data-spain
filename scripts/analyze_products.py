@@ -15,10 +15,10 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.schemas import InsuranceProduct, ProductAnalysis
+from insurance_product_data_sp.core.logging import logger
+from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GeminiClient
-from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
+from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
 
@@ -70,7 +70,7 @@ def find_company_folder(company_key: str) -> Path | None:
         return None
 
     folder_name = text_to_snake_case(company_name)
-    company_folder = INSURANCE_COMPANIES_STORAGE_PATH / folder_name
+    company_folder = PRODUCTS_STORAGE_PATH / folder_name
 
     if not company_folder.exists():
         logger.error(f"Company folder not found: {company_folder}")
@@ -384,9 +384,7 @@ def generate_analysis_summary(
 
 def main():
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(
-        description="Analyze insurance products using Gemini AI"
-    )
+    parser = argparse.ArgumentParser(description="Analyze insurance products using Gemini AI")
     parser.add_argument(
         "--company-key",
         "-k",

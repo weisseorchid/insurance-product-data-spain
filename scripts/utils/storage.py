@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from insurance_product_data_spain.core.logging import logger
+from insurance_product_data_sp.core.logging import logger
 
 
 def ensure_directory(path: Path) -> None:

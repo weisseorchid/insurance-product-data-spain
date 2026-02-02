@@ -1,0 +1,61 @@
+{
+  "product_name": "decesos_completo",
+  "product_branch": "21",
+  "product_id": "urn:M0083-07",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:18:21.983164+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Decesos",
+      "target_audience": null,
+      "description_es": "Seguro de decesos 'decesos_completo' (Ramo 21). La documentación proporcionada no contiene información sobre el condicionado de la póliza debido a un error de acceso/bloqueo de bot en los archivos de origen.",
+      "description_en": "Funeral insurance 'decesos_completo' (Branch 21). Provided documentation contains no policy information due to access errors/bot detection in source files.",
+      "key_benefits": [],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": null
+    },
+    "coverages": [],
+    "exclusions": [],
+    "limits_and_restrictions": [],
+    "obligations": {
+      "general_obligations": [],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": []
+    },
+    "contract_terms": {
+      "duration": "No especificado",
+      "renewal_type": "No especificado",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [],
+      "payment_method": null,
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [],
+      "discounts": []
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "condiciones_generales_decesos.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "ipid_decesos_completo.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}

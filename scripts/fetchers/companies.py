@@ -6,8 +6,8 @@ from typing import Any
 from bs4 import BeautifulSoup, Tag
 from pydantic import ValidationError
 
-from insurance_product_data_spain.core.logging import logger
-from insurance_product_data_spain.schemas.insurance_companies import (
+from insurance_product_data_sp.core.logging import logger
+from insurance_product_data_sp.schemas.insurance_companies import (
     InsuranceCompanyBase,
     InsuranceCompanyDetails,
 )
@@ -18,8 +18,7 @@ from scripts.utils.data_extraction import extract_js_data, extract_label_value
 
 
 def get_insurance_companies(
-    base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
-    search_params: dict[str, Any] | None = None
+    base_url: str = INSURANCE_REGULATOR_SPAIN_URL, search_params: dict[str, Any] | None = None
 ) -> list[dict[str, Any]] | dict[str, Any]:
     """
     Fetch insurance company data from the Spanish insurance regulator website.
@@ -58,7 +57,7 @@ def get_insurance_companies(
         "EEE": True,
         "BusquedaCombinadaRamos": True,
         "RamosTexto": "",
-        "PrestacionesTexto": ""
+        "PrestacionesTexto": "",
     }
 
     if search_params is None:
@@ -92,9 +91,7 @@ def get_insurance_companies(
 
 
 def get_insurance_company_details(
-    company_key: str,
-    base_url: str = INSURANCE_REGULATOR_SPAIN_URL,
-    delay: float = 0.1
+    company_key: str, base_url: str = INSURANCE_REGULATOR_SPAIN_URL, delay: float = 0.1
 ) -> dict[str, Any]:
     """
     Fetch detailed information for a specific insurance company by its company key.
@@ -110,10 +107,7 @@ def get_insurance_company_details(
     url = f"{base_url}/Aseguradora/GetAseguradora/"
 
     # Add company_key (clave) to request params
-    params = {
-        **mineco_params,
-        "clave": company_key
-    }
+    params = {**mineco_params, "clave": company_key}
 
     # Use HTML headers for this endpoint (returns HTML, not JSON)
     headers = mineco_html_headers
@@ -130,69 +124,69 @@ def get_insurance_company_details(
         raise ValueError(f"Empty response from server for company_key: {company_key}")
 
     # Parse HTML
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, "html.parser")
 
     # Extract general data from "Datos generales" tab
     details: dict[str, Any] = {}
 
     # General information fields
-    details['company_key'] = extract_label_value(soup, 'Clave:') or company_key
-    details['lei_code'] = extract_label_value(soup, 'Código LEI:')
-    details['manager_key'] = extract_label_value(soup, 'Clave Gestora:')
-    details['denomination'] = extract_label_value(soup, 'Denominación:')
-    details['nif'] = extract_label_value(soup, 'NIF:')
-    details['status'] = extract_label_value(soup, 'Situación:')
-    details['website'] = extract_label_value(soup, 'Dirección Web:')
-    details['email'] = extract_label_value(soup, 'Email:')
-    details['authorization_date'] = extract_label_value(soup, 'Fecha Autorización:')
-    details['subscribed_capital'] = extract_label_value(soup, 'Capital Suscrito:')
-    details['paid_in_capital'] = extract_label_value(soup, 'Desembolsado:')
+    details["company_key"] = extract_label_value(soup, "Clave:") or company_key
+    details["lei_code"] = extract_label_value(soup, "Código LEI:")
+    details["manager_key"] = extract_label_value(soup, "Clave Gestora:")
+    details["denomination"] = extract_label_value(soup, "Denominación:")
+    details["nif"] = extract_label_value(soup, "NIF:")
+    details["status"] = extract_label_value(soup, "Situación:")
+    details["website"] = extract_label_value(soup, "Dirección Web:")
+    details["email"] = extract_label_value(soup, "Email:")
+    details["authorization_date"] = extract_label_value(soup, "Fecha Autorización:")
+    details["subscribed_capital"] = extract_label_value(soup, "Capital Suscrito:")
+    details["paid_in_capital"] = extract_label_value(soup, "Desembolsado:")
 
     # Branch address (Dirección Sucursal)
-    details['branch_address'] = extract_label_value(soup, 'Dirección Sucursal:')
-    details['postal_code'] = extract_label_value(soup, 'Código Postal:')
-    details['province'] = extract_label_value(soup, 'Provincia:')
-    details['autonomous_community'] = extract_label_value(soup, 'Comunidad:')
-    details['country_of_origin'] = extract_label_value(soup, 'País de Origen:')
-    details['phone'] = extract_label_value(soup, 'Teléfono:')
-    details['fax'] = extract_label_value(soup, 'Fax:')
-    details['scope'] = extract_label_value(soup, 'Ámbito:')
+    details["branch_address"] = extract_label_value(soup, "Dirección Sucursal:")
+    details["postal_code"] = extract_label_value(soup, "Código Postal:")
+    details["province"] = extract_label_value(soup, "Provincia:")
+    details["autonomous_community"] = extract_label_value(soup, "Comunidad:")
+    details["country_of_origin"] = extract_label_value(soup, "País de Origen:")
+    details["phone"] = extract_label_value(soup, "Teléfono:")
+    details["fax"] = extract_label_value(soup, "Fax:")
+    details["scope"] = extract_label_value(soup, "Ámbito:")
 
     # Extract data from JavaScript variables
-    details['executives'] = extract_js_data(soup, 'loadGridCargos') or []
-    details['insurance_branches'] = extract_js_data(soup, 'loadGridModalidades') or []
-    details['shareholders'] = extract_js_data(soup, 'loadGridSocios') or []
-    details['lps'] = extract_js_data(soup, 'loadGridLPS') or []  # LPS: Lista de Países de Servicio
-    details['agencies'] = extract_js_data(soup, 'loadGridAgencias') or []
+    details["executives"] = extract_js_data(soup, "loadGridCargos") or []
+    details["insurance_branches"] = extract_js_data(soup, "loadGridModalidades") or []
+    details["shareholders"] = extract_js_data(soup, "loadGridSocios") or []
+    details["lps"] = extract_js_data(soup, "loadGridLPS") or []  # LPS: Lista de Países de Servicio
+    details["agencies"] = extract_js_data(soup, "loadGridAgencias") or []
 
     # Extract SAC (Servicio de atención al cliente - Customer Service) data
-    sac_container = soup.find('div', id='containerSac')
+    sac_container = soup.find("div", id="containerSac")
     if sac_container and isinstance(sac_container, Tag):
         sac_data: dict[str, Any] = {}
-        sac_data['name'] = extract_label_value(sac_container, 'Nombre:')
-        sac_data['address'] = extract_label_value(sac_container, 'Dirección:')
-        sac_data['post_office_box'] = extract_label_value(sac_container, 'Apto. Correos:')
-        sac_data['country'] = extract_label_value(sac_container, 'País:')
-        sac_data['postal_code'] = extract_label_value(sac_container, 'Código Postal:')
-        sac_data['province'] = extract_label_value(sac_container, 'Provincia:')
-        sac_data['municipality'] = extract_label_value(sac_container, 'Municipio:')
-        sac_data['city'] = extract_label_value(sac_container, 'Población:')
-        sac_data['phone'] = extract_label_value(sac_container, 'Teléfono:')
-        sac_data['fax'] = extract_label_value(sac_container, 'Fax:')
-        sac_data['mobile_phone'] = extract_label_value(sac_container, 'Télefono Móvil:')
-        sac_data['email'] = extract_label_value(sac_container, 'Email:')
-        sac_data['web'] = extract_label_value(sac_container, 'Web:')
-        details['customer_service'] = sac_data
+        sac_data["name"] = extract_label_value(sac_container, "Nombre:")
+        sac_data["address"] = extract_label_value(sac_container, "Dirección:")
+        sac_data["post_office_box"] = extract_label_value(sac_container, "Apto. Correos:")
+        sac_data["country"] = extract_label_value(sac_container, "País:")
+        sac_data["postal_code"] = extract_label_value(sac_container, "Código Postal:")
+        sac_data["province"] = extract_label_value(sac_container, "Provincia:")
+        sac_data["municipality"] = extract_label_value(sac_container, "Municipio:")
+        sac_data["city"] = extract_label_value(sac_container, "Población:")
+        sac_data["phone"] = extract_label_value(sac_container, "Teléfono:")
+        sac_data["fax"] = extract_label_value(sac_container, "Fax:")
+        sac_data["mobile_phone"] = extract_label_value(sac_container, "Télefono Móvil:")
+        sac_data["email"] = extract_label_value(sac_container, "Email:")
+        sac_data["web"] = extract_label_value(sac_container, "Web:")
+        details["customer_service"] = sac_data
 
     # Check for DE (Directorio de Entidades - Directory of Entities) - might be empty
-    de_tab = soup.find('div', id='tabListadoDE')
+    de_tab = soup.find("div", id="tabListadoDE")
     if de_tab and isinstance(de_tab, Tag):
-        alert = de_tab.find('p', class_='alert')
-        if alert and 'No se han encontrado datos' in alert.get_text():
-            details['directory_of_entities'] = []
+        alert = de_tab.find("p", class_="alert")
+        if alert and "No se han encontrado datos" in alert.get_text():
+            details["directory_of_entities"] = []
         else:
-            de_data = extract_js_data(soup, 'loadGridDE')
-            details['directory_of_entities'] = de_data or []
+            de_data = extract_js_data(soup, "loadGridDE")
+            details["directory_of_entities"] = de_data or []
 
     # Validate the details against the schema
     try:
@@ -208,7 +202,7 @@ def enrich_insurance_companies(
     companies: list[dict[str, Any]],
     base_url: str = "https://rrpp.dgsfp.mineco.es/",
     delay: float = 0.1,
-    verbose: bool = True
+    verbose: bool = True,
 ) -> list[dict[str, Any]]:
     """
     Enrich a list of insurance companies with detailed information.
@@ -229,7 +223,7 @@ def enrich_insurance_companies(
         company_key = company.get("clave") or company.get("company_key")
         if not company_key:
             if verbose:
-                logger.warning(f" {idx-1} has no 'company_key' or 'clave', skipping...")
+                logger.warning(f" {idx - 1} has no 'company_key' or 'clave', skipping...")
             enriched_companies.append(company)
             continue
 

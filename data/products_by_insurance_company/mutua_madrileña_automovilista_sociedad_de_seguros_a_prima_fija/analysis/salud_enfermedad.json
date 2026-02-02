@@ -1,0 +1,66 @@
+{
+  "product_name": "salud_enfermedad",
+  "product_branch": "05",
+  "product_id": "urn:M0083-04",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:17:43.171828+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Salud / Enfermedad",
+      "target_audience": "No especificado",
+      "description_es": "Producto de salud y enfermedad de Mutua Madrileña (salud_enfermedad). Los documentos proporcionados contienen mensajes de error de acceso (bloqueo por bot) y no incluyen las condiciones contractuales o garantías específicas del producto.",
+      "description_en": "Health and sickness insurance product (salud_enfermedad) from Mutua Madrileña. The provided documents contain access error messages (bot block) and do not include specific contractual conditions or product guarantees.",
+      "key_benefits": [],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": null
+    },
+    "coverages": [],
+    "exclusions": [],
+    "limits_and_restrictions": [],
+    "obligations": {
+      "general_obligations": [],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": []
+    },
+    "contract_terms": {
+      "duration": "No especificada",
+      "renewal_type": "No especificada",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [],
+      "payment_method": null,
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [],
+      "discounts": []
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "condiciones_generales_plena_plus.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "condiciones_generales_salud.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "nota_informativa_dental.md",
+        "document_type": "other",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}

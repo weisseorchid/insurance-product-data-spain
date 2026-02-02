@@ -1,0 +1,61 @@
+{
+  "product_name": "ahorro_garantia",
+  "product_branch": "13",
+  "product_id": "urn:M0083-08",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:18:34.042830+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Ahorro / PPA",
+      "target_audience": "Particulares",
+      "description_es": "Seguro de ahorro bajo la denominación 'ahorro_garantia' (Ramo 13) gestionado por Mutua Madrileña. Los documentos proporcionados corresponden a páginas de error de acceso (bloqueo por bot), por lo que no se dispone de detalles sobre las coberturas específicas.",
+      "description_en": "Savings insurance product named 'ahorro_garantia' (Branch 13) provided by Mutua Madrileña. The provided documents contain access error messages, so specific coverage details are not available.",
+      "key_benefits": [
+        "Garantía de capital (inferido por el nombre del producto)",
+        "Gestión por Mutua Madrileña"
+      ],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": null
+    },
+    "coverages": [],
+    "exclusions": [],
+    "limits_and_restrictions": [],
+    "obligations": {
+      "general_obligations": [
+        "No se han podido extraer obligaciones específicas debido a errores en los documentos fuente."
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": []
+    },
+    "contract_terms": {
+      "duration": "No especificada en los documentos",
+      "renewal_type": "No especificada",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [],
+      "payment_method": null,
+      "payment_frequency": null
+    },
+    "pricing": null,
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "condiciones_generales_ahorro_ppa.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.1
+      },
+      {
+        "filename": "nota_informativa_ahorro.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.1
+      }
+    ]
+  }
+}

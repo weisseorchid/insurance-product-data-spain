@@ -1,0 +1,316 @@
+{
+  "product_name": "hogar_alquiler",
+  "product_branch": "09",
+  "product_id": "urn:M0083-03",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:17:28.665365+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Hogar Alquiler Propietario",
+      "target_audience": "Propietarios de viviendas destinadas al alquiler",
+      "description_es": "Seguro multirriesgo del hogar diseñado específicamente para propietarios, que cubre daños accidentales en el inmueble, mobiliario y objetos, además de protecciones específicas para situaciones de arrendamiento como la pérdida de alquileres o actos vandálicos del inquilino.",
+      "description_en": "Multi-risk home insurance specifically designed for landlords, covering accidental damage to the property, furniture, and belongings, along with specific protections for rental situations such as loss of rent or tenant vandalism.",
+      "key_benefits": [
+        "Protección contra actos vandálicos del inquilino",
+        "Cobertura de pérdida de alquileres",
+        "Servicio de limpieza por cambio de inquilino",
+        "Defensa jurídica por desahucio",
+        "Cobertura opcional de impago de rentas"
+      ],
+      "insurance_company": "Mutua Madrileña Automovilista, S.S.P.F.",
+      "administrative_code": "M-0083"
+    },
+    "coverages": [
+      {
+        "name": "Incendio, explosión y caída de rayo",
+        "category": "basic",
+        "description": "Daños materiales producidos por fuego, explosiones o rayos.",
+        "covered_events": [
+          "Incendio",
+          "Explosión",
+          "Caída de rayo"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": "Suma asegurada en condiciones particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Fenómenos atmosféricos",
+        "category": "basic",
+        "description": "Daños causados por lluvia, viento, nieve o granizo.",
+        "covered_events": [
+          "Lluvia",
+          "Viento",
+          "Pedrisco",
+          "Nieve"
+        ],
+        "benefits": [
+          "Reparación o indemnización de daños"
+        ],
+        "capital_or_limit": "Suma asegurada",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños por agua",
+        "category": "basic",
+        "description": "Daños causados por escapes, roturas o filtraciones de agua.",
+        "covered_events": [
+          "Escapes de agua",
+          "Filtraciones"
+        ],
+        "benefits": [
+          "Localización y reparación de la avería",
+          "Indemnización de daños propios y a terceros"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños eléctricos",
+        "category": "basic",
+        "description": "Daños a la instalación y aparatos eléctricos por corrientes anormales o rayos.",
+        "covered_events": [
+          "Sobretensión",
+          "Cortocircuito"
+        ],
+        "benefits": [
+          "Indemnización de daños"
+        ],
+        "capital_or_limit": "1.000€ anuales",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Rotura de cristales y otros materiales",
+        "category": "basic",
+        "description": "Rotura accidental de cristales, placas vitrocerámicas, mármoles y otros materiales fijos.",
+        "covered_events": [
+          "Rotura accidental"
+        ],
+        "benefits": [
+          "Reposición del elemento"
+        ],
+        "capital_or_limit": "1.000€ anuales",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Actos vandálicos",
+        "category": "basic",
+        "description": "Incluye los daños malintencionados causados por terceros o por el propio inquilino.",
+        "covered_events": [
+          "Vandalismo",
+          "Actos malintencionados del inquilino"
+        ],
+        "benefits": [
+          "Reparación de daños"
+        ],
+        "capital_or_limit": "3.000€ anuales para actos del inquilino",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Pérdida de alquileres",
+        "category": "basic",
+        "description": "Compensación por las rentas no percibidas si la vivienda queda inhabitable tras un siniestro cubierto.",
+        "covered_events": [
+          "Vivienda inhabitable por siniestro"
+        ],
+        "benefits": [
+          "Indemnización de rentas"
+        ],
+        "capital_or_limit": "Máximo 1 año de renta",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Limpieza de la vivienda por cambio de inquilino",
+        "category": "basic",
+        "description": "Servicio de limpieza profesional cuando se produce un cambio de arrendatario.",
+        "covered_events": [
+          "Finalización de contrato de alquiler"
+        ],
+        "benefits": [
+          "Servicio de limpieza"
+        ],
+        "capital_or_limit": "Máximo 1 vez al año",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Protección impago alquiler",
+        "category": "optional",
+        "description": "Cobertura de las rentas impagadas por el inquilino.",
+        "covered_events": [
+          "Impago de mensualidades"
+        ],
+        "benefits": [
+          "Indemnización de rentas impagadas"
+        ],
+        "capital_or_limit": "Sujeto a condiciones particulares",
+        "waiting_period_days": 90,
+        "conditions": [
+          "Impago mínimo de 4 meses consecutivos",
+          "Comunicación desde el primer mes de impago"
+        ]
+      },
+      {
+        "name": "Asistencia en el hogar",
+        "category": "included_service",
+        "description": "Servicios de urgencia y mantenimiento para la vivienda.",
+        "covered_events": [
+          "Averías urgentes"
+        ],
+        "benefits": [
+          "Envío de profesionales",
+          "Reparaciones de emergencia"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños causados por dolo o culpa grave del contratante o asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Viviendas que carezcan de los requisitos administrativos necesarios para ser habitadas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos por falta de mantenimiento o estado ruinoso del inmueble.",
+        "category": "Daños materiales",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por corrosión o deterioro evidente de tuberías privativas.",
+        "category": "Agua",
+        "legal_reference": null
+      },
+      {
+        "description": "Objetos de valor especial, joyas, dinero en efectivo y tarjetas de crédito.",
+        "category": "Robo",
+        "legal_reference": null
+      },
+      {
+        "description": "Materiales adheridos a paredes y techos con antigüedad superior a 15 años.",
+        "category": "Daños Estéticos",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fenómenos atmosféricos",
+        "limit_type": "meteorological_threshold",
+        "limit_value": "40l/m2/h lluvia y 80km/h viento",
+        "conditions": "Mínimos necesarios para activar la cobertura"
+      },
+      {
+        "coverage_name": "Robo en anexos",
+        "limit_type": "maximum_amount",
+        "limit_value": "10% suma mobiliario (máximo 3.000€/año)",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Defensa jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.000€ por prestación/procedimiento",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Avería electrodomésticos global",
+        "limit_type": "maximum_age",
+        "limit_value": "10 años",
+        "conditions": "Desde la fecha de fabricación"
+      },
+      {
+        "coverage_name": "Daños por agua a terceros",
+        "limit_type": "percentage_limit",
+        "limit_value": "20% de la suma de Responsabilidad Civil",
+        "conditions": null
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pago del precio del seguro",
+        "Declaración exacta de las circunstancias del riesgo",
+        "Colaborar con peritos y profesionales de la aseguradora"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro en el plazo máximo de 7 días",
+        "Mitigar las consecuencias del daño en la medida de lo posible"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual renovable",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Comunicación por escrito de no renovación",
+        "Impago de la prima"
+      ],
+      "payment_method": "Bancario (anual o aplazado)",
+      "payment_frequency": [
+        "anual",
+        "aplazado"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "No se mencionan copagos en el IPID",
+      "pricing_factors": [
+        "Suma asegurada de inmueble",
+        "Suma asegurada de mobiliario",
+        "Garantías opcionales contratadas",
+        "Fraccionamiento del pago"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "La garantía de Reclamación de Daños surte efecto también en Andorra."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_hogar_alquiler_propietario_2023.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "condiciones_generales_hogar_global.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "condiciones_generales_hogar_plus.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "ipid_hogar_alquiler.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}
