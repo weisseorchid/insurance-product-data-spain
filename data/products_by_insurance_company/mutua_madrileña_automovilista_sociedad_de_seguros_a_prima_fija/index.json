@@ -1,0 +1,93 @@
+[
+    {
+        "fetched_at": "2026-02-02T11:15:00Z",
+        "version": "1.0",
+        "company_key": "M0083",
+        "status": "Active",
+        "products": [
+            {
+                "product_branch": "03",
+                "product_name": "auto_todo_riesgo",
+                "prduct_id": "urn:M0083-01",
+                "source_folder": "sources/auto_todo_riesgo",
+                "files": [
+                    "ipid_todo_riesgo_2024.pdf",
+                    "ipid_todo_riesgo_eco_2024.pdf",
+                    "condiciones_generales_todo_riesgo.pdf",
+                    "condiciones_generales_auto.pdf"
+                ]
+            },
+            {
+                "product_branch": "06",
+                "product_name": "moto_terceros_plus",
+                "prduct_id": "urn:M0083-02",
+                "source_folder": "sources/moto_terceros_plus",
+                "files": [
+                    "ipid_moto_terceros_plus_2024.pdf",
+                    "ipid_moto_terceros_plus_eco_2024.pdf",
+                    "condiciones_generales_moto.pdf"
+                ]
+            },
+            {
+                "product_branch": "09",
+                "product_name": "hogar_alquiler",
+                "prduct_id": "urn:M0083-03",
+                "source_folder": "sources/hogar_alquiler",
+                "files": [
+                    "ipid_hogar_alquiler_propietario_2023.pdf",
+                    "condiciones_generales_hogar_global.pdf",
+                    "condiciones_generales_hogar_plus.pdf"
+                ]
+            },
+            {
+                "product_branch": "05",
+                "product_name": "salud_enfermedad",
+                "prduct_id": "urn:M0083-04",
+                "source_folder": "sources/salud_enfermedad",
+                "files": [
+                    "condiciones_generales_salud.pdf",
+                    "condiciones_generales_plena_plus.pdf",
+                    "nota_informativa_dental.pdf"
+                ]
+            },
+            {
+                "product_branch": "00",
+                "product_name": "vida_riesgo",
+                "prduct_id": "urn:M0083-05",
+                "source_folder": "sources/vida_riesgo",
+                "files": [
+                    "condiciones_vida_riesgo.pdf"
+                ]
+            },
+            {
+                "product_branch": "01",
+                "product_name": "accidentes_plus",
+                "prduct_id": "urn:M0083-06",
+                "source_folder": "sources/accidentes_plus",
+                "files": [
+                    "ipid_accidentes_plus.pdf"
+                ]
+            },
+            {
+                "product_branch": "21",
+                "product_name": "decesos_completo",
+                "prduct_id": "urn:M0083-07",
+                "source_folder": "sources/decesos_completo",
+                "files": [
+                    "ipid_decesos_completo.pdf",
+                    "condiciones_generales_decesos.pdf"
+                ]
+            },
+            {
+                "product_branch": "13",
+                "product_name": "ahorro_garantia",
+                "prduct_id": "urn:M0083-08",
+                "source_folder": "sources/ahorro_garantia",
+                "files": [
+                    "nota_informativa_ahorro.pdf",
+                    "condiciones_generales_ahorro_ppa.pdf"
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,307 @@
+{
+  "product_name": "moto_terceros_plus",
+  "product_branch": "06",
+  "product_id": "urn:M0083-02",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:17:04.264692+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Motos",
+      "target_audience": "Particulares",
+      "description_es": "Seguro de responsabilidad civil de contratación obligatoria y voluntaria con coberturas adicionales de pérdida total por robo o incendio, asistencia en viaje y accidentes individuales.",
+      "description_en": "Third-party motorcycle insurance with total loss coverage for theft or fire, travel assistance, and personal accident benefits.",
+      "key_benefits": [
+        "Responsabilidad Civil hasta 70.000.000€ en daños personales",
+        "Cobertura de pérdida total por robo e incendio",
+        "Asistencia en viaje para el vehículo y ocupantes",
+        "Defensa jurídica y reclamación de daños"
+      ],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": "M-0083"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad civil de suscripción obligatoria y voluntaria",
+        "category": "basic",
+        "description": "Cubre las lesiones o daños causados a terceros durante la circulación.",
+        "covered_events": [
+          "Accidentes de tráfico con daños a terceros"
+        ],
+        "benefits": [
+          "Daños personales: hasta 70.000.000€",
+          "Daños materiales: hasta 15.000.000€",
+          "Exceso de 50.000.000€ sobre los límites obligatorios"
+        ],
+        "capital_or_limit": "70.000.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Incendio de la moto",
+        "category": "basic",
+        "description": "Cubre la pérdida total de la motocicleta como consecuencia de un incendio.",
+        "covered_events": [
+          "Incendio total"
+        ],
+        "benefits": [
+          "Indemnización por pérdida total"
+        ],
+        "capital_or_limit": "Valor venal (después del primer año)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo de la moto",
+        "category": "basic",
+        "description": "Cubre el robo total de la motocicleta.",
+        "covered_events": [
+          "Sustracción ilegítima total"
+        ],
+        "benefits": [
+          "Indemnización por robo total"
+        ],
+        "capital_or_limit": "Valor venal (después del primer año)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Accidentes individuales de ocupantes",
+        "category": "basic",
+        "description": "Indemnizaciones por daños físicos a los ocupantes de la moto en accidente.",
+        "covered_events": [
+          "Fallecimiento",
+          "Invalidez permanente",
+          "Asistencia sanitaria"
+        ],
+        "benefits": [
+          "Fallecimiento: 3.000€",
+          "Invalidez permanente: 9.000€",
+          "Asistencia sanitaria: 1.800€"
+        ],
+        "capital_or_limit": "9.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa jurídica",
+        "category": "basic",
+        "description": "Asistencia y defensa en juicio por accidentes de circulación.",
+        "covered_events": [
+          "Procedimientos judiciales derivados de accidentes"
+        ],
+        "benefits": [
+          "Gastos de defensa"
+        ],
+        "capital_or_limit": "1.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Reclamación de daños",
+        "category": "basic",
+        "description": "Reclamación al culpable de los daños producidos en el accidente.",
+        "covered_events": [
+          "Daños causados por terceros"
+        ],
+        "benefits": [
+          "Gestión de reclamación"
+        ],
+        "capital_or_limit": "Mínimo reclamable 300€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en viaje al vehículo",
+        "category": "basic",
+        "description": "Ayuda técnica y remolque en caso de imprevistos con la moto.",
+        "covered_events": [
+          "Avería",
+          "Accidente",
+          "Falta de combustible",
+          "Pérdida de llaves",
+          "Pinchazo"
+        ],
+        "benefits": [
+          "Traslado de la moto",
+          "Reparación de emergencia"
+        ],
+        "capital_or_limit": "Máximo 7 asistencias anuales",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en viaje a los ocupantes",
+        "category": "basic",
+        "description": "Asistencia cuando los ocupantes no pueden continuar el viaje.",
+        "covered_events": [
+          "Enfermedad de los ocupantes"
+        ],
+        "benefits": [
+          "Gastos de hotel",
+          "Gastos médicos en el extranjero"
+        ],
+        "capital_or_limit": "Varios límites según servicio",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños causados intencionadamente por el contratante, asegurado o conductor.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Eventos cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción bajo efectos de alcohol, drogas o estupefacientes.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción sin permiso de conducir válido.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Delito de omisión del deber de socorro.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Uso del vehículo en recintos restringidos de puertos, aeropuertos o en carreras y apuestas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Estancia en el extranjero superior a 30 días.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Incendio parcial o robo parcial de la moto.",
+        "category": "Específica (Robo/Incendio)",
+        "legal_reference": null
+      },
+      {
+        "description": "Reclamaciones de daños inferiores a 300€.",
+        "category": "Específica (Reclamación)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos a los bienes propiedad del asegurado o transportados en el vehículo.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Incendio y Robo",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor venal",
+        "conditions": "Aplicable a partir del primer año desde la primera matriculación."
+      },
+      {
+        "coverage_name": "Asistencia en viaje (Vehículo)",
+        "limit_type": "days_per_year",
+        "limit_value": "7 asistencias",
+        "conditions": "Límite máximo por anualidad."
+      },
+      {
+        "coverage_name": "Traslado de la moto",
+        "limit_type": "maximum_amount",
+        "limit_value": "100 km",
+        "conditions": "Desde el domicilio declarado para el traslado al taller."
+      },
+      {
+        "coverage_name": "Gastos de hotel (España)",
+        "limit_type": "maximum_amount",
+        "limit_value": "60€/día, max 3 días",
+        "conditions": "Por persona."
+      },
+      {
+        "coverage_name": "Gastos médicos extranjero",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.000€",
+        "conditions": "Deben ser superiores a 90€. Límite de 9.000€ para el conjunto de afectados."
+      },
+      {
+        "coverage_name": "Robo",
+        "limit_type": "days_per_year",
+        "limit_value": "30 días",
+        "conditions": "Si se recupera en este plazo, el asegurado debe admitir su devolución."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pago del precio del seguro",
+        "Declaración exacta de las circunstancias del riesgo",
+        "Colaboración con peritos y profesionales"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro en el plazo de 7 días",
+        "Informar de cualquier circunstancia que influya en la valoración del riesgo durante la vigencia"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Comunicación por escrito de no renovación",
+        "Impago de la prima"
+      ],
+      "payment_method": "Domiciliación bancaria o tarjeta",
+      "payment_frequency": [
+        "anual",
+        "aplazado"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Se aplicará franquicia según lo recogido en Condiciones Particulares para robo e incendio.",
+      "pricing_factors": [
+        "Circunstancias que influyen en la valoración del riesgo"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Responsabilidad Civil Obligatoria (Estados Convenio Multilateral)",
+        "Asistencia en viaje (Extranjero con límites específicos)"
+      ],
+      "special_conditions_abroad": "En países del Convenio Inter-Bureaux solo se cubren RC Obligatoria, Defensa, Reclamación y Asistencia si se posee la Carta Verde."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_moto_terceros_plus_2024.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "condiciones_generales_moto.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "ipid_moto_terceros_plus.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.0
+      },
+      {
+        "filename": "ipid_moto_terceros_plus_eco_2024.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}

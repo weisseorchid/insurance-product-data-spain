@@ -1,0 +1,51 @@
+{
+  "product_name": "vida_riesgo",
+  "product_branch": "00",
+  "product_id": "urn:M0083-05",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:17:55.497375+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida Riesgo",
+      "target_audience": null,
+      "description_es": "No se pudo extraer información detallada del producto debido a que el documento proporcionado contiene únicamente un mensaje de error de acceso al sistema (bloqueo por detección de bot).",
+      "description_en": null,
+      "key_benefits": [],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": null
+    },
+    "coverages": [],
+    "exclusions": [],
+    "limits_and_restrictions": [],
+    "obligations": {
+      "general_obligations": [],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": []
+    },
+    "contract_terms": {
+      "duration": "No especificada en el documento",
+      "renewal_type": "No especificada en el documento",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [],
+      "payment_method": null,
+      "payment_frequency": null
+    },
+    "pricing": null,
+    "geographic_coverage": {
+      "primary_territory": "No especificada en el documento",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "condiciones_vida_riesgo.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}

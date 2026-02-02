@@ -1,0 +1,310 @@
+{
+  "product_name": "auto_todo_riesgo",
+  "product_branch": "03",
+  "product_id": "urn:M0083-01",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:16:45.120063+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Automóviles",
+      "target_audience": "Particulares",
+      "description_es": "Seguro de responsabilidad civil de contratación obligatoria y voluntaria para la circulación de vehículos a motor y de daños propios, que tiene por objeto reparar o indemnizar los daños accidentales producidos a terceros, personas y al propio vehículo.",
+      "description_en": "Compulsory and voluntary third-party liability insurance for motor vehicles and own damage, intended to repair or compensate accidental damage to third parties, people, and the insured vehicle.",
+      "key_benefits": [
+        "Asistencia en viaje desde kilómetro 0",
+        "Cobertura de daños propios e incendio",
+        "Defensa jurídica y reclamación de daños",
+        "Indemnización por fallecimiento e invalidez de ocupantes"
+      ],
+      "insurance_company": "Mutua Madrileña Automovilista, S.S.P.F.",
+      "administrative_code": "M-0083"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad civil de suscripción obligatoria y voluntaria",
+        "category": "basic",
+        "description": "Cubre las lesiones o daños causados a terceros durante la circulación.",
+        "covered_events": [
+          "Accidente de circulación con daños a terceros"
+        ],
+        "benefits": [
+          "Indemnización por daños personales",
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": "70.000.000€ personales / 15.000.000€ materiales / 50.000.000€ exceso",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños propios e incendio",
+        "category": "basic",
+        "description": "Reparación o indemnización de los daños producidos en el vehículo asegurado por accidente o fuego.",
+        "covered_events": [
+          "Accidente",
+          "Incendio"
+        ],
+        "benefits": [
+          "Reparación del vehículo",
+          "Indemnización por pérdida total"
+        ],
+        "capital_or_limit": "Valor de factura o valor de venta según antigüedad",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo",
+        "category": "basic",
+        "description": "Cubre el robo del vehículo o de sus piezas fijas.",
+        "covered_events": [
+          "Sustracción ilegítima del vehículo",
+          "Robo de piezas fijas"
+        ],
+        "benefits": [
+          "Indemnización por robo total",
+          "Indemnización por piezas sustraídas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La batería y neumáticos se indemnizan al 80% de su valor"
+        ]
+      },
+      {
+        "name": "Accidentes individuales de ocupantes",
+        "category": "basic",
+        "description": "Compensación por daños físicos a los ocupantes del vehículo.",
+        "covered_events": [
+          "Fallecimiento",
+          "Invalidez permanente",
+          "Necesidad de asistencia sanitaria"
+        ],
+        "benefits": [
+          "Indemnización económica",
+          "Asistencia sanitaria"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa jurídica",
+        "category": "basic",
+        "description": "Gastos de defensa en juicio por accidentes de circulación.",
+        "covered_events": [
+          "Procedimiento judicial por accidente"
+        ],
+        "benefits": [
+          "Asistencia legal"
+        ],
+        "capital_or_limit": "1.000€ por accidente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en viaje al vehículo",
+        "category": "basic",
+        "description": "Servicios de auxilio al vehículo desde el kilómetro 0.",
+        "covered_events": [
+          "Avería",
+          "Accidente",
+          "Falta de combustible",
+          "Pérdida de llaves",
+          "Pinchazo"
+        ],
+        "benefits": [
+          "Reparación de emergencia",
+          "Traslado del vehículo",
+          "Rescate",
+          "Envío de piezas de recambio"
+        ],
+        "capital_or_limit": "7 asistencias por anualidad",
+        "waiting_period_days": null,
+        "conditions": [
+          "Gastos de custodia y depósito hasta 120€"
+        ]
+      },
+      {
+        "name": "Asistencia en viaje a los ocupantes",
+        "category": "basic",
+        "description": "Asistencia al conductor y ocupantes durante un viaje.",
+        "covered_events": [
+          "Incidencia del vehículo",
+          "Accidente",
+          "Enfermedad durante el viaje"
+        ],
+        "benefits": [
+          "Asistencia sanitaria en el extranjero",
+          "Gastos de hotel"
+        ],
+        "capital_or_limit": "6.000€ gastos médicos extranjero / 9.000€ conjunto afectados",
+        "waiting_period_days": null,
+        "conditions": [
+          "Límite de 25 km desde el domicilio",
+          "Gastos médicos deben ser superiores a 90€"
+        ]
+      },
+      {
+        "name": "Vehículo de sustitución",
+        "category": "optional",
+        "description": "Provisión de un vehículo mientras el asegurado no dispone del suyo.",
+        "covered_events": [
+          "Avería",
+          "Accidente",
+          "Robo"
+        ],
+        "benefits": [
+          "Uso de vehículo de sustitución",
+          "Indemnización diaria si no se puede prestar el servicio"
+        ],
+        "capital_or_limit": "Según Condiciones Particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Gran Reparación",
+        "category": "optional",
+        "description": "Cobertura específica para reparaciones de gran calado.",
+        "covered_events": [
+          "Averías mecánicas graves"
+        ],
+        "benefits": [
+          "Reparación del vehículo"
+        ],
+        "capital_or_limit": "Según normativa de suscripción",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños causados intencionadamente por el contratante, asegurado o conductor.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos bajo la influencia de drogas, tóxicos o estupefacientes, o en estado de embriaguez.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción sin permiso de conducir válido.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos en el extranjero si la estancia es superior a 30 días.",
+        "category": "Geográfica",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos al vehículo en vías no aptas para la circulación.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Reclamaciones de daños inferiores a 300€.",
+        "category": "Reclamación de daños",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Hechos de guerra, manifestaciones, huelgas o catástrofes naturales declaradas por el Gobierno.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Asistencia en viaje vehículo",
+        "limit_type": "maximum_amount",
+        "limit_value": "7 asistencias por año",
+        "conditions": "Aplicable cuando no sea posible la reparación de emergencia"
+      },
+      {
+        "coverage_name": "Gastos médicos extranjero",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.000€",
+        "conditions": "Deben ser superiores a 90€"
+      },
+      {
+        "coverage_name": "Robo de batería o neumáticos",
+        "limit_type": "percentage_limit",
+        "limit_value": "80% del valor",
+        "conditions": "Valor a la fecha de la sustracción"
+      },
+      {
+        "coverage_name": "Asistencia ocupantes (Hotel)",
+        "limit_type": "maximum_amount",
+        "limit_value": "60€/día",
+        "conditions": "Máximo 3 días en España y 10 días en el extranjero"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.000€",
+        "conditions": "Por accidente"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pago del precio del seguro",
+        "Declaración exacta de las circunstancias que influyen en el riesgo",
+        "Colaborar con peritos y profesionales de la aseguradora"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicación del siniestro en el plazo de 7 días",
+        "Facilitar información y colaboración para la tramitación"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual renovable",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Comunicación por escrito de no renovación",
+        "Anulación por el asegurado (sin devolución de prima no consumida)"
+      ],
+      "payment_method": "Tarjeta o domiciliación bancaria",
+      "payment_frequency": [
+        "anual",
+        "aplazada"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Antigüedad del vehículo",
+        "Valor del vehículo",
+        "Historial de siniestralidad"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "En países del Convenio Inter-Bureaux con Carta Verde, solo se cubren: RC Obligatoria, Defensa Jurídica, Reclamación de Daños y Asistencia en Viaje."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_todo_riesgo_2024.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid_todo_riesgo_eco_2024.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

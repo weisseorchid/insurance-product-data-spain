@@ -1,0 +1,51 @@
+{
+  "product_name": "accidentes_plus",
+  "product_branch": "01",
+  "product_id": "urn:M0083-06",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-02T11:18:07.941005+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Accidentes",
+      "target_audience": null,
+      "description_es": "No se puede extraer información del producto ya que el documento fuente contiene un error de acceso web (bloqueo por detección de bot) y no incluye los términos de la póliza.",
+      "description_en": "Information cannot be extracted as the source document contains a web access error (bot detection block) and does not include policy terms.",
+      "key_benefits": [],
+      "insurance_company": "MUTUA MADRILEÑA AUTOMOVILISTA, SOCIEDAD DE SEGUROS A PRIMA FIJA",
+      "administrative_code": null
+    },
+    "coverages": [],
+    "exclusions": [],
+    "limits_and_restrictions": [],
+    "obligations": {
+      "general_obligations": [],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": []
+    },
+    "contract_terms": {
+      "duration": "No especificada",
+      "renewal_type": "No especificada",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [],
+      "payment_method": null,
+      "payment_frequency": null
+    },
+    "pricing": null,
+    "geographic_coverage": {
+      "primary_territory": "No especificada",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_accidentes_plus.md",
+        "document_type": "pid",
+        "extraction_confidence": 0.0
+      }
+    ]
+  }
+}

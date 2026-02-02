@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "processed_at": "2026-02-02T11:16:05.608301+00:00",
+  "processor": {
+    "name": "process_pdfs",
+    "version": "1.0.0",
+    "converter": "markitdown[pdf]"
+  },
+  "company_key": "M0083",
+  "summary": {
+    "total_files": 23,
+    "successful": 23,
+    "failed": 0
+  },
+  "products": [
+    {
+      "product_name": "accidentes_plus",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid_accidentes_plus.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "ahorro_garantia",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_ahorro_ppa.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "nota_informativa_ahorro.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "auto_todo_riesgo",
+      "total_files": 6,
+      "successful": 6,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_auto.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "condiciones_generales_todo_riesgo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_todo_riesgo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_todo_riesgo_2024.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_todo_riesgo_eco.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_todo_riesgo_eco_2024.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "decesos_completo",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_decesos.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_decesos_completo.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "hogar_alquiler",
+      "total_files": 4,
+      "successful": 4,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_hogar_global.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "condiciones_generales_hogar_plus.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_hogar_alquiler.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_hogar_alquiler_propietario_2023.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "moto_terceros_plus",
+      "total_files": 4,
+      "successful": 4,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_moto.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_moto_terceros_plus.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_moto_terceros_plus_2024.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_moto_terceros_plus_eco_2024.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "salud_enfermedad",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_generales_plena_plus.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "condiciones_generales_salud.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "nota_informativa_dental.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "vida_riesgo",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "condiciones_vida_riesgo.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
