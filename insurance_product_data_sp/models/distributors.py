@@ -4,17 +4,13 @@ from sqlmodel import JSON, Column, Field, SQLModel
 
 
 class DistributorTable(SQLModel, table=True):
-    """SQLModel table for insurance distributors."""
+    """SQLModel table for insurance distributors.
+
+    Stores distributor data with indexed fields for efficient lookups.
+    Full distributor details are stored in details_json.
+    """
 
     __tablename__ = "distributors"
 
     distributor_key: str = Field(primary_key=True)
-    name: str | None = Field(default=None)
-    status: str | None = Field(default=None, index=True)
-    mediator_class: str | None = Field(default=None)
-    province: str | None = Field(default=None)
     details_json: dict[str, Any] = Field(sa_column=Column(JSON, nullable=False))
-
-
-# Legacy alias for backwards compatibility
-DistributorStatus = str

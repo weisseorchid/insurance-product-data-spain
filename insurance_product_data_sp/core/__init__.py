@@ -1,32 +1,25 @@
 """Core modules for data access and logging."""
 
-from __future__ import annotations
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from insurance_product_data_sp.core.db import (
-        BranchStore,
-        CompanyStore,
-        Database,
-        DistributorStore,
-        ProductStore,
-    )
-
-
-def __getattr__(name: str):
-    """Lazy load to avoid circular imports."""
-    if name in ("Database", "CompanyStore", "DistributorStore", "BranchStore", "ProductStore"):
-        from insurance_product_data_sp.core import db
-
-        return getattr(db, name)
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
+from insurance_product_data_sp.core.db import (
+    BranchDatabase,
+    CompanyDatabase,
+    DistributorDatabase,
+    ProductDatabase,
+    get_branches,
+    get_companies,
+    get_distributors,
+    get_products,
+    reload_stores,
+)
 
 __all__ = [
-    "Database",
-    "CompanyStore",
-    "DistributorStore",
-    "BranchStore",
-    "ProductStore",
+    "CompanyDatabase",
+    "DistributorDatabase",
+    "BranchDatabase",
+    "ProductDatabase",
+    "get_companies",
+    "get_distributors",
+    "get_branches",
+    "get_products",
+    "reload_stores",
 ]

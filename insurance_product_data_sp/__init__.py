@@ -45,51 +45,44 @@ from insurance_product_data_sp.schemas.insurance_product import InsuranceProduct
 
 if TYPE_CHECKING:
     from insurance_product_data_sp.core.db import (
-        BranchStore,
-        CompanyStore,
-        DistributorStore,
-        ProductStore,
+        BranchDatabase,
+        CompanyDatabase,
+        DistributorDatabase,
+        ProductDatabase,
     )
 
 # Lazy-loaded module-level data stores
-_companies: CompanyStore | None = None
-_distributors: DistributorStore | None = None
-_branches: BranchStore | None = None
-_products: ProductStore | None = None
+_companies: CompanyDatabase | None = None
+_distributors: DistributorDatabase | None = None
+_branches: BranchDatabase | None = None
+_products: ProductDatabase | None = None
 
 
 def __getattr__(name: str):
     """Lazy load data stores on first access."""
     global _companies, _distributors, _branches, _products
 
-    # Lazy import to avoid circular imports
-    from insurance_product_data_sp.core.db import Database
+    from insurance_product_data_sp.core import db
 
     if name == "companies":
         if _companies is None:
-            _companies = Database.companies()
+            _companies = db.get_companies()
         return _companies
 
     if name == "distributors":
         if _distributors is None:
-            _distributors = Database.distributors()
+            _distributors = db.get_distributors()
         return _distributors
 
     if name == "branches":
         if _branches is None:
-            _branches = Database.branches()
+            _branches = db.get_branches()
         return _branches
 
     if name == "products":
         if _products is None:
-            _products = Database.products()
+            _products = db.get_products()
         return _products
-
-    # Lazy load store classes
-    if name in ("CompanyStore", "DistributorStore", "BranchStore", "ProductStore", "Database"):
-        from insurance_product_data_sp.core import db
-
-        return getattr(db, name)
 
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
@@ -102,12 +95,6 @@ __all__ = [
     "distributors",
     "branches",
     "products",
-    # Store classes
-    "CompanyStore",
-    "DistributorStore",
-    "BranchStore",
-    "ProductStore",
-    "Database",
     # Schema models
     "InsuranceCompanyBase",
     "InsuranceCompanyDetails",
