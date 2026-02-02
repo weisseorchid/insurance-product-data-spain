@@ -1,4 +1,5 @@
 """Quick smoke test for the package."""
+
 from insurance_product_data_sp import branches, companies, distributors, products
 
 # Test companies

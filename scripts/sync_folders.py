@@ -9,7 +9,7 @@ Run with: uv run python -m scripts.sync_folders
 from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
-from scripts.config import INSURANCE_COMPANIES_JSON, INSURANCE_COMPANIES_STORAGE_PATH
+from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
 from scripts.utils.storage import ensure_directory, load_json
 from scripts.utils.text_transformations import text_to_snake_case
 
@@ -28,7 +28,7 @@ def sync_insurance_company_folders(
     """
     # Use defaults from config if not provided
     json_path = Path(json_file_path) if json_file_path else INSURANCE_COMPANIES_JSON
-    base_path = Path(base_folder_path) if base_folder_path else INSURANCE_COMPANIES_STORAGE_PATH
+    base_path = Path(base_folder_path) if base_folder_path else PRODUCTS_STORAGE_PATH
 
     # Read the JSON file and load the companies
     companies = load_json(json_path)
