@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import sys
+import time
 from pathlib import Path
 
 from sqlmodel import Session, SQLModel, create_engine, select
@@ -29,20 +31,94 @@ def _normalize_branches(branches: str | list[str]) -> str:
     return _branch_token(branches)
 
 
-def _prepare_db(db_path: Path) -> Session:
-    """Prepare database: delete existing, create schema, return session."""
+def _check_db_locked(db_path: Path) -> bool:
+    """Check if database file is locked by attempting to open it exclusively."""
+    if not db_path.exists():
+        return False
+    try:
+        # Try to open the file in exclusive mode to check if it's locked
+        with open(db_path, "r+b"):
+            return False
+    except PermissionError:
+        return True
+    except Exception:
+        # Other exceptions (like file not found) mean it's not locked
+        return False
+
+
+def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> Session:
+    """Prepare database: delete existing, create schema, return session.
+    
+    Args:
+        db_path: Path to the database file
+        max_retries: Maximum number of retry attempts if deletion fails
+        retry_delay: Delay in seconds between retry attempts
+        
+    Returns:
+        Session: Database session
+        
+    Raises:
+        SystemExit: If database file cannot be deleted after retries
+    """
     if db_path.exists():
-        try:
-            db_path.unlink()
-        except PermissionError as e:
-            raise RuntimeError(
-                f"Cannot delete {db_path} - file is in use. "
-                "Close any Python processes using the database and try again."
-            ) from e
+        # Check if file is locked before attempting deletion
+        if _check_db_locked(db_path):
+            _handle_locked_database(db_path)
+            sys.exit(1)
+        
+        # Attempt deletion with retries
+        for attempt in range(max_retries):
+            try:
+                db_path.unlink()
+                break  # Successfully deleted
+            except PermissionError:
+                if attempt < max_retries - 1:
+                    print(
+                        f"Warning: Cannot delete {db_path} (attempt {attempt + 1}/{max_retries}). "
+                        f"Retrying in {retry_delay} seconds...",
+                        file=sys.stderr,
+                    )
+                    time.sleep(retry_delay)
+                    # Re-check if still locked
+                    if _check_db_locked(db_path):
+                        _handle_locked_database(db_path)
+                        sys.exit(1)
+                else:
+                    # Final attempt failed
+                    _handle_locked_database(db_path)
+                    sys.exit(1)
+            except Exception as e:
+                # Other errors (not permission-related)
+                print(
+                    f"Error: Failed to delete {db_path}: {e}",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
+    
     db_path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{db_path}")
     SQLModel.metadata.create_all(engine)
     return Session(engine)
+
+
+def _handle_locked_database(db_path: Path) -> None:
+    """Print helpful error message when database is locked."""
+    print("\n" + "=" * 70, file=sys.stderr)
+    print("ERROR: Cannot delete database file - file is locked", file=sys.stderr)
+    print("=" * 70, file=sys.stderr)
+    print(f"\nDatabase path: {db_path}", file=sys.stderr)
+    print("\nThe database file is currently in use by another process.", file=sys.stderr)
+    print("\nPossible causes:", file=sys.stderr)
+    print("  • Another Python process is using the database", file=sys.stderr)
+    print("  • A database viewer/editor (DB Browser, SQLiteStudio, etc.) has it open", file=sys.stderr)
+    print("  • SQLite WAL (Write-Ahead Logging) files are still active", file=sys.stderr)
+    print("  • File system permissions issue", file=sys.stderr)
+    print("\nSolutions:", file=sys.stderr)
+    print("  1. Close any applications that might be using the database", file=sys.stderr)
+    print("  2. Check for running Python processes: `tasklist | findstr python` (Windows)", file=sys.stderr)
+    print("  3. Manually delete the database file and try again", file=sys.stderr)
+    print("  4. If using WAL mode, ensure all connections are closed", file=sys.stderr)
+    print("\n" + "=" * 70 + "\n", file=sys.stderr)
 
 
 def _insert_companies(session: Session) -> list[dict]:

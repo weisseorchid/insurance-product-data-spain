@@ -28,12 +28,12 @@ uv run python -m scripts.sync_folders
 # 3. Add PDFs to sources/{product_name}/ (manual step)
 
 # 4. Convert PDFs to markdown
-uv run python -m scripts.process_pdfs --company-key C0737
+uv run python -m scripts.process_pdfs --company-key M0083
 
 # 5. Run AI analysis
-uv run python -m scripts.analyze_products --company-key C0737
+uv run python -m scripts.analyze_products --company-key M0083
 
-# 6. Rebuild database
+# 6. Rebuild database -- ensure there are no local open connections for this to work!
 uv run python -m scripts.build_db
 ```
 
