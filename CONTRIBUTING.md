@@ -4,6 +4,10 @@ We welcome contributions! If you have an idea for improvement or find a bug, ple
 
 ## Developing
 
+### Script Configuration
+
+All script configuration (paths, API settings) lives in `scripts/config.py`. Do not create additional config modules.
+
 ### Usage of uv
 
 We use [uv](https://docs.astral.sh/uv/) as package and project manager.
