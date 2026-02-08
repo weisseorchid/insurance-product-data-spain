@@ -1,0 +1,55 @@
+[
+    {
+        "fetched_at": "2026-02-02T12:15:00Z",
+        "version": "1.0",
+        "company_key": "C0058",
+        "status": "Active",
+        "products": [
+            {
+                "product_branch": "08",
+                "product_name": "seguro_decesos_siempre",
+                "prduct_id": "urn:C0058-01",
+                "source_folder": "sources/seguro_decesos_siempre",
+                "files": [
+                    "CCGG_DEC_es_ES_716-301-1-SALUD-ED-01-26_01-12-2025.pdf",
+                    "CCGG_DEC_es_ES_810-038-SG-GEN-ED-01-25_11-02-2025.pdf",
+                    "NI_DEC_es_ES_SIEMPRE_12-09-2025.pdf",
+                    "IPID_DEC_es_ES_SIEMPRE_18-11-2019.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "seguro_eleccion_senior",
+                "prduct_id": "urn:C0058-02",
+                "source_folder": "sources/seguro_eleccion_senior",
+                "files": [
+                    "CCGG_DEC_es_ES_ELECCION-SENIOR-ES-ED-01-25_11-02-2025.pdf",
+                    "IPID_DEC_es_ES_ELECCION.SENIOR_16-10-2023.pdf",
+                    "NI_DEC_es_ES_ELECC. SENIOR_12-09-2025.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "seguro_pago_unico",
+                "prduct_id": "urn:C0058-03",
+                "source_folder": "sources/seguro_pago_unico",
+                "files": [
+                    "CCGG_DEC_es_ES_PU-SG-GEN-ED-01-25_11-02-2025.pdf",
+                    "IPID_DEC_es_ES_PAG.UNIC._18-11-2019.pdf",
+                    "NI_DEC_es_ES_PAGO UNICO_12-09-2025.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "seguro_residentes_extranjeros",
+                "prduct_id": "urn:C0058-04",
+                "source_folder": "sources/seguro_residentes_extranjeros",
+                "files": [
+                    "CCGG_DEC_es_ES_411-077-SG-GEN-ED-01-25_12-02-2025.pdf",
+                    "IPID_DEC_es_ES_RES.EXT._18-11-2019.pdf",
+                    "NI_DEC_es_ES_RES. EXT._12-09-2025.pdf"
+                ]
+            }
+        ]
+    }
+]
