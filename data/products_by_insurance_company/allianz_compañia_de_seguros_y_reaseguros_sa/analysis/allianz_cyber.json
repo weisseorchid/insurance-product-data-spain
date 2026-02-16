@@ -1,0 +1,265 @@
+{
+  "product_name": "allianz_cyber",
+  "product_branch": "18",
+  "product_id": "urn:C0109-04",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:24:58.983351+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Ciberriesgos / Responsabilidad Civil",
+      "target_audience": "Empresas y Autónomos (PYMES)",
+      "description_es": "Seguro integral que ofrece asistencia técnica preventiva y reactiva ante incidentes cibernéticos, además de cobertura de responsabilidad civil y pérdida de beneficios derivada de ataques o fallos de seguridad.",
+      "description_en": "Comprehensive cyber risk insurance providing preventive and reactive technical assistance, as well as liability coverage and loss of profits resulting from cyber attacks or security failures.",
+      "key_benefits": [
+        "Asistencia preventiva informática y legal",
+        "Cobertura de Responsabilidad Civil por violación de datos",
+        "Indemnización por pérdida de beneficios",
+        "Asistencia post-siniestro informática (peritaje y recuperación de datos)",
+        "Borrado de huella digital y seguimiento de marca"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Asistencia Preventiva Informática",
+        "category": "basic",
+        "description": "Servicios para prevenir incidentes de seguridad antes de que ocurran.",
+        "covered_events": [
+          "Necesidad de asesoramiento técnico",
+          "Vulnerabilidades en el sistema",
+          "Configuración de seguridad"
+        ],
+        "benefits": [
+          "Asistencia telefónica y remota",
+          "Auditoría de vulnerabilidades con informe",
+          "Implantación de medidas de seguridad",
+          "Aplicación antisecuestro",
+          "Configuración de copias de seguridad en la nube (incluye servidores en versiones Ampliado/Extra)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Preventiva Legal",
+        "category": "basic",
+        "description": "Servicios de asesoramiento normativo en materia de protección de datos.",
+        "covered_events": [
+          "Adecuación a la normativa de protección de datos personales"
+        ],
+        "benefits": [
+          "Guía de adecuación normativa",
+          "Informe de valoración normativa",
+          "Adaptación a la normativa en España",
+          "Conexión con despachos de abogados"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Post-Siniestro Informática",
+        "category": "basic",
+        "description": "Intervención técnica tras la ocurrencia de un incidente cibernético.",
+        "covered_events": [
+          "Malware",
+          "Ransomware",
+          "Fallo de seguridad de red"
+        ],
+        "benefits": [
+          "Perito informático",
+          "Asistencia informática remota e in situ (in situ solo en versiones superiores)",
+          "Recuperación de datos",
+          "Restauración de backup en la nube"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil",
+        "category": "basic",
+        "description": "Protección frente a reclamaciones de terceros por fallos de seguridad.",
+        "covered_events": [
+          "Violación de datos personales",
+          "Reclamaciones sobre seguridad de red",
+          "Actos incorrectos en medios de comunicación",
+          "Multas y sanciones de organismos reguladores"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones a terceros",
+          "Gastos de defensa"
+        ],
+        "capital_or_limit": "Hasta 450.000€ (según versión)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Pérdida de Beneficios",
+        "category": "basic",
+        "description": "Compensación por la interrupción de la actividad empresarial debido a un siniestro cubierto.",
+        "covered_events": [
+          "Interrupción del sistema informático por ciberataque"
+        ],
+        "benefits": [
+          "Indemnización por pérdida de beneficios"
+        ],
+        "capital_or_limit": "25% del límite general de la póliza",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Empresas dedicadas a servicios financieros, ISP, ASP, infraestructuras críticas, defensa, juegos de azar, educación, y sanidad.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Empresas con E-Commerce superior al 30% de su facturación.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Empresas con datos almacenados en USA o con más de 50 dispositivos informáticos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducta intencionada, deshonesta o impropia del asegurado.",
+        "category": "Dolo",
+        "legal_reference": null
+      },
+      {
+        "description": "Ciberguerra, ciberterrorismo, saqueos y actos gubernamentales.",
+        "category": "Eventos Extraordinarios",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños materiales (hardware) salvo incendio, rayo, explosión o agua según la cláusula silent cyber.",
+        "category": "Material",
+        "legal_reference": null
+      },
+      {
+        "description": "Incidencias en dispositivos sin licencia de software o sin actualizaciones de seguridad al día.",
+        "category": "Técnica",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros de ciberextorsión sin competencia jurisdiccional en España o autor conocido.",
+        "category": "Territorial/Legal",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Límite Global Anual",
+        "limit_type": "maximum_amount",
+        "limit_value": "450.000€ (Extra/Ampliado), 300.000€ (Óptimo), 150.000€ (Básico)",
+        "conditions": "Límite por siniestro y anualidad para todas las garantías."
+      },
+      {
+        "coverage_name": "Pérdida de Beneficios",
+        "limit_type": "maximum_amount",
+        "limit_value": "25%",
+        "conditions": "Sub-límite del límite general."
+      },
+      {
+        "coverage_name": "Implantación de medidas de seguridad",
+        "limit_type": "days_per_year",
+        "limit_value": "1 al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asesoramiento legal vía judicial",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.000€",
+        "conditions": "Requiere un mínimo de 200€ de principal reclamado."
+      },
+      {
+        "coverage_name": "Aplicación antisecuestro",
+        "limit_type": "maximum_amount",
+        "limit_value": "50 dispositivos",
+        "conditions": "Límite anual."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos veraces para la emisión de la póliza",
+        "Leer y comprobar los términos en el plazo de un mes",
+        "Pagar las primas",
+        "Comunicar modificaciones del riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar la ocurrencia inmediatamente",
+        "Poner todos los medios para aminorar las consecuencias",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Impago de prima",
+        "Derecho de desistimiento (14 días en ventas a distancia)"
+      ],
+      "payment_method": "Cualquier medio disponible de la compañía",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionado (según condiciones particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Facturación",
+        "Número de dispositivos",
+        "Porcentaje de E-Commerce",
+        "Actividad de la empresa",
+        "Ubicación de los datos"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Excluye dispositivos no ubicados en territorio nacional y exige competencia jurisdiccional de tribunales españoles para ciberextorsión."
+    },
+    "source_documents": [
+      {
+        "filename": "allianz-ciber-plus-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ciber-plus-basico-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ciber-plus-optimo-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "clausula-silent-cyber.md",
+        "document_type": "limiting_conditions",
+        "extraction_confidence": 0.9
+      },
+      {
+        "filename": "ipid-ciber-plus-ampliado.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

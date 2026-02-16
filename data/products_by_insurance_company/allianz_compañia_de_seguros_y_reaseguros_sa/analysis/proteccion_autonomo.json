@@ -1,0 +1,191 @@
+{
+  "product_name": "proteccion_autonomo",
+  "product_branch": "01",
+  "product_id": "urn:C0109-16",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:29:43.989353+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Subsidio para Autónomos",
+      "target_audience": "Autónomos y profesionales por cuenta propia",
+      "description_es": "Seguro de previsión profesional diseñado para autónomos que ofrece una indemnización diaria en caso de baja laboral por enfermedad o accidente, permitiendo compensar la pérdida de ingresos y cubrir los gastos fijos de la actividad.",
+      "description_en": "Professional subsidy insurance designed for self-employed workers that offers a daily indemnity in case of sick leave due to illness or accident.",
+      "key_benefits": [
+        "Indemnización diaria ajustable",
+        "Diferentes modalidades de contratación (Básico a Premium)",
+        "Cobertura de hospitalización y cirugía",
+        "Protección económica frente a la incapacidad temporal"
+      ],
+      "insurance_company": "ALLIANZ, COMPAÑIA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0737"
+    },
+    "coverages": [
+      {
+        "name": "Incapacidad Temporal",
+        "category": "basic",
+        "description": "Subsidio diario contratado en caso de baja médica que impida el desarrollo de la actividad laboral habitual.",
+        "covered_events": [
+          "Enfermedad común",
+          "Accidente laboral",
+          "Accidente de tráfico"
+        ],
+        "benefits": [
+          "Pago de la cuantía diaria estipulada en póliza"
+        ],
+        "capital_or_limit": "Según nivel de protección (Básico, Óptimo, Integral, Superior, Premium)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Requiere baja médica oficial"
+        ]
+      },
+      {
+        "name": "Indemnización por Hospitalización",
+        "category": "basic",
+        "description": "Pago adicional por cada día de estancia en un centro hospitalario por enfermedad o accidente.",
+        "covered_events": [
+          "Ingreso hospitalario superior a 24 horas"
+        ],
+        "benefits": [
+          "Duplicación o suplemento del subsidio diario"
+        ],
+        "capital_or_limit": "Suele ser equivalente al subsidio diario contratado",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Intervenciones Quirúrgicas",
+        "category": "optional",
+        "description": "Indemnización a tanto alzado en función de la complejidad de la intervención quirúrgica.",
+        "covered_events": [
+          "Intervención quirúrgica recogida en el baremo de la póliza"
+        ],
+        "benefits": [
+          "Pago único según baremo"
+        ],
+        "capital_or_limit": "Según baremo de intervenciones",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "included_service",
+        "description": "Servicios de asistencia durante desplazamientos fuera de la residencia habitual.",
+        "covered_events": [
+          "Enfermedad o accidente durante un viaje"
+        ],
+        "benefits": [
+          "Repatriación",
+          "Gastos médicos en el extranjero"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 0,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Lesiones o enfermedades preexistentes a la fecha de efecto de la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Bajas derivadas de tratamientos estéticos o cirugía plástica voluntaria.",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Intentos de suicidio o autolesiones provocadas intencionadamente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en competiciones deportivas profesionales o deportes de alto riesgo.",
+        "category": "Riesgos Excluidos",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Incapacidad Temporal",
+        "limit_type": "days_per_year",
+        "limit_value": "365 días",
+        "conditions": "Límite máximo de indemnización para un mismo proceso de baja."
+      },
+      {
+        "coverage_name": "Subsidio Diario",
+        "limit_type": "maximum_amount",
+        "limit_value": "Según contratación",
+        "conditions": "La suma de la prestación de la Seguridad Social y el seguro no debe exceder los ingresos reales."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pago de las primas en los plazos estipulados",
+        "Declaración exacta del estado de salud en el cuestionario",
+        "Notificación de cambios en la actividad profesional"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Presentar parte de baja médica",
+        "Someterse a valoraciones de los servicios médicos de la aseguradora",
+        "Aportar los justificantes de hospitalización si aplica"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual prorrogable",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Falta de pago de la prima",
+        "Cumplimiento de la edad máxima prevista",
+        "Cese definitivo de la actividad profesional"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "mensual",
+        "trimestral",
+        "semestral",
+        "anual"
+      ]
+    },
+    "pricing": null,
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Asistencia en viaje"
+      ],
+      "special_conditions_abroad": "La indemnización por IT suele requerir residencia en España."
+    },
+    "source_documents": [
+      {
+        "filename": "proteccion-autonomo-plus-basico.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.7
+      },
+      {
+        "filename": "proteccion-autonomo-plus-integral.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.7
+      },
+      {
+        "filename": "proteccion-autonomo-plus-optimo.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.7
+      },
+      {
+        "filename": "proteccion-autonomo-plus-premium.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.5
+      },
+      {
+        "filename": "proteccion-autonomo-plus-superior.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.7
+      }
+    ]
+  }
+}

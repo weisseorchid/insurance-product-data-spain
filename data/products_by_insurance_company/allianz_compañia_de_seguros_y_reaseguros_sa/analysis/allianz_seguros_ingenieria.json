@@ -1,0 +1,266 @@
+{
+  "product_name": "allianz_seguros_ingenieria",
+  "product_branch": "08",
+  "product_id": "urn:C0109-11",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:27:36.403468+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Ingeniería (Daños Externos, Construcción, Rotura de Maquinaria y Decenal)",
+      "target_audience": "Profesionales, empresas de construcción y propietarios de maquinaria industrial o edificaciones.",
+      "description_es": "Una gama de productos de ingeniería de Allianz que cubren desde daños externos y rotura de maquinaria hasta seguros de construcción y seguro decenal de daños a la edificación, garantizando la reparación o reposición de bienes ante eventos accidentales y fallos estructurales.",
+      "description_en": "A range of engineering products from Allianz covering external damage and machinery breakdown to construction insurance and 10-year building damage insurance, guaranteeing the repair or replacement of assets against accidental events and structural failures.",
+      "key_benefits": [
+        "Cobertura basada en el valor de reposición a nuevo",
+        "Protección ante errores humanos y fallos de diseño",
+        "Garantía decenal de estabilidad estructural",
+        "Flexibilidad con coberturas opcionales como Responsabilidad Civil y Mantenimiento"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Daños Materiales por Causas Externas (Maquinaria)",
+        "category": "basic",
+        "description": "Reparación o reposición frente a daños materiales causados por riesgos externos accidentales.",
+        "covered_events": [
+          "Incendio",
+          "Humo",
+          "Caída del rayo",
+          "Explosión",
+          "Hundimiento del terreno",
+          "Inundación",
+          "Robo",
+          "Vuelco"
+        ],
+        "benefits": [
+          "Reparación de los bienes",
+          "Reposición de los bienes"
+        ],
+        "capital_or_limit": "Valor de reposición a nuevo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Seguro de Construcción",
+        "category": "basic",
+        "description": "Reparación de daños materiales en trabajos de obra civil e instalaciones.",
+        "covered_events": [
+          "Hechos súbitos, accidentales e imprevistos",
+          "Salvamento",
+          "Desembarre",
+          "Intervención de bomberos",
+          "Desescombro"
+        ],
+        "benefits": [
+          "Coste de material",
+          "Coste de mano de obra"
+        ],
+        "capital_or_limit": "Presupuesto de ejecución material + Gastos generales + Beneficio industrial",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Rotura de Maquinaria Fija",
+        "category": "basic",
+        "description": "Cobertura para maquinaria fija ante causas accidentales internas y eléctricas.",
+        "covered_events": [
+          "Errores humanos",
+          "Vicios ocultos",
+          "Fenómenos eléctricos",
+          "Cortocircuitos",
+          "Falta de agua en calderas"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales",
+          "Gastos de desmontaje y nuevo montaje"
+        ],
+        "capital_or_limit": "Valor de reposición a nuevo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Seguro Decenal de Daños",
+        "category": "basic",
+        "description": "Indemnización o reparación de daños estructurales que comprometan la resistencia mecánica del edificio.",
+        "covered_events": [
+          "Vicios o defectos en la obra fundamental"
+        ],
+        "benefits": [
+          "Reparación de daños estructurales"
+        ],
+        "capital_or_limit": "100% de la suma asegurada del edificio (IVA incluido)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Extracontractual",
+        "category": "optional",
+        "description": "Cobertura opcional para daños causados a terceros durante la construcción.",
+        "covered_events": [
+          "Daños a terceros"
+        ],
+        "benefits": [
+          "Indemnización por responsabilidad civil"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Estanqueidad Trienal",
+        "category": "optional",
+        "description": "Cobertura opcional para defectos de estanqueidad en fachadas y cubiertas.",
+        "covered_events": [
+          "Defectos en fachadas",
+          "Defectos en cubiertas"
+        ],
+        "benefits": [
+          "Reparación de filtraciones"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Guerra civil o internacional, motines, terrorismo y disturbios internos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Dolo o culpa grave del Tomador, Asegurado o Acreedor.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Desgaste paulatino, corrosión, oxidación y daños puramente estéticos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Hechos cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "Legal",
+        "legal_reference": null
+      },
+      {
+        "description": "Objetos de desgaste rápido como correas, neumáticos, cables, filtros y herramientas intercambiables (salvo pérdida total).",
+        "category": "Maquinaria",
+        "legal_reference": null
+      },
+      {
+        "description": "Hurto o desapariciones detectadas en inventario.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Multas y sanciones de cualquier naturaleza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Influencias normales del clima (lluvia, granizo) con periodo de retorno inferior a 10 años.",
+        "category": "Construcción",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños a bienes muebles situados en el edificio y daños corporales.",
+        "category": "Decenal",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "General",
+        "limit_type": "territory",
+        "limit_value": "Territorio Nacional (España)",
+        "conditions": "El riesgo debe estar situado en la ubicación declarada."
+      },
+      {
+        "coverage_name": "Seguro Decenal",
+        "limit_type": "duration",
+        "limit_value": "10 años",
+        "conditions": "Aplica específicamente a la resistencia mecánica y estabilidad del edificio."
+      },
+      {
+        "coverage_name": "Construcción",
+        "limit_type": "weather_standard",
+        "limit_value": "Periodo de retorno de 10 años",
+        "conditions": "No se cubren fenómenos climáticos por debajo de este umbral de intensidad."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos correctos y veraces para la emisión.",
+        "Firmar la póliza.",
+        "Pagar la prima según lo acordado.",
+        "Comunicar cualquier agravación del riesgo de forma inmediata."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente y máximo en 7 días.",
+        "Poner todos los medios para aminorar las consecuencias del siniestro.",
+        "Cooperar en las labores de salvamento."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Determinada en las condiciones particulares (habitualmente anual con prórroga).",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Falta de pago de la prima",
+        "Desaparición del riesgo"
+      ],
+      "payment_method": "Cualquier medio de pago disponible de la compañía.",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionado (según acuerdo)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Tipo de maquinaria o edificación",
+        "Valor de reposición",
+        "Uso de los bienes",
+        "Medidas de protección y mantenimiento"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España (Territorio Nacional)",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "No se menciona cobertura fuera del territorio nacional."
+    },
+    "source_documents": [
+      {
+        "filename": "allianz-danos-externos-para-maquinaria.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "allianz-seguro-de-construccion.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "allianz-seguro-de-rotura-de-maquinaria.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "allianz-seguro-decenal-de-danos-a-la-edificacion.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

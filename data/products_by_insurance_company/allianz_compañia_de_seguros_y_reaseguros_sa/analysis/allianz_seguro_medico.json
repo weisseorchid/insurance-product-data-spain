@@ -1,0 +1,279 @@
+{
+  "product_name": "allianz_seguro_medico",
+  "product_branch": "05",
+  "product_id": "urn:C0109-12",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:28:02.321392+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Salud y Dental",
+      "target_audience": "Particulares (0 a 100 años)",
+      "description_es": "Gama de seguros de salud de Allianz que abarca desde asistencia dental y hospitalaria hasta asistencia sanitaria completa con cuadro médico o reembolso de gastos.",
+      "description_en": "Allianz health insurance range covering everything from dental and hospital assistance to comprehensive healthcare through a medical network or reimbursement of expenses.",
+      "key_benefits": [
+        "Amplio cuadro médico concertado",
+        "Modalidad de reembolso de gastos hasta 200.000€",
+        "Asistencia en viaje mundial",
+        "Servicios de salud digital y App propia",
+        "Sin carencias para servicios dentales básicos"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Asistencia Dental",
+        "category": "basic",
+        "description": "Cobertura integral de salud bucodental que incluye prevención, diagnóstico y tratamiento.",
+        "covered_events": [
+          "Necesidad de tratamiento odontológico",
+          "Urgencia dental"
+        ],
+        "benefits": [
+          "Primeras visitas y revisiones sin coste",
+          "Odontología preventiva (limpiezas, fluorizaciones)",
+          "Radiología dental",
+          "Obturaciones y Endodoncias",
+          "Ortodoncia e Implantología",
+          "Estética dental"
+        ],
+        "capital_or_limit": "Según franquicias de la tarifa dental",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Hospitalaria",
+        "category": "basic",
+        "description": "Cubre los gastos derivados de ingresos hospitalarios e intervenciones quirúrgicas.",
+        "covered_events": [
+          "Ingreso hospitalario",
+          "Intervención quirúrgica",
+          "Urgencia médica"
+        ],
+        "benefits": [
+          "Habitación individual",
+          "UVI/UCI",
+          "Derechos de quirófano",
+          "Anestesia",
+          "Medicación hospitalaria"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 180,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Primaria y Especialistas",
+        "category": "basic",
+        "description": "Acceso a medicina general, pediatría, enfermería y especialistas médicos.",
+        "covered_events": [
+          "Enfermedad común",
+          "Consulta con especialista"
+        ],
+        "benefits": [
+          "Medicina General",
+          "Pediatría",
+          "Especialidades médico-quirúrgicas",
+          "Pruebas diagnósticas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Reembolso de Gastos",
+        "category": "optional",
+        "description": "Posibilidad de acudir a cualquier médico o centro del mundo con reembolso del coste.",
+        "covered_events": [
+          "Asistencia sanitaria fuera del cuadro médico"
+        ],
+        "benefits": [
+          "Reembolso del 90% de los gastos abonados"
+        ],
+        "capital_or_limit": "200.000€ anuales",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "included_service",
+        "description": "Cobertura de urgencias médicas durante viajes al extranjero.",
+        "covered_events": [
+          "Accidente o enfermedad aguda en el extranjero"
+        ],
+        "benefits": [
+          "Gastos médicos de urgencia",
+          "Traslado sanitario"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 0,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Preexistencias: cualquier alteración de salud anterior a la fecha de efecto de la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros por fenómenos de la naturaleza, catástrofes, terrorismo o actuaciones de Fuerzas Armadas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por riñas, hechos delictivos, intento de suicidio, alcoholismo o drogadicción.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica de deportes como federado, profesional o deportes de riesgo.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Interrupción voluntaria del embarazo y técnicas de reproducción asistida.",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Cirugía robótica y laserterapia (salvo excepciones en póliza).",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Medicación sin ingreso hospitalario.",
+        "category": "Específica",
+        "legal_reference": null
+      },
+      {
+        "description": "Cualquier acto médico realizado por profesionales ajenos al Cuadro Médico (en modalidades sin reembolso).",
+        "category": "Limitación de red",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Prótesis",
+        "limit_type": "maximum_amount",
+        "limit_value": "12.000€ asegurado/año",
+        "conditions": "Sujeto a carencia de 6 meses"
+      },
+      {
+        "coverage_name": "Parto",
+        "limit_type": "waiting_period",
+        "limit_value": "10 meses",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Litotricia",
+        "limit_type": "waiting_period",
+        "limit_value": "18 meses",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Reembolso",
+        "limit_type": "percentage",
+        "limit_value": "90%",
+        "conditions": "Hasta un máximo de 200.000€"
+      },
+      {
+        "coverage_name": "Dental",
+        "limit_type": "franchise",
+        "limit_value": "Variable según tratamiento",
+        "conditions": "Muchos servicios preventivos son sin coste (S/C)"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Firmar la declaración de salud verazmente",
+        "Pagar la prima del seguro",
+        "Facilitar datos actuales, correctos y veraces",
+        "Comunicar cualquier modificación del riesgo",
+        "Abonar los copagos cuando corresponda"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente",
+        "Aminorar las consecuencias del siniestro",
+        "Identificarse con la tarjeta de asegurado en centros concertados"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Impago de prima",
+        "Oposición a la prórroga con el preaviso establecido",
+        "Derecho de desistimiento en los primeros 14 días (contratación a distancia)"
+      ],
+      "payment_method": "Cualquiera de los medios de pago disponibles de la compañía",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionado (según condiciones particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": "Desde 8,75€/mes (Dental) hasta 373€/mes (Reembolso edad avanzada)",
+      "copay_info": "Existen modalidades 'Sin Copago' y 'Con Copago'",
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Modalidad contratada",
+        "Zona geográfica",
+        "Inclusión de copagos"
+      ],
+      "discounts": [
+        "Descuentos por modalidad con copago incluidos en tarifa"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España (Cuadro Médico)",
+      "worldwide_coverage": [
+        "Asistencia en viaje (Urgencias)",
+        "Modalidad Reembolso Completo"
+      ],
+      "special_conditions_abroad": "En el extranjero solo se cubren enfermedades agudas o accidentes que exijan tratamiento inmediato."
+    },
+    "source_documents": [
+      {
+        "filename": "seguro-dental-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-medico-asistencia-hospitalaria.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-medico-asistencia-primaria-IPID.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-medico-cuadro-medico-sin-asistencia-primaria.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-medico-reembolso-IPID.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "tarifas-allianz-dental.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "tarifas-allianz-salud-individual.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

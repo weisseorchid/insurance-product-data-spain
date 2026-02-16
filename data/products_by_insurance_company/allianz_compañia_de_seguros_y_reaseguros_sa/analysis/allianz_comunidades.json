@@ -1,0 +1,285 @@
+{
+  "product_name": "allianz_comunidades",
+  "product_branch": "09",
+  "product_id": "urn:C0109-03",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:24:35.678436+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Multirriesgo de Comunidades",
+      "target_audience": "Comunidades de Propietarios",
+      "description_es": "Seguro multirriesgo diseñado para cubrir los daños causados a la comunidad de propietarios o a los bienes comunes frente a diversos riesgos como incendio, robo, responsabilidad civil y daños por agua.",
+      "description_en": "Multi-risk insurance designed to cover damages caused to the community of property owners or common assets against various risks such as fire, theft, civil liability, and water damage.",
+      "key_benefits": [
+        "Cobertura integral para la edificación y contenido común",
+        "Protección ante responsabilidad civil de la Junta Rectora",
+        "Asistencia en el primer desplazamiento incluida",
+        "Coberturas opcionales adaptables como desatasco y protección jurídica"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Incendio, Explosión y Rayo",
+        "category": "basic",
+        "description": "Cubre los daños materiales causados por incendio, explosión interna o externa y caída del rayo.",
+        "covered_events": [
+          "Incendio",
+          "Explosión interna o externa",
+          "Caída del rayo"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": "Valor de la Edificación/Contenido",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Impacto",
+        "category": "basic",
+        "description": "Daños producidos por caída de aeronaves, choque de vehículos, cosas o animales.",
+        "covered_events": [
+          "Caída de aeronaves",
+          "Choque de vehículos",
+          "Choque de objetos o animales"
+        ],
+        "benefits": [
+          "Reparación o indemnización de daños"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo, Hurto y Vandalismo",
+        "category": "basic",
+        "description": "Protección frente a la sustracción ilegítima de bienes o actos vandálicos contra el inmueble.",
+        "covered_events": [
+          "Robo",
+          "Hurto",
+          "Vandalismo"
+        ],
+        "benefits": [
+          "Reposición de bienes",
+          "Reparación de daños por robo"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil",
+        "category": "basic",
+        "description": "Cubre las indemnizaciones exigidas a la comunidad por daños a terceros derivados de la propiedad o actividad de empleados.",
+        "covered_events": [
+          "Propiedad de la edificación",
+          "Actividad de empleados",
+          "Responsabilidad de la Junta Rectora",
+          "Contaminación"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones a terceros",
+          "Defensa jurídica"
+        ],
+        "capital_or_limit": "1.200.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia",
+        "category": "included_service",
+        "description": "Gastos del primer desplazamiento para atender una urgencia o siniestro.",
+        "covered_events": [
+          "Siniestro cubierto"
+        ],
+        "benefits": [
+          "Gastos de desplazamiento"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños por Agua",
+        "category": "optional",
+        "description": "Cobertura opcional para daños causados por escapes o averías en las conducciones de agua.",
+        "covered_events": [
+          "Escapes de agua",
+          "Rotura de tuberías"
+        ],
+        "benefits": [
+          "Reparación de daños propios",
+          "Indemnización por daños a terceros"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Desatasco de Tuberías Comunitarias",
+        "category": "optional",
+        "description": "Servicio de limpieza y desobstrucción de las tuberías generales del edificio.",
+        "covered_events": [
+          "Atasco en tuberías"
+        ],
+        "benefits": [
+          "Servicio de desatasco"
+        ],
+        "capital_or_limit": "500€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asesoramiento y Protección Jurídica",
+        "category": "optional",
+        "description": "Defensa legal y asesoramiento jurídico para la comunidad.",
+        "covered_events": [
+          "Conflictos legales comunitarios"
+        ],
+        "benefits": [
+          "Gastos de gestión legal"
+        ],
+        "capital_or_limit": "3.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Causas distintas de las específicamente descritas en la póliza como cubiertas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Deficiencias graves y notorias de conservación de los bienes dañados.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Actuación del Asegurado con dolo, mala fe o culpa grave.",
+        "category": "Conducta del asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Fenómenos de la naturaleza de carácter extraordinario (inundación, terremoto, erupción volcánica, tempestad ciclónica atípica) cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "Eventos Extraordinarios",
+        "legal_reference": null
+      },
+      {
+        "description": "Hechos derivados de terrorismo, motín, tumulto popular o actuaciones de las fuerzas armadas.",
+        "category": "Eventos Sociopolíticos",
+        "legal_reference": null
+      },
+      {
+        "description": "Reacción o radiación nuclear y contaminación radiactiva.",
+        "category": "Nuclear",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Desatasco",
+        "limit_type": "maximum_amount",
+        "limit_value": "500€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Responsabilidad Civil",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.200.000€",
+        "conditions": "Límite anual 200% de la suma asegurada con máximo de 1.200.000€"
+      },
+      {
+        "coverage_name": "Responsabilidad Civil (Víctima)",
+        "limit_type": "maximum_amount",
+        "limit_value": "250.000€",
+        "conditions": "Límite por víctima"
+      },
+      {
+        "coverage_name": "Responsabilidad Civil por Contaminación",
+        "limit_type": "maximum_amount",
+        "limit_value": "300.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asesoría Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.000€",
+        "conditions": "Máximo de gastos de gestión"
+      },
+      {
+        "coverage_name": "Gastos de Alojamiento Provisional",
+        "limit_type": "percentage_and_duration",
+        "limit_value": "10% de la suma asegurada durante 12 meses",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Pérdida de Alquileres",
+        "limit_type": "percentage_and_duration",
+        "limit_value": "10% de la suma asegurada durante 12 meses",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Daños por Agua",
+        "limit_type": "franchise",
+        "limit_value": "150€ o 250€",
+        "conditions": "Según antigüedad del inmueble"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos actuales, correctos y veraces para la emisión",
+        "Revisar los términos y pedir rectificación de errores en el plazo de un mes",
+        "Pagar las primas para que el contrato esté en vigor",
+        "Comunicar modificaciones en el riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente (máximo 7 días)",
+        "Aminorar las consecuencias del siniestro",
+        "Cooperar en el salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Impago de prima",
+        "Derecho de desistimiento (14 días en contratación a distancia)"
+      ],
+      "payment_method": "Cualquiera de los medios de pago disponibles de la compañía",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Antigüedad del inmueble",
+        "Valor de edificación y contenido",
+        "Ubicación",
+        "Uso de la comunidad"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "seguro-comunidades-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

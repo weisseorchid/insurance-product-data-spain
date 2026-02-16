@@ -1,0 +1,245 @@
+[
+    {
+        "fetched_at": "2026-02-16T00:00:00Z",
+        "version": "1.0",
+        "company_key": "C0109",
+        "status": "Active",
+        "products": [
+            {
+                "product_branch": "01",
+                "product_name": "allianz_accidentes",
+                "prduct_id": "urn:C0109-01",
+                "source_folder": "allianz_accidentes",
+                "files": [
+                    "ipid-ampliado.pdf",
+                    "ipid-basico.pdf",
+                    "ipid-extra.pdf",
+                    "ipid-optimo.pdf"
+                ]
+            },
+            {
+                "product_branch": "06",
+                "product_name": "allianz_ciclomotor",
+                "prduct_id": "urn:C0109-02",
+                "source_folder": "allianz_ciclomotor",
+                "files": [
+                    "ipid-ciclomotor-seguro-basico.pdf"
+                ]
+            },
+            {
+                "product_branch": "09",
+                "product_name": "allianz_comunidades",
+                "prduct_id": "urn:C0109-03",
+                "source_folder": "allianz_comunidades",
+                "files": [
+                    "seguro-comunidades-ipid.pdf"
+                ]
+            },
+            {
+                "product_branch": "18",
+                "product_name": "allianz_cyber",
+                "prduct_id": "urn:C0109-04",
+                "source_folder": "allianz_cyber",
+                "files": [
+                    "allianz-ciber-plus-ipid.pdf",
+                    "ciber-plus-basico-ipid.pdf",
+                    "ciber-plus-optimo-ipid.pdf",
+                    "clausula-silent-cyber.pdf",
+                    "ipid-ciber-plus-ampliado.pdf"
+                ]
+            },
+            {
+                "product_branch": "21",
+                "product_name": "allianz_decesos",
+                "prduct_id": "urn:C0109-05",
+                "source_folder": "allianz_decesos",
+                "files": [
+                    "folleto-informativo-decesos.pdf",
+                    "ipid-decesos-completo.pdf",
+                    "ipid-decesos-esencial.pdf",
+                    "ipid-decesos-extra.pdf",
+                    "ipid-decesos-repatriacion.pdf",
+                    "ipid-decesos-total.pdf"
+                ]
+            },
+            {
+                "product_branch": "09",
+                "product_name": "allianz_hogar",
+                "prduct_id": "urn:C0109-06",
+                "source_folder": "allianz_hogar",
+                "files": [
+                    "ipid_completo_prop_hab.pdf",
+                    "ipid_estandar_prop_hab.pdf",
+                    "ipid_superior_prop_hab.pdf"
+                ]
+            },
+            {
+                "product_branch": "16",
+                "product_name": "allianz_mascotas",
+                "prduct_id": "urn:C0109-07",
+                "source_folder": "allianz_mascotas",
+                "files": [
+                    "ipid-rc-perros.pdf",
+                    "nip-rc-perros.pdf",
+                    "tarifas-mascotas.pdf"
+                ]
+            },
+            {
+                "product_branch": "06",
+                "product_name": "allianz_moto",
+                "prduct_id": "urn:C0109-08",
+                "source_folder": "allianz_moto",
+                "files": [
+                    "ipid-moto-perdida-total.pdf",
+                    "ipid-moto-robo.pdf",
+                    "ipid-moto-seguro-basico.pdf",
+                    "ipid-moto-seguro-franquicia.pdf",
+                    "ipid-moto-todo-riesgo-sin-franquicia.pdf"
+                ]
+            },
+            {
+                "product_branch": "06",
+                "product_name": "allianz_movilidad_personal",
+                "prduct_id": "urn:C0109-09",
+                "source_folder": "allianz_movilidad_personal",
+                "files": [
+                    "ipid-patinetes.pdf",
+                    "nip-patinetes.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "allianz_multiriesgo_empresarial",
+                "prduct_id": "urn:C0109-10",
+                "source_folder": "allianz_multiriesgo_empresarial",
+                "files": [
+                    "ALLIANZ IPID-Nominados-vf.pdf",
+                    "ALLIANZ IPID-TRDM-vf.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "allianz_seguros_ingenieria",
+                "prduct_id": "urn:C0109-11",
+                "source_folder": "allianz_seguros_ingenieria",
+                "files": [
+                    "allianz-danos-externos-para-maquinaria.pdf",
+                    "allianz-seguro-de-construccion.pdf",
+                    "allianz-seguro-de-rotura-de-maquinaria.pdf",
+                    "allianz-seguro-decenal-de-danos-a-la-edificacion.pdf"
+                ]
+            },
+            {
+                "product_branch": "05",
+                "product_name": "allianz_seguro_medico",
+                "prduct_id": "urn:C0109-12",
+                "source_folder": "allianz_seguro_medico",
+                "files": [
+                    "seguro-dental-ipid.pdf",
+                    "seguro-medico-asistencia-hospitalaria.pdf",
+                    "seguro-medico-asistencia-primaria-IPID.pdf",
+                    "seguro-medico-cuadro-medico-sin-asistencia-primaria.pdf",
+                    "seguro-medico-reembolso-IPID.pdf",
+                    "tarifas-allianz-dental.pdf",
+                    "tarifas-allianz-salud-individual.pdf"
+                ]
+            },
+            {
+                "product_branch": "03",
+                "product_name": "allianz_vehiculo_comercial",
+                "prduct_id": "urn:C0109-13",
+                "source_folder": "allianz_vehiculo_comercial",
+                "files": [
+                    "autocar-basico-ipid.pdf",
+                    "autocar-danos-estructura-ipid.pdf",
+                    "autocar-incendio-ipid.pdf",
+                    "camion-basico-ipid.pdf",
+                    "camion-basico-robo-ipid.pdf",
+                    "camion-perdida-total-ipid.pdf",
+                    "camion-todo-riesgo-franquicia-ipid.pdf",
+                    "camion-todo-riesgo-ipid.pdf",
+                    "camion-tractor-basico-ipid.pdf",
+                    "camion-tractor-basico-robo-ipid.pdf",
+                    "camion-tractor-perdida-total-ipid.pdf",
+                    "camion-tractor-todo-riesgo-franquicia-ipid.pdf",
+                    "camion-tractor-todo-riesgo-ipid.pdf",
+                    "maquinaria-basico-ipid.pdf",
+                    "maquinaria-terceros-ipid.pdf",
+                    "remolque-basico-ipid.pdf",
+                    "remolque-basico-robo-ipid.pdf",
+                    "remolque-perdida-total-ipid.pdf",
+                    "remolque-todo-riesgo-franquicia-ipid.pdf",
+                    "remolque-todo-riesgo-ipid.pdf",
+                    "semirremolque-basico-ipid.pdf",
+                    "semirremolque-basico-robo-ipid.pdf",
+                    "semirremolque-perdida-total-ipid.pdf",
+                    "semirremolque-todo-riesgo-franquicia-ipid.pdf",
+                    "semirremolque-todo-riesgo-ipid.pdf",
+                    "turismo-comercial-basico-ipid.pdf",
+                    "turismo-comercial-basico-robo-ipid.pdf",
+                    "turismo-comercial-perdida-total-ipid.pdf",
+                    "turismo-comercial-todo-riesgo-franquicia-ipid.pdf",
+                    "turismo-comercial-todo-riesgo-ipid.pdf"
+                ]
+            },
+            {
+                "product_branch": "03",
+                "product_name": "auto_plus",
+                "prduct_id": "urn:C0109-14",
+                "source_folder": "auto_plus",
+                "files": [
+                    "auto-plus-basico.pdf",
+                    "auto-plus-franquicia1.pdf",
+                    "auto-plus-franquicia2.pdf",
+                    "auto-plus-robo-incendio.pdf",
+                    "auto-plus-terceros.pdf",
+                    "auto-plus-tr-sin-franquicia.pdf",
+                    "az_auto_ipid_castellano.pdf",
+                    "ipid-furgoneta-basico.pdf",
+                    "ipid-furgoneta-perdida-total.pdf",
+                    "ipid-furgoneta-robo-incendio.pdf",
+                    "ipid-furgoneta-td-sin-franquicia.pdf",
+                    "ipid-tr-con-franquicia.pdf",
+                    "seguro-coche-electrico-folleto-allianz.pdf",
+                    "seguro-coche-folleto-allianz.pdf"
+                ]
+            },
+            {
+                "product_branch": "08",
+                "product_name": "normativa_generica",
+                "prduct_id": "urn:C0109-15",
+                "source_folder": "normativa_generica",
+                "files": [
+                    "az-nip-generica.pdf",
+                    "guia-buenas-practicas-seguros-automoviles.pdf",
+                    "guia-buenas-practicas-seguros-multirriesgos.pdf",
+                    "guia-buenas-practicas-seguros-salud.pdf",
+                    "guia-buenas-practicas-unit-linked.pdf"
+                ]
+            },
+            {
+                "product_branch": "01",
+                "product_name": "proteccion_autonomo",
+                "prduct_id": "urn:C0109-16",
+                "source_folder": "proteccion_autonomo",
+                "files": [
+                    "proteccion-autonomo-plus-basico.pdf",
+                    "proteccion-autonomo-plus-integral.pdf",
+                    "proteccion-autonomo-plus-optimo.pdf",
+                    "proteccion-autonomo-plus-premium.pdf",
+                    "proteccion-autonomo-plus-superior.pdf"
+                ]
+            },
+            {
+                "product_branch": "00",
+                "product_name": "seguro_vida",
+                "prduct_id": "urn:C0109-17",
+                "source_folder": "seguro_vida",
+                "files": [
+                    "ipid_seguro_proteccion_de_pagos.pdf",
+                    "seguro-vida-pdf.pdf"
+                ]
+            }
+        ]
+    }
+]

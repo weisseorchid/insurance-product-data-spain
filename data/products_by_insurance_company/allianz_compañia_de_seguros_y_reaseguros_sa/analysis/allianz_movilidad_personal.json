@@ -1,0 +1,231 @@
+{
+  "product_name": "allianz_movilidad_personal",
+  "product_branch": "06",
+  "product_id": "urn:C0109-09",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:26:52.380668+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Movilidad Personal",
+      "target_audience": "Particulares y usuarios de vehículos personales ligeros (patinetes)",
+      "description_es": "Seguro diseñado para cubrir la responsabilidad civil obligatoria derivada de la circulación de vehículos personales ligeros, con opciones de defensa jurídica y accidentes corporales.",
+      "description_en": "Insurance designed to cover mandatory civil liability for light personal vehicles, with options for legal defense and personal accidents.",
+      "key_benefits": [
+        "Cobertura de Responsabilidad Civil Obligatoria",
+        "Defensa Jurídica y Reclamación de Daños",
+        "Cobertura opcional de accidentes corporales del conductor",
+        "Asistencia sanitaria incluida en la modalidad de accidentes"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria",
+        "category": "basic",
+        "description": "Cubre la responsabilidad civil derivada de los hechos de la circulación en los que estén involucrados los vehículos personales ligeros.",
+        "covered_events": [
+          "Hechos de la circulación"
+        ],
+        "benefits": [
+          "Indemnización por daños a terceros"
+        ],
+        "capital_or_limit": "6.450.000€ por víctimas y 1.300.000€ por daños materiales",
+        "waiting_period_days": null,
+        "conditions": [
+          "Según los límites establecidos por la ley"
+        ]
+      },
+      {
+        "name": "Defensa Jurídica y Reclamación de daños",
+        "category": "basic",
+        "description": "Servicios de defensa legal y gestión de reclamaciones contra terceros.",
+        "covered_events": [
+          "Conflictos legales derivados de siniestros",
+          "Reclamación de daños sufridos"
+        ],
+        "benefits": [
+          "Asesoramiento legal",
+          "Gastos de defensa"
+        ],
+        "capital_or_limit": "Ilimitada si es designado por Allianz; 1.500€ si es libre elección",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Muerte o Invalidez Física Permanente",
+        "category": "optional",
+        "description": "Indemnización en caso de fallecimiento o invalidez permanente del conductor a consecuencia de un accidente.",
+        "covered_events": [
+          "Accidente corporal del conductor"
+        ],
+        "benefits": [
+          "Capital por fallecimiento",
+          "Capital por invalidez permanente"
+        ],
+        "capital_or_limit": "6.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Depende de la modalidad contratada"
+        ]
+      },
+      {
+        "name": "Gastos Sanitarios",
+        "category": "optional",
+        "description": "Cobertura de los gastos médicos necesarios tras un accidente del conductor.",
+        "covered_events": [
+          "Accidente corporal del conductor"
+        ],
+        "benefits": [
+          "Reembolso de gastos médicos"
+        ],
+        "capital_or_limit": "1.500€ (100% de los gastos hasta el límite)",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Delitos dolosos y conducción bajo los efectos del alcohol, drogas o estupefacientes.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Comisión del delito por la omisión del deber de socorro.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en carreras, concursos y sus entrenamientos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Circulación en zonas restringidas de puertos y aeropuertos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción sin permiso o autorización del propietario.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Situaciones extraordinarias con cobertura por el Consorcio de Compensación de Seguros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Multas y sanciones.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños causados deliberadamente a personas o bienes.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Uso comercial, de negocios, alquiler, mensajería, reparto o transporte de pasajeros.",
+        "category": "Uso",
+        "legal_reference": null
+      },
+      {
+        "description": "Ciberataques o Ciber Riesgos.",
+        "category": "Riesgos Tecnológicos",
+        "legal_reference": null
+      },
+      {
+        "description": "Vehículos personales ligeros de más de 25kg o que excedan los 25km/h.",
+        "category": "Técnica",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Responsabilidad Civil Obligatoria",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.450.000€ por víctimas",
+        "conditions": "Por siniestro"
+      },
+      {
+        "coverage_name": "Responsabilidad Civil Obligatoria",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.300.000€ por daños materiales",
+        "conditions": "Por siniestro"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "En caso de profesionales de libre elección"
+      },
+      {
+        "coverage_name": "Gastos Sanitarios",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Cubre el 100% hasta dicho importe"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos veraces para la emisión de la póliza",
+        "Leer y comprobar los términos y condiciones",
+        "Solicitar rectificación de errores en el plazo de un mes",
+        "Pagar las primas para que el seguro esté en vigor",
+        "Comunicar modificaciones en el riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente (máx. 7 días)",
+        "Poner medios para aminorar las consecuencias",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Falta de pago de la prima",
+        "Comunicación escrita de rescisión"
+      ],
+      "payment_method": "Cualquiera de los medios disponibles de la compañía (domiciliación bancaria mencionada implícitamente)",
+      "payment_frequency": [
+        "anual",
+        "fraccionado"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "No se mencionan copagos",
+      "pricing_factors": [
+        "Modalidad contratada",
+        "Características del vehículo"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": null
+    },
+    "source_documents": [
+      {
+        "filename": "ipid-patinetes.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "nip-patinetes.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

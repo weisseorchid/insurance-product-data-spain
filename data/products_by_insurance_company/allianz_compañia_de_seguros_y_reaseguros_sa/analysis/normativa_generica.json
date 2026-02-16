@@ -1,0 +1,234 @@
+{
+  "product_name": "normativa_generica",
+  "product_branch": "08",
+  "product_id": "urn:C0109-15",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:29:18.773918+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguros Multirramo (Automóviles, Multirriesgo, Salud, Unit-Linked)",
+      "target_audience": "Particulares y empresas",
+      "description_es": "Conjunto de normativas y notas informativas previas estandarizadas de Allianz Seguros siguiendo las guías de buenas prácticas de UNESPA para diversos ramos de seguros.",
+      "description_en": "Set of standard preliminary information notes and regulations from Allianz Insurance following UNESPA's good practice guides for various insurance branches.",
+      "key_benefits": [
+        "Transparencia informativa precontractual",
+        "Estandarización de coberturas según criterios UNESPA",
+        "Protección ante enfermedades graves y edad avanzada en salud",
+        "Adaptación a la Ley de Contrato de Seguro"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria (Autos)",
+        "category": "basic",
+        "description": "Cobertura obligatoria de la responsabilidad civil en vehículos terrestres automóviles.",
+        "covered_events": [
+          "Accidentes de circulación"
+        ],
+        "benefits": [
+          "Indemnización por daños a terceros"
+        ],
+        "capital_or_limit": "70.000.000€ para daños a personas, 15.000.000€ para daños en los bienes",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa Jurídica (Autos)",
+        "category": "optional",
+        "description": "Garantía de asistencia legal en procedimientos derivados de accidentes.",
+        "covered_events": [
+          "Procedimientos judiciales o administrativos"
+        ],
+        "benefits": [
+          "Asesoramiento y representación legal"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Sanitaria con Cuadro Médico",
+        "category": "basic",
+        "description": "Prestación de servicios médicos a través de una red concertada.",
+        "covered_events": [
+          "Enfermedad",
+          "Accidente"
+        ],
+        "benefits": [
+          "Acceso a especialistas",
+          "Hospitalización",
+          "Pruebas diagnósticas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Uso de centros concertados",
+          "Autorización previa en ciertos casos"
+        ]
+      },
+      {
+        "name": "Capital adicional por fallecimiento (Unit-Linked)",
+        "category": "basic",
+        "description": "Capital extra que reciben los beneficiarios en caso de fallecimiento del asegurado antes del vencimiento.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Valor de los fondos acumulados más capital adicional"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Riesgos Extraordinarios",
+        "category": "basic",
+        "description": "Indemnizaciones por eventos catastróficos gestionadas por el Consorcio de Compensación de Seguros.",
+        "covered_events": [
+          "Terremotos",
+          "Inundaciones",
+          "Terrorismo",
+          "Tempestad ciclónica atípica"
+        ],
+        "benefits": [
+          "Indemnización de daños directos"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños y perjuicios por lesiones o fallecimiento del conductor del vehículo causante.",
+        "category": "Automóviles - Seguro Obligatorio",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños en los bienes del vehículo asegurado, cosas transportadas o bienes de parientes hasta el tercer grado.",
+        "category": "Automóviles - Seguro Obligatorio",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños ocasionados si el vehículo hubiera sido robado.",
+        "category": "Automóviles - Seguro Obligatorio",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades preexistentes no declaradas.",
+        "category": "Salud",
+        "legal_reference": "Art. 10 Ley Contrato Seguro"
+      },
+      {
+        "description": "Riesgo de inversión asumido íntegramente por el tomador (el valor de rescate puede ser inferior a la prima).",
+        "category": "Unit-Linked",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Seguro de Salud",
+        "limit_type": "maximum_age_renewal",
+        "limit_value": "65 años",
+        "conditions": "La compañía no se opondrá a la prórroga si existe una antigüedad continuada de 5 años."
+      },
+      {
+        "coverage_name": "Responsabilidad Civil Obligatoria",
+        "limit_type": "maximum_amount",
+        "limit_value": "70.000.000€ por siniestro (personas)",
+        "conditions": "Cualquiera que sea el número de víctimas."
+      },
+      {
+        "coverage_name": "Unit-Linked",
+        "limit_type": "liquidity_restriction",
+        "limit_value": "Variable según póliza",
+        "conditions": "El seguro puede ser ilíquido durante un periodo determinado."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declaración veraz del riesgo (Cuestionario)",
+        "Pago de la prima",
+        "Comunicar variaciones en la naturaleza del riesgo",
+        "Verificar que el alcance de las coberturas coincide con las expectativas"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Declaración del siniestro en los plazos establecidos",
+        "Aportación de documentación requerida por la entidad",
+        "Comunicación de concurrencia de otros seguros para el mismo riesgo"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Fallecimiento del asegurado",
+        "Rescate total (en productos de vida)",
+        "Vencimiento del contrato",
+        "Impago de la prima",
+        "Oposición a la prórroga con preaviso legal"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "anual",
+        "fraccionado"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Posibilidad de copago en asistencia sanitaria según modalidad contratada.",
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Antigüedad del carnet de conducir (Autos)",
+        "Historial de siniestralidad",
+        "Código postal de circulación",
+        "Tramos de edad (Salud)",
+        "Actualización según IPC"
+      ],
+      "discounts": [
+        "Bonificaciones por baja siniestralidad",
+        "Descuentos comerciales especiales"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Cobertura en todo el Espacio Económico Europeo y estados adheridos al Acuerdo entre oficinas nacionales para el seguro de Automóviles."
+    },
+    "source_documents": [
+      {
+        "filename": "az-nip-generica.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "guia-buenas-practicas-seguros-automoviles.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "guia-buenas-practicas-seguros-multirriesgos.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "guia-buenas-practicas-seguros-salud.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "guia-buenas-practicas-unit-linked.md",
+        "document_type": "usage_guide",
+        "extraction_confidence": 0.95
+      }
+    ]
+  }
+}

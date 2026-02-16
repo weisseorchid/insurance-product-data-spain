@@ -1,0 +1,268 @@
+{
+  "product_name": "seguro_vida",
+  "product_branch": "00",
+  "product_id": "urn:C0109-17",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:30:02.538902+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida y Protección de Pagos",
+      "target_audience": "Particulares, autónomos y titulares de préstamos",
+      "description_es": "Una gama completa de seguros de vida que abarca desde la protección de pagos vinculada a préstamos hasta modalidades de vida riesgo personalizadas. El producto está diseñado para ofrecer tranquilidad financiera a la familia y cubrir la pérdida de ingresos por desempleo o incapacidad.",
+      "description_en": "A comprehensive range of life insurance products covering everything from loan-linked payment protection to customized life risk modalities. The product is designed to provide financial peace of mind to the family and cover loss of income due to unemployment or disability.",
+      "key_benefits": [
+        "Flexibilidad en la contratación con 6 modalidades distintas",
+        "Protección de pagos para préstamos en caso de desempleo o incapacidad",
+        "Servicios de valor añadido como testamento online y segunda opinión médica",
+        "Cobertura de orfandad y enfermedades críticas",
+        "Orientación médica 24 horas"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por cualquier causa",
+        "category": "basic",
+        "description": "Pago del capital asegurado o del principal del préstamo pendiente en caso de muerte del asegurado.",
+        "covered_events": [
+          "Fallecimiento del asegurado durante el periodo de cobertura"
+        ],
+        "benefits": [
+          "Pago del capital al beneficiario",
+          "Liquidación del principal del préstamo pendiente (en modalidad protección de pagos)"
+        ],
+        "capital_or_limit": "Principal del préstamo pendiente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Incapacidad Permanente Absoluta",
+        "category": "basic",
+        "description": "Situación física irreversible que impide por completo desarrollar cualquier actividad profesional.",
+        "covered_events": [
+          "Incapacidad absoluta y permanente por enfermedad o accidente"
+        ],
+        "benefits": [
+          "Pago del principal del préstamo pendiente",
+          "Capital asegurado según modalidad"
+        ],
+        "capital_or_limit": "Principal del préstamo pendiente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Desempleo",
+        "category": "optional",
+        "description": "Compensación mensual por pérdida de empleo para trabajadores por cuenta ajena.",
+        "covered_events": [
+          "Situación de desempleo legal"
+        ],
+        "benefits": [
+          "Importe mensual conforme a límites estipulados"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 60,
+        "conditions": [
+          "Carencia de 2 meses desde la adhesión",
+          "Carencia de 6 meses entre siniestros"
+        ]
+      },
+      {
+        "name": "Incapacidad Temporal",
+        "category": "optional",
+        "description": "Prestación económica en caso de baja médica temporal.",
+        "covered_events": [
+          "Baja médica por enfermedad o accidente"
+        ],
+        "benefits": [
+          "Importe mensual según límites económicos"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 30,
+        "conditions": [
+          "Carencia de 1 mes inicial por enfermedad",
+          "Carencia de 1 mes entre siniestros"
+        ]
+      },
+      {
+        "name": "Orfandad Total",
+        "category": "optional",
+        "description": "Capital adicional en caso de fallecimiento de ambos progenitores.",
+        "covered_events": [
+          "Fallecimiento simultáneo o posterior de ambos padres"
+        ],
+        "benefits": [
+          "Capital del 50% del préstamo pendiente"
+        ],
+        "capital_or_limit": "150.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Enfermedad Crítica / Grave",
+        "category": "optional",
+        "description": "Ayuda económica tras el diagnóstico de una enfermedad crítica.",
+        "covered_events": [
+          "Diagnóstico de enfermedad crónica o grave recogida en póliza"
+        ],
+        "benefits": [
+          "Renta equivalente al 1% del principal del préstamo",
+          "Segunda opinión médica internacional"
+        ],
+        "capital_or_limit": "Máximo 6 meses de renta",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Testamento Notarial Online y Vital",
+        "category": "included_service",
+        "description": "Asistencia técnica y jurídica para la elaboración de testamentos.",
+        "covered_events": [
+          "Solicitud del asegurado para elaborar o modificar testamento"
+        ],
+        "benefits": [
+          "Asistencia online para testamento abierto",
+          "Asesoramiento telefónico para testamento vital"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Orientación Médica 24h",
+        "category": "included_service",
+        "description": "Servicio telefónico de asesoramiento médico para toda la familia.",
+        "covered_events": [
+          "Dudas sobre enfermedades, tratamientos o informes médicos"
+        ],
+        "benefits": [
+          "Asesoramiento médico permanente"
+        ],
+        "capital_or_limit": "Ilimitado",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Fallecimientos ocurridos antes de la fecha de inicio o después de la rescisión.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades graves o intervenciones quirúrgicas preexistentes no declaradas.",
+        "category": "Salud",
+        "legal_reference": null
+      },
+      {
+        "description": "Conflictos armados, revolución, motines y epidemias.",
+        "category": "Catastrófico",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros causados con dolo (intención) por el asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Acontecimientos extraordinarios cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "Legal",
+        "legal_reference": null
+      },
+      {
+        "description": "Gastos por servicios no prestados directamente por el asegurador.",
+        "category": "Servicios",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fallecimiento e Incapacidad Permanente Absoluta",
+        "limit_type": "exclusive_coverage",
+        "limit_value": "Alternativas y excluyentes",
+        "conditions": "El asegurado solo puede estar cubierto por una de ellas al mismo tiempo."
+      },
+      {
+        "coverage_name": "Desempleo e Incapacidad Temporal",
+        "limit_type": "exclusive_coverage",
+        "limit_value": "Excluyentes entre sí",
+        "conditions": "Dependerá de la relación laboral en el momento del siniestro."
+      },
+      {
+        "coverage_name": "Enfermedad Crítica",
+        "limit_type": "days_per_year",
+        "limit_value": "6 meses",
+        "conditions": "O hasta el fallecimiento si ocurre antes."
+      },
+      {
+        "coverage_name": "Seguro de Protección de Pagos",
+        "limit_type": "maximum_duration",
+        "limit_value": "10 años",
+        "conditions": "Prorrogable por periodos anuales si el préstamo es superior."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos actuales, correctos y veraces",
+        "Comunicar cambios en la información personal",
+        "Pagar la prima única o periódica según corresponda",
+        "Comprobar los términos del contrato en el primer mes"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Comunicar el siniestro en tiempo y forma",
+        "Facilitar documentación para determinar el pago de la prestación"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual prorrogable o duración vinculada al préstamo (máx 10 años iniciales)",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Vencimiento del plazo",
+        "Cancelación del préstamo vinculado",
+        "Comunicación escrita con un mes de antelación"
+      ],
+      "payment_method": "Cualquier medio disponible por la entidad",
+      "payment_frequency": [
+        "prima única",
+        "anual"
+      ]
+    },
+    "pricing": {
+      "base_premium": "Variable según modalidad",
+      "copay_info": "Franquicia prevista en Desempleo e IT",
+      "pricing_factors": [
+        "Tipo de relación laboral",
+        "Capital del préstamo",
+        "Estado de salud del asegurado",
+        "Modalidad elegida"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Fallecimiento (salvo exclusiones extraordinarias)"
+      ],
+      "special_conditions_abroad": "Resto de garantías limitadas al territorio español."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_seguro_proteccion_de_pagos.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-vida-pdf.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.9
+      }
+    ]
+  }
+}

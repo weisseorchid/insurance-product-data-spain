@@ -1,0 +1,255 @@
+{
+  "product_name": "allianz_accidentes",
+  "product_branch": "01",
+  "product_id": "urn:C0109-01",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:23:55.521458+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Accidentes",
+      "target_audience": "Particulares",
+      "description_es": "Es el seguro que cubre los riesgos de la integridad física del asegurado cuando su origen es un accidente, definido como lesión corporal que deriva de una causa violenta, súbita, externa y ajena a la intencionalidad del asegurado que produce invalidez temporal o permanente o muerte.",
+      "description_en": "This insurance covers risks to the insured's physical integrity originating from an accident, defined as a bodily injury resulting from a violent, sudden, external cause independent of the insured's intent, leading to temporary or permanent disability or death.",
+      "key_benefits": [
+        "Protección ante fallecimiento e invalidez por accidente",
+        "Cobertura extendida a accidentes de circulación en modalidades superiores",
+        "Asistencia sanitaria con cuadro concertado incluida en planes Extra y Ampliado",
+        "Cobertura geográfica mundial para fallecimiento"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por accidente",
+        "category": "basic",
+        "description": "Pago del capital contratado en caso de muerte por accidente",
+        "covered_events": [
+          "Accidente con resultado de muerte"
+        ],
+        "benefits": [
+          "Capital de 30.000 a 300.000 euros"
+        ],
+        "capital_or_limit": "300.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Cobertura hasta el fin de la anualidad en que el asegurado cumpla 80 años"
+        ]
+      },
+      {
+        "name": "Invalidez Permanente y Absoluta por accidente",
+        "category": "basic",
+        "description": "Pago del capital contratado en caso de invalidez permanente y absoluta derivada de un accidente",
+        "covered_events": [
+          "Accidente con resultado de invalidez permanente y absoluta"
+        ],
+        "benefits": [
+          "Capital de 30.000 a 300.000 euros"
+        ],
+        "capital_or_limit": "300.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Cobertura hasta el fin de la anualidad en que el asegurado cumpla 67 años"
+        ]
+      },
+      {
+        "name": "Fallecimiento por accidente de circulación",
+        "category": "optional",
+        "description": "Garantía específica para fallecimiento ocurrido en accidente de tráfico (Disponible en Óptimo y Ampliado)",
+        "covered_events": [
+          "Accidente de circulación"
+        ],
+        "benefits": [
+          "Capital según contrato"
+        ],
+        "capital_or_limit": "300.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Invalidez Permanente y Absoluta por accidente de circulación",
+        "category": "optional",
+        "description": "Garantía específica para invalidez permanente y absoluta ocurrida en accidente de tráfico (Disponible en Óptimo y Ampliado)",
+        "covered_events": [
+          "Accidente de circulación"
+        ],
+        "benefits": [
+          "Capital según contrato"
+        ],
+        "capital_or_limit": "300.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia Sanitaria Con Cuadro Concertado",
+        "category": "included_service",
+        "description": "Asistencia médica a través de la red de centros de Allianz (Disponible en Extra y Ampliado)",
+        "covered_events": [
+          "Accidente cubierto por la póliza"
+        ],
+        "benefits": [
+          "Atención médica en centros concertados"
+        ],
+        "capital_or_limit": "Limitado al cuadro concertado",
+        "waiting_period_days": null,
+        "conditions": [
+          "Limitado a territorio nacional",
+          "Procedimientos diagnósticos y terapéuticos implantados en la Red Sanitaria Nacional"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Fallecimiento e Invalidez por Enfermedad",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Fenómenos de la naturaleza, terrorismo, actuaciones de las Fuerzas Armadas y cuerpos de Seguridad",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Epidemias, contaminación radioactiva y actos intencionados o dolosos del asegurado",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Suicidio o tentativa de suicidio",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes ocurridos con anterioridad a la entrada en vigor del seguro",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica de deportes de riesgo: automovilismo, motorismo, motonáutica de competición, toreo, alpinismo, escalada, esquí fuera pista, espeleología, puenting, rafting, barranquismo, paracaidismo, vuelo sin motor, vuelo delta, aerostación y aeronáutica",
+        "category": "Deportes y Actividades",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes por estar embriagado o bajo el efecto de drogas, tóxicos o estupefacientes no prescritos",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes en aeronaves que no sean de transporte público de pasajeros",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes derivados de preexistencias declaradas en la Declaración de Salud",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Derrames cerebrales, infarto de miocardio, angina de pecho y sus consecuencias",
+        "category": "Salud",
+        "legal_reference": null
+      },
+      {
+        "description": "Terapias alternativas y tratamientos experimentales",
+        "category": "Asistencia Sanitaria",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fallecimiento",
+        "limit_type": "maximum_age",
+        "limit_value": "80 años",
+        "conditions": "Hasta el fin de la anualidad en que se cumpla dicha edad"
+      },
+      {
+        "coverage_name": "Resto de coberturas (Invalidez, Asistencia)",
+        "limit_type": "maximum_age",
+        "limit_value": "67 años",
+        "conditions": "Hasta el fin de la anualidad en que se cumpla dicha edad"
+      },
+      {
+        "coverage_name": "Capital Asegurado",
+        "limit_type": "monetary_range",
+        "limit_value": "30.000€ a 300.000€",
+        "conditions": "Según lo contratado en póliza"
+      },
+      {
+        "coverage_name": "Asistencia Sanitaria",
+        "limit_type": "geographic_restriction",
+        "limit_value": "Territorio nacional",
+        "conditions": "Limitado al Cuadro Concertado de Allianz"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Aportar declaración de salud veraz",
+        "Facilitar datos correctos para la emisión de la póliza",
+        "Revisar los términos y pedir rectificación de errores en el plazo de un mes",
+        "Pagar las primas",
+        "Comunicar modificaciones en el riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente y máximo en 7 días",
+        "Poner medios para aminorar las consecuencias del siniestro",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga por alguna de las partes",
+        "Cobro del capital asegurado por invalidez permanente y absoluta o fallecimiento",
+        "Derecho de desistimiento (14 días en contratación a distancia)"
+      ],
+      "payment_method": "Cualquier medio de pago disponible de la compañía",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Declaración de salud",
+        "Capital contratado"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "Varios según garantía",
+      "worldwide_coverage": [
+        "Fallecimiento por accidente",
+        "Fallecimiento por accidente de circulación"
+      ],
+      "special_conditions_abroad": "La Invalidez Permanente está cubierta en cualquier país del Espacio Económico Europeo. La Asistencia Sanitaria solo en territorio nacional."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid-ampliado.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-basico.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-extra.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-optimo.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

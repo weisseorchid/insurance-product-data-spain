@@ -1,0 +1,329 @@
+{
+  "product_name": "allianz_decesos",
+  "product_branch": "21",
+  "product_id": "urn:C0109-05",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:25:23.148599+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Decesos",
+      "target_audience": "Particulares (incluyendo extranjeros residentes en España para la modalidad de Repatriación)",
+      "description_es": "Seguro de decesos que cubre las gestiones y gastos relacionados con la prestación del servicio funerario tras el fallecimiento, adaptándose a los usos y costumbres locales, con diversas modalidades (Esencial, Completo, Extra, Total y Repatriación).",
+      "description_en": "Funeral insurance covering expenses and management related to funerary services upon death, tailored to local customs, offering various coverage levels (Essential, Complete, Extra, Total, and Repatriation).",
+      "key_benefits": [
+        "Tranquilidad familiar evitando gastos y gestiones administrativas",
+        "Flexibilidad de pago (Mensual, Trimestral, Semestral, Anual y Prima Única)",
+        "Servicios de valor añadido como Testamento Notarial y Borrado Digital",
+        "Asistencia médica y dental en modalidades superiores",
+        "Repatriación específica para extranjeros residentes"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Servicio de decesos",
+        "category": "basic",
+        "description": "Prestación del servicio funerario adecuado al domicilio del asegurado según usos y costumbres de la localidad.",
+        "covered_events": [
+          "Fallecimiento por cualquier causa"
+        ],
+        "benefits": [
+          "Gestión completa del servicio fúnebre",
+          "Gastos del entierro o incineración"
+        ],
+        "capital_or_limit": "Límite señalado en la póliza actualizable anualmente",
+        "waiting_period_days": 20,
+        "conditions": null
+      },
+      {
+        "name": "Traslado completo",
+        "category": "basic",
+        "description": "Traslado de los restos mortales desde cualquier lugar del mundo hasta el lugar de inhumación en España.",
+        "covered_events": [
+          "Fallecimiento fuera del domicilio habitual"
+        ],
+        "benefits": [
+          "Transporte de los restos mortales"
+        ],
+        "capital_or_limit": "Ilimitado para traslado a España",
+        "waiting_period_days": 20,
+        "conditions": [
+          "Residencia habitual en España",
+          "No permanecer fuera de España más de 90 días"
+        ]
+      },
+      {
+        "name": "Asistencia en viaje",
+        "category": "basic",
+        "description": "Cobertura de asistencia durante desplazamientos temporales.",
+        "covered_events": [
+          "Siniestros ocurridos durante viajes"
+        ],
+        "benefits": [
+          "Asistencia médica en viaje",
+          "Servicios de emergencia"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 20,
+        "conditions": [
+          "Viajes de duración inferior a 90 días"
+        ]
+      },
+      {
+        "name": "Gestión servicios jurídicos",
+        "category": "included_service",
+        "description": "Asesoramiento y gestión de trámites legales derivados del fallecimiento.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Asesoría legal"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Testamento Notarial y Testamento Vital",
+        "category": "included_service",
+        "description": "Servicio de ayuda para la elaboración del testamento ante notario y del documento de voluntades anticipadas.",
+        "covered_events": [
+          "Solicitud del asegurado"
+        ],
+        "benefits": [
+          "Elaboración del testamento",
+          "Asesoramiento jurídico telefónico"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Disponible en modalidades Completo, Extra y Total"
+        ]
+      },
+      {
+        "name": "Borrado digital",
+        "category": "included_service",
+        "description": "Eliminación de la presencia online y datos personales del fallecido en internet.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Eliminación de perfiles en redes sociales",
+          "Borrado de cuentas de correo"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Disponible en modalidades Completo, Extra y Total"
+        ]
+      },
+      {
+        "name": "Seguro Dental",
+        "category": "optional",
+        "description": "Acceso a red de clínicas dentales con servicios gratuitos y precios franquiciados.",
+        "covered_events": [
+          "Necesidad de atención bucodental"
+        ],
+        "benefits": [
+          "Acceso a clínicas especializadas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Incluido en modalidades Extra y Total"
+        ]
+      },
+      {
+        "name": "Asistencia Médica",
+        "category": "optional",
+        "description": "Servicios de salud adicionales incluyendo videoconsulta y chat médico.",
+        "covered_events": [
+          "Enfermedad o consulta de salud"
+        ],
+        "benefits": [
+          "Videoconsulta",
+          "Chat médico",
+          "Segunda opinión médica"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Incluido en modalidades Extra y Total"
+        ]
+      },
+      {
+        "name": "Indemnización por Hospitalización",
+        "category": "optional",
+        "description": "Pago de una indemnización económica por cada día de estancia en centro hospitalario.",
+        "covered_events": [
+          "Ingreso hospitalario"
+        ],
+        "benefits": [
+          "Pago por día de hospitalización"
+        ],
+        "capital_or_limit": "Según condiciones de la póliza",
+        "waiting_period_days": 90,
+        "conditions": [
+          "Solo modalidad Total",
+          "Finaliza cuando el asegurado cumple 70 años"
+        ]
+      },
+      {
+        "name": "Repatriación",
+        "category": "optional",
+        "description": "Servicio de traslado del fallecido al país de origen para extranjeros residentes en España.",
+        "covered_events": [
+          "Fallecimiento del asegurado residente"
+        ],
+        "benefits": [
+          "Traslado internacional del cuerpo"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 180,
+        "conditions": [
+          "Específico de la modalidad Repatriación"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Fallecimientos ocurridos antes del inicio de la cobertura o tras la rescisión de la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Fallecimientos derivados de enfermedad, accidente o consumo de drogas preexistentes no declarados en el cuestionario de salud.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Fallecimientos por conflictos armados, revolución, motines, epidemias o causas catastróficas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros causados intencionadamente por dolo.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Reembolso de gastos por servicios cubiertos que no hayan sido prestados por el asegurador.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Prestación del servicio fúnebre fuera de España (salvo garantías específicas de traslado/repatriación).",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Traslado y Asistencia en viaje",
+        "limit_type": "days_per_year",
+        "limit_value": "90 días",
+        "conditions": "Máximo de días consecutivos fuera de España para mantener la cobertura"
+      },
+      {
+        "coverage_name": "Hospitalización",
+        "limit_type": "age_limit",
+        "limit_value": "70 años",
+        "conditions": "La garantía finaliza automáticamente al cumplir esta edad"
+      },
+      {
+        "coverage_name": "Repatriación",
+        "limit_type": "waiting_period",
+        "limit_value": "6 meses",
+        "conditions": "Periodo de carencia específico para esta modalidad"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos veraces para la emisión del contrato",
+        "Firmar el cuestionario de salud",
+        "Pagar la prima del seguro",
+        "Comunicar cualquier cambio en la información proporcionada",
+        "Comprobar los términos del contrato en el primer mes"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Comunicar el fallecimiento a la compañía",
+        "Facilitar la documentación requerida por la aseguradora"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Impago de prima",
+        "Fallecimiento del asegurado"
+      ],
+      "payment_method": "Medios de pago disponibles de la compañía (Domiciliación bancaria implícita)",
+      "payment_frequency": [
+        "mensual",
+        "trimestral",
+        "semestral",
+        "anual",
+        "único"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Servicio Dental con precios franquiciados",
+      "pricing_factors": [
+        "Modalidad de prima mixta (creciente hasta los 75 años)",
+        "Nivelación de prima a partir de los 75 años",
+        "Localidad de residencia (usos y costumbres)",
+        "Edad de los asegurados"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Traslado completo de restos mortales",
+        "Asistencia en viaje"
+      ],
+      "special_conditions_abroad": "Limitado a viajes de máximo 90 días de duración"
+    },
+    "source_documents": [
+      {
+        "filename": "folleto-informativo-decesos.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-decesos-completo.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-decesos-esencial.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-decesos-extra.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-decesos-repatriacion.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-decesos-total.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

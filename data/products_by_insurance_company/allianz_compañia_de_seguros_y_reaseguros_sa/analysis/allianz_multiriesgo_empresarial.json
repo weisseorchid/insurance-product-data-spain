@@ -1,0 +1,278 @@
+{
+  "product_name": "allianz_multiriesgo_empresarial",
+  "product_branch": "08",
+  "product_id": "urn:C0109-10",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:27:14.553878+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro Multiriesgo Empresarial",
+      "target_audience": "Empresas y actividades agrarias",
+      "description_es": "Contrato de seguro que cubre daños a inmuebles o bienes por riesgos como incendio, robo, responsabilidad civil y daños por agua, incluyendo una modalidad de Todo Riesgo de Daño Material.",
+      "description_en": "Insurance contract covering damage to buildings or property due to risks such as fire, theft, civil liability, and water damage, including an All-Risk Material Damage modality.",
+      "key_benefits": [
+        "Protección integral frente a daños materiales y robo",
+        "Cobertura de Responsabilidad Civil hasta 1.500.000€",
+        "Indemnización por Lucro Cesante",
+        "Asistencia en urgencias y jurídica incluida",
+        "Modalidad Todo Riesgo para eventos súbitos e imprevistos"
+      ],
+      "insurance_company": "Allianz Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Incendio, Explosión y Caída de Rayo",
+        "category": "basic",
+        "description": "Cobertura de daños materiales por incendio, explosiones o impacto de rayo.",
+        "covered_events": [
+          "Incendio",
+          "Explosión",
+          "Caída de Rayo"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales"
+        ],
+        "capital_or_limit": "Suma asegurada de edificación, ajuar y mercancías",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Todo Riesgo de Daño Material",
+        "category": "basic",
+        "description": "Cubre daños físicos directos que ocurran de forma súbita, accidental e imprevista.",
+        "covered_events": [
+          "Cualquier daño físico directo súbito y accidental no excluido"
+        ],
+        "benefits": [
+          "Reparación o reposición de bienes"
+        ],
+        "capital_or_limit": "Suma asegurada total",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil",
+        "category": "basic",
+        "description": "Cubre la responsabilidad civil inmobiliaria, de explotación, patronal, productos y trabajos en el exterior.",
+        "covered_events": [
+          "Daños a terceros",
+          "Accidentes laborales (RC Patronal)",
+          "Daños por productos o trabajos realizados"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones a terceros",
+          "Defensa jurídica"
+        ],
+        "capital_or_limit": "1.500.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Sublímite por víctima de 150.000€"
+        ]
+      },
+      {
+        "name": "Robo y Hurto",
+        "category": "basic",
+        "description": "Cobertura por desaparición forzada o sustracción de bienes, incluyendo metálico.",
+        "covered_events": [
+          "Robo",
+          "Hurto",
+          "Robo de metálico en caja fuerte o mueble",
+          "Transporte de metálico"
+        ],
+        "benefits": [
+          "Reposición de bienes sustraídos",
+          "Indemnización por efectivo"
+        ],
+        "capital_or_limit": "Según condiciones particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Lucro Cesante",
+        "category": "basic",
+        "description": "Compensación por la pérdida de rendimiento económico tras un siniestro cubierto.",
+        "covered_events": [
+          "Interrupción de la actividad por siniestro garantizado"
+        ],
+        "benefits": [
+          "Margen Bruto",
+          "Gastos Permanentes",
+          "Indemnización diaria",
+          "Pérdida de Alquileres"
+        ],
+        "capital_or_limit": "Máximo 60.000€ para indemnización diaria",
+        "waiting_period_days": null,
+        "conditions": [
+          "Indemnización diaria hasta 600€/día",
+          "Periodo máximo de 100 días"
+        ]
+      },
+      {
+        "name": "Asistencia",
+        "category": "included_service",
+        "description": "Servicios de urgencia y asesoramiento jurídico.",
+        "covered_events": [
+          "Urgencias en el local",
+          "Necesidad de asesoramiento legal"
+        ],
+        "benefits": [
+          "Asistencia Urgencias",
+          "Asistencias Jurídicas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Dolo o culpa grave del Tomador, Asegurado o Beneficiario",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos cubiertos por el Consorcio de Compensación de Seguros",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Confiscación o requisa de bienes por orden gubernamental",
+        "category": "Político/Guerra",
+        "legal_reference": null
+      },
+      {
+        "description": "Guerra civil, catástrofe nacional o reacciones nucleares",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Desgaste, uso y deterioro gradual, fabricación defectuosa",
+        "category": "Técnica",
+        "legal_reference": null
+      },
+      {
+        "description": "Virus informáticos de cualquier tipo",
+        "category": "Tecnológica",
+        "legal_reference": null
+      },
+      {
+        "description": "Local asegurado abandonado más de 30 días consecutivos",
+        "category": "Estado del riesgo",
+        "legal_reference": null
+      },
+      {
+        "description": "Contagio o transmisión de plagas y enfermedades de animales o plantas",
+        "category": "Agrario/Salud",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Gastos Derivados de Incendio",
+        "limit_type": "maximum_amount",
+        "limit_value": "10% de la Suma Asegurada",
+        "conditions": "Para Edificación, Ajuar y/o Mercancías"
+      },
+      {
+        "coverage_name": "Honorarios Profesionales",
+        "limit_type": "maximum_amount",
+        "limit_value": "60.000€",
+        "conditions": "Incluye reposición de moldes"
+      },
+      {
+        "coverage_name": "Honorarios de Perito",
+        "limit_type": "maximum_amount",
+        "limit_value": "30.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Heladas",
+        "limit_type": "maximum_amount",
+        "limit_value": "30.000€",
+        "conditions": "Máximo 2% de la S.A. de Edificación"
+      },
+      {
+        "coverage_name": "Robo (elementos edificación)",
+        "limit_type": "maximum_amount",
+        "limit_value": "5.000€",
+        "conditions": "En exceso de los primeros 500€"
+      },
+      {
+        "coverage_name": "Restauración Estética",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Responsabilidad Civil Explotación (custodia)",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.800€",
+        "conditions": "Sublímite de 600€ por cliente o proveedor"
+      },
+      {
+        "coverage_name": "Rotura de Cristales",
+        "limit_type": "unit_limit",
+        "limit_value": "1.500€",
+        "conditions": "Bienes cuyo valor unitario exceda este importe están restringidos"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos actuales, correctos y veraces",
+        "Leer y comprobar los términos de la póliza",
+        "Pagar las primas para la vigencia del contrato",
+        "Comunicar modificaciones del riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar la ocurrencia del siniestro inmediatamente",
+        "Poner medios para aminorar las consecuencias",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga",
+        "Derecho de desistimiento",
+        "Incumplimiento de pago de prima"
+      ],
+      "payment_method": "Cualquier medio de pago disponible de la compañía",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Capitales asegurados (Continente y Contenido)",
+        "Tipo de actividad empresarial",
+        "Medidas de protección contra robo e incendio"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Para Responsabilidad Civil, cobertura en Unión Europea y Andorra para hechos ocurridos y reclamados allí."
+    },
+    "source_documents": [
+      {
+        "filename": "ALLIANZ IPID-Nominados-vf.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ALLIANZ IPID-TRDM-vf.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

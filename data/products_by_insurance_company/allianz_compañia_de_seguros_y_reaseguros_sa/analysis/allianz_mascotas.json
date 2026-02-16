@@ -1,0 +1,239 @@
+{
+  "product_name": "allianz_mascotas",
+  "product_branch": "16",
+  "product_id": "urn:C0109-07",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:26:06.166660+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Mascotas",
+      "target_audience": "Propietarios de perros de compañía",
+      "description_es": "Seguro de responsabilidad civil y protección para mascotas que garantiza los daños a terceros causados por la mascota, defensa jurídica, reclamación de daños y acceso a servicios veterinarios.",
+      "description_en": "Pet insurance providing civil liability coverage, legal defense, damage claims, and access to veterinary services through a medical network.",
+      "key_benefits": [
+        "Responsabilidad Civil hasta 300.000€ por siniestro",
+        "Defensa Jurídica y Reclamación de daños",
+        "Asesoramiento Telefónico Veterinario y Legal",
+        "Acceso a cuadro veterinario con más de 600 profesionales",
+        "Servicios gratuitos de medicina preventiva y videoconsultas"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil del propietario",
+        "category": "basic",
+        "description": "Cubre los daños a terceros que pueda causar la mascota asegurada dentro de los límites legales y de la póliza.",
+        "covered_events": [
+          "Daños causados a terceros por la mascota"
+        ],
+        "benefits": [
+          "Indemnización por siniestro hasta 300.000€"
+        ],
+        "capital_or_limit": "300.000€ por siniestro / 600.000€ por año",
+        "waiting_period_days": null,
+        "conditions": [
+          "Existen opciones alternativas de límites de 150.000€ o 100.000€ por siniestro"
+        ]
+      },
+      {
+        "name": "Defensa Jurídica y Reclamación de daños",
+        "category": "basic",
+        "description": "Gastos de defensa penal, reclamación de daños no contractual o defensa subsidiaria de la RC gestionada por Onlygal Seguros.",
+        "covered_events": [
+          "Procesos penales",
+          "Reclamación de daños no contractuales"
+        ],
+        "benefits": [
+          "Pago de gastos de defensa"
+        ],
+        "capital_or_limit": "3.000€ (1.500€ en caso de libre elección de abogado)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asesoramiento Telefónico y Legal",
+        "category": "included_service",
+        "description": "Servicios de asesoramiento remoto para el tutor de la mascota.",
+        "covered_events": [
+          "Consultas sobre la mascota",
+          "Consultas legales"
+        ],
+        "benefits": [
+          "Asesoramiento telefónico MeetingVets",
+          "Chat de asesoramiento legal"
+        ],
+        "capital_or_limit": "Ilimitado",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Cuadro Veterinario (Servicios Gratuitos)",
+        "category": "optional",
+        "description": "Servicios incluidos sin coste adicional si se contrata la cobertura de cuadro veterinario.",
+        "covered_events": [
+          "Consultas preventivas",
+          "Segundas opiniones",
+          "Revisiones"
+        ],
+        "benefits": [
+          "Consulta Digital/Videoconsulta ilimitada",
+          "Consulta Medicina Preventiva",
+          "Consulta Salud Oral",
+          "Segunda Opinión",
+          "Interpretación de resultados"
+        ],
+        "capital_or_limit": "Sin coste",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Servicios Veterinarios a Tarifas Preferenciales",
+        "category": "optional",
+        "description": "Acceso a servicios clínicos y quirúrgicos con precios baremados inferiores al mercado.",
+        "covered_events": [
+          "Enfermedad",
+          "Accidente",
+          "Cirugía"
+        ],
+        "benefits": [
+          "Urgencias Veterinarias 24h",
+          "Vacunación",
+          "Cirugías y hospitalización",
+          "Pruebas diagnósticas (Rayos X, Ecografías, TC)"
+        ],
+        "capital_or_limit": "Según Baremo de Tarifas 2025",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Actividades consideradas como ilegales según legislación local",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Actividades en conflicto con sanciones legales",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Protección contra multas o penalizaciones resultantes de actos criminales",
+        "category": "Defensa Jurídica",
+        "legal_reference": null
+      },
+      {
+        "description": "Actos realizados por el Asegurado con dolo, mala fe o culpa grave",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación de los animales en apuestas o desafíos",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Destinar los animales a funciones o servicios diferentes a los declarados en la solicitud",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Causas distintas de las específicamente descritas como cubiertas",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Responsabilidad Civil",
+        "limit_type": "maximum_amount",
+        "limit_value": "300.000€ por siniestro",
+        "conditions": "Sujeto a un máximo agregado anual de 600.000€"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Este límite aplica específicamente cuando el asegurado ejerce su derecho a la libre elección de abogado"
+      },
+      {
+        "coverage_name": "Servicios de Urgencia",
+        "limit_type": "price_increase",
+        "limit_value": "25% de suplemento",
+        "conditions": "Aplica sobre la tarifa base para servicios realizados como urgencia"
+      },
+      {
+        "coverage_name": "Baremo de Tarifas",
+        "limit_type": "exclusion_of_materials",
+        "limit_value": "No incluye materiales",
+        "conditions": "Los precios no incluyen sueros, medicamentos, prótesis, mallas, placas o cerclajes"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos correctos, veraces y actuales para la emisión",
+        "Leer y comprobar la póliza (plazo de 1 mes para rectificaciones)",
+        "Pagar las primas para que el contrato esté en vigor",
+        "Comunicar cualquier modificación del riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro en un máximo de 7 días",
+        "Aminorar las consecuencias del siniestro",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga por escrito",
+        "Derecho de desistimiento en contratos a distancia"
+      ],
+      "payment_method": "Cualquiera de los medios disponibles de la compañía (habitualmente domiciliación)",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionado (según condiciones particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Tarifas preferenciales por servicio para coberturas veterinarias",
+      "pricing_factors": [
+        "Límite de capital de Responsabilidad Civil elegido",
+        "Inclusión de cuadro veterinario",
+        "Tipo de animal"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "La cobertura de RC es ampliable a la Unión Europea, Andorra y Reino Unido"
+    },
+    "source_documents": [
+      {
+        "filename": "ipid-rc-perros.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "nip-rc-perros.md",
+        "document_type": "other",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "tarifas-mascotas.md",
+        "document_type": "brochure",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

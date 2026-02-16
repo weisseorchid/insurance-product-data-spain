@@ -1,0 +1,648 @@
+{
+  "schema_version": "1.0",
+  "processed_at": "2026-02-16T09:21:45.204945+00:00",
+  "processor": {
+    "name": "process_pdfs",
+    "version": "1.0.0",
+    "converter": "markitdown[pdf]"
+  },
+  "company_key": "C0109",
+  "summary": {
+    "total_files": 99,
+    "successful": 99,
+    "failed": 0
+  },
+  "products": [
+    {
+      "product_name": "allianz_accidentes",
+      "total_files": 4,
+      "successful": 4,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid-ampliado.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-basico.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-extra.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-optimo.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_ciclomotor",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid-ciclomotor-seguro-basico.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_comunidades",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "seguro-comunidades-ipid.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_cyber",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "allianz-ciber-plus-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ciber-plus-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ciber-plus-optimo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "clausula-silent-cyber.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-ciber-plus-ampliado.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_decesos",
+      "total_files": 6,
+      "successful": 6,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "folleto-informativo-decesos.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-decesos-completo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-decesos-esencial.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-decesos-extra.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-decesos-repatriacion.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-decesos-total.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_hogar",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid_completo_prop_hab.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_estandar_prop_hab.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid_superior_prop_hab.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_mascotas",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid-rc-perros.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "nip-rc-perros.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "tarifas-mascotas.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_moto",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid-moto-perdida-total.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-moto-robo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-moto-seguro-basico.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-moto-seguro-franquicia.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-moto-todo-riesgo-sin-franquicia.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_movilidad_personal",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid-patinetes.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "nip-patinetes.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_multiriesgo_empresarial",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ALLIANZ IPID-Nominados-vf.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ALLIANZ IPID-TRDM-vf.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_seguros_ingenieria",
+      "total_files": 4,
+      "successful": 4,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "allianz-danos-externos-para-maquinaria.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "allianz-seguro-de-construccion.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "allianz-seguro-de-rotura-de-maquinaria.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "allianz-seguro-decenal-de-danos-a-la-edificacion.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_seguro_medico",
+      "total_files": 7,
+      "successful": 7,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "seguro-dental-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-medico-asistencia-hospitalaria.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-medico-asistencia-primaria-IPID.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-medico-cuadro-medico-sin-asistencia-primaria.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-medico-reembolso-IPID.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "tarifas-allianz-dental.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "tarifas-allianz-salud-individual.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "allianz_vehiculo_comercial",
+      "total_files": 30,
+      "successful": 30,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "autocar-básico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "autocar-danos-estructura-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "autocar-incendio-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-basico-robo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-perdida-total-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-todo-riesgo-franquicia-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-todo-riesgo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-tractor-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-tractor-basico-robo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-tractor-perdida-total-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-tractor-todo-riesgo-franquicia-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "camion-tractor-todo-riesgo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "maquinaria-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "maquinaria-terceros-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "remolque-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "remolque-basico-robo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "remolque-perdida-total-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "remolque-todo-riesgo-franquicia-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "remolque-todo-riesgo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "semirremolque-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "semirremolque-basico-robo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "semirremolque-perdida-total-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "semirremolque-todo-riesgo-franquicia-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "semirremolque-todo-riesgo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "turismo-comercial-basico-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "turismo-comercial-basico-robo-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "turismo-comercial-perdida-total-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "turismo-comercial-todo-riesgo-franquicia-ipid.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "turismo-comercial-todo-riesgo-ipid.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "auto_plus",
+      "total_files": 14,
+      "successful": 14,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "auto-plus-basico.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "auto-plus-franquicia1.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "auto-plus-franquicia2.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "auto-plus-robo-incendio.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "auto-plus-terceros.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "auto-plus-tr-sin-franquicia.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "az_auto_ipid_castellano.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-furgoneta-basico.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-furgoneta-perdida-total.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-furgoneta-robo-incendio.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-furgoneta-td-sin-franquicia.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ipid-tr-con-franquicia.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-coche-electrico-folleto-allianz.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-coche-folleto-allianz.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "normativa_generica",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "az-nip-generica.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-buenas-practicas-seguros-automoviles.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-buenas-practicas-seguros-multirriesgos.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-buenas-practicas-seguros-salud.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "guia-buenas-practicas-unit-linked.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "proteccion_autonomo",
+      "total_files": 5,
+      "successful": 5,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "proteccion-autonomo-plus-basico.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "proteccion-autonomo-plus-integral.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "proteccion-autonomo-plus-optimo.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "proteccion-autonomo-plus-premium.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "proteccion-autonomo-plus-superior.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_vida",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "ipid_seguro_proteccion_de_pagos.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "seguro-vida-pdf.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

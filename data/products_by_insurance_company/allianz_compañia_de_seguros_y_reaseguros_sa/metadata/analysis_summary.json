@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "analyzed_at": "2026-02-16T09:30:02.540816+00:00",
+  "analyzer": {
+    "name": "analyze_products",
+    "version": "1.0.0",
+    "model": "gemini-2.5-flash-preview-05-20"
+  },
+  "company_key": "C0109",
+  "summary": {
+    "total_products": 17,
+    "successful": 17,
+    "failed": 0,
+    "total_markdown_files": 99
+  },
+  "products": [
+    {
+      "product_name": "allianz_accidentes",
+      "product_id": "urn:C0109-01",
+      "success": true,
+      "markdown_files_processed": 4,
+      "error": null
+    },
+    {
+      "product_name": "allianz_ciclomotor",
+      "product_id": "urn:C0109-02",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "allianz_comunidades",
+      "product_id": "urn:C0109-03",
+      "success": true,
+      "markdown_files_processed": 1,
+      "error": null
+    },
+    {
+      "product_name": "allianz_cyber",
+      "product_id": "urn:C0109-04",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    },
+    {
+      "product_name": "allianz_decesos",
+      "product_id": "urn:C0109-05",
+      "success": true,
+      "markdown_files_processed": 6,
+      "error": null
+    },
+    {
+      "product_name": "allianz_hogar",
+      "product_id": "urn:C0109-06",
+      "success": true,
+      "markdown_files_processed": 3,
+      "error": null
+    },
+    {
+      "product_name": "allianz_mascotas",
+      "product_id": "urn:C0109-07",
+      "success": true,
+      "markdown_files_processed": 3,
+      "error": null
+    },
+    {
+      "product_name": "allianz_moto",
+      "product_id": "urn:C0109-08",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    },
+    {
+      "product_name": "allianz_movilidad_personal",
+      "product_id": "urn:C0109-09",
+      "success": true,
+      "markdown_files_processed": 2,
+      "error": null
+    },
+    {
+      "product_name": "allianz_multiriesgo_empresarial",
+      "product_id": "urn:C0109-10",
+      "success": true,
+      "markdown_files_processed": 2,
+      "error": null
+    },
+    {
+      "product_name": "allianz_seguros_ingenieria",
+      "product_id": "urn:C0109-11",
+      "success": true,
+      "markdown_files_processed": 4,
+      "error": null
+    },
+    {
+      "product_name": "allianz_seguro_medico",
+      "product_id": "urn:C0109-12",
+      "success": true,
+      "markdown_files_processed": 7,
+      "error": null
+    },
+    {
+      "product_name": "allianz_vehiculo_comercial",
+      "product_id": "urn:C0109-13",
+      "success": true,
+      "markdown_files_processed": 30,
+      "error": null
+    },
+    {
+      "product_name": "auto_plus",
+      "product_id": "urn:C0109-14",
+      "success": true,
+      "markdown_files_processed": 14,
+      "error": null
+    },
+    {
+      "product_name": "normativa_generica",
+      "product_id": "urn:C0109-15",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    },
+    {
+      "product_name": "proteccion_autonomo",
+      "product_id": "urn:C0109-16",
+      "success": true,
+      "markdown_files_processed": 5,
+      "error": null
+    },
+    {
+      "product_name": "seguro_vida",
+      "product_id": "urn:C0109-17",
+      "success": true,
+      "markdown_files_processed": 2,
+      "error": null
+    }
+  ]
+}

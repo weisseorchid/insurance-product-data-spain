@@ -1,0 +1,344 @@
+{
+  "product_name": "allianz_vehiculo_comercial",
+  "product_branch": "03",
+  "product_id": "urn:C0109-13",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:28:28.924380+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vehículo Comercial",
+      "target_audience": "Profesionales, empresas y autónomos con vehículos comerciales (Camiones, Autocares, Maquinaria, Turismos Comerciales, Remolques)",
+      "description_es": "Seguro integral para vehículos comerciales que ofrece desde la Responsabilidad Civil Obligatoria hasta coberturas de Todo Riesgo, adaptado a diferentes tipos de vehículos industriales y comerciales.",
+      "description_en": "Comprehensive commercial vehicle insurance offering everything from mandatory Third Party Liability to All-Risk coverage, tailored for various industrial and commercial vehicles.",
+      "key_benefits": [
+        "Responsabilidad Civil Complementaria hasta 50 Millones de euros",
+        "Asistencia tanto a vehículos como a personas",
+        "Cobertura específica para Responsabilidad Civil de la Carga",
+        "Subsidio por retirada del permiso de conducir hasta 10.950 euros",
+        "Opciones de Todo Riesgo con franquicia vinculada al valor del vehículo"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria",
+        "category": "basic",
+        "description": "Cubre la responsabilidad del conductor por daños causados a personas o bienes con motivo de la circulación.",
+        "covered_events": [
+          "Accidentes de circulación con daños a terceros"
+        ],
+        "benefits": [
+          "Indemnizaciones según los límites legales establecidos"
+        ],
+        "capital_or_limit": "Según ley",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Complementaria",
+        "category": "basic",
+        "description": "Ampliación de la responsabilidad civil obligatoria para cubrir daños que excedan los límites legales.",
+        "covered_events": [
+          "Daños a terceros por encima del límite de la RC Obligatoria"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones"
+        ],
+        "capital_or_limit": "50.000.000€",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Accidentes Corporales del Conductor",
+        "category": "basic",
+        "description": "Garantiza indemnizaciones al conductor por muerte, invalidez o gastos médicos derivados de un accidente.",
+        "covered_events": [
+          "Muerte accidental",
+          "Invalidez física permanente",
+          "Necesidad de asistencia sanitaria"
+        ],
+        "benefits": [
+          "Indemnización por fallecimiento: 18.000€ (6.000€ en Maquinaria)",
+          "Invalidez física permanente según baremo: Hasta 30.000€ (6.000€ en Maquinaria)",
+          "Gastos sanitarios: 100% hasta 6.000€ (1.500€ en Maquinaria)"
+        ],
+        "capital_or_limit": "Hasta 30.000€",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil de la Carga",
+        "category": "basic",
+        "description": "Cubre los daños que pueda causar la mercancía transportada en el vehículo.",
+        "covered_events": [
+          "Daños a terceros causados por la carga"
+        ],
+        "benefits": [
+          "Indemnización de daños"
+        ],
+        "capital_or_limit": "150.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia a personas y al vehículo",
+        "category": "included_service",
+        "description": "Servicio de ayuda técnica al vehículo y sanitaria a los pasajeros en caso de percance.",
+        "covered_events": [
+          "Avería mecánica",
+          "Accidente",
+          "Rescate del vehículo"
+        ],
+        "benefits": [
+          "Remolcaje y rescate (hasta 1.500€ en camiones, 900€ en turismos comerciales)",
+          "Asistencia a personas"
+        ],
+        "capital_or_limit": "Hasta 1.500€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Retirada permiso de conducir y pérdida de puntos",
+        "category": "optional",
+        "description": "Subsidio diario en caso de retirada temporal del carné de conducir o pérdida de vigencia por puntos.",
+        "covered_events": [
+          "Retirada administrativa del permiso",
+          "Pérdida total de puntos"
+        ],
+        "benefits": [
+          "Subsidio diario de 30€"
+        ],
+        "capital_or_limit": "10.950€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo, Incendio y Fenómenos de la Naturaleza",
+        "category": "optional",
+        "description": "Cubre los daños materiales al vehículo por incendio, robo o eventos naturales.",
+        "covered_events": [
+          "Incendio",
+          "Robo",
+          "Rayo",
+          "Fenómenos atmosféricos"
+        ],
+        "benefits": [
+          "100% del valor indemnizable del vehículo y sus accesorios"
+        ],
+        "capital_or_limit": "100% valor vehículo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Rotura de Cristales",
+        "category": "optional",
+        "description": "Indemnización o reparación por la rotura de las lunas del vehículo.",
+        "covered_events": [
+          "Rotura accidental de cristales"
+        ],
+        "benefits": [
+          "Sustitución o reparación"
+        ],
+        "capital_or_limit": "100% valor lunas",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños Propios",
+        "category": "optional",
+        "description": "Cubre los daños sufridos por el vehículo asegurado en accidentes.",
+        "covered_events": [
+          "Colisión",
+          "Vuelco",
+          "Impactos accidentales",
+          "Daños a equipajes (en ciertas modalidades)"
+        ],
+        "benefits": [
+          "Reparación de daños",
+          "Equipajes: 300€/persona (max 600€/siniestro)",
+          "Subsidio diario: 30€/día (max 870€)"
+        ],
+        "capital_or_limit": "100% valor vehículo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Explotación (Solo Maquinaria)",
+        "category": "basic",
+        "description": "Cubre los daños derivados del uso de la maquinaria en su función industrial/explotación.",
+        "covered_events": [
+          "Daños a terceros durante el trabajo de la máquina"
+        ],
+        "benefits": [
+          "Indemnizaciones hasta el límite fijado"
+        ],
+        "capital_or_limit": "30.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Franquicia de 100€"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Situaciones de carácter catastrófico (Guerra, Calamidad nacional).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Situaciones de carácter extraordinario (fenómenos de la naturaleza, terrorismo, actuaciones Fuerzas Armadas).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción bajo los efectos de drogas, estupefacientes, bebidas alcohólicas o sustancias psicotrópicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en carreras, concursos y sus entrenamientos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Circulación por el interior del recinto de aeropuertos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción sin el oportuno permiso o autorización del propietario.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños materiales sufridos durante la desaparición total por robo, hurto o expoliación.",
+        "category": "Específica (Daños)",
+        "legal_reference": null
+      },
+      {
+        "description": "Delito de omisión del deber de socorro.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos cubiertos por el CCS (Consorcio de Compensación de Seguros).",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Todo Riesgo con Franquicia",
+        "limit_type": "deductible_percentage",
+        "limit_value": "3%",
+        "conditions": "La franquicia es aproximadamente el 3% del valor del vehículo."
+      },
+      {
+        "coverage_name": "Dirección técnica y jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Aplica en caso de libre elección de abogado."
+      },
+      {
+        "coverage_name": "Gastos Sanitarios",
+        "limit_type": "maximum_amount",
+        "limit_value": "6.000€",
+        "conditions": "Se reduce a 1.500€ en pólizas de Maquinaria."
+      },
+      {
+        "coverage_name": "RC de la Carga",
+        "limit_type": "usage_restriction",
+        "limit_value": "No cubierto",
+        "conditions": "Excluido en Camiones Tractores, Grúas de arrastre y ciertos servicios de Taxi en poblaciones de <100.000 habitantes."
+      },
+      {
+        "coverage_name": "Rotura de Cristales / Accidentes",
+        "limit_type": "vehicle_type_restriction",
+        "limit_value": "No cubierto",
+        "conditions": "No aplica a Remolques y Semirremolques en modalidades básicas."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos correctos, veraces y actuales para la emisión.",
+        "Pagar las primas para que el contrato esté en vigor.",
+        "Comunicar cualquier modificación del riesgo a la mayor brevedad."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar la ocurrencia del siniestro en un máximo de 7 días.",
+        "Poner todos los medios al alcance para aminorar las consecuencias del siniestro.",
+        "Cooperar al salvamento de personas y bienes."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga con el preaviso establecido",
+        "Falta de pago de la prima"
+      ],
+      "payment_method": "Cualquier medio de pago disponible de la compañía",
+      "payment_frequency": [
+        "Anual",
+        "Fraccionado (según condiciones particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Franquicia del 3% del valor del vehículo en modalidad Todo Riesgo; 100€ en RC Explotación de Maquinaria.",
+      "pricing_factors": [
+        "Tipo de vehículo",
+        "Uso del vehículo",
+        "Historial de siniestralidad",
+        "Valor del vehículo y accesorios"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España, Espacio Económico Europeo, Ciudad del Vaticano, Mónaco, San Marino y Gibraltar.",
+      "worldwide_coverage": [
+        "Países signatarios del Convenio Complementario (Carta Verde)"
+      ],
+      "special_conditions_abroad": "Sujeto a los convenios internacionales suscritos por las Oficinas Nacionales (Inter-Bureaux)."
+    },
+    "source_documents": [
+      {
+        "filename": "autocar-básico-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "autocar-danos-estructura-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "camion-basico-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "camion-todo-riesgo-franquicia-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "maquinaria-basico-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "turismo-comercial-basico-ipid.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

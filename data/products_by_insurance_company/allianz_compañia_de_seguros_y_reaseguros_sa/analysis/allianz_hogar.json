@@ -1,0 +1,280 @@
+{
+  "product_name": "allianz_hogar",
+  "product_branch": "09",
+  "product_id": "urn:C0109-06",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:25:45.299420+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Hogar",
+      "target_audience": "Propietarios de viviendas destinadas a residencia habitual",
+      "description_es": "Seguro multirriesgo para el hogar que ofrece protección integral para la edificación (continente) y los bienes muebles (contenido) ante diversos riesgos como incendio, daños por agua, robo y responsabilidad civil, con tres niveles de protección: Estándar, Completo y Superior.",
+      "description_en": "Multi-risk home insurance providing comprehensive protection for the building (structure) and personal belongings (contents) against various risks such as fire, water damage, theft, and third-party liability, available in three coverage levels: Standard, Complete, and Superior.",
+      "key_benefits": [
+        "Protección ante daños por agua incluyendo localización y reparación",
+        "Cobertura de Responsabilidad Civil privada y como propietario",
+        "Servicio de Asistencia en el hogar 24 horas",
+        "Inclusión de daños estéticos para recuperar la armonía visual de la estancia",
+        "Flexibilidad con tres modalidades de contratación según necesidades"
+      ],
+      "insurance_company": "ALLIANZ, COMPAÑIA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0109"
+    },
+    "coverages": [
+      {
+        "name": "Incendio, explosión y caída de rayo",
+        "category": "basic",
+        "description": "Cubre los daños materiales causados por incendio, explosión o caída de rayo sobre los bienes asegurados.",
+        "covered_events": [
+          "Incendio",
+          "Explosión",
+          "Caída de rayo"
+        ],
+        "benefits": [
+          "Reparación o indemnización de los daños materiales"
+        ],
+        "capital_or_limit": "100% Capital asegurado",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños por agua",
+        "category": "basic",
+        "description": "Cubre los daños causados por escapes de agua, omisión del cierre de grifos y desatasco de tuberías.",
+        "covered_events": [
+          "Rotura de tuberías",
+          "Omisión de cierre de grifos",
+          "Filtraciones"
+        ],
+        "benefits": [
+          "Localización de la avería",
+          "Reparación de la tubería causante",
+          "Reparación de los daños estéticos derivados"
+        ],
+        "capital_or_limit": "Según condiciones particulares",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil",
+        "category": "basic",
+        "description": "Cubre las indemnizaciones a terceros por daños personales o materiales causados por el asegurado, su familia o su mascota.",
+        "covered_events": [
+          "Daños causados como propietario de la vivienda",
+          "Daños causados en el ámbito de la vida privada",
+          "Daños causados por animales domésticos"
+        ],
+        "benefits": [
+          "Pago de indemnizaciones",
+          "Gastos de defensa jurídica",
+          "Constitución de fianzas judiciales"
+        ],
+        "capital_or_limit": "Hasta 600.000€ según modalidad",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo y Hurto",
+        "category": "basic",
+        "description": "Cubre la sustracción de bienes dentro de la vivienda mediante violencia o intimidación (robo) o sin ella (hurto).",
+        "covered_events": [
+          "Robo de contenidos",
+          "Desperfectos al continente por robo",
+          "Hurto en el interior de la vivienda",
+          "Expoliación fuera del hogar (atraco)"
+        ],
+        "benefits": [
+          "Reposición de bienes sustraídos",
+          "Reparación de daños por robo"
+        ],
+        "capital_or_limit": "Límites específicos para joyas y dinero en efectivo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Rotura de Cristales",
+        "category": "basic",
+        "description": "Cubre la rotura accidental de cristales, lunas, espejos, mármoles y loza sanitaria.",
+        "covered_events": [
+          "Rotura accidental de ventanas y espejos",
+          "Rotura de placas vitrocerámicas",
+          "Rotura de loza sanitaria (lavabos, inodoros)"
+        ],
+        "benefits": [
+          "Sustitución e instalación del elemento roto"
+        ],
+        "capital_or_limit": "100% Capital asegurado",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en el Hogar",
+        "category": "included_service",
+        "description": "Servicio de asistencia 24 horas para urgencias domésticas.",
+        "covered_events": [
+          "Averías urgentes de fontanería",
+          "Cerrajería de urgencia",
+          "Electricidad de emergencia"
+        ],
+        "benefits": [
+          "Envío de profesionales",
+          "Gastos de desplazamiento y mano de obra (límites según póliza)"
+        ],
+        "capital_or_limit": "Servicio incluido",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños Eléctricos",
+        "category": "basic",
+        "description": "Daños producidos por corrientes anormales o cortocircuitos en la instalación o aparatos.",
+        "covered_events": [
+          "Cortocircuitos",
+          "Sobretensiones de la red"
+        ],
+        "benefits": [
+          "Reparación o indemnización de aparatos eléctricos"
+        ],
+        "capital_or_limit": "Límite según antigüedad de los aparatos",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Protección Jurídica",
+        "category": "basic",
+        "description": "Asesoramiento legal y defensa de los intereses del asegurado.",
+        "covered_events": [
+          "Reclamación de daños",
+          "Conflictos relacionados con la vivienda"
+        ],
+        "benefits": [
+          "Gastos de abogado",
+          "Tasas judiciales"
+        ],
+        "capital_or_limit": "3.000€ - 6.000€ según modalidad",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños causados por dolo o mala fe del asegurado.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Fenómenos de la naturaleza de carácter extraordinario (cubiertos por el Consorcio de Compensación de Seguros).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Desgaste natural, falta de mantenimiento o defectos de construcción.",
+        "category": "Técnica",
+        "legal_reference": null
+      },
+      {
+        "description": "Joyas y dinero en efectivo fuera de caja fuerte (por encima de ciertos límites).",
+        "category": "Robo",
+        "legal_reference": null
+      },
+      {
+        "description": "Bienes situados al aire libre (excepto mobiliario de jardín específicamente declarado).",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Joyas y objetos de valor",
+        "limit_type": "maximum_amount",
+        "limit_value": "10% del capital de contenido",
+        "conditions": "Sujeto a declaración expresa si superan el límite estándar por pieza"
+      },
+      {
+        "coverage_name": "Hurto",
+        "limit_type": "maximum_amount",
+        "limit_value": "Normalmente limitado a un porcentaje del contenido",
+        "conditions": "Solo dentro de la vivienda"
+      },
+      {
+        "coverage_name": "Dinero en efectivo",
+        "limit_type": "maximum_amount",
+        "limit_value": "300€ - 600€",
+        "conditions": "Fuera de caja fuerte"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar con sinceridad las características de la vivienda y el valor de los bienes",
+        "Comunicar cualquier variación del riesgo durante la vigencia del contrato",
+        "Pago de la prima en los términos acordados"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Emplear todos los medios al alcance para aminorar las consecuencias del siniestro",
+        "Facilitar información sobre las causas y circunstancias del siniestro",
+        "Denunciar a las autoridades en caso de robo o expoliación"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual prorrogable",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Impago de prima",
+        "Comunicación de no renovación en plazo",
+        "Desaparición del objeto asegurado"
+      ],
+      "payment_method": "Domiciliación bancaria",
+      "payment_frequency": [
+        "Anual",
+        "Semestral",
+        "Trimestral"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Sin copagos en coberturas estándar",
+      "pricing_factors": [
+        "Código postal de la vivienda",
+        "Metros cuadrados construidos",
+        "Año de construcción y reformas",
+        "Medidas de seguridad (alarmas, puertas blindadas)",
+        "Capitales asegurados"
+      ],
+      "discounts": [
+        "Descuento por medidas de seguridad",
+        "Bonificación por no siniestralidad"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Responsabilidad Civil Privada",
+        "Expoliación fuera del hogar (Atraco)"
+      ],
+      "special_conditions_abroad": "Limitado a desplazamientos temporales por viajes o vacaciones."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid_estandar_prop_hab.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid_completo_prop_hab.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid_superior_prop_hab.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

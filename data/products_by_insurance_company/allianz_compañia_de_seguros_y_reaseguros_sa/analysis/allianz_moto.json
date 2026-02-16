@@ -1,0 +1,316 @@
+{
+  "product_name": "allianz_moto",
+  "product_branch": "06",
+  "product_id": "urn:C0109-08",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:26:35.167993+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Automóviles",
+      "target_audience": "Conductores de motocicletas",
+      "description_es": "Seguro para motocicletas de Allianz que ofrece diversas modalidades de cobertura, desde garantías básicas hasta todo riesgo con o sin franquicia, incluyendo robo, incendio y pérdida total.",
+      "description_en": "Allianz motorcycle insurance offering various coverage levels, from basic guarantees to comprehensive coverage with or without excess, including theft, fire, and total loss.",
+      "key_benefits": [
+        "Responsabilidad Civil Complementaria hasta 50 millones de euros",
+        "Asistencia a personas y al vehículo incluida",
+        "Asesoramiento por multas de tráfico",
+        "Subsidio por retirada del permiso de conducir",
+        "Cobertura de accidentes corporales del conductor"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria",
+        "category": "basic",
+        "description": "Cubre la responsabilidad del conductor del vehículo por los daños que cause a las personas o en los bienes con motivo de la circulación.",
+        "covered_events": [
+          "Daños causados a terceros en accidentes de circulación"
+        ],
+        "benefits": [
+          "Indemnización legalmente establecida"
+        ],
+        "capital_or_limit": "Según ley",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Complementaria",
+        "category": "basic",
+        "description": "Ampliación de la cobertura de responsabilidad civil obligatoria.",
+        "covered_events": [
+          "Daños a terceros que excedan el límite legal de la RC Obligatoria"
+        ],
+        "benefits": [
+          "Ampliación del límite de indemnización"
+        ],
+        "capital_or_limit": "50.000.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Indemnización de daños",
+        "category": "basic",
+        "description": "Cobertura de indemnización por daños sufridos.",
+        "covered_events": [
+          "Daños accidentales según modalidad"
+        ],
+        "benefits": [
+          "Indemnización económica"
+        ],
+        "capital_or_limit": "100% valor vehículo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Reclamación de daños",
+        "category": "basic",
+        "description": "Gestión y adelanto de indemnizaciones por daños sufridos.",
+        "covered_events": [
+          "Daños causados por terceros"
+        ],
+        "benefits": [
+          "Adelanto de indemnizaciones"
+        ],
+        "capital_or_limit": "100% adelantos hasta 30.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Accidentes corporales del conductor",
+        "category": "basic",
+        "description": "Cubre al conductor en caso de fallecimiento, invalidez o gastos sanitarios por accidente.",
+        "covered_events": [
+          "Accidente de circulación con el vehículo asegurado"
+        ],
+        "benefits": [
+          "Fallecimiento: 3.000€",
+          "Invalidez Física Permanente: 9.000€",
+          "Gastos Sanitarios: 100% durante 2 años (máx 3.000€)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia a personas y al vehículo",
+        "category": "included_service",
+        "description": "Servicio de auxilio en carretera y asistencia personal durante el viaje.",
+        "covered_events": [
+          "Avería del vehículo",
+          "Accidente",
+          "Necesidad de asistencia personal"
+        ],
+        "benefits": [
+          "Remolque",
+          "Asistencia en viaje"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asesoramiento por multas de tráfico",
+        "category": "included_service",
+        "description": "Servicio de asesoramiento legal relacionado con infracciones de tráfico.",
+        "covered_events": [
+          "Sanciones de tráfico"
+        ],
+        "benefits": [
+          "Gestión y asesoramiento"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Retirada permiso de conducir y pérdida de vigencia",
+        "category": "basic",
+        "description": "Ayuda económica en caso de pérdida temporal o definitiva del permiso de conducir.",
+        "covered_events": [
+          "Retirada administrativa o judicial del permiso",
+          "Pérdida de vigencia por puntos"
+        ],
+        "benefits": [
+          "Subsidio diario de 12€",
+          "Coste curso recuperación parcial hasta 250€",
+          "Coste curso recuperación total hasta 500€"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños propios, Robo, Incendio y Fenómenos de la Naturaleza",
+        "category": "optional",
+        "description": "Garantías voluntarias según la modalidad contratada (Todo Riesgo, Robo+Incendio o Pérdida Total).",
+        "covered_events": [
+          "Robo del vehículo",
+          "Incendio",
+          "Inundaciones o pedrisco",
+          "Daños accidentales al vehículo"
+        ],
+        "benefits": [
+          "Reparación o indemnización del vehículo"
+        ],
+        "capital_or_limit": "100% valor vehículo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Dirección técnica y jurídica",
+        "category": "basic",
+        "description": "Defensa jurídica y dirección técnica en procesos derivados de accidentes.",
+        "covered_events": [
+          "Procedimientos judiciales por accidente"
+        ],
+        "benefits": [
+          "Gastos de defensa (ilimitado con Allianz)",
+          "Libre elección de abogado hasta 1.500€"
+        ],
+        "capital_or_limit": "100% (libre elección 1.500€)",
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Conducción bajo los efectos del alcohol, drogas, estupefacientes o sustancias psicotrópicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en carreras, concursos y en sus entrenamientos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Circulación en zonas restringidas de los puertos y aeropuertos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "La conducción del vehículo sin el oportuno permiso o autorización del propietario (salvo excepciones específicas en Robo o RC Complementaria).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos extraordinarios cubiertos por el CCS (Consorcio de Compensación de Seguros).",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Comisión del delito de omisión de socorro.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Responsabilidad Civil Complementaria",
+        "limit_type": "maximum_amount",
+        "limit_value": "50.000.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Reclamación de daños",
+        "limit_type": "maximum_amount",
+        "limit_value": "30.000€",
+        "conditions": "En concepto de adelanto de indemnizaciones"
+      },
+      {
+        "coverage_name": "Dirección técnica y jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Solo en caso de libre elección de abogado"
+      },
+      {
+        "coverage_name": "Accidentes corporales del conductor - Gastos Sanitarios",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.000€",
+        "conditions": "Límite máximo de gastos durante 2 años"
+      },
+      {
+        "coverage_name": "Retirada permiso de conducir",
+        "limit_type": "daily_allowance",
+        "limit_value": "12€",
+        "conditions": "Subsidio diario"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos veraces y actuales para la emisión de la póliza",
+        "Comprobar los términos de la póliza y solicitar rectificaciones en un mes",
+        "Pagar las primas para que el contrato esté en vigor",
+        "Comunicar modificaciones en el riesgo a la mayor brevedad"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar la ocurrencia del siniestro y sus circunstancias inmediatamente",
+        "Poner todos los medios al alcance para aminorar las consecuencias",
+        "Cooperar al salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual (indicada en Condiciones Particulares)",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga por cualquiera de las partes",
+        "Impago de prima",
+        "Comunicación escrita con la antelación debida"
+      ],
+      "payment_method": "Cualquier medio de pago disponible de la compañía",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Depende de la modalidad elegida (ej. Todo Riesgo Franquicia implica un copago por parte del asegurado en caso de daño propio)",
+      "pricing_factors": [
+        "Características del vehículo",
+        "Datos del conductor",
+        "Modalidad de cobertura elegida"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España y el resto de los países del Espacio Económico Europeo",
+      "worldwide_coverage": [
+        "Países de la Carta Verde"
+      ],
+      "special_conditions_abroad": "Cobertura extendida a Ciudad del Vaticano, Mónaco, San Marino y Gibraltar, además de países firmantes del Convenio Inter-Bureaux."
+    },
+    "source_documents": [
+      {
+        "filename": "ipid-moto-perdida-total.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-moto-robo.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-moto-seguro-basico.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-moto-seguro-franquicia.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-moto-todo-riesgo-sin-franquicia.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "product_name": "auto_plus",
+  "product_branch": "03",
+  "product_id": "urn:C0109-14",
+  "source_urls": [],
+  "metadata": {
+    "analyzed_at": "2026-02-16T09:28:56.064609+00:00",
+    "analyzer_version": "1.0.0"
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Automóviles",
+      "target_audience": "Particulares, autónomos y propietarios de vehículos (turismos, furgonetas y eléctricos)",
+      "description_es": "Seguro de automóviles flexible que ofrece desde las garantías básicas obligatorias hasta protecciones a todo riesgo, adaptándose a vehículos convencionales, eléctricos y furgonetas. Incluye servicios de asistencia, defensa jurídica y opciones de personalización.",
+      "description_en": "Flexible car insurance offering everything from basic mandatory coverage to comprehensive all-risk protection, tailored for conventional vehicles, electric cars, and vans. Includes assistance services, legal defense, and customization options.",
+      "key_benefits": [
+        "Valor de reposición a nuevo durante los primeros 2 años para vehículos nuevos",
+        "Asistencia en viaje las 24 horas desde el km 0 con posibilidad de servicios ilimitados",
+        "Red de Talleres Allianz Excelentes con beneficios exclusivos y vehículo de cortesía",
+        "Cobertura específica para vehículos eléctricos (cable de carga y wallbox)",
+        "Asesoramiento y gestión de multas de tráfico"
+      ],
+      "insurance_company": "Allianz, Compañía de Seguros y Reaseguros, S.A.",
+      "administrative_code": "C0109"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria",
+        "category": "basic",
+        "description": "Cubre la responsabilidad civil del conductor por daños causados a terceros con motivo de la circulación.",
+        "covered_events": [
+          "Daños a personas",
+          "Daños a bienes"
+        ],
+        "benefits": [
+          "Indemnización a terceros según los límites legales"
+        ],
+        "capital_or_limit": "Límites legales (70M€ por víctimas, 15M€ por daños materiales)",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Complementaria",
+        "category": "basic",
+        "description": "Ampliación de la cobertura de responsabilidad civil obligatoria.",
+        "covered_events": [
+          "Siniestros que excedan los límites de la RC Obligatoria"
+        ],
+        "benefits": [
+          "Indemnización adicional"
+        ],
+        "capital_or_limit": "50.000.000€",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Accidentes Corporales del Conductor",
+        "category": "basic",
+        "description": "Indemnización por daños sufridos por el conductor en caso de accidente.",
+        "covered_events": [
+          "Muerte",
+          "Invalidez física permanente",
+          "Asistencia sanitaria"
+        ],
+        "benefits": [
+          "Capital por fallecimiento",
+          "Capital por invalidez",
+          "Gastos sanitarios en centros designados"
+        ],
+        "capital_or_limit": "Hasta 100.000€ por muerte/invalidez; 6.000€ en gastos sanitarios",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa Jurídica y Reclamación de Daños",
+        "category": "basic",
+        "description": "Protección jurídica y gestión de reclamaciones frente a terceros.",
+        "covered_events": [
+          "Accidentes de tráfico con responsabilidad de terceros",
+          "Necesidad de defensa legal"
+        ],
+        "benefits": [
+          "Dirección técnica y jurídica",
+          "Libre elección de abogado (con límite)",
+          "Adelanto de indemnizaciones"
+        ],
+        "capital_or_limit": "Ilimitada con servicios Allianz; 1.500€ en libre elección",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "basic",
+        "description": "Asistencia permanente al vehículo y a las personas desde el km 0.",
+        "covered_events": [
+          "Avería",
+          "Accidente",
+          "Falta de batería/recarga (en eléctricos)"
+        ],
+        "benefits": [
+          "Remolcaje",
+          "Reparación in situ cuando sea posible",
+          "Asistencia a mascotas",
+          "Recarga de batería in situ para eléctricos"
+        ],
+        "capital_or_limit": "Kilometraje ilimitado en modalidad Premium",
+        "waiting_period_days": 0,
+        "conditions": null
+      },
+      {
+        "name": "Rotura de Cristales",
+        "category": "optional",
+        "description": "Reparación o reposición de los cristales del vehículo.",
+        "covered_events": [
+          "Resquebrajamiento o fragmentación de parabrisas, ventanillas, luneta o techo traslúcido"
+        ],
+        "benefits": [
+          "100% valor de reparación o reposición"
+        ],
+        "capital_or_limit": "100% valor del cristal",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo e Incendio",
+        "category": "optional",
+        "description": "Cubre los daños por robo o incendio del vehículo y sus accesorios.",
+        "covered_events": [
+          "Robo total o parcial",
+          "Incendio",
+          "Robo del cable de carga (en eléctricos)"
+        ],
+        "benefits": [
+          "Indemnización o reparación",
+          "Valor de nuevo durante los primeros 2 años"
+        ],
+        "capital_or_limit": "100% valor vehículo",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Daños Propios",
+        "category": "optional",
+        "description": "Cubre los daños materiales accidentales sufridos por el vehículo propio.",
+        "covered_events": [
+          "Impacto",
+          "Actos vandálicos",
+          "Siniestro total"
+        ],
+        "benefits": [
+          "Reparación o indemnización total/parcial"
+        ],
+        "capital_or_limit": "100% valor vehículo (puede aplicar franquicia)",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil de la Carga",
+        "category": "included_service",
+        "description": "Garantía específica para furgonetas que cubre los daños causados por la carga.",
+        "covered_events": [
+          "Daños a terceros provocados por la carga transportada"
+        ],
+        "benefits": [
+          "Indemnización hasta el límite pactado"
+        ],
+        "capital_or_limit": "Hasta 300.000€",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Servicio Siempre en Marcha",
+        "category": "included_service",
+        "description": "Conjunto de servicios VIP en Talleres Allianz Excelentes.",
+        "covered_events": [
+          "Mantenimiento o reparación en talleres de la red"
+        ],
+        "benefits": [
+          "Recogida y entrega a domicilio",
+          "Vehículo de cortesía",
+          "Limpieza integral",
+          "Chequeo pre-ITV y gestión de ITV"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Conducción bajo los efectos del alcohol, drogas, estupefacientes o sustancias psicotrópicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en carreras, concursos y sus entrenamientos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Circulación en zonas restringidas de puertos y aeropuertos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conducción sin el oportuno permiso o autorización del propietario.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Comisión del delito de omisión del deber de socorro.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de ciberriesgos y ciberataques.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Hechos de carácter extraordinario cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños causados deliberadamente por el uso del vehículo.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Multas y sanciones administrativas.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Libre elección de abogado",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Aplica cuando no se utilizan los servicios profesionales de Allianz"
+      },
+      {
+        "coverage_name": "Franquicia Daños Propios",
+        "limit_type": "deductible",
+        "limit_value": "200€ a 700€",
+        "conditions": "Se reduce a 160€-560€ si se repara en la Red de Talleres Allianz"
+      },
+      {
+        "coverage_name": "Retirada de carnet (Subsidio)",
+        "limit_type": "daily_amount",
+        "limit_value": "30€ a 50€ diarios",
+        "conditions": "Máximo de 12 meses según modalidad"
+      },
+      {
+        "coverage_name": "Vehículo de sustitución por wallbox",
+        "limit_type": "days_per_event",
+        "limit_value": "5 días",
+        "conditions": "En caso de fallo del punto de recarga doméstico"
+      },
+      {
+        "coverage_name": "Valor de reposición",
+        "limit_type": "time_limit",
+        "limit_value": "2 años",
+        "conditions": "Solo para vehículos comprados como nuevos"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Facilitar datos correctos y veraces para la emisión de la póliza",
+        "Pagar las primas para que el contrato esté en vigor",
+        "Comunicar cualquier modificación del riesgo",
+        "Revisar los términos de la póliza y pedir rectificaciones en el plazo de un mes"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro inmediatamente (máximo 7 días)",
+        "Poner medios para aminorar las consecuencias del siniestro",
+        "Cooperar en el salvamento de personas y bienes"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga con preaviso",
+        "Impago de la prima",
+        "Desistimiento (14 días en contratación a distancia)"
+      ],
+      "payment_method": "Cualquiera de los medios disponibles de la compañía (habitualmente domiciliación bancaria)",
+      "payment_frequency": [
+        "anual",
+        "fraccionado"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Aplica franquicia en modalidades de Todo Riesgo según elección",
+      "pricing_factors": [
+        "Tipo de vehículo",
+        "Uso del vehículo",
+        "Historial de siniestralidad",
+        "Garantías adicionales contratadas"
+      ],
+      "discounts": [
+        "Descuento por tener otras pólizas en Allianz",
+        "Reducción de franquicia por uso de Talleres Allianz Excelentes"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España y Espacio Económico Europeo",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Cubierto en países de la Carta Verde (Convenio Tipo Inter-Bureaux) y microestados como Mónaco, San Marino y Ciudad del Vaticano"
+    },
+    "source_documents": [
+      {
+        "filename": "auto-plus-basico.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "auto-plus-franquicia1.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "auto-plus-franquicia2.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "auto-plus-robo-incendio.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "auto-plus-terceros.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "auto-plus-tr-sin-franquicia.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "az_auto_ipid_castellano.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-furgoneta-basico.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-furgoneta-perdida-total.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-furgoneta-robo-incendio.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-furgoneta-td-sin-franquicia.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "ipid-tr-con-franquicia.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "seguro-coche-electrico-folleto-allianz.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.95
+      },
+      {
+        "filename": "seguro-coche-folleto-allianz.md",
+        "document_type": "brochure",
+        "extraction_confidence": 0.95
+      }
+    ]
+  }
+}
