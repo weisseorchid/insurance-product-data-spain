@@ -71,6 +71,7 @@ packages = ["insurance_product_data_sp"]
 [tool.hatch.build.targets.sdist]
 include = [
     "insurance_product_data_sp/**/*.py",
+    "insurance_product_data_sp/py.typed",
     "insurance_product_data_sp/data/*.db",
     "insurance_product_data_sp/data/*.json",
 ]
@@ -92,3 +93,8 @@ lint.ignore = []
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "scripts/**/*.py" = ["E501"]  # Allow longer lines in scripts
+
+[tool.pytest.ini_options]
+markers = [
+    "live: marks tests that hit live external services (deselect with '-m \"not live\"')",
+]

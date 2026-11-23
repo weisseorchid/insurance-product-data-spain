@@ -48,15 +48,15 @@ def _check_db_locked(db_path: Path) -> bool:
 
 def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> Session:
     """Prepare database: delete existing, create schema, return session.
-    
+
     Args:
         db_path: Path to the database file
         max_retries: Maximum number of retry attempts if deletion fails
         retry_delay: Delay in seconds between retry attempts
-        
+
     Returns:
         Session: Database session
-        
+
     Raises:
         SystemExit: If database file cannot be deleted after retries
     """
@@ -65,7 +65,7 @@ def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -
         if _check_db_locked(db_path):
             _handle_locked_database(db_path)
             sys.exit(1)
-        
+
         # Attempt deletion with retries
         for attempt in range(max_retries):
             try:
@@ -94,7 +94,7 @@ def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -
                     file=sys.stderr,
                 )
                 sys.exit(1)
-    
+
     db_path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{db_path}")
     SQLModel.metadata.create_all(engine)
