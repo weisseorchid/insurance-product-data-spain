@@ -84,5 +84,27 @@ jobs:
       - name: Install and verify package
         run: |
           uv pip install dist/*.whl
-          uv run insurance-product-data-spain --help
-          echo "Package installed and CLI command works correctly"
+          python -c "from insurance_product_data_sp import companies, distributors, branches, products; assert len(companies) > 0; assert len(distributors) > 0; assert len(branches) > 0; print(f'✓ Package smoke test passed: {len(companies)} companies, {len(distributors)} distributors, {len(branches)} branches, {len(products)} products')"
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Install Python Dependencies
+        run: uv sync --frozen --all-extras
+
+      - name: Run tests
+        run: |
+          echo "--- Running offline tests (excluding live tests) ---"
+          uv run pytest -m 'not live' -v
