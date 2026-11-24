@@ -57,6 +57,16 @@ Guidelines:
 """
 
 
+def _format_branches(product_context: dict) -> str:
+    """Render branch codes from ``branches`` (or the deprecated ``product_branch``)."""
+    branches = product_context.get("branches")
+    if branches is None:
+        branches = product_context.get("product_branch")
+    if isinstance(branches, str):
+        branches = [branches]
+    return ", ".join(branches) if branches else "Unknown"
+
+
 class GeminiClient:
     """Client for analyzing insurance documents using Google Gemini AI."""
 
@@ -129,7 +139,7 @@ class GeminiClient:
             context_str = f"""
 Product context:
 - Product name: {product_context.get("product_name", "Unknown")}
-- Product branch: {product_context.get("product_branch", "Unknown")}
+- Product branches (DGSFP codes): {_format_branches(product_context)}
 - Company: {product_context.get("company", "Unknown")}
 """
 
