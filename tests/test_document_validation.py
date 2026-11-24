@@ -193,6 +193,7 @@ def test_duplicate_markdown_detector_no_duplicates():
 def test_known_bad_hash():
     """Test that known Mutua bad hash is detected as block page."""
     # This is the actual Cloudflare block page content
+    # fmt: off
     mutua_block_page = """# Pardon Our Interruption
 
 As you were browsing something about your browser made us think you were a bot. There are a few reasons this might happen:
@@ -211,6 +212,7 @@ To regain access, please make sure that cookies and JavaScript are enabled befor
 We're getting everything ready for you. The page is loading, and you'll be on your way in just a few moments.
 
 Thanks for your patience!"""
+    # fmt: on
 
     # Verify it's detected as block page
     assert is_block_page(mutua_block_page) is True

@@ -96,6 +96,8 @@ lint.ignore = []
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "scripts/**/*.py" = ["E501"]  # Allow longer lines in scripts
+"tests/test_ci_checks.py" = ["E501"]  # Test strings with exact block page content
+"tests/test_document_validation.py" = ["E501"]  # Test strings with exact block page content
 
 [tool.pytest.ini_options]
 markers = [
