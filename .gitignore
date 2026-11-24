@@ -23,3 +23,11 @@ dist/
 .coverage
 htmlcov/
 coverage.xml
+
+# Document cache (content-addressed storage for PDFs and markdown)
+.cache/
+
+# Source documents (PDFs and generated markdown)
+# These are stored in .cache/ and tracked via documents.jsonl
+data/products_by_insurance_company/*/sources/**/*.pdf
+data/products_by_insurance_company/*/sources/**/*.md
