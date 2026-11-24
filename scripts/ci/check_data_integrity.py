@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Validate JSONL data integrity: valid JSON, sorting, no duplicates."""
+"""Validate JSONL data integrity: valid JSON, sorting, no duplicates.
+
+Also checks product markdown files for block pages and duplicate hashes.
+"""
 
 from __future__ import annotations
 
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 # Known duplicates in distributors (allowlist)
@@ -25,6 +29,16 @@ KNOWN_DISTRIBUTOR_DUPLICATES = {
     "J-0156-GA",
     "J-0202EUS",
     "J-068-CM",
+}
+
+# Known bad markdown hashes (Mutua Madrileña Cloudflare blocks)
+# Allowlisted to not fail CI, but flagged in reports
+KNOWN_BAD_MARKDOWN_HASHES = {
+    "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4": {
+        "reason": "Cloudflare block page",
+        "company": "Mutua Madrileña",
+        "note": "19 Mutua Madrileña markdown files share this hash (Cloudflare 'Pardon Our Interruption' page)",
+    }
 }
 
 
@@ -212,6 +226,107 @@ def validate_product_index(index_path: Path) -> list[str]:
     return errors
 
 
+def compute_markdown_hash_simple(content: str) -> str:
+    """
+    Compute SHA256 hash of markdown content.
+
+    Args:
+        content: The markdown text content
+
+    Returns:
+        Hexadecimal SHA256 hash
+    """
+    import hashlib
+
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+
+def is_block_page_simple(markdown_content: str) -> bool:
+    """
+    Check if markdown content appears to be a bot/block page.
+
+    Args:
+        markdown_content: The markdown text content
+
+    Returns:
+        True if content appears to be a block page
+    """
+    import re
+
+    block_patterns = [
+        r"Pardon Our Interruption",
+        r"Please stand by",
+        r"Cloudflare",
+        r"Just a moment",
+        r"checking your browser",
+        r"Enable JavaScript and cookies to continue",
+    ]
+    block_regex = re.compile("|".join(block_patterns), re.IGNORECASE)
+    return bool(block_regex.search(markdown_content))
+
+
+def check_product_markdown_quality(products_dir: Path) -> tuple[list[str], list[str]]:
+    """
+    Check product markdown files for block pages and duplicate hashes.
+
+    Args:
+        products_dir: Path to products_by_insurance_company directory
+
+    Returns:
+        Tuple of (errors, warnings)
+    """
+    errors = []
+    warnings = []
+
+    # Find all markdown files in product sources
+    markdown_files = list(products_dir.rglob("sources/*/*.md"))
+
+    if not markdown_files:
+        return errors, warnings
+
+    # Track markdown hashes to detect duplicates
+    hash_to_files: dict[str, list[Path]] = defaultdict(list)
+
+    for md_file in markdown_files:
+        try:
+            content = md_file.read_text(encoding="utf-8")
+            md_hash = compute_markdown_hash_simple(content)
+            hash_to_files[md_hash].append(md_file)
+
+            # Check for block pages
+            if is_block_page_simple(content):
+                rel_path = md_file.relative_to(products_dir)
+                # Check if allowlisted
+                if md_hash in KNOWN_BAD_MARKDOWN_HASHES:
+                    info = KNOWN_BAD_MARKDOWN_HASHES[md_hash]
+                    warnings.append(
+                        f"{rel_path}: Block page detected (allowlisted - {info['company']}, {info['reason']})"
+                    )
+                else:
+                    errors.append(f"{rel_path}: NEW block page detected (hash: {md_hash})")
+
+        except Exception as e:
+            errors.append(f"{md_file.relative_to(products_dir)}: Failed to read - {e}")
+
+    # Check for duplicate markdown hashes
+    for md_hash, files in hash_to_files.items():
+        if len(files) > 1:
+            # Check if allowlisted
+            if md_hash in KNOWN_BAD_MARKDOWN_HASHES:
+                info = KNOWN_BAD_MARKDOWN_HASHES[md_hash]
+                warnings.append(
+                    f"Duplicate markdown hash {md_hash} (allowlisted - {info['company']}, {info['reason']}): "
+                    f"{len(files)} files"
+                )
+            else:
+                errors.append(
+                    f"NEW duplicate markdown hash {md_hash}: "
+                    f"Multiple PDFs produced identical markdown ({len(files)} files)"
+                )
+
+    return errors, warnings
+
+
 def main() -> int:
     """Run all data integrity checks."""
     print("🔍 Checking data integrity...")
@@ -348,6 +463,26 @@ def main() -> int:
                 print(f"  ❌ {error}")
         else:
             print("  ✅ Valid")
+        print()
+
+    # Check product markdown files for block pages and duplicate hashes
+    products_dir = repo_root / "data" / "products_by_insurance_company"
+    if products_dir.exists():
+        print("Checking product markdown files for quality issues...")
+        md_errors, md_warnings = check_product_markdown_quality(products_dir)
+
+        if md_errors:
+            all_errors.extend(md_errors)
+            for error in md_errors:
+                print(f"  ❌ {error}")
+
+        if md_warnings:
+            all_warnings.extend(md_warnings)
+            for warning in md_warnings:
+                print(f"  ⚠️  {warning}")
+
+        if not md_errors and not md_warnings:
+            print("  ✅ No quality issues found")
         print()
 
     # Print summary

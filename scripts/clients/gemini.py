@@ -4,18 +4,30 @@ This module provides a client for using Google's Gemini AI to extract
 structured information from insurance policy markdown documents.
 """
 
+import hashlib
 import os
+import time
 from pathlib import Path
 
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from pydantic import ValidationError
 
+from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas.insurance_product import ProductAnalysis
 
 load_dotenv()
 
 GEMINI_MODEL = "gemini-3.8-flash"
+
+# Schema version for tracking prompt/schema changes
+SCHEMA_VERSION = "1.0"
+
+# Retry configuration
+MAX_RETRY_ATTEMPTS = 3
+INITIAL_RETRY_DELAY = 2.0  # seconds
+MAX_RETRY_DELAY = 16.0  # seconds
 
 # System prompt for insurance document analysis
 SYSTEM_PROMPT = """You are an expert insurance policy analyst specializing in Spanish insurance products.
@@ -48,14 +60,33 @@ Guidelines:
 class GeminiClient:
     """Client for analyzing insurance documents using Google Gemini AI."""
 
-    def __init__(self, model: str | None = None):
+    def __init__(self, model: str | None = None, max_retries: int = MAX_RETRY_ATTEMPTS):
         """Initialize the Gemini client.
 
         Args:
             model: Optional model name override. Defaults to GEMINI_MODEL.
+            max_retries: Maximum number of retry attempts for API calls and validation failures.
         """
         self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
         self.model = model or GEMINI_MODEL
+        self.max_retries = max_retries
+
+    @staticmethod
+    def compute_input_hash(markdown_paths: list[str]) -> str:
+        """
+        Compute a hash of the input markdown files for idempotency checks.
+
+        Args:
+            markdown_paths: List of paths to markdown files
+
+        Returns:
+            SHA256 hash of combined markdown content
+        """
+        hasher = hashlib.sha256()
+        for path in sorted(markdown_paths):  # Sort for consistency
+            with open(path, "rb") as f:
+                hasher.update(f.read())
+        return hasher.hexdigest()
 
     def analyze_product_documents(
         self,
@@ -68,6 +99,8 @@ class GeminiClient:
         general conditions, brochures, etc.) to create a comprehensive
         product analysis.
 
+        Includes retry logic with exponential backoff for API errors and validation failures.
+
         Args:
             markdown_paths: List of paths to markdown files to analyze.
             product_context: Optional context about the product (name, branch, etc.)
@@ -75,6 +108,10 @@ class GeminiClient:
 
         Returns:
             ProductAnalysis object with aggregated information from all documents.
+
+        Raises:
+            ValueError: If API returns None or validation fails after all retries
+            ValidationError: If response doesn't match ProductAnalysis schema after all retries
         """
         # Collect all document contents
         documents_content = []
@@ -109,20 +146,58 @@ Extract and combine information from ALL documents into a single comprehensive a
 For each source document, classify its type and include it in the source_documents list.
 Aggregate coverages, exclusions, and limits from all documents, avoiding duplicates."""
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=[user_prompt],
-            config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
-                response_mime_type="application/json",
-                response_schema=ProductAnalysis,
-            ),
-        )
+        # Retry loop with exponential backoff
+        last_exception = None
+        retry_delay = INITIAL_RETRY_DELAY
 
-        # Parse the JSON response into ProductAnalysis
-        if response.text is None:
-            raise ValueError("Gemini API returned None response text")
-        return ProductAnalysis.model_validate_json(response.text)
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                logger.info(f"Attempt {attempt}/{self.max_retries} to analyze product")
+
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=[user_prompt],
+                    config=types.GenerateContentConfig(
+                        system_instruction=SYSTEM_PROMPT,
+                        response_mime_type="application/json",
+                        response_schema=ProductAnalysis,
+                    ),
+                )
+
+                # Parse the JSON response into ProductAnalysis
+                if response.text is None:
+                    raise ValueError("Gemini API returned None response text")
+
+                # Validate response with pydantic
+                analysis = ProductAnalysis.model_validate_json(response.text)
+                logger.info(f"Successfully analyzed product on attempt {attempt}")
+                return analysis
+
+            except (ValueError, ValidationError) as e:
+                last_exception = e
+                logger.warning(f"Attempt {attempt} failed with validation error: {e}")
+
+                if attempt < self.max_retries:
+                    logger.info(f"Retrying in {retry_delay:.1f} seconds...")
+                    time.sleep(retry_delay)
+                    retry_delay = min(retry_delay * 2, MAX_RETRY_DELAY)
+                else:
+                    logger.error(f"All {self.max_retries} attempts failed")
+
+            except Exception as e:
+                # For other exceptions (network errors, API errors), also retry
+                last_exception = e
+                logger.warning(f"Attempt {attempt} failed with error: {e}")
+
+                if attempt < self.max_retries:
+                    logger.info(f"Retrying in {retry_delay:.1f} seconds...")
+                    time.sleep(retry_delay)
+                    retry_delay = min(retry_delay * 2, MAX_RETRY_DELAY)
+                else:
+                    logger.error(f"All {self.max_retries} attempts failed")
+
+        # If we get here, all retries failed
+        raise last_exception if last_exception else ValueError("Analysis failed after all retries")
 
     def analyze_product_documents_raw(
         self,

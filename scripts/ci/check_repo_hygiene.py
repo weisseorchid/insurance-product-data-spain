@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""Check repository hygiene: no tracked unwanted files, no large additions."""
+"""Check repository hygiene: no tracked unwanted files, no large additions.
+
+Also scans all blobs in PR commit range for size/extension violations.
+"""
 
 from __future__ import annotations
 
+import argparse
+import subprocess
 import sys
 from pathlib import Path
 
@@ -97,8 +102,148 @@ def check_large_files() -> list[str]:
     return errors
 
 
+def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
+    """
+    Check all blobs added in PR commit range for size/extension violations.
+
+    Only flags blobs that are NEW to the PR (not present in base tree/history).
+    Scans base..head to catch blobs added then removed within the PR.
+
+    Args:
+        base_ref: Base ref (e.g., 'origin/main' or commit SHA)
+        head_ref: Head ref (default: 'HEAD')
+
+    Returns:
+        List of error messages
+    """
+    errors = []
+    repo_root = Path(__file__).parent.parent.parent
+
+    try:
+        # Get all blobs in base tree and history to know what already exists
+        # This ensures we don't flag blobs that were on main but later removed
+        base_blobs_result = subprocess.run(
+            ["git", "ls-tree", "-r", base_ref],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        # Set of blob hashes that exist in base tree
+        base_blob_hashes = set()
+        for line in base_blobs_result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) >= 3 and parts[1] == "blob":
+                base_blob_hashes.add(parts[2])
+
+        # Also get all blobs from base's reachable history
+        base_history_result = subprocess.run(
+            ["git", "rev-list", "--objects", base_ref],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        for line in base_history_result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) >= 1:
+                base_blob_hashes.add(parts[0])
+
+        # Get all commits in the range
+        result = subprocess.run(
+            ["git", "rev-list", f"{base_ref}..{head_ref}"],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        commits = result.stdout.strip().split("\n")
+
+        if not commits or commits == [""]:
+            return []
+
+        # Track seen blobs to avoid duplicates
+        seen_blobs = set()
+
+        for commit in commits:
+            # Get all blobs in this commit
+            tree_result = subprocess.run(
+                ["git", "ls-tree", "-r", "-l", commit],
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+
+            for line in tree_result.stdout.strip().split("\n"):
+                if not line:
+                    continue
+
+                parts = line.split(None, 4)
+                if len(parts) < 5:
+                    continue
+
+                mode, obj_type, blob_hash, size_str, file_path = parts
+
+                if obj_type != "blob":
+                    continue
+
+                # Skip if already seen or exists in base
+                if blob_hash in seen_blobs or blob_hash in base_blob_hashes:
+                    continue
+
+                seen_blobs.add(blob_hash)
+
+                try:
+                    size = int(size_str)
+                except ValueError:
+                    continue
+
+                # Check size
+                if size > MAX_FILE_SIZE:
+                    # Skip allowlisted files
+                    if file_path not in LARGE_FILE_ALLOWLIST:
+                        size_mb = size / (1024 * 1024)
+                        max_mb = MAX_FILE_SIZE / (1024 * 1024)
+                        errors.append(
+                            f"NEW blob exceeds size limit: {file_path} "
+                            f"(blob: {blob_hash[:8]}, {size_mb:.2f} MB > {max_mb:.0f} MB limit)"
+                        )
+
+                # Check extension
+                file_path_obj = Path(file_path)
+                if file_path_obj.suffix and f"*{file_path_obj.suffix}" in DISALLOWED_PATTERNS:
+                    errors.append(
+                        f"NEW blob has disallowed extension: {file_path} "
+                        f"(blob: {blob_hash[:8]}, extension: {file_path_obj.suffix})"
+                    )
+
+    except subprocess.CalledProcessError as e:
+        errors.append(f"Git command failed: {e.stderr}")
+
+    return errors
+
+
 def main() -> int:
     """Run all hygiene checks."""
+    parser = argparse.ArgumentParser(description="Check repository hygiene")
+    parser.add_argument(
+        "--base",
+        help="Base ref for PR range check (e.g., origin/main or commit SHA)",
+    )
+    parser.add_argument(
+        "--head",
+        default="HEAD",
+        help="Head ref for PR range check (default: HEAD)",
+    )
+
+    args = parser.parse_args()
+
     print("🔍 Checking repository hygiene...")
     print()
 
@@ -125,6 +270,18 @@ def main() -> int:
     else:
         print("  ✅ No unexpected large files found")
     print()
+
+    # Check PR blob additions if base ref provided
+    if args.base:
+        print(f"Checking blobs added in PR range {args.base}..{args.head}...")
+        pr_errors = check_pr_blob_additions(args.base, args.head)
+        if pr_errors:
+            all_errors.extend(pr_errors)
+            for error in pr_errors:
+                print(f"  ❌ {error}")
+        else:
+            print("  ✅ No violations in PR blob range")
+        print()
 
     if all_errors:
         print(f"❌ Repository hygiene check FAILED with {len(all_errors)} error(s)")

@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # Need full history for PR range scan
 
       - name: Install uv and set the python version
         uses: astral-sh/setup-uv@v6
@@ -22,9 +24,14 @@ jobs:
           python-version: "3.12"
           enable-cache: true
 
-      - name: Check repository hygiene
+      - name: Check repository hygiene (tree)
         run: |
           uv run python scripts/ci/check_repo_hygiene.py
+
+      - name: Check repository hygiene (PR range)
+        if: github.event_name == 'pull_request'
+        run: |
+          uv run python scripts/ci/check_repo_hygiene.py --base ${{ github.event.pull_request.base.sha }} --head HEAD
 
   secrets:
     runs-on: ubuntu-latest

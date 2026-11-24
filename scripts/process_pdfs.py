@@ -16,6 +16,7 @@ from pathlib import Path
 from insurance_product_data_sp.core.logging import logger
 from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
+from scripts.utils.run_logging import log_validation_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
 
@@ -85,7 +86,7 @@ def get_sources_directory(company_folder: Path) -> Path | None:
 
 
 def process_product_folder(
-    product_folder: Path, output_dir: Path | None = None
+    product_folder: Path, output_dir: Path | None = None, company_key: str | None = None
 ) -> dict[str, list[PDFConversionResult]]:
     """
     Process all PDFs in a product folder.
@@ -94,6 +95,7 @@ def process_product_folder(
         product_folder: Path to the product folder containing PDFs
         output_dir: Optional output directory for markdown files.
                    If None, saves alongside the original PDFs.
+        company_key: Optional company key for logging
 
     Returns:
         Dictionary with product name as key and list of conversion results as value
@@ -109,7 +111,7 @@ def process_product_folder(
 
     results = []
     for pdf_file in pdf_files:
-        result = convert_pdf_to_markdown(pdf_file)
+        result = convert_pdf_to_markdown(pdf_file, validate=True)
         results.append(result)
 
         if result.success:
@@ -126,6 +128,17 @@ def process_product_folder(
                 f.write(result.markdown_content)
 
             logger.info(f"Saved markdown to: {md_path}")
+        elif result.validation_failed:
+            # Log validation failures
+            log_validation_failure(
+                script_name="process_pdfs",
+                file_path=result.source_path,
+                reason=result.error or "Unknown validation error",
+                company_key=company_key,
+                product_name=product_name,
+                markdown_sha256=result.markdown_sha256,
+            )
+            logger.warning(f"Skipped saving markdown for {pdf_file.name} due to validation failure")
 
     return {product_name: results}
 
@@ -171,7 +184,7 @@ def process_company_pdfs(
     out_path = Path(output_dir) if output_dir else None
 
     for product_folder in product_folders:
-        results = process_product_folder(product_folder, out_path)
+        results = process_product_folder(product_folder, out_path, company_key=company_key)
         all_results.update(results)
 
     # Generate and save summary
