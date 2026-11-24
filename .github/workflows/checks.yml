@@ -107,4 +107,4 @@ jobs:
       - name: Run tests
         run: |
           echo "--- Running offline tests (excluding live tests) ---"
-          uv run pytest -m 'not live' -v
+          uv run pytest -m 'not live' -v --cov=insurance_product_data_sp --cov-report=term-missing

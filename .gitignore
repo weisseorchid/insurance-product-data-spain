@@ -13,3 +13,12 @@ __pycache__/
 .env.production.local
 
 dist/
+
+# Coverage reports
+.coverage
+htmlcov/
+coverage.xml
+
+# SQLite WAL files (created during test runs)
+*.db-wal
+*.db-shm
