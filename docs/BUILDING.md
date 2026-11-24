@@ -106,6 +106,59 @@ The package **does not require** source PDFs or markdown files at build/install 
 
 PDFs and markdown are stored in a local cache (`.cache/insurance-docs/`) for development but are not needed for package builds. The cache is gitignored and content-addressed by SHA256.
 
+## CI Checks
+
+The repository runs automated checks on every PR and push to main:
+
+### Running Checks Locally
+
+```bash
+# All pre-commit checks (fast)
+uv run pre-commit run --all-files
+
+# Individual checks
+uv run python scripts/ci/check_repo_hygiene.py
+uv run python scripts/ci/check_data_integrity.py
+uv lock --check
+uv run python -m scripts.build_db
+uv build --wheel
+uv run python scripts/ci/check_package.py
+uv run pytest -m 'not live' -v
+```
+
+### What Each Check Does
+
+1. **Repository Hygiene** (`check_repo_hygiene.py`)
+   - No tracked files matching `.env`, `*.db`, `*.pdf`, `.cache/`, etc.
+   - No files over 1MB except allowlisted data files
+   
+2. **Secrets** (gitleaks in CI)
+   - Scans for committed secrets/credentials
+   
+3. **Lockfile** (`uv lock --check`)
+   - Ensures `uv.lock` is in sync with `pyproject.toml`
+   
+4. **Data Integrity** (`check_data_integrity.py`)
+   - All JSONL files are valid JSON
+   - Required fields present
+   - No duplicate keys (except 16 known distributor duplicates)
+   - Sorted by primary key
+   
+5. **Package** (`check_package.py`)
+   - Wheel contains `insurance.db` (>10MB)
+   - Install works in clean venv
+   - Data counts: companies > 1000, distributors > 50000
+   
+6. **Code Quality** (pre-commit)
+   - Ruff formatter and linter
+   - Ty type checker
+   - Standard file checks (YAML, TOML, merge conflicts, large files)
+
+7. **Tests** (pytest)
+   - Full test suite with coverage
+   - Database built fresh from JSONL
+   - Multi-version Python matrix (3.10, 3.11, 3.12)
+
 ## For Package Users
 
 **If you install from PyPI**: Just `pip install insurance-product-data-sp`. The wheel includes the pre-built database.

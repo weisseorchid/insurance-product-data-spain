@@ -5,7 +5,71 @@ on:
     branches:
       - main
 
+# Cancel superseded runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Check repository hygiene
+        run: |
+          uv run python scripts/ci/check_repo_hygiene.py
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Check lockfile is in sync
+        run: |
+          uv lock --check
+
+  data-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --frozen --all-extras
+
+      - name: Check data integrity
+        run: |
+          uv run python scripts/ci/check_data_integrity.py
+
   lint:
     runs-on: ubuntu-latest
     strategy:
@@ -29,7 +93,7 @@ jobs:
           echo "--- Running pre-commit style checks ---"
           uv run pre-commit run --all-files
 
-  build-package:
+  build-and-test-package:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -52,14 +116,9 @@ jobs:
       - name: Build package
         run: uv build --wheel
 
-      - name: Check content of wheel
+      - name: Validate package
         run: |
-          if ls dist/*.whl 1> /dev/null 2>&1; then
-            unzip -l dist/*.whl
-          else
-            echo "No wheel files found in dist/"
-            exit 1
-          fi
+          uv run python scripts/ci/check_package.py
 
       - name: Store the distribution packages
         uses: actions/upload-artifact@v4
@@ -67,9 +126,9 @@ jobs:
           name: python-package-distributions
           path: dist/
 
-  test-package:
+  test-package-install:
     needs:
-      - build-package
+      - build-and-test-package
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -91,7 +150,7 @@ jobs:
       - name: Install and verify package
         run: |
           uv pip install dist/*.whl
-          python -c "from insurance_product_data_sp import companies, distributors, branches, products; assert len(companies) > 0; assert len(distributors) > 0; assert len(branches) > 0; print(f'✓ Package smoke test passed: {len(companies)} companies, {len(distributors)} distributors, {len(branches)} branches, {len(products)} products')"
+          python -c "from insurance_product_data_sp import companies, distributors, branches, products; assert len(companies) > 1000; assert len(distributors) > 50000; assert len(branches) > 0; print(f'✓ Package smoke test passed: {len(companies)} companies, {len(distributors)} distributors, {len(branches)} branches, {len(products)} products')"
 
   test:
     runs-on: ubuntu-latest
@@ -114,7 +173,14 @@ jobs:
       - name: Build database from JSONL sources
         run: uv run python -m scripts.build_db
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: |
           echo "--- Running offline tests (excluding live tests) ---"
-          uv run pytest -m 'not live' -v --cov=insurance_product_data_sp --cov-report=term-missing
+          uv run pytest -m 'not live' -v --cov=insurance_product_data_sp --cov-report=xml --cov-report=term
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: matrix.python-version == '3.12'
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
