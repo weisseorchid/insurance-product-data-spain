@@ -3,16 +3,15 @@ repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.5
     hooks:
-      # Run the Ruff formatter.
       - id: ruff-format
         name: "Ruff formatter"
         args: [--config=pyproject.toml]
-        files: '^(insurance_product_data_sp|tests|docs/examples).*\.(py|ipynb)$'
-      # Run the Ruff linter.
+        files: '^(insurance_product_data_sp|tests|docs/examples|scripts).*\.(py|ipynb)$'
+        exclude: ^data/
       - id: ruff
         name: "Ruff linter"
         args: [--exit-non-zero-on-fix, --fix, --config=pyproject.toml]
-        files: '^(insurance_product_data_sp|tests|docs/examples).*\.(py|ipynb)$'
+        files: '^(insurance_product_data_sp|tests|docs/examples|scripts).*\.(py|ipynb)$'
   - repo: local
     hooks:
       - id: ty
@@ -25,3 +24,24 @@ repos:
     rev: 0.8.3
     hooks:
       - id: uv-lock
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=1024', '--enforce-all']
+        exclude: ^data/.*\.jsonl$
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+        exclude: ^data/
+      - id: trailing-whitespace
+        exclude: ^data/
+  - repo: local
+    hooks:
+      - id: check-repo-hygiene
+        name: Check repository hygiene
+        entry: uv run python scripts/ci/check_repo_hygiene.py
+        language: system
+        pass_filenames: false
+        always_run: true

@@ -1,0 +1,224 @@
+#!/usr/bin/env python3
+"""Validate JSONL data integrity: valid JSON, sorting, no duplicates."""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+from typing import Any
+
+# Known duplicates in distributors (allowlist)
+KNOWN_DISTRIBUTOR_DUPLICATES = {
+    "AJ-0243EUS",
+    "AJ-0266EUS",
+    "C0161X1184962W",
+    "C046807989823Z",
+    "C046816075101X",
+    "C046822111914J",
+    "C046846034731R",
+    "CS-F/0145",
+    "E007",
+    "F-047-CM",
+    "J-0070-CAC",
+    "J-0091EUS",
+    "J-0093EUS",
+    "J-0156-GA",
+    "J-0202EUS",
+    "J-068-CM",
+}
+
+
+def validate_jsonl_file(
+    file_path: Path,
+    sort_key: str,
+    required_fields: list[str],
+    allow_duplicates: set[str] | None = None,
+) -> list[str]:
+    """
+    Validate a JSONL file.
+
+    Args:
+        file_path: Path to JSONL file
+        sort_key: Key to check sorting by
+        required_fields: List of required fields in each record
+        allow_duplicates: Set of keys that are allowed to be duplicated
+
+    Returns:
+        List of error messages (empty if valid)
+    """
+    errors = []
+    warnings = []
+
+    if not file_path.exists():
+        return [f"File not found: {file_path}"]
+
+    try:
+        records = []
+        seen_keys = {}
+
+        with open(file_path, encoding="utf-8") as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+
+                # Validate JSON
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError as e:
+                    errors.append(f"Line {line_num}: Invalid JSON - {e}")
+                    continue
+
+                if not isinstance(record, dict):
+                    errors.append(f"Line {line_num}: Expected JSON object, got {type(record).__name__}")
+                    continue
+
+                # Check required fields
+                for field in required_fields:
+                    if field not in record:
+                        errors.append(f"Line {line_num}: Missing required field '{field}'")
+
+                # Check for duplicates
+                if sort_key in record:
+                    key = record[sort_key]
+                    if key in seen_keys:
+                        if allow_duplicates and key in allow_duplicates:
+                            warnings.append(
+                                f"Line {line_num}: Duplicate key '{key}' (first seen on line {seen_keys[key]}) - allowlisted"
+                            )
+                        else:
+                            errors.append(
+                                f"Line {line_num}: Duplicate key '{key}' (first seen on line {seen_keys[key]})"
+                            )
+                    else:
+                        seen_keys[key] = line_num
+
+                records.append((line_num, record))
+
+        # Check sorting (case-insensitive for strings)
+        if records:
+            prev_key = None
+            for line_num, record in records:
+                if sort_key not in record:
+                    continue
+
+                current_key = record[sort_key]
+                # Use lowercase for string comparison to match common sorting
+                current_key_lower = current_key.lower() if isinstance(current_key, str) else current_key
+                prev_key_lower = prev_key.lower() if isinstance(prev_key, str) else prev_key if prev_key is not None else None
+                
+                if prev_key_lower is not None and current_key_lower < prev_key_lower:
+                    errors.append(
+                        f"Line {line_num}: Records not sorted by '{sort_key}' "
+                        f"('{current_key}' should come before previous key '{prev_key}')"
+                    )
+                prev_key = current_key
+
+    except Exception as e:
+        errors.append(f"Error reading file: {e}")
+
+    return errors, warnings
+
+
+def main() -> int:
+    """Run all data integrity checks."""
+    print("🔍 Checking data integrity...")
+    print()
+
+    repo_root = Path(__file__).parent.parent.parent
+    all_errors = []
+    all_warnings = []
+
+    # Check main data files
+    data_files = [
+        ("data/insurance_companies.jsonl", "company_key", ["company_key", "denomination"]),
+        ("data/insurance_distributors.jsonl", "distributor_key", ["distributor_key", "name"]),
+        ("data/insurance_branches.jsonl", "code", ["code"]),  # branches only require 'code'
+    ]
+
+    for file_path, sort_key, required_fields in data_files:
+        full_path = repo_root / file_path
+        print(f"Validating {file_path}...")
+
+        # Allow duplicates for distributors
+        allow_dups = KNOWN_DISTRIBUTOR_DUPLICATES if "distributors" in file_path else None
+
+        errors, warnings = validate_jsonl_file(full_path, sort_key, required_fields, allow_dups)
+
+        if errors:
+            all_errors.extend([f"{file_path}: {e}" for e in errors])
+            for error in errors:
+                print(f"  ❌ {error}")
+        else:
+            print(f"  ✅ Valid")
+
+        if warnings:
+            all_warnings.extend([f"{file_path}: {w}" for w in warnings])
+            for warning in warnings:
+                print(f"  ⚠️  {warning}")
+
+        print()
+
+    # Check documents.jsonl files (skip sorting check - complex multi-key sort)
+    documents_files = list(repo_root.glob("data/products_by_insurance_company/*/documents.jsonl"))
+    for doc_file in documents_files:
+        print(f"Validating {doc_file.relative_to(repo_root)}...")
+        # Only check JSON validity and required fields, not sorting
+        errors_found = []
+        with open(doc_file) as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                    for field in ["product_id", "product_name", "filename", "pdf_sha256"]:
+                        if field not in record:
+                            errors_found.append(f"Line {line_num}: Missing required field '{field}'")
+                except json.JSONDecodeError as e:
+                    errors_found.append(f"Line {line_num}: Invalid JSON - {e}")
+
+        if errors_found:
+            all_errors.extend([f"{doc_file.relative_to(repo_root)}: {e}" for e in errors_found])
+            for error in errors_found:
+                print(f"  ❌ {error}")
+        else:
+            print(f"  ✅ Valid")
+        print()
+
+    # Check runs.jsonl if it exists
+    runs_file = repo_root / "data" / "runs.jsonl"
+    if runs_file.exists():
+        print(f"Validating {runs_file.relative_to(repo_root)}...")
+        errors, warnings = validate_jsonl_file(
+            runs_file,
+            "started_at",
+            ["script", "started_at"],
+        )
+
+        if errors:
+            all_errors.extend([f"{runs_file.relative_to(repo_root)}: {e}" for e in errors])
+            for error in errors:
+                print(f"  ❌ {error}")
+        else:
+            print(f"  ✅ Valid")
+        print()
+
+    # Print summary
+    if all_warnings:
+        print(f"⚠️  {len(all_warnings)} warning(s):")
+        for warning in all_warnings:
+            print(f"  {warning}")
+        print()
+
+    if all_errors:
+        print(f"❌ Data integrity check FAILED with {len(all_errors)} error(s)")
+        return 1
+
+    print("✅ Data integrity check PASSED")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
