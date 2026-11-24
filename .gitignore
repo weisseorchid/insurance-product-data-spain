@@ -28,3 +28,5 @@ coverage.xml
 *.db-shm
 # Document cache (content-addressed by SHA256)
 .cache/
+# Package data (built in CI)
+insurance_product_data_sp/data/*.db
