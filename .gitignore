@@ -14,7 +14,8 @@ __pycache__/
 
 dist/
 
-# SQLite database WAL files
+# SQLite database files (built from JSONL sources)
+*.db
 *.db-wal
 *.db-shm
 
@@ -22,7 +23,3 @@ dist/
 .coverage
 htmlcov/
 coverage.xml
-
-# SQLite WAL files (created during test runs)
-*.db-wal
-*.db-shm

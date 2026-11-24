@@ -67,13 +67,16 @@ path = "insurance_product_data_sp/__version__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["insurance_product_data_sp"]
+artifacts = [
+    "insurance_product_data_sp/data/*.db",
+]
 
 [tool.hatch.build.targets.sdist]
 include = [
     "insurance_product_data_sp/**/*.py",
     "insurance_product_data_sp/py.typed",
-    "insurance_product_data_sp/data/*.db",
-    "insurance_product_data_sp/data/*.json",
+    "data/*.jsonl",
+    "scripts/**/*.py",
 ]
 
 [tool.ruff]
