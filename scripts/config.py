@@ -9,7 +9,12 @@ BASE_STORAGE_PATH: Path = PROJECT_ROOT / "data"
 # Product data storage
 PRODUCTS_STORAGE_PATH: Path = BASE_STORAGE_PATH / "products_by_insurance_company"
 
-# Data file paths
+# JSONL source data paths (canonical format)
+INSURANCE_COMPANIES_JSONL: Path = BASE_STORAGE_PATH / "insurance_companies.jsonl"
+INSURANCE_DISTRIBUTORS_JSONL: Path = BASE_STORAGE_PATH / "insurance_distributors.jsonl"
+INSURANCE_BRANCHES_JSONL: Path = BASE_STORAGE_PATH / "insurance_branches.jsonl"
+
+# Legacy JSON paths (deprecated, remove after migration)
 INSURANCE_COMPANIES_JSON: Path = BASE_STORAGE_PATH / "insurance_companies.json"
 INSURANCE_DISTRIBUTORS_JSON: Path = BASE_STORAGE_PATH / "insurance_distributors.json"
 
