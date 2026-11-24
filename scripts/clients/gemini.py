@@ -15,7 +15,7 @@ from insurance_product_data_sp.schemas.insurance_product import ProductAnalysis
 
 load_dotenv()
 
-GEMINI_MODEL = "gemini-3-flash-preview"
+GEMINI_MODEL = "gemini-3.8-flash"
 
 # System prompt for insurance document analysis
 SYSTEM_PROMPT = """You are an expert insurance policy analyst specializing in Spanish insurance products.
