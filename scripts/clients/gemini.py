@@ -19,7 +19,7 @@ from insurance_product_data_sp.schemas.insurance_product import ProductAnalysis
 
 load_dotenv()
 
-GEMINI_MODEL = "gemini-3-flash-preview"
+GEMINI_MODEL = "gemini-3.8-flash"
 
 # Schema version for tracking prompt/schema changes
 SCHEMA_VERSION = "1.0"

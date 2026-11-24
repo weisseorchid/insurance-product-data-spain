@@ -26,3 +26,7 @@ coverage.xml
 # SQLite WAL files (created during test runs)
 *.db-wal
 *.db-shm
+# Document cache (content-addressed by SHA256)
+.cache/
+# Package data (built in CI)
+insurance_product_data_sp/data/*.db

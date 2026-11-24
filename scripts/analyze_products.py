@@ -242,7 +242,7 @@ def analyze_single_product(
         ProductAnalysisResult with the analysis or error
     """
     product_name = product_entry.get("product_name", "unknown")
-    product_id = product_entry.get("prduct_id", product_entry.get("product_id", "unknown"))
+    product_id = product_entry.get("product_id", "unknown")
     product_branch = product_entry.get("product_branch", "unknown")
 
     logger.info(f"Analyzing product: {product_name} ({product_id})")
@@ -362,7 +362,7 @@ def save_product_analysis(
         Path to the saved file
     """
     product_name = product_entry.get("product_name", "unknown")
-    product_id = product_entry.get("prduct_id", product_entry.get("product_id", "unknown"))
+    product_id = product_entry.get("product_id", "unknown")
     product_branch = product_entry.get("product_branch", "unknown")
     source_url = product_entry.get("source_url", "")
 

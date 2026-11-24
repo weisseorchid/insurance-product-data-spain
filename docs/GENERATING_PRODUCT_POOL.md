@@ -70,25 +70,44 @@ data/products_by_insurance_company/{company_name}/
 └── sources/{product_name}/ # PDFs and markdown
 ```
 
-### index.json Format
+### index.json Format (Schema v1)
 
 ```json
 [{
   "fetched_at": "2026-01-27T00:00:00Z",
   "version": "1.0",
   "company_key": "C0737",
+  "status": "Active",
   "products": [{
-    "product_branch": "09",
-    "product_name": "seguro_hogar",
     "product_id": "urn:C0737-01",
-    "source_url": "https://example.com/seguro-hogar"
+    "company_key": "C0737",
+    "product_name": "seguro_hogar",
+    "branches": ["09"],
+    "source_url": "https://example.com/seguro-hogar",
+    "document_references": [
+      {
+        "filename": "CG-seguro-hogar.pdf",
+        "pdf_sha256": "2472561d...",
+        "markdown_sha256": "58c44471...",
+        "doc_type": "general_conditions"
+      }
+    ],
+    "analysis_path": "analysis/seguro_hogar.json",
+    "fetched_at": "2026-01-27T00:00:00Z",
+    "metadata": {}
   }]
 }]
 ```
 
+**Schema v1 fields:**
+- `product_id`: Unique identifier in URN format, e.g., `urn:{company_key}-{seq}`
+- `company_key`: DGSFP company key (e.g., `C0737`)
 - `product_name`: Must match subfolder name under `sources/` (snake_case)
-- `product_id`: Unique identifier, e.g., `urn:{company_key}-{seq}`
-- `product_branch`: DGSFP branch code(s), e.g., `"09"` or `["05","06"]`
+- `branches`: List of DGSFP branch codes, e.g., `["09"]` or `["05", "06"]`
+- `document_references`: Links to documents in `documents.jsonl` (auto-populated by migration)
+- `analysis_path`: Relative path to analysis JSON (optional)
+
+See [PRODUCT_SCHEMA.md](PRODUCT_SCHEMA.md) for complete schema documentation.
 
 ## Scripts Reference
 
@@ -175,6 +194,7 @@ Also includes `metadata.quality_flags`:
 
 ## Related Documentation
 
+- [PRODUCT_SCHEMA.md](PRODUCT_SCHEMA.md) - Product data schema v1 specification
 - [INSURANCE_PUBLIC_DATA_FETCH.md](INSURANCE_PUBLIC_DATA_FETCH.md) - Regulatory data API
 - [README.md](../README.md) - Package usage
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Development setup

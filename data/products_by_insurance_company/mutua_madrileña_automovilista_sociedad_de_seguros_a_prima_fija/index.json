@@ -6,87 +6,238 @@
         "status": "Active",
         "products": [
             {
-                "product_branch": "03",
                 "product_name": "auto_todo_riesgo",
-                "prduct_id": "urn:M0083-01",
-                "source_folder": "sources/auto_todo_riesgo",
-                "files": [
-                    "ipid_todo_riesgo_2024.pdf",
-                    "ipid_todo_riesgo_eco_2024.pdf",
-                    "condiciones_generales_todo_riesgo.pdf",
-                    "condiciones_generales_auto.pdf"
-                ]
+                "product_id": "urn:M0083-01",
+                "branches": [
+                    "03"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_auto.pdf",
+                        "pdf_sha256": "642c8e79e831fd63240f7243c2548266c9403dcc712eade6cca44d01326d7ec5",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "condiciones_generales_todo_riesgo.pdf",
+                        "pdf_sha256": "5a86e38f1ab4bf108538d3862b94b7aa37dccd0fc1126fee2a74be7033c87fb0",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "ipid_todo_riesgo.pdf",
+                        "pdf_sha256": "96bb47eb93740e3c771baadb9b02f3ebd13079532e24c7adcb222aad04e6151e",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_todo_riesgo_2024.pdf",
+                        "pdf_sha256": "f5c3bb46e16992585bdb29d87b76300b91b77bec21eb0d927fad164f559a49ee",
+                        "markdown_sha256": "d3732db3d70ce37763d33ca1d5da1331ee9d002be2982c18a0988f7133b8a2b8",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_todo_riesgo_eco.pdf",
+                        "pdf_sha256": "e93f374a2bc274eb1d0e30d98414acb830ef9e6aff08cebf2d6d25bdd20cdda3",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_todo_riesgo_eco_2024.pdf",
+                        "pdf_sha256": "cc675638c33312ffc9dff4d67ca47f3d504f4d7dba18b204487f3eba394cc671",
+                        "markdown_sha256": "41875a4773f549708add90e1b5540c107f7b0f94ceab1a88a2bc0135098991ad",
+                        "doc_type": "ipid"
+                    }
+                ],
+                "analysis_path": "analysis/auto_todo_riesgo.json"
             },
             {
-                "product_branch": "06",
                 "product_name": "moto_terceros_plus",
-                "prduct_id": "urn:M0083-02",
-                "source_folder": "sources/moto_terceros_plus",
-                "files": [
-                    "ipid_moto_terceros_plus_2024.pdf",
-                    "ipid_moto_terceros_plus_eco_2024.pdf",
-                    "condiciones_generales_moto.pdf"
-                ]
+                "product_id": "urn:M0083-02",
+                "branches": [
+                    "06"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_moto.pdf",
+                        "pdf_sha256": "5e5dec1167756d59c8f967a14b11e6cbe90d75372b32b2350e9e2e8ed3f0270e",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "ipid_moto_terceros_plus.pdf",
+                        "pdf_sha256": "02e32159d3c145c08ee1bcdf5ae2e5850763b64de7cbc1c143fc9ace8fb7d7a0",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_moto_terceros_plus_2024.pdf",
+                        "pdf_sha256": "2319bc9538d8a496ac1e2ce4911d8d8f7f39bbfacc8ac892a40479621a6824cf",
+                        "markdown_sha256": "160be6b94b940de2e3ea199b467b668f3c4687e60bf091ca3a10ce724d71494c",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_moto_terceros_plus_eco_2024.pdf",
+                        "pdf_sha256": "032bd9bb06c1d2769bc92957971de9a7702f1d18dc1ca5d64240743338206a7a",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    }
+                ],
+                "analysis_path": "analysis/moto_terceros_plus.json"
             },
             {
-                "product_branch": "09",
                 "product_name": "hogar_alquiler",
-                "prduct_id": "urn:M0083-03",
-                "source_folder": "sources/hogar_alquiler",
-                "files": [
-                    "ipid_hogar_alquiler_propietario_2023.pdf",
-                    "condiciones_generales_hogar_global.pdf",
-                    "condiciones_generales_hogar_plus.pdf"
-                ]
+                "product_id": "urn:M0083-03",
+                "branches": [
+                    "09"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_hogar_global.pdf",
+                        "pdf_sha256": "b4f8b16dae705e13597ef4424f7650ee2b3327386d9a7871ec6c0764913a058d",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "condiciones_generales_hogar_plus.pdf",
+                        "pdf_sha256": "e4d0e121bacf145ea885f37f6e0adbdac6b7c6a772ea0917206203d7e3bdf649",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "ipid_hogar_alquiler.pdf",
+                        "pdf_sha256": "4ff42dea8067f0798bc07d028c72d32c81476d44f52b225a6bb893bac5bec626",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "ipid_hogar_alquiler_propietario_2023.pdf",
+                        "pdf_sha256": "29302c49f43c76a48117cdff6c094dceb3682840ac5615319f56bd2651e83e27",
+                        "markdown_sha256": "ddf073808976231878abc801bf18eaaeecd630c9f52d4cb7343a0651fd388890",
+                        "doc_type": "ipid"
+                    }
+                ],
+                "analysis_path": "analysis/hogar_alquiler.json"
             },
             {
-                "product_branch": "05",
                 "product_name": "salud_enfermedad",
-                "prduct_id": "urn:M0083-04",
-                "source_folder": "sources/salud_enfermedad",
-                "files": [
-                    "condiciones_generales_salud.pdf",
-                    "condiciones_generales_plena_plus.pdf",
-                    "nota_informativa_dental.pdf"
-                ]
+                "product_id": "urn:M0083-04",
+                "branches": [
+                    "05"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_plena_plus.pdf",
+                        "pdf_sha256": "02db693a05ab6db81a618dd7b0812619b3645794e510c6e1618ca479a9e064a4",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "condiciones_generales_salud.pdf",
+                        "pdf_sha256": "81e1f2200d31e140315f5ba2917c97cc9e122b413e9caf446ec2ebb9e3658a9d",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "nota_informativa_dental.pdf",
+                        "pdf_sha256": "9ac45b4052a9471d19caff06bc11392ae9abcaf86d3a6e195c6857e3ad3bb972",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "analysis_path": "analysis/salud_enfermedad.json"
             },
             {
-                "product_branch": "00",
                 "product_name": "vida_riesgo",
-                "prduct_id": "urn:M0083-05",
-                "source_folder": "sources/vida_riesgo",
-                "files": [
-                    "condiciones_vida_riesgo.pdf"
-                ]
+                "product_id": "urn:M0083-05",
+                "branches": [
+                    "00"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_vida_riesgo.pdf",
+                        "pdf_sha256": "f805744565c1bac3421e48e88d42072343af2cd96fc56c17cac2d803bf8ea53a",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_particulares"
+                    }
+                ],
+                "analysis_path": "analysis/vida_riesgo.json"
             },
             {
-                "product_branch": "01",
                 "product_name": "accidentes_plus",
-                "prduct_id": "urn:M0083-06",
-                "source_folder": "sources/accidentes_plus",
-                "files": [
-                    "ipid_accidentes_plus.pdf"
-                ]
+                "product_id": "urn:M0083-06",
+                "branches": [
+                    "01"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "ipid_accidentes_plus.pdf",
+                        "pdf_sha256": "b9b2e3095482dace0c6f1576701b342cdc52d37afbc6581896458873dfb39f5c",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    }
+                ],
+                "analysis_path": "analysis/accidentes_plus.json"
             },
             {
-                "product_branch": "21",
                 "product_name": "decesos_completo",
-                "prduct_id": "urn:M0083-07",
-                "source_folder": "sources/decesos_completo",
-                "files": [
-                    "ipid_decesos_completo.pdf",
-                    "condiciones_generales_decesos.pdf"
-                ]
+                "product_id": "urn:M0083-07",
+                "branches": [
+                    "21"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_decesos.pdf",
+                        "pdf_sha256": "2974233078f002e3bfad62e2c68a86d9d0a5ad85ca489b0ed491ca9004d44a09",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "ipid_decesos_completo.pdf",
+                        "pdf_sha256": "41372958a628aa974f145c39e29885847f3edc1a03cdc835db1d640136f509e4",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "ipid"
+                    }
+                ],
+                "analysis_path": "analysis/decesos_completo.json"
             },
             {
-                "product_branch": "13",
                 "product_name": "ahorro_garantia",
-                "prduct_id": "urn:M0083-08",
-                "source_folder": "sources/ahorro_garantia",
-                "files": [
-                    "nota_informativa_ahorro.pdf",
-                    "condiciones_generales_ahorro_ppa.pdf"
-                ]
+                "product_id": "urn:M0083-08",
+                "branches": [
+                    "13"
+                ],
+                "company_key": "M0083",
+                "fetched_at": "2026-02-02T11:15:00Z",
+                "document_references": [
+                    {
+                        "filename": "condiciones_generales_ahorro_ppa.pdf",
+                        "pdf_sha256": "a3973ce0c461be6f145ff33ddc339c8171c9755162c59671564f3e06fa5ad0c3",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "nota_informativa_ahorro.pdf",
+                        "pdf_sha256": "665bae3a734a39ea832459a841472da5e49822aec79736aee15403f078c9fcf5",
+                        "markdown_sha256": "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "analysis_path": "analysis/ahorro_garantia.json"
             }
         ]
     }

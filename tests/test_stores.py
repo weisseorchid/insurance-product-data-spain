@@ -5,6 +5,7 @@ import pytest
 from insurance_product_data_sp.core.db import reload_stores
 from insurance_product_data_sp.core.engine import DatabaseNotFoundError, init_database, set_database_path
 from insurance_product_data_sp.models import BranchTable, CompanyTable, DistributorTable, ProductTable
+from insurance_product_data_sp.models.products import ProductBranchAssociation
 from insurance_product_data_sp.schemas.insurance_branches import InsuranceBranch
 from insurance_product_data_sp.schemas.insurance_companies import InsuranceCompanyDetails
 from insurance_product_data_sp.schemas.insurance_distributors import InsuranceDistributorDetails
@@ -140,45 +141,69 @@ def test_db(tmp_path):
                 "product_id": "urn:C0737-01",
                 "product_name": "Home Insurance Basic",
                 "company_key": "C0737",
-                "product_branch": "|09|",  # Single branch
+                "fetched_at": "2026-01-01T00:00:00Z",
                 "details_json": {
-                    "product_name": "Home Insurance Basic",
-                    "product_branch": "09",
                     "product_id": "urn:C0737-01",
-                    "source_urls": ["https://example.com/product1.pdf"],
+                    "company_key": "C0737",
+                    "product_name": "Home Insurance Basic",
+                    "branches": ["09"],
+                    "source_url": "https://example.com/product1.pdf",
+                    "document_references": [],
+                    "analysis_path": None,
+                    "fetched_at": "2026-01-01T00:00:00Z",
                     "metadata": {},
                 },
+                "branches": ["09"],
             },
             {
                 "product_id": "urn:C0737-02",
                 "product_name": "Home Insurance Premium",
                 "company_key": "C0737",
-                "product_branch": "|09||11|",  # Multi-branch
+                "fetched_at": "2026-01-01T00:00:00Z",
                 "details_json": {
-                    "product_name": "Home Insurance Premium",
-                    "product_branch": ["09", "11"],
                     "product_id": "urn:C0737-02",
-                    "source_urls": ["https://example.com/product2.pdf"],
+                    "company_key": "C0737",
+                    "product_name": "Home Insurance Premium",
+                    "branches": ["09", "11"],
+                    "source_url": "https://example.com/product2.pdf",
+                    "document_references": [],
+                    "analysis_path": None,
+                    "fetched_at": "2026-01-01T00:00:00Z",
                     "metadata": {},
                 },
+                "branches": ["09", "11"],
             },
             {
                 "product_id": "urn:C0001-01",
                 "product_name": "Life Insurance",
                 "company_key": "C0001",
-                "product_branch": "|00|",
+                "fetched_at": "2026-01-01T00:00:00Z",
                 "details_json": {
-                    "product_name": "Life Insurance",
-                    "product_branch": "00",
                     "product_id": "urn:C0001-01",
-                    "source_urls": [],
+                    "company_key": "C0001",
+                    "product_name": "Life Insurance",
+                    "branches": ["00"],
+                    "source_url": None,
+                    "document_references": [],
+                    "analysis_path": None,
+                    "fetched_at": "2026-01-01T00:00:00Z",
                     "metadata": {},
                 },
+                "branches": ["00"],
             },
         ]
 
         for data in products_data:
+            branches = data.pop("branches")
             session.add(ProductTable(**data))
+            # Add branch associations
+            for branch_code in branches:
+                session.add(
+                    ProductBranchAssociation(
+                        product_id=data["product_id"],
+                        branch_code=branch_code,
+                    )
+                )
 
         session.commit()
 
@@ -621,6 +646,41 @@ def test_products_json_roundtrip(test_db):
 
     assert parsed.product_id == product.product_id
     assert parsed.product_name == product.product_name
+
+
+def test_products_schema_v1_fields(test_db):
+    """Test that products have all schema v1 fields."""
+    from insurance_product_data_sp import products
+
+    product = products.get(product_id="urn:C0737-01")
+    assert product is not None
+    assert product.product_id == "urn:C0737-01"
+    assert product.company_key == "C0737"
+    assert product.product_name == "Home Insurance Basic"
+    assert product.branches == ["09"]
+    assert product.fetched_at is not None
+    assert isinstance(product.document_references, list)
+    assert isinstance(product.metadata, dict)
+
+
+def test_product_branch_association(test_db):
+    """Test that product-branch associations work correctly."""
+    from insurance_product_data_sp import products
+
+    # Test multi-branch product
+    multi_branch = products.get(product_id="urn:C0737-02")
+    assert multi_branch is not None
+    assert set(multi_branch.branches) == {"09", "11"}
+
+    # Verify we can search by both branches
+    branch_09_products = products.search_by_branch("09")
+    assert len(branch_09_products) == 2
+    ids = {p.product_id for p in branch_09_products}
+    assert ids == {"urn:C0737-01", "urn:C0737-02"}
+
+    branch_11_products = products.search_by_branch("11")
+    assert len(branch_11_products) == 1
+    assert branch_11_products[0].product_id == "urn:C0737-02"
 
 
 # =============================================================================

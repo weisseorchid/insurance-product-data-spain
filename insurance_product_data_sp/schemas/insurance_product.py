@@ -196,18 +196,37 @@ class ProductAnalysis(BaseModel):
 # =============================================================================
 
 
+class DocumentReference(BaseModel):
+    """Reference to a document in documents.jsonl."""
+
+    filename: str = Field(..., description="Document filename")
+    pdf_sha256: str = Field(..., description="SHA256 hash of the PDF document")
+    markdown_sha256: str | None = Field(None, description="SHA256 hash of the markdown conversion")
+    doc_type: str | None = Field(None, description="Document type (ipid, general_conditions, etc.)")
+
+
 class InsuranceProduct(BaseModel):
     """Complete insurance product model with structured analysis.
 
     Represents an insurance product with its metadata and AI-extracted
     analysis from policy documents.
+
+    Schema version 1 (product_id, company_key, branches, document_references).
     """
 
-    product_name: str = Field(..., description="Product name")
-    product_branch: str | list[str] = Field(
-        ..., description="Insurance branch code(s) (e.g., '00' for life, '09' for home)"
-    )
     product_id: str = Field(..., description="Unique product identifier (e.g., 'urn:C0737-01')")
-    source_urls: list[str] = Field(default_factory=list, description="Source URLs for the product")
+    company_key: str = Field(..., description="DGSFP company key (e.g., 'C0737')")
+    product_name: str = Field(..., description="Product name (snake_case identifier)")
+    branches: list[str] = Field(..., description="Insurance branch codes (e.g., ['00', '09'])")
+    source_url: str | None = Field(None, description="Primary source URL for the product")
+    document_references: list[DocumentReference] = Field(
+        default_factory=list, description="References to documents in documents.jsonl"
+    )
+    analysis_path: str | None = Field(None, description="Path to analysis JSON file (e.g., 'analysis/product.json')")
+    fetched_at: str | None = Field(None, description="ISO8601 timestamp when product was fetched")
     metadata: dict[str, Any] = Field(default_factory=dict, description="Additional metadata")
+
+    # Legacy field for backward compatibility with analysis JSON files
+    product_branch: str | list[str] | None = Field(None, description="Deprecated: use branches field")
+    source_urls: list[str] = Field(default_factory=list, description="Deprecated: use source_url field")
     analysis: ProductAnalysis | None = Field(None, description="Structured analysis extracted from policy documents")
