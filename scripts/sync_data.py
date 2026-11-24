@@ -109,7 +109,7 @@ def run() -> int:
     # Save to data/ folder (both JSON and JSONL)
     save_json(validated_company_details, INSURANCE_COMPANIES_JSON)
     logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSON}")
-    
+
     # Save JSONL version with stable sorting
     save_jsonl(validated_company_details, INSURANCE_COMPANIES_JSONL, sort_key=lambda x: x["company_key"])
     logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSONL}")
@@ -140,13 +140,9 @@ def run() -> int:
     # Save to data/ folder (both JSON and JSONL)
     save_json(validated_distributor_details, INSURANCE_DISTRIBUTORS_JSON)
     logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSON}")
-    
+
     # Save JSONL version with stable sorting
-    save_jsonl(
-        validated_distributor_details,
-        INSURANCE_DISTRIBUTORS_JSONL,
-        sort_key=lambda x: x["distributor_key"]
-    )
+    save_jsonl(validated_distributor_details, INSURANCE_DISTRIBUTORS_JSONL, sort_key=lambda x: x["distributor_key"])
     logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSONL}")
 
     # Copy to package data folder

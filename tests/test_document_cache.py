@@ -1,9 +1,6 @@
 """Tests for document cache."""
 
-import os
 from pathlib import Path
-
-import pytest
 
 from scripts.utils.document_cache import DocumentCache
 

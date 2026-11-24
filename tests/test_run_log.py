@@ -1,11 +1,8 @@
 """Tests for run logging."""
 
 from datetime import datetime, timezone
-from pathlib import Path
 
-import pytest
-
-from scripts.utils.run_log import append_run_log, get_runs_log_path
+from scripts.utils.run_log import append_run_log
 
 
 def test_append_run_log(tmp_path, monkeypatch):

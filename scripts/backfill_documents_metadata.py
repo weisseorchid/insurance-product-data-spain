@@ -157,9 +157,7 @@ def backfill_company_documents(
 
 def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(
-        description="Backfill documents.jsonl metadata from existing files"
-    )
+    parser = argparse.ArgumentParser(description="Backfill documents.jsonl metadata from existing files")
     parser.add_argument(
         "--company",
         "-c",
@@ -209,10 +207,7 @@ def main():
     logger.info("BACKFILL SUMMARY")
     logger.info("=" * 60)
     for summary in summaries:
-        logger.info(
-            f"  {summary['company']}: "
-            f"{summary['products']} products, {summary['documents']} documents"
-        )
+        logger.info(f"  {summary['company']}: {summary['products']} products, {summary['documents']} documents")
     logger.info(f"\nTotal: {total_products} products, {total_documents} documents")
 
     if args.dry_run:

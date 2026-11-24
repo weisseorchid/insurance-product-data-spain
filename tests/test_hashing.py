@@ -3,8 +3,6 @@
 import hashlib
 from pathlib import Path
 
-import pytest
-
 from scripts.utils.hashing import compute_file_sha256, compute_string_sha256, get_cache_path
 
 

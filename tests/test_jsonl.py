@@ -32,7 +32,7 @@ def test_jsonl_stable_key_ordering(tmp_path: Path):
     save_jsonl(data, jsonl_path)
 
     # Read the raw file to check key ordering
-    with open(jsonl_path, "r") as f:
+    with open(jsonl_path) as f:
         line = f.read().strip()
 
     # Keys should appear in alphabetical order
@@ -69,7 +69,7 @@ def test_jsonl_one_record_per_line(tmp_path: Path):
     jsonl_path = tmp_path / "test.jsonl"
     save_jsonl(data, jsonl_path)
 
-    with open(jsonl_path, "r") as f:
+    with open(jsonl_path) as f:
         lines = f.readlines()
 
     assert len(lines) == 3
@@ -95,7 +95,7 @@ def test_jsonl_unicode_handling(tmp_path: Path):
     assert loaded[1]["city"] == "París"
 
     # Verify raw file contains actual unicode characters
-    with open(jsonl_path, "r", encoding="utf-8") as f:
+    with open(jsonl_path, encoding="utf-8") as f:
         content = f.read()
     assert "José" in content
     assert "París" in content
@@ -140,7 +140,7 @@ def test_jsonl_no_pretty_formatting(tmp_path: Path):
     jsonl_path = tmp_path / "compact.jsonl"
     save_jsonl(data, jsonl_path)
 
-    with open(jsonl_path, "r") as f:
+    with open(jsonl_path) as f:
         line = f.read().strip()
 
     # Compact format: no spaces after separators except after colons

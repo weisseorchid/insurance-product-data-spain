@@ -104,12 +104,12 @@ def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -
 
     db_path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{db_path}")
-    
+
     # Set journal_mode to DELETE for deterministic output (no WAL files)
     with engine.connect() as conn:
         conn.exec_driver_sql("PRAGMA journal_mode=DELETE")
         conn.commit()
-    
+
     SQLModel.metadata.create_all(engine)
     return Session(engine), engine
 
@@ -142,7 +142,7 @@ def _insert_companies(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_companies.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("companies data must be a list")
 
@@ -166,7 +166,7 @@ def _insert_distributors(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_distributors.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("distributors data must be a list")
 
@@ -196,7 +196,7 @@ def _insert_branches(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_branches.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("branches data must be a list")
 
@@ -349,12 +349,12 @@ def build_database() -> Path:
         session.close()
 
     _validate_store_queries(companies, distributors, branches, product_samples)
-    
+
     # VACUUM to compact database and ensure deterministic output
     with engine.connect() as conn:
         conn.exec_driver_sql("VACUUM")
         conn.commit()
-    
+
     engine.dispose()
 
     return db_path
