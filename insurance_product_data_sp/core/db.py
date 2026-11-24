@@ -14,6 +14,7 @@ from sqlmodel import select
 
 from insurance_product_data_sp.core.engine import get_session
 from insurance_product_data_sp.models import BranchTable, CompanyTable, DistributorTable, ProductTable
+from insurance_product_data_sp.models.products import ProductBranchAssociation
 from insurance_product_data_sp.schemas.insurance_branches import InsuranceBranch
 from insurance_product_data_sp.schemas.insurance_companies import InsuranceCompanyDetails
 from insurance_product_data_sp.schemas.insurance_distributors import InsuranceDistributorDetails
@@ -145,11 +146,13 @@ class ProductDatabase(SQLModelDatabase[InsuranceProduct, ProductTable]):
         return self.search(company_key=company_key)
 
     def search_by_branch(self, branch_code: str) -> list[InsuranceProduct]:
-        """Get all products for a specific branch."""
+        """Get all products for a specific branch using the association table."""
         with get_session() as session:
-            token = f"|{branch_code.strip()}|"
-            stmt = select(self._table).where(
-                self._table.product_branch.contains(token)  # type: ignore[union-attr]
+            # Query through the association table
+            stmt = (
+                select(self._table)
+                .join(ProductBranchAssociation, self._table.product_id == ProductBranchAssociation.product_id)
+                .where(ProductBranchAssociation.branch_code == branch_code.strip())
             )
             rows = session.exec(stmt).all()
             return [self._to_model(row) for row in rows]

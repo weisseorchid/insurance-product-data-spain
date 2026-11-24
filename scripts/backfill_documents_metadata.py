@@ -89,7 +89,7 @@ def backfill_company_documents(
 
         product_name = product_dir.name
         product_info = index_data.get(product_name, {})
-        product_id = product_info.get("prduct_id", product_info.get("product_id"))
+        product_id = product_info.get("product_id")
         source_url = product_info.get("source_url")
 
         # Find all PDF files
