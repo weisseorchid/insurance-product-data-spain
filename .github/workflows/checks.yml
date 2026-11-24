@@ -42,6 +42,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen --all-extras
 
+      - name: Build database from JSONL sources
+        run: uv run python -m scripts.build_db
+
       - name: Build package
         run: uv build
 
@@ -103,6 +106,9 @@ jobs:
 
       - name: Install Python Dependencies
         run: uv sync --frozen --all-extras
+
+      - name: Build database from JSONL sources
+        run: uv run python -m scripts.build_db
 
       - name: Run tests
         run: |

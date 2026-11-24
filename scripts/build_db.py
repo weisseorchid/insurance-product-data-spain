@@ -53,8 +53,8 @@ def _check_db_locked(db_path: Path) -> bool:
         return False
 
 
-def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> Session:
-    """Prepare database: delete existing, create schema, return session.
+def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> tuple[Session, any]:
+    """Prepare database: delete existing, create schema, return session and engine.
 
     Args:
         db_path: Path to the database file
@@ -62,7 +62,7 @@ def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -
         retry_delay: Delay in seconds between retry attempts
 
     Returns:
-        Session: Database session
+        tuple: (Session, engine)
 
     Raises:
         SystemExit: If database file cannot be deleted after retries
@@ -104,8 +104,14 @@ def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -
 
     db_path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{db_path}")
+    
+    # Set journal_mode to DELETE for deterministic output (no WAL files)
+    with engine.connect() as conn:
+        conn.exec_driver_sql("PRAGMA journal_mode=DELETE")
+        conn.commit()
+    
     SQLModel.metadata.create_all(engine)
-    return Session(engine)
+    return Session(engine), engine
 
 
 def _handle_locked_database(db_path: Path) -> None:
@@ -317,7 +323,7 @@ def _validate_store_queries(
 def build_database() -> Path:
     """Build SQLite database from JSON sources and validate consistency."""
     db_path = PACKAGE_DATA_PATH / "insurance.db"
-    session = _prepare_db(db_path)
+    session, engine = _prepare_db(db_path)
 
     try:
         companies = _insert_companies(session)
@@ -343,6 +349,13 @@ def build_database() -> Path:
         session.close()
 
     _validate_store_queries(companies, distributors, branches, product_samples)
+    
+    # VACUUM to compact database and ensure deterministic output
+    with engine.connect() as conn:
+        conn.exec_driver_sql("VACUUM")
+        conn.commit()
+    
+    engine.dispose()
 
     return db_path
 
