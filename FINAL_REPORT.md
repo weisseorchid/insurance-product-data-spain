@@ -6,14 +6,14 @@ Successfully recreated PRs #18 and #19 work without committing `.cache/` directo
 
 ## A) PR #22 - Storage Out of Git (replaces #18/#19)
 
-**URL:** https://github.com/weisseorchid/insurance-product-data-spain/pull/22  
-**Branch:** `cursor/storage-out-of-git-b671`  
-**Base:** `main`  
+**URL:** https://github.com/weisseorchid/insurance-product-data-spain/pull/22
+**Branch:** `cursor/storage-out-of-git-b671`
+**Base:** `main`
 **Files Changed:** 120 files (+1,117 / -34,540)
 
 ### What It Does
 - Removes `insurance.db` (52MB) from git
-- Removes PDFs and markdown (~25MB) from git  
+- Removes PDFs and markdown (~25MB) from git
 - Adds `.cache/` to `.gitignore` from first commit
 - Builds DB from JSONL in CI
 - Creates `documents.jsonl` metadata with SHA256 hashes
@@ -33,9 +33,9 @@ $ git log -p main..cursor/storage-out-of-git-b671 -- .cache
 
 ## B) PR #21 - CI Automation (rebased)
 
-**URL:** https://github.com/weisseorchid/insurance-product-data-spain/pull/21  
-**Branch:** `cursor/ci-automation-b671`  
-**Base:** `cursor/storage-out-of-git-b671` (retargeted from old base)  
+**URL:** https://github.com/weisseorchid/insurance-product-data-spain/pull/21
+**Branch:** `cursor/ci-automation-b671`
+**Base:** `cursor/storage-out-of-git-b671` (retargeted from old base)
 **Files Changed:** 9 files (+721 / -27)
 
 ### What It Does
@@ -113,7 +113,7 @@ $ git add fake-secret.txt && git commit -m "test"
 ```
 
 ### Demo 5: Lockfile Check
-**Note:** `uv lock --check` is robust and only fails on genuine dependency mismatches.  
+**Note:** `uv lock --check` is robust and only fails on genuine dependency mismatches.
 The check runs in CI and will catch:
 - Added/removed dependencies
 - Version constraint changes
@@ -127,12 +127,12 @@ The check runs in CI and will catch:
 - Looks for: "cloudflare", "please stand by", "checking your browser", "enable cookies"
 - Reports as **warnings** (non-blocking) for data quality monitoring
 
-**Current Status:** Cannot verify without populated `.cache/` directory locally.  
+**Current Status:** Cannot verify without populated `.cache/` directory locally.
 The check will run when:
 1. Cache is populated during development/backfill
 2. PR CI builds and caches documents
 
-**List of Suspicious Documents:** None found in current `documents.jsonl` files (all end in `.pdf`).  
+**List of Suspicious Documents:** None found in current `documents.jsonl` files (all end in `.pdf`).
 The validation will flag any issues when cache is available.
 
 ## 6) GitHub Actions CI Results
@@ -147,7 +147,7 @@ The validation will flag any issues when cache is available.
 - Replaced by: PR #22
 
 ### PR #19 (Replaced by #22)
-- Status: 🔄 Merged into wrong branch (not main)  
+- Status: 🔄 Merged into wrong branch (not main)
 - Replaced by: PR #22
 
 ### PR #22 (New - Storage Out of Git)
@@ -157,7 +157,7 @@ The validation will flag any issues when cache is available.
 
 ### PR #21 (CI Automation)
 - Status: 🔄 Rebased and retargeted
-- Branch: `cursor/ci-automation-b671`  
+- Branch: `cursor/ci-automation-b671`
 - Base: Changed from `cursor/pdfs-out-provenance-b671` → `cursor/storage-out-of-git-b671`
 - Last CI Run: https://github.com/weisseorchid/insurance-product-data-spain/actions/runs/45389346299
   - **Result:** ❌ FAILED (before rebase/fixes)
@@ -176,17 +176,17 @@ The validation will flag any issues when cache is available.
 ## Proof Summary
 
 ### PR #22 Proofs:
-✅ Files changed: 120  
-✅ No blobs >500KB (verified with rev-list/cat-file)  
-✅ No .cache/ commits (verified with git log)  
+✅ Files changed: 120
+✅ No blobs >500KB (verified with rev-list/cat-file)
+✅ No .cache/ commits (verified with git log)
 ✅ `.gitignore` updated in first commit
 
 ### PR #21 Proofs:
-✅ Files changed: 9 (only CI/check scripts + docs)  
-✅ Sorting fixed: `data/insurance_distributors.jsonl` case-insensitive  
-✅ Hard failure on data issues  
-✅ PDF validation warnings added  
-✅ Demos: All 5 failure scenarios tested  
+✅ Files changed: 9 (only CI/check scripts + docs)
+✅ Sorting fixed: `data/insurance_distributors.jsonl` case-insensitive
+✅ Hard failure on data issues
+✅ PDF validation warnings added
+✅ Demos: All 5 failure scenarios tested
 ✅ CI runs on `pull_request` to any base
 
 ## Recommendations

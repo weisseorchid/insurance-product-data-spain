@@ -131,24 +131,24 @@ uv run pytest -m 'not live' -v
 1. **Repository Hygiene** (`check_repo_hygiene.py`)
    - No tracked files matching `.env`, `*.db`, `*.pdf`, `.cache/`, etc.
    - No files over 1MB except allowlisted data files
-   
+
 2. **Secrets** (gitleaks in CI)
    - Scans for committed secrets/credentials
-   
+
 3. **Lockfile** (`uv lock --check`)
    - Ensures `uv.lock` is in sync with `pyproject.toml`
-   
+
 4. **Data Integrity** (`check_data_integrity.py`)
    - All JSONL files are valid JSON
    - Required fields present
    - No duplicate keys (except 16 known distributor duplicates)
    - Sorted by primary key
-   
+
 5. **Package** (`check_package.py`)
    - Wheel contains `insurance.db` (>10MB)
    - Install works in clean venv
    - Data counts: companies > 1000, distributors > 50000
-   
+
 6. **Code Quality** (pre-commit)
    - Ruff formatter and linter
    - Ty type checker
