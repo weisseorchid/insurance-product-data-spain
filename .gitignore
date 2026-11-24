@@ -18,3 +18,5 @@ dist/
 *.db
 *.db-wal
 *.db-shm
+# Document cache (content-addressed by SHA256)
+.cache/
