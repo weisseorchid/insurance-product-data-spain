@@ -26,3 +26,5 @@ coverage.xml
 # SQLite WAL files (created during test runs)
 *.db-wal
 *.db-shm
+# Document cache (content-addressed by SHA256)
+.cache/
