@@ -50,7 +50,7 @@ jobs:
         run: uv run python -m scripts.build_db
 
       - name: Build package
-        run: uv build
+        run: uv build --wheel
 
       - name: Check content of wheel
         run: |
