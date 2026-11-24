@@ -6,7 +6,6 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
 # Known duplicates in distributors (allowlist)
 KNOWN_DISTRIBUTOR_DUPLICATES = {
@@ -106,8 +105,10 @@ def validate_jsonl_file(
                 current_key = record[sort_key]
                 # Use lowercase for string comparison to match common sorting
                 current_key_lower = current_key.lower() if isinstance(current_key, str) else current_key
-                prev_key_lower = prev_key.lower() if isinstance(prev_key, str) else prev_key if prev_key is not None else None
-                
+                prev_key_lower = (
+                    prev_key.lower() if isinstance(prev_key, str) else prev_key if prev_key is not None else None
+                )
+
                 if prev_key_lower is not None and current_key_lower < prev_key_lower:
                     errors.append(
                         f"Line {line_num}: Records not sorted by '{sort_key}' "
@@ -151,7 +152,7 @@ def main() -> int:
             for error in errors:
                 print(f"  ❌ {error}")
         else:
-            print(f"  ✅ Valid")
+            print("  ✅ Valid")
 
         if warnings:
             all_warnings.extend([f"{file_path}: {w}" for w in warnings])
@@ -177,7 +178,7 @@ def main() -> int:
                     for field in ["product_id", "product_name", "filename", "pdf_sha256"]:
                         if field not in record:
                             errors_found.append(f"Line {line_num}: Missing required field '{field}'")
-                    
+
                     # Check if cache files exist and validate them
                     if "pdf_sha256" in record:
                         pdf_hash = record["pdf_sha256"]
@@ -186,11 +187,11 @@ def main() -> int:
                             # Check PDF magic bytes
                             with open(pdf_cache_path, "rb") as pf:
                                 magic = pf.read(4)
-                                if magic != b'%PDF':
+                                if magic != b"%PDF":
                                     bad_pdfs_warnings.append(
                                         f"Line {line_num} ({record['filename']}): Cache file is not a real PDF (magic: {magic[:20]})"
                                     )
-                    
+
                     if "markdown_sha256" in record:
                         md_hash = record["markdown_sha256"]
                         md_cache_path = repo_root / ".cache" / "insurance-docs" / md_hash[:2] / f"{md_hash}.md"
@@ -198,12 +199,17 @@ def main() -> int:
                             # Check for block/cookie page indicators
                             with open(md_cache_path, encoding="utf-8", errors="ignore") as mf:
                                 content = mf.read(5000).lower()  # First 5KB
-                                block_indicators = ["cloudflare", "please stand by", "checking your browser", "enable cookies"]
+                                block_indicators = [
+                                    "cloudflare",
+                                    "please stand by",
+                                    "checking your browser",
+                                    "enable cookies",
+                                ]
                                 if any(indicator in content for indicator in block_indicators):
                                     bad_pdfs_warnings.append(
                                         f"Line {line_num} ({record['filename']}): Markdown appears to be a block/cookie page"
                                     )
-                
+
                 except json.JSONDecodeError as e:
                     errors_found.append(f"Line {line_num}: Invalid JSON - {e}")
 
@@ -212,9 +218,9 @@ def main() -> int:
             for error in errors_found:
                 print(f"  ❌ {error}")
         else:
-            print(f"  ✅ Valid")
+            print("  ✅ Valid")
         print()
-    
+
     # Report bad PDF warnings at the end
     if bad_pdfs_warnings:
         print("\n⚠️  Data quality issues (warnings):")
@@ -237,7 +243,7 @@ def main() -> int:
             for error in errors:
                 print(f"  ❌ {error}")
         else:
-            print(f"  ✅ Valid")
+            print("  ✅ Valid")
         print()
 
     # Print summary
