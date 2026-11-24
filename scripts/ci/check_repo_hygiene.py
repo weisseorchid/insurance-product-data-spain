@@ -129,7 +129,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
             text=True,
             check=True,
         )
-        
+
         # Set of blob hashes that exist in base tree
         base_blob_hashes = set()
         for line in base_blobs_result.stdout.strip().split("\n"):
@@ -138,7 +138,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
             parts = line.split()
             if len(parts) >= 3 and parts[1] == "blob":
                 base_blob_hashes.add(parts[2])
-        
+
         # Also get all blobs from base's reachable history
         base_history_result = subprocess.run(
             ["git", "rev-list", "--objects", base_ref],
@@ -192,7 +192,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
 
                 if obj_type != "blob":
                     continue
-                
+
                 # Skip if already seen or exists in base
                 if blob_hash in seen_blobs or blob_hash in base_blob_hashes:
                     continue
