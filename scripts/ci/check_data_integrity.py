@@ -162,6 +162,7 @@ def main() -> int:
 
     # Check documents.jsonl files (skip sorting check - complex multi-key sort)
     documents_files = list(repo_root.glob("data/products_by_insurance_company/*/documents.jsonl"))
+    bad_pdfs_warnings = []
     for doc_file in documents_files:
         print(f"Validating {doc_file.relative_to(repo_root)}...")
         # Only check JSON validity and required fields, not sorting
@@ -176,6 +177,33 @@ def main() -> int:
                     for field in ["product_id", "product_name", "filename", "pdf_sha256"]:
                         if field not in record:
                             errors_found.append(f"Line {line_num}: Missing required field '{field}'")
+                    
+                    # Check if cache files exist and validate them
+                    if "pdf_sha256" in record:
+                        pdf_hash = record["pdf_sha256"]
+                        pdf_cache_path = repo_root / ".cache" / "insurance-docs" / pdf_hash[:2] / f"{pdf_hash}.pdf"
+                        if pdf_cache_path.exists():
+                            # Check PDF magic bytes
+                            with open(pdf_cache_path, "rb") as pf:
+                                magic = pf.read(4)
+                                if magic != b'%PDF':
+                                    bad_pdfs_warnings.append(
+                                        f"Line {line_num} ({record['filename']}): Cache file is not a real PDF (magic: {magic[:20]})"
+                                    )
+                    
+                    if "markdown_sha256" in record:
+                        md_hash = record["markdown_sha256"]
+                        md_cache_path = repo_root / ".cache" / "insurance-docs" / md_hash[:2] / f"{md_hash}.md"
+                        if md_cache_path.exists():
+                            # Check for block/cookie page indicators
+                            with open(md_cache_path, encoding="utf-8", errors="ignore") as mf:
+                                content = mf.read(5000).lower()  # First 5KB
+                                block_indicators = ["cloudflare", "please stand by", "checking your browser", "enable cookies"]
+                                if any(indicator in content for indicator in block_indicators):
+                                    bad_pdfs_warnings.append(
+                                        f"Line {line_num} ({record['filename']}): Markdown appears to be a block/cookie page"
+                                    )
+                
                 except json.JSONDecodeError as e:
                     errors_found.append(f"Line {line_num}: Invalid JSON - {e}")
 
@@ -186,6 +214,13 @@ def main() -> int:
         else:
             print(f"  ✅ Valid")
         print()
+    
+    # Report bad PDF warnings at the end
+    if bad_pdfs_warnings:
+        print("\n⚠️  Data quality issues (warnings):")
+        all_warnings.extend(bad_pdfs_warnings)
+        for warning in bad_pdfs_warnings:
+            print(f"  ⚠️  {warning}")
 
     # Check runs.jsonl if it exists
     runs_file = repo_root / "data" / "runs.jsonl"
