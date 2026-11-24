@@ -24,8 +24,11 @@ from insurance_product_data_sp.schemas.insurance_distributors import (
 )
 from scripts.build_db import build_database
 from scripts.config import (
+    INSURANCE_BRANCHES_JSONL,
     INSURANCE_COMPANIES_JSON,
+    INSURANCE_COMPANIES_JSONL,
     INSURANCE_DISTRIBUTORS_JSON,
+    INSURANCE_DISTRIBUTORS_JSONL,
     PACKAGE_COMPANIES_JSON,
     PACKAGE_DISTRIBUTORS_JSON,
 )
@@ -35,7 +38,8 @@ from scripts.fetchers import (
     get_insurance_companies,
     get_insurance_distributors,
 )
-from scripts.utils.storage import ensure_directory, save_json
+from scripts.utils.jsonl import save_jsonl
+from scripts.utils.storage import ensure_directory, load_json, save_json
 
 
 def _require_list(data: Any, label: str) -> list[dict[str, Any]]:
@@ -102,9 +106,13 @@ def run() -> int:
         "company details",
     )
 
-    # Save to data/ folder
+    # Save to data/ folder (both JSON and JSONL)
     save_json(validated_company_details, INSURANCE_COMPANIES_JSON)
     logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSON}")
+    
+    # Save JSONL version with stable sorting
+    save_jsonl(validated_company_details, INSURANCE_COMPANIES_JSONL, sort_key=lambda x: x["company_key"])
+    logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSONL}")
 
     # Copy to package data folder
     _copy_to_package(INSURANCE_COMPANIES_JSON, PACKAGE_COMPANIES_JSON)
@@ -129,9 +137,17 @@ def run() -> int:
         "distributor details",
     )
 
-    # Save to data/ folder
+    # Save to data/ folder (both JSON and JSONL)
     save_json(validated_distributor_details, INSURANCE_DISTRIBUTORS_JSON)
     logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSON}")
+    
+    # Save JSONL version with stable sorting
+    save_jsonl(
+        validated_distributor_details,
+        INSURANCE_DISTRIBUTORS_JSONL,
+        sort_key=lambda x: x["distributor_key"]
+    )
+    logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSONL}")
 
     # Copy to package data folder
     _copy_to_package(INSURANCE_DISTRIBUTORS_JSON, PACKAGE_DISTRIBUTORS_JSON)
@@ -145,8 +161,20 @@ def run() -> int:
         )
         return 1
 
+    # Save branches JSONL (from existing JSON)
+    logger.info("Step 5: Converting branches to JSONL")
+    try:
+        branches_json_path = INSURANCE_COMPANIES_JSON.parent / "insurance_branches.json"
+        if branches_json_path.exists():
+            branches = load_json(branches_json_path)
+            if isinstance(branches, list):
+                save_jsonl(branches, INSURANCE_BRANCHES_JSONL, sort_key=lambda x: x.get("code", ""))
+                logger.info(f"Saved {len(branches)} branches to {INSURANCE_BRANCHES_JSONL}")
+    except Exception as exc:
+        logger.warning(f"Failed to save branches JSONL: {exc}")
+
     # Rebuild SQLite database
-    logger.info("Step 5: Rebuilding SQLite database")
+    logger.info("Step 6: Rebuilding SQLite database")
     try:
         db_path = build_database()
         logger.info(f"Database rebuilt at: {db_path}")

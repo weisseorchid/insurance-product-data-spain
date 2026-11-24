@@ -1,0 +1,20 @@
+{"category":"life","code":"00","name_en":"Life","name_es":"Vida"}
+{"category":"non_life","code":"01","name_en":"Accidents","name_es":"Accidentes"}
+{"category":"non_life","code":"02","name_en":"Health / Illness","name_es":"Enfermedad"}
+{"category":"non_life","code":"03","name_en":"Non-railway land vehicles","name_es":"Vehículos terrestres no ferroviarios"}
+{"category":"non_life","code":"04","name_en":"Railway vehicles","name_es":"Vehículos ferroviarios"}
+{"category":"non_life","code":"05","name_en":"Aircraft","name_es":"Vehículos aéreos"}
+{"category":"non_life","code":"06","name_en":"Maritime, lake and river vessels","name_es":"Vehículos marítimos, lacustres y fluviales"}
+{"category":"non_life","code":"07","name_en":"Goods in transit","name_es":"Mercancías transportadas"}
+{"category":"non_life","code":"08","name_en":"Fire and natural forces","name_es":"Incendio y elementos naturales"}
+{"category":"non_life","code":"09","name_en":"Other property damage","name_es":"Otros daños a los bienes"}
+{"category":"non_life","code":"10","name_en":"Motor vehicle liability","name_es":"Responsabilidad civil vehículos terrestres automóviles"}
+{"category":"non_life","code":"11","name_en":"Aircraft liability","name_es":"Responsabilidad civil vehículos aéreos"}
+{"category":"non_life","code":"12","name_en":"Maritime, lake and river vessel liability","name_es":"Responsabilidad civil vehículos marítimos, lacustres y fluviales"}
+{"category":"non_life","code":"13","name_en":"General liability","name_es":"Responsabilidad civil general"}
+{"category":"non_life","code":"14","name_en":"Credit","name_es":"Crédito"}
+{"category":"non_life","code":"15","name_en":"Suretyship","name_es":"Caución"}
+{"category":"non_life","code":"16","name_en":"Miscellaneous financial loss","name_es":"Pérdidas pecuniarias diversas"}
+{"category":"non_life","code":"17","name_en":"Legal expenses","name_es":"Defensa jurídica"}
+{"category":"non_life","code":"18","name_en":"Assistance","name_es":"Asistencia"}
+{"category":"non_life","code":"19","name_en":"Funeral expenses","name_es":"Decesos"}
