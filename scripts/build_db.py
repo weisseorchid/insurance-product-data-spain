@@ -20,10 +20,10 @@ from insurance_product_data_sp.schemas import (
 from scripts.config import (
     BASE_STORAGE_PATH,
     INSURANCE_BRANCHES_JSONL,
-    INSURANCE_COMPANIES_JSONL,
     INSURANCE_DISTRIBUTORS_JSONL,
     PACKAGE_DATA_PATH,
 )
+from scripts.utils.companies import load_companies
 from scripts.utils.jsonl import load_jsonl
 from scripts.utils.storage import load_json
 
@@ -133,12 +133,8 @@ def _handle_locked_database(db_path: Path) -> None:
 
 def _insert_companies(session: Session) -> list[dict]:
     """Insert companies from JSONL (or JSON fallback) into database."""
-    # Try JSONL first (new canonical format)
-    if INSURANCE_COMPANIES_JSONL.exists():
-        data = load_jsonl(INSURANCE_COMPANIES_JSONL)
-    else:
-        # Fallback to JSON for backward compatibility
-        data = load_json(BASE_STORAGE_PATH / "insurance_companies.json")
+    # JSONL is canonical; legacy JSON is only a fallback (see scripts.utils.companies)
+    data = load_companies()
 
     if not isinstance(data, list):
         raise TypeError("companies data must be a list")

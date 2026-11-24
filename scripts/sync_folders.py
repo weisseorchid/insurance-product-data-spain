@@ -1,6 +1,6 @@
 """Script to sync insurance company folder structure.
 
-This creates folders for each insurance company based on the JSON data.
+This creates folders for each insurance company based on data/insurance_companies.jsonl.
 This is a legacy script that may be useful for organizing raw data.
 
 Run with: uv run python -m scripts.sync_folders
@@ -9,9 +9,9 @@ Run with: uv run python -m scripts.sync_folders
 from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
-from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
-from scripts.utils.storage import ensure_directory, load_json
-from scripts.utils.text_transformations import text_to_snake_case
+from scripts.config import PRODUCTS_STORAGE_PATH
+from scripts.utils.companies import company_display_name, company_folder_name, load_companies
+from scripts.utils.storage import ensure_directory
 
 
 def sync_insurance_company_folders(
@@ -23,28 +23,24 @@ def sync_insurance_company_folders(
     for each company if they don't exist.
 
     Args:
-        json_file_path: Path to the insurance companies JSON file. Defaults to config value.
+        json_file_path: Path to the companies file (.jsonl, or legacy .json). Defaults to data/insurance_companies.jsonl.
         base_folder_path: Base path where insurance company folders should be created. Defaults to config value.
     """
     # Use defaults from config if not provided
-    json_path = Path(json_file_path) if json_file_path else INSURANCE_COMPANIES_JSON
     base_path = Path(base_folder_path) if base_folder_path else PRODUCTS_STORAGE_PATH
 
-    # Read the JSON file and load the companies
-    companies = load_json(json_path)
+    companies = load_companies(json_file_path)
 
     # Ensure base folder exists
     ensure_directory(base_path)
 
     # Iterate through each company and create folders for each company
     for company in companies:
-        company_name = company.get("descripcion", "")
-
-        if not company_name:
-            logger.warning(f"Company {company.get('clave')} has no name, skipping...")
+        if not company_display_name(company):
+            logger.warning(f"Company {company.get('company_key') or company.get('clave')} has no name, skipping...")
             continue
 
-        folder_name = text_to_snake_case(company_name)
+        folder_name = company_folder_name(company)
 
         folder_path = base_path / folder_name
 
