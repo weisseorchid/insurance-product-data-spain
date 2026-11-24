@@ -136,7 +136,7 @@ def _insert_companies(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_companies.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("companies data must be a list")
 
@@ -160,7 +160,7 @@ def _insert_distributors(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_distributors.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("distributors data must be a list")
 
@@ -190,7 +190,7 @@ def _insert_branches(session: Session) -> list[dict]:
     else:
         # Fallback to JSON for backward compatibility
         data = load_json(BASE_STORAGE_PATH / "insurance_branches.json")
-    
+
     if not isinstance(data, list):
         raise TypeError("branches data must be a list")
 

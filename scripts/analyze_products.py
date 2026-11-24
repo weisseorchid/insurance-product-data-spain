@@ -17,10 +17,22 @@ from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
-from scripts.clients.gemini import GeminiClient
+from scripts.clients.gemini import GEMINI_MODEL, SCHEMA_VERSION, GeminiClient
 from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
+from scripts.utils.document_validation import compute_markdown_hash
+from scripts.utils.run_logging import log_analysis_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
 from scripts.utils.text_transformations import text_to_snake_case
+
+# Known bad markdown hashes (Mutua Madrileña Cloudflare blocks)
+KNOWN_BAD_MARKDOWN_HASHES = {
+    "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+}
+
+# Companies with known quality issues
+KNOWN_BAD_COMPANIES = {
+    "mutua_madrileña_automovilista_sociedad_de_seguros_a_prima_fija",
+}
 
 
 @dataclass
@@ -33,6 +45,30 @@ class ProductAnalysisResult:
     analysis: ProductAnalysis | None = None
     error: str | None = None
     markdown_files_processed: int = 0
+    skipped: bool = False
+    skip_reason: str | None = None
+    has_quality_issues: bool = False
+
+
+def has_known_bad_markdown(markdown_files: list[Path]) -> tuple[bool, str | None]:
+    """
+    Check if any markdown file has a known bad hash.
+
+    Args:
+        markdown_files: List of markdown file paths
+
+    Returns:
+        Tuple of (has_bad_hash, bad_hash_found)
+    """
+    for md_file in markdown_files:
+        try:
+            content = md_file.read_text(encoding="utf-8")
+            md_hash = compute_markdown_hash(content)
+            if md_hash in KNOWN_BAD_MARKDOWN_HASHES:
+                return True, md_hash
+        except Exception:
+            pass
+    return False, None
 
 
 def find_company_folder(company_key: str) -> Path | None:
@@ -128,11 +164,69 @@ def get_product_markdown_files(company_folder: Path, product_name: str) -> list[
     return sorted(markdown_files)
 
 
+def should_skip_analysis(
+    company_folder: Path,
+    product_entry: dict,
+    markdown_files: list[Path],
+    client: GeminiClient,
+) -> tuple[bool, str | None]:
+    """
+    Check if analysis should be skipped (idempotency check).
+
+    Args:
+        company_folder: Path to the company folder
+        product_entry: Product entry from index.json
+        markdown_files: List of markdown files for this product
+        client: GeminiClient instance
+
+    Returns:
+        Tuple of (should_skip, reason)
+    """
+    product_name = product_entry.get("product_name", "unknown")
+    analysis_folder = company_folder / "analysis"
+    output_path = analysis_folder / f"{product_name}.json"
+
+    if not output_path.exists():
+        return False, None
+
+    try:
+        # Load existing analysis
+        existing = load_json(output_path)
+        existing_metadata = existing.get("metadata", {})
+
+        # Check if provenance exists
+        if "analysis_provenance" not in existing_metadata:
+            return False, "No provenance in existing analysis"
+
+        provenance = existing_metadata["analysis_provenance"]
+
+        # Check if model and schema version match
+        if provenance.get("model") != client.model:
+            return False, f"Model changed: {provenance.get('model')} -> {client.model}"
+
+        if provenance.get("schema_version") != SCHEMA_VERSION:
+            return False, f"Schema version changed: {provenance.get('schema_version')} -> {SCHEMA_VERSION}"
+
+        # Compute current input hash
+        current_input_hash = client.compute_input_hash([str(f) for f in markdown_files])
+
+        if provenance.get("input_hash") != current_input_hash:
+            return False, "Input files changed"
+
+        logger.info(f"Skipping analysis for {product_name}: already up-to-date")
+        return True, "Already analyzed with current inputs and schema"
+
+    except Exception as e:
+        logger.warning(f"Failed to check existing analysis for {product_name}: {e}")
+        return False, "Failed to load existing analysis"
+
+
 def analyze_single_product(
     client: GeminiClient,
     company_folder: Path,
     product_entry: dict,
     company_name: str,
+    skip_if_exists: bool = True,
 ) -> ProductAnalysisResult:
     """
     Analyze a single product using Gemini.
@@ -142,6 +236,7 @@ def analyze_single_product(
         company_folder: Path to the company folder
         product_entry: Product entry from index.json
         company_name: Name of the insurance company
+        skip_if_exists: Whether to skip if analysis already exists and is up-to-date
 
     Returns:
         ProductAnalysisResult with the analysis or error
@@ -166,6 +261,29 @@ def analyze_single_product(
 
     logger.info(f"Found {len(markdown_files)} markdown files for {product_name}")
 
+    # Check for known quality issues
+    has_bad_hash, bad_hash = has_known_bad_markdown(markdown_files)
+    has_quality_issues = has_bad_hash or company_folder.name in KNOWN_BAD_COMPANIES
+
+    if has_quality_issues:
+        logger.warning(
+            f"Product {product_name} has known quality issues (bad_hash={bad_hash}, company={company_folder.name})"
+        )
+
+    # Check if we should skip analysis (idempotency)
+    if skip_if_exists:
+        should_skip, skip_reason = should_skip_analysis(company_folder, product_entry, markdown_files, client)
+        if should_skip:
+            return ProductAnalysisResult(
+                product_name=product_name,
+                product_id=product_id,
+                success=True,
+                skipped=True,
+                skip_reason=skip_reason,
+                markdown_files_processed=len(markdown_files),
+                has_quality_issues=has_quality_issues,
+            )
+
     # Build product context for Gemini
     product_context = {
         "product_name": product_name,
@@ -186,16 +304,38 @@ def analyze_single_product(
             success=True,
             analysis=analysis,
             markdown_files_processed=len(markdown_files),
+            has_quality_issues=has_quality_issues,
         )
 
     except Exception as e:
         logger.error(f"Failed to analyze product {product_name}: {e}")
+
+        # Log analysis failure
+        company_key = None
+        try:
+            companies = load_json(INSURANCE_COMPANIES_JSON)
+            for c in companies:
+                if text_to_snake_case(c.get("denomination", "")) == company_folder.name:
+                    company_key = c.get("company_key")
+                    break
+        except Exception:
+            pass
+
+        log_analysis_failure(
+            script_name="analyze_products",
+            product_id=product_id,
+            product_name=product_name,
+            reason=str(e),
+            company_key=company_key,
+        )
+
         return ProductAnalysisResult(
             product_name=product_name,
             product_id=product_id,
             success=False,
             error=str(e),
             markdown_files_processed=len(markdown_files),
+            has_quality_issues=has_quality_issues,
         )
 
 
@@ -203,6 +343,9 @@ def save_product_analysis(
     company_folder: Path,
     product_entry: dict,
     analysis: ProductAnalysis,
+    client: GeminiClient,
+    markdown_files: list[Path],
+    has_quality_issues: bool = False,
 ) -> Path:
     """
     Save the product analysis to a JSON file.
@@ -211,6 +354,9 @@ def save_product_analysis(
         company_folder: Path to the company folder
         product_entry: Product entry from index.json
         analysis: The ProductAnalysis to save
+        client: GeminiClient instance for provenance
+        markdown_files: List of markdown files used
+        has_quality_issues: Whether the analysis has known quality issues
 
     Returns:
         Path to the saved file
@@ -219,6 +365,19 @@ def save_product_analysis(
     product_id = product_entry.get("prduct_id", product_entry.get("product_id", "unknown"))
     product_branch = product_entry.get("product_branch", "unknown")
     source_url = product_entry.get("source_url", "")
+
+    # Compute input hash
+    input_hash = client.compute_input_hash([str(f) for f in markdown_files])
+
+    # Compute individual markdown hashes for provenance
+    markdown_hashes = {}
+    for md_file in markdown_files:
+        try:
+            content = md_file.read_text(encoding="utf-8")
+            md_hash = compute_markdown_hash(content)
+            markdown_hashes[md_file.name] = md_hash
+        except Exception:
+            pass
 
     # Create the full InsuranceProduct
     insurance_product = InsuranceProduct(
@@ -229,6 +388,17 @@ def save_product_analysis(
         metadata={
             "analyzed_at": datetime.now(timezone.utc).isoformat(),
             "analyzer_version": "1.0.0",
+            "quality_flags": {
+                "has_known_quality_issues": has_quality_issues,
+                "untrusted": has_quality_issues,
+            },
+            "analysis_provenance": {
+                "model": client.model,
+                "schema_version": SCHEMA_VERSION,
+                "input_hash": input_hash,
+                "markdown_hashes": markdown_hashes,
+                "markdown_files": [f.name for f in markdown_files],
+            },
         },
         analysis=analysis,
     )
@@ -241,6 +411,9 @@ def save_product_analysis(
     save_json(insurance_product.model_dump(mode="json"), output_path, indent=2)
 
     logger.info(f"Saved analysis to: {output_path}")
+    if has_quality_issues:
+        logger.warning("Analysis flagged as untrusted due to known quality issues")
+
     return output_path
 
 
@@ -249,6 +422,7 @@ def analyze_company_products(
     product_filter: str | None = None,
     save_summary: bool = True,
     dry_run: bool = False,
+    force_reanalysis: bool = False,
 ) -> list[ProductAnalysisResult]:
     """
     Analyze all products for an insurance company.
@@ -258,6 +432,7 @@ def analyze_company_products(
         product_filter: Optional product name to analyze only that product
         save_summary: Whether to save an analysis summary JSON
         dry_run: If True, only list products without analyzing
+        force_reanalysis: If True, skip idempotency checks and re-analyze all products
 
     Returns:
         List of ProductAnalysisResult for each product
@@ -313,13 +488,23 @@ def analyze_company_products(
             company_folder=company_folder,
             product_entry=product_entry,
             company_name=company_name,
+            skip_if_exists=not force_reanalysis,
         )
 
         results.append(result)
 
-        # Save analysis if successful
-        if result.success and result.analysis:
-            save_product_analysis(company_folder, product_entry, result.analysis)
+        # Save analysis if successful and not skipped
+        if result.success and result.analysis and not result.skipped:
+            # Get markdown files again for provenance
+            markdown_files = get_product_markdown_files(company_folder, product_entry.get("product_name", "unknown"))
+            save_product_analysis(
+                company_folder,
+                product_entry,
+                result.analysis,
+                client,
+                markdown_files,
+                has_quality_issues=result.has_quality_issues,
+            )
 
     # Save summary
     if save_summary:
@@ -348,8 +533,10 @@ def generate_analysis_summary(
         Summary dictionary
     """
     total_products = len(results)
-    successful = sum(1 for r in results if r.success)
-    failed = total_products - successful
+    successful = sum(1 for r in results if r.success and not r.skipped)
+    skipped = sum(1 for r in results if r.skipped)
+    failed = total_products - successful - skipped
+    quality_issues = sum(1 for r in results if r.has_quality_issues)
     total_files = sum(r.markdown_files_processed for r in results)
 
     products_summary = [
@@ -357,6 +544,9 @@ def generate_analysis_summary(
             "product_name": r.product_name,
             "product_id": r.product_id,
             "success": r.success,
+            "skipped": r.skipped,
+            "skip_reason": r.skip_reason,
+            "has_quality_issues": r.has_quality_issues,
             "markdown_files_processed": r.markdown_files_processed,
             "error": r.error,
         }
@@ -369,13 +559,16 @@ def generate_analysis_summary(
         "analyzer": {
             "name": "analyze_products",
             "version": "1.0.0",
-            "model": "gemini-2.5-flash-preview-05-20",
+            "model": GEMINI_MODEL,
+            "schema_version": SCHEMA_VERSION,
         },
         "company_key": company_key,
         "summary": {
             "total_products": total_products,
             "successful": successful,
+            "skipped": skipped,
             "failed": failed,
+            "quality_issues": quality_issues,
             "total_markdown_files": total_files,
         },
         "products": products_summary,
@@ -406,6 +599,11 @@ def main():
         action="store_true",
         help="List products without analyzing (useful for checking setup)",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force re-analysis even if already analyzed",
+    )
 
     args = parser.parse_args()
 
@@ -416,6 +614,7 @@ def main():
         product_filter=args.product,
         save_summary=not args.no_summary,
         dry_run=args.dry_run,
+        force_reanalysis=args.force,
     )
 
     if args.dry_run:
@@ -423,18 +622,23 @@ def main():
 
     # Print summary
     if results:
-        successful = sum(1 for r in results if r.success)
-        failed = len(results) - successful
+        successful = sum(1 for r in results if r.success and not r.skipped)
+        skipped = sum(1 for r in results if r.skipped)
+        failed = len(results) - successful - skipped
+        quality_issues = sum(1 for r in results if r.has_quality_issues)
 
         logger.info("Analysis complete!")
         logger.info(f"Total products: {len(results)}")
         logger.info(f"Successful: {successful}")
+        logger.info(f"Skipped (up-to-date): {skipped}")
         logger.info(f"Failed: {failed}")
+        if quality_issues > 0:
+            logger.warning(f"Products with quality issues (flagged as untrusted): {quality_issues}")
 
         if failed > 0:
             logger.warning("Failed products:")
             for r in results:
-                if not r.success:
+                if not r.success and not r.skipped:
                     logger.warning(f"  - {r.product_name}: {r.error}")
 
 

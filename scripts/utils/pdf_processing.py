@@ -6,6 +6,7 @@ from typing import NamedTuple
 from markitdown import MarkItDown
 
 from insurance_product_data_sp.core.logging import logger
+from scripts.utils.document_validation import validate_markdown_content, validate_pdf_file
 
 
 class PDFConversionResult(NamedTuple):
@@ -15,14 +16,17 @@ class PDFConversionResult(NamedTuple):
     markdown_content: str
     success: bool
     error: str | None = None
+    markdown_sha256: str | None = None
+    validation_failed: bool = False
 
 
-def convert_pdf_to_markdown(file_path: Path | str) -> PDFConversionResult:
+def convert_pdf_to_markdown(file_path: Path | str, validate: bool = True) -> PDFConversionResult:
     """
     Convert a PDF file to markdown using MarkItDown.
 
     Args:
         file_path: Path to the PDF file
+        validate: Whether to validate the PDF and markdown content (default: True)
 
     Returns:
         PDFConversionResult with the markdown content or error
@@ -47,16 +51,42 @@ def convert_pdf_to_markdown(file_path: Path | str) -> PDFConversionResult:
             error=f"Not a PDF file: {path}",
         )
 
+    # Validate PDF file if requested
+    if validate:
+        pdf_validation = validate_pdf_file(path)
+        if not pdf_validation.is_valid:
+            return PDFConversionResult(
+                source_path=path,
+                markdown_content="",
+                success=False,
+                error=pdf_validation.reason,
+                validation_failed=True,
+            )
+
     try:
         converter = MarkItDown()
         result = converter.convert(str(path))
         markdown_content = result.text_content if result.text_content else ""
 
-        logger.info(f"Successfully converted PDF to markdown: {path.name}")
+        # Validate markdown content if requested
+        if validate:
+            md_validation = validate_markdown_content(markdown_content, source_pdf_path=path)
+            if not md_validation.is_valid:
+                return PDFConversionResult(
+                    source_path=path,
+                    markdown_content=markdown_content,
+                    success=False,
+                    error=md_validation.reason,
+                    markdown_sha256=md_validation.markdown_sha256,
+                    validation_failed=True,
+                )
+
+        logger.info(f"Successfully converted and validated PDF to markdown: {path.name}")
         return PDFConversionResult(
             source_path=path,
             markdown_content=markdown_content,
             success=True,
+            markdown_sha256=(md_validation.markdown_sha256 if validate and md_validation.markdown_sha256 else None),
         )
 
     except Exception as e:

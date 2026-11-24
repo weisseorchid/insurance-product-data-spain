@@ -3,7 +3,6 @@
 Run with: uv run python -m scripts.migrate_to_jsonl
 """
 
-from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
 from scripts.config import (
@@ -18,7 +17,7 @@ from scripts.utils.storage import load_json
 
 def migrate_json_to_jsonl():
     """Convert existing JSON files to JSONL format with stable sorting."""
-    
+
     # Companies
     logger.info("Converting companies to JSONL...")
     companies_json = BASE_STORAGE_PATH / "insurance_companies.json"
@@ -31,24 +30,20 @@ def migrate_json_to_jsonl():
             logger.error("companies.json is not a list")
     else:
         logger.warning(f"File not found: {companies_json}")
-    
+
     # Distributors
     logger.info("Converting distributors to JSONL...")
     distributors_json = BASE_STORAGE_PATH / "insurance_distributors.json"
     if distributors_json.exists():
         distributors = load_json(distributors_json)
         if isinstance(distributors, list):
-            save_jsonl(
-                distributors,
-                INSURANCE_DISTRIBUTORS_JSONL,
-                sort_key=lambda x: x.get("distributor_key", "")
-            )
+            save_jsonl(distributors, INSURANCE_DISTRIBUTORS_JSONL, sort_key=lambda x: x.get("distributor_key", ""))
             logger.info(f"✓ Saved {len(distributors)} distributors to {INSURANCE_DISTRIBUTORS_JSONL}")
         else:
             logger.error("distributors.json is not a list")
     else:
         logger.warning(f"File not found: {distributors_json}")
-    
+
     # Branches
     logger.info("Converting branches to JSONL...")
     branches_json = BASE_STORAGE_PATH / "insurance_branches.json"
@@ -61,7 +56,7 @@ def migrate_json_to_jsonl():
             logger.error("branches.json is not a list")
     else:
         logger.warning(f"File not found: {branches_json}")
-    
+
     logger.info("Migration complete!")
     logger.info(f"JSONL files created in: {BASE_STORAGE_PATH}")
     logger.info("Original JSON files are preserved for now")
