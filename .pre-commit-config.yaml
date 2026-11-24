@@ -17,7 +17,7 @@ repos:
     hooks:
       - id: ty
         name: Ty type checker
-        entry: uv run --no-sync ty check
+        entry: uv run --no-sync ty check insurance_product_data_sp tests
         pass_filenames: false
         language: system
         files: '\.py$'
