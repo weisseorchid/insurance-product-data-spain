@@ -151,7 +151,10 @@ class ProductDatabase(SQLModelDatabase[InsuranceProduct, ProductTable]):
             # Query through the association table
             stmt = (
                 select(self._table)
-                .join(ProductBranchAssociation, self._table.product_id == ProductBranchAssociation.product_id)
+                .join(
+                    ProductBranchAssociation,
+                    self._table.product_id == ProductBranchAssociation.product_id,  # type: ignore[arg-type]
+                )
                 .where(ProductBranchAssociation.branch_code == branch_code.strip())
             )
             rows = session.exec(stmt).all()
