@@ -15,8 +15,16 @@ class ProductTable(SQLModel, table=True):
     __tablename__ = "products"
 
     product_id: str = Field(primary_key=True)
-    product_name: str = Field(nullable=False)
+    product_name: str = Field(nullable=False, index=True)
     company_key: str = Field(foreign_key="companies.company_key", index=True)
-    # Note: product_branch stores pipe-delimited tokens (e.g., '|09|' or '|00||01|')
-    product_branch: str | None = Field(default=None, index=True)
+    fetched_at: str | None = Field(default=None, index=True)
     details_json: dict[str, Any] = Field(sa_column=Column(JSON, nullable=False))
+
+
+class ProductBranchAssociation(SQLModel, table=True):
+    """Many-to-many association table linking products to insurance branches."""
+
+    __tablename__ = "product_branch_associations"
+
+    product_id: str = Field(foreign_key="products.product_id", primary_key=True)
+    branch_code: str = Field(foreign_key="branches.code", primary_key=True)

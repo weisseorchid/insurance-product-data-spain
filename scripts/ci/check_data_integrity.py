@@ -122,6 +122,96 @@ def validate_jsonl_file(
     return errors, warnings
 
 
+def validate_product_index(index_path: Path) -> list[str]:
+    """Validate a product index.json file against schema v1.
+
+    Args:
+        index_path: Path to index.json file
+
+    Returns:
+        List of error messages (empty if valid)
+    """
+    errors = []
+
+    if not index_path.exists():
+        return [f"File not found: {index_path}"]
+
+    try:
+        with open(index_path, encoding="utf-8") as f:
+            data = json.load(f)
+
+        if not isinstance(data, list) or not data:
+            errors.append("index.json must be a non-empty list")
+            return errors
+
+        index_entry = data[0]
+
+        # Check top-level fields
+        required_top_fields = ["company_key", "products"]
+        for field in required_top_fields:
+            if field not in index_entry:
+                errors.append(f"Missing required top-level field: {field}")
+
+        # Validate products
+        products = index_entry.get("products", [])
+        if not isinstance(products, list):
+            errors.append("'products' must be a list")
+            return errors
+
+        for idx, product in enumerate(products):
+            if not isinstance(product, dict):
+                errors.append(f"Product {idx}: must be a dict")
+                continue
+
+            # Required fields in schema v1
+            required_fields = ["product_id", "product_name", "company_key", "branches"]
+            for field in required_fields:
+                if field not in product:
+                    errors.append(f"Product {idx} ({product.get('product_name', 'unknown')}): missing '{field}'")
+
+            # Validate branches is a list
+            if "branches" in product:
+                branches = product["branches"]
+                if not isinstance(branches, list):
+                    errors.append(
+                        f"Product {idx} ({product.get('product_name', 'unknown')}): 'branches' must be a list"
+                    )
+                elif not branches:
+                    errors.append(
+                        f"Product {idx} ({product.get('product_name', 'unknown')}): 'branches' cannot be empty"
+                    )
+
+            # Validate document_references if present
+            if "document_references" in product:
+                doc_refs = product["document_references"]
+                if not isinstance(doc_refs, list):
+                    errors.append(
+                        f"Product {idx} ({product.get('product_name', 'unknown')}): 'document_references' must be a list"
+                    )
+                else:
+                    for doc_idx, doc_ref in enumerate(doc_refs):
+                        if not isinstance(doc_ref, dict):
+                            errors.append(f"Product {idx}, doc {doc_idx}: must be a dict")
+                            continue
+                        if "filename" not in doc_ref or "pdf_sha256" not in doc_ref:
+                            errors.append(f"Product {idx}, doc {doc_idx}: missing filename or pdf_sha256")
+
+            # Check for old schema fields (should be removed)
+            deprecated_fields = ["product_branch", "source_folder", "files"]
+            for old_field in deprecated_fields:
+                if old_field in product:
+                    errors.append(
+                        f"Product {idx} ({product.get('product_name', 'unknown')}): deprecated field '{old_field}' should be removed"
+                    )
+
+    except json.JSONDecodeError as e:
+        errors.append(f"Invalid JSON: {e}")
+    except Exception as e:
+        errors.append(f"Error validating: {e}")
+
+    return errors
+
+
 def main() -> int:
     """Run all data integrity checks."""
     print("🔍 Checking data integrity...")
@@ -159,6 +249,20 @@ def main() -> int:
             for warning in warnings:
                 print(f"  ⚠️  {warning}")
 
+        print()
+
+    # Check product index.json files (schema v1 validation)
+    index_files = list(repo_root.glob("data/products_by_insurance_company/*/index.json"))
+    for index_file in index_files:
+        print(f"Validating {index_file.relative_to(repo_root)}...")
+        errors = validate_product_index(index_file)
+
+        if errors:
+            all_errors.extend([f"{index_file.relative_to(repo_root)}: {e}" for e in errors])
+            for error in errors:
+                print(f"  ❌ {error}")
+        else:
+            print("  ✅ Valid")
         print()
 
     # Check documents.jsonl files (skip sorting check - complex multi-key sort)

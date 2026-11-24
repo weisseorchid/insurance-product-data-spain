@@ -10,6 +10,7 @@ from sqlmodel import Session, SQLModel, create_engine, select
 
 from insurance_product_data_sp.core.db import BranchDatabase, CompanyDatabase, DistributorDatabase, ProductDatabase
 from insurance_product_data_sp.models import BranchTable, CompanyTable, DistributorTable, ProductTable
+from insurance_product_data_sp.models.products import ProductBranchAssociation
 from insurance_product_data_sp.schemas import (
     InsuranceBranch,
     InsuranceCompanyDetails,
@@ -27,15 +28,11 @@ from scripts.utils.jsonl import load_jsonl
 from scripts.utils.storage import load_json
 
 
-def _branch_token(value: str) -> str:
-    return f"|{value.strip()}|"
-
-
-def _normalize_branches(branches: str | list[str]) -> str:
-    """Convert branch codes to pipe-delimited format for searching."""
+def _normalize_branches(branches: str | list[str]) -> list[str]:
+    """Normalize branch codes to list of strings."""
     if isinstance(branches, list):
-        return "".join(_branch_token(v) for v in branches)
-    return _branch_token(branches)
+        return [str(b).strip() for b in branches]
+    return [str(branches).strip()]
 
 
 def _check_db_locked(db_path: Path) -> bool:
@@ -212,7 +209,7 @@ def _insert_branches(session: Session) -> list[dict]:
 
 
 def _insert_products(session: Session) -> tuple[set[str], list[dict]]:
-    """Insert products from analysis folders into database."""
+    """Insert products from index.json files and create branch associations."""
     products_path = BASE_STORAGE_PATH / "products_by_insurance_company"
     product_ids: set[str] = set()
     product_samples: list[dict] = []
@@ -223,35 +220,62 @@ def _insert_products(session: Session) -> tuple[set[str], list[dict]]:
     for company_folder in products_path.iterdir():
         if not company_folder.is_dir():
             continue
-        analysis_folder = company_folder / "analysis"
-        if not analysis_folder.exists():
+
+        # Read index.json for products
+        index_path = company_folder / "index.json"
+        if not index_path.exists():
             continue
 
-        # Get company_key from index.json
-        index_path = company_folder / "index.json"
-        company_key = "UNKNOWN"
-        if index_path.exists():
-            index_data = load_json(index_path)
-            if isinstance(index_data, list) and index_data:
-                company_key = index_data[0].get("company_key", "UNKNOWN")
+        index_data = load_json(index_path)
+        if not isinstance(index_data, list) or not index_data:
+            continue
 
-        for product_file in analysis_folder.glob("*.json"):
-            product_data = load_json(product_file)
-            product = InsuranceProduct.model_validate(product_data)
+        index_entry = index_data[0]
+        company_key = index_entry.get("company_key", "UNKNOWN")
+        products_list = index_entry.get("products", [])
+
+        for product_data in products_list:
+            # Load analysis if available to merge into details_json
+            analysis_data = None
+            analysis_path_rel = product_data.get("analysis_path")
+            if analysis_path_rel:
+                analysis_file = company_folder / analysis_path_rel
+                if analysis_file.exists():
+                    analysis_data = load_json(analysis_file)
+
+            # Merge analysis into product_data for details_json
+            if analysis_data:
+                product_data_with_analysis = {**product_data, "analysis": analysis_data.get("analysis")}
+            else:
+                product_data_with_analysis = product_data
+
+            # Validate and normalize
+            product = InsuranceProduct.model_validate(product_data_with_analysis)
+            branches = _normalize_branches(product_data.get("branches", []))
 
             product_ids.add(product.product_id)
             if len(product_samples) < 25:
-                product_samples.append(product_data)
+                product_samples.append(product.model_dump(mode="json"))
 
+            # Insert product
             session.add(
                 ProductTable(
                     product_id=product.product_id,
                     product_name=product.product_name,
                     company_key=company_key,
-                    product_branch=_normalize_branches(product.product_branch),
+                    fetched_at=product.fetched_at,
                     details_json=product.model_dump(mode="json"),
                 )
             )
+
+            # Insert branch associations
+            for branch_code in branches:
+                session.add(
+                    ProductBranchAssociation(
+                        product_id=product.product_id,
+                        branch_code=branch_code,
+                    )
+                )
 
     return product_ids, product_samples
 
