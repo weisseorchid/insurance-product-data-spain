@@ -3,7 +3,6 @@
 Run with: uv run python -m scripts.migrate_to_jsonl
 """
 
-
 from insurance_product_data_sp.core.logging import logger
 from scripts.config import (
     BASE_STORAGE_PATH,

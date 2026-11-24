@@ -33,7 +33,7 @@ companies = get_insurance_companies()
 # Enrich with details (insurance_branches, executives, etc.)
 enriched = enrich_insurance_companies(companies)
 
-# Get all distributors  
+# Get all distributors
 distributors = get_insurance_distributors()
 ```
 
