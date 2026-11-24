@@ -106,6 +106,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
     """
     Check all blobs added in PR commit range for size/extension violations.
 
+    Only flags blobs that are NEW to the PR (not present in base tree/history).
     Scans base..head to catch blobs added then removed within the PR.
 
     Args:
@@ -119,6 +120,40 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
     repo_root = Path(__file__).parent.parent.parent
 
     try:
+        # Get all blobs in base tree and history to know what already exists
+        # This ensures we don't flag blobs that were on main but later removed
+        base_blobs_result = subprocess.run(
+            ["git", "ls-tree", "-r", base_ref],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        
+        # Set of blob hashes that exist in base tree
+        base_blob_hashes = set()
+        for line in base_blobs_result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) >= 3 and parts[1] == "blob":
+                base_blob_hashes.add(parts[2])
+        
+        # Also get all blobs from base's reachable history
+        base_history_result = subprocess.run(
+            ["git", "rev-list", "--objects", base_ref],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        for line in base_history_result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) >= 1:
+                base_blob_hashes.add(parts[0])
+
         # Get all commits in the range
         result = subprocess.run(
             ["git", "rev-list", f"{base_ref}..{head_ref}"],
@@ -155,7 +190,11 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
 
                 mode, obj_type, blob_hash, size_str, file_path = parts
 
-                if obj_type != "blob" or blob_hash in seen_blobs:
+                if obj_type != "blob":
+                    continue
+                
+                # Skip if already seen or exists in base
+                if blob_hash in seen_blobs or blob_hash in base_blob_hashes:
                     continue
 
                 seen_blobs.add(blob_hash)
@@ -172,7 +211,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
                         size_mb = size / (1024 * 1024)
                         max_mb = MAX_FILE_SIZE / (1024 * 1024)
                         errors.append(
-                            f"Blob exceeds size limit: {file_path} "
+                            f"NEW blob exceeds size limit: {file_path} "
                             f"(blob: {blob_hash[:8]}, {size_mb:.2f} MB > {max_mb:.0f} MB limit)"
                         )
 
@@ -180,7 +219,7 @@ def check_pr_blob_additions(base_ref: str, head_ref: str = "HEAD") -> list[str]:
                 file_path_obj = Path(file_path)
                 if file_path_obj.suffix and f"*{file_path_obj.suffix}" in DISALLOWED_PATTERNS:
                     errors.append(
-                        f"Disallowed file extension in blob: {file_path} "
+                        f"NEW blob has disallowed extension: {file_path} "
                         f"(blob: {blob_hash[:8]}, extension: {file_path_obj.suffix})"
                     )
 
