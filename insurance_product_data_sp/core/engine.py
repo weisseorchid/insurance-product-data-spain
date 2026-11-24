@@ -7,6 +7,7 @@ from pathlib import Path
 from sqlmodel import Session, SQLModel, create_engine
 
 _engine = None
+_custom_db_path: Path | None = None
 
 
 class DatabaseNotFoundError(FileNotFoundError):
@@ -23,7 +24,16 @@ class DatabaseNotFoundError(FileNotFoundError):
 
 def get_database_path() -> Path:
     """Return the path to the bundled SQLite database."""
+    if _custom_db_path is not None:
+        return _custom_db_path
     return Path(__file__).parent.parent / "data" / "insurance.db"
+
+
+def set_database_path(path: Path | None) -> None:
+    """Set a custom database path (for testing). Pass None to restore default."""
+    global _custom_db_path, _engine
+    _custom_db_path = path
+    _engine = None  # Force engine recreation on next get_engine()
 
 
 def get_engine():
@@ -37,10 +47,22 @@ def get_engine():
         db_path = get_database_path()
         if not db_path.exists():
             raise DatabaseNotFoundError(db_path)
+
+        # Open bundled DB read-only to prevent WAL file creation during tests
+        # Test DBs (via set_database_path) need write access for fixture setup
+        is_bundled_db = _custom_db_path is None
+        if is_bundled_db:
+            # Use file: URI with mode=ro for read-only access
+            db_uri = f"sqlite:///file:{db_path}?mode=ro&uri=true"
+            connect_args = {"check_same_thread": False, "uri": True}
+        else:
+            db_uri = f"sqlite:///{db_path}"
+            connect_args = {"check_same_thread": False}
+
         _engine = create_engine(
-            f"sqlite:///{db_path}",
+            db_uri,
             echo=False,
-            connect_args={"check_same_thread": False},
+            connect_args=connect_args,
         )
     return _engine
 

@@ -14,12 +14,12 @@ __pycache__/
 
 dist/
 
-# SQLite database files (built from JSONL sources)
-*.db
-*.db-wal
-*.db-shm
-
 # Coverage reports
 .coverage
 htmlcov/
 coverage.xml
+
+# SQLite database files (built from JSONL sources)
+*.db
+*.db-wal
+*.db-shm
