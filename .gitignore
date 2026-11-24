@@ -13,3 +13,13 @@ __pycache__/
 .env.production.local
 
 dist/
+
+# SQLite database files (built from JSONL sources)
+*.db
+*.db-wal
+*.db-shm
+
+# Coverage reports
+.coverage
+htmlcov/
+coverage.xml
