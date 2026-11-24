@@ -106,13 +106,13 @@ def run() -> int:
         "company details",
     )
 
-    # Save to JSONL (primary format)
-    save_jsonl(validated_company_details, INSURANCE_COMPANIES_JSONL, sort_key=lambda x: x["company_key"])
-    logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSONL}")
-    
-    # Also save JSON for now (will be removed after migration)
+    # Save to data/ folder (both JSON and JSONL)
     save_json(validated_company_details, INSURANCE_COMPANIES_JSON)
     logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSON}")
+    
+    # Save JSONL version with stable sorting
+    save_jsonl(validated_company_details, INSURANCE_COMPANIES_JSONL, sort_key=lambda x: x["company_key"])
+    logger.info(f"Saved {len(validated_company_details)} companies to {INSURANCE_COMPANIES_JSONL}")
 
     # Copy to package data folder
     _copy_to_package(INSURANCE_COMPANIES_JSON, PACKAGE_COMPANIES_JSON)
@@ -137,17 +137,17 @@ def run() -> int:
         "distributor details",
     )
 
-    # Save to JSONL (primary format)
+    # Save to data/ folder (both JSON and JSONL)
+    save_json(validated_distributor_details, INSURANCE_DISTRIBUTORS_JSON)
+    logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSON}")
+    
+    # Save JSONL version with stable sorting
     save_jsonl(
         validated_distributor_details,
         INSURANCE_DISTRIBUTORS_JSONL,
         sort_key=lambda x: x["distributor_key"]
     )
     logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSONL}")
-    
-    # Also save JSON for now (will be removed after migration)
-    save_json(validated_distributor_details, INSURANCE_DISTRIBUTORS_JSON)
-    logger.info(f"Saved {len(validated_distributor_details)} distributors to {INSURANCE_DISTRIBUTORS_JSON}")
 
     # Copy to package data folder
     _copy_to_package(INSURANCE_DISTRIBUTORS_JSON, PACKAGE_DISTRIBUTORS_JSON)

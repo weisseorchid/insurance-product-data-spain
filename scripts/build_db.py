@@ -135,8 +135,14 @@ def _handle_locked_database(db_path: Path) -> None:
 
 
 def _insert_companies(session: Session) -> list[dict]:
-    """Insert companies from JSONL into database."""
-    data = load_jsonl(INSURANCE_COMPANIES_JSONL)
+    """Insert companies from JSONL (or JSON fallback) into database."""
+    # Try JSONL first (new canonical format)
+    if INSURANCE_COMPANIES_JSONL.exists():
+        data = load_jsonl(INSURANCE_COMPANIES_JSONL)
+    else:
+        # Fallback to JSON for backward compatibility
+        data = load_json(BASE_STORAGE_PATH / "insurance_companies.json")
+    
     if not isinstance(data, list):
         raise TypeError("companies data must be a list")
 
@@ -153,8 +159,14 @@ def _insert_companies(session: Session) -> list[dict]:
 
 
 def _insert_distributors(session: Session) -> list[dict]:
-    """Insert distributors from JSONL into database, skipping duplicates."""
-    data = load_jsonl(INSURANCE_DISTRIBUTORS_JSONL)
+    """Insert distributors from JSONL (or JSON fallback) into database, skipping duplicates."""
+    # Try JSONL first (new canonical format)
+    if INSURANCE_DISTRIBUTORS_JSONL.exists():
+        data = load_jsonl(INSURANCE_DISTRIBUTORS_JSONL)
+    else:
+        # Fallback to JSON for backward compatibility
+        data = load_json(BASE_STORAGE_PATH / "insurance_distributors.json")
+    
     if not isinstance(data, list):
         raise TypeError("distributors data must be a list")
 
@@ -177,8 +189,14 @@ def _insert_distributors(session: Session) -> list[dict]:
 
 
 def _insert_branches(session: Session) -> list[dict]:
-    """Insert branches from JSONL into database."""
-    data = load_jsonl(INSURANCE_BRANCHES_JSONL)
+    """Insert branches from JSONL (or JSON fallback) into database."""
+    # Try JSONL first (new canonical format)
+    if INSURANCE_BRANCHES_JSONL.exists():
+        data = load_jsonl(INSURANCE_BRANCHES_JSONL)
+    else:
+        # Fallback to JSON for backward compatibility
+        data = load_json(BASE_STORAGE_PATH / "insurance_branches.json")
+    
     if not isinstance(data, list):
         raise TypeError("branches data must be a list")
 

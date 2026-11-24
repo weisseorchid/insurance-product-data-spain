@@ -98,6 +98,14 @@ See `.github/workflows/checks.yml`
 - ✅ Forces maintainers to understand the build process
 - ❌ Requires manual step before `uv build`
 
+## Document Cache
+
+The package **does not require** source PDFs or markdown files at build/install time. The database is built from:
+- JSONL source data (companies, distributors, branches)
+- Product analysis JSON files (in `data/products_by_insurance_company/*/analysis/`)
+
+PDFs and markdown are stored in a local cache (`.cache/insurance-docs/`) for development but are not needed for package builds. The cache is gitignored and content-addressed by SHA256.
+
 ## For Package Users
 
 **If you install from PyPI**: Just `pip install insurance-product-data-sp`. The wheel includes the pre-built database.
