@@ -18,7 +18,7 @@ All adapters go through ``PoliteFetcher``, which:
 Fetched PDFs must start with ``%PDF-``, are cached by sha256 in ``.cache/insurance-docs``,
 converted and validated (``scripts/utils/document_validation.py``) before anything is
 recorded, and their provenance is upserted into the company's ``documents.jsonl``.
-Already-cached documents are skipped unless ``--force``. Gaps go to ``data/runs.jsonl``.
+Already-cached documents are skipped unless ``--force``. Each run appends one ``data/runs.jsonl`` record (``script``, ``started_at``, counts and gap details).
 
 Run with:
     uv run python -m scripts.fetch_product_documents --company-key C0058 [--product seguro_terceros] [--dry-run]
@@ -48,7 +48,7 @@ from scripts.utils.companies import company_folder_path, find_company
 from scripts.utils.document_cache import DocumentCache
 from scripts.utils.document_store import convert_cached_pdf, load_documents, save_documents, upsert_document
 from scripts.utils.document_validation import PDF_MAGIC_BYTES, is_block_page
-from scripts.utils.run_logging import log_run_event
+from scripts.utils.run_log import append_run_log
 from scripts.utils.source_manifest import (
     ManifestDocument,
     MapfreDocpreconSource,
@@ -505,6 +505,7 @@ def run(
     fetcher = fetcher or PoliteFetcher()
     adapters = adapters or default_adapters()
     records = load_documents(company_folder)
+    started_at = datetime.now(timezone.utc)
 
     for doc_id in sorted(users):
         doc = manifest.documents[doc_id]
@@ -568,17 +569,23 @@ def run(
         save_documents(company_folder, records)
 
     if log_gaps:
+        reason_counts: dict[str, int] = {}
         for g in stats.gaps:
-            log_run_event("fetch_gap", SCRIPT_NAME, g.__dict__, status="warning")
-        log_run_event(
-            "fetch_run",
-            SCRIPT_NAME,
-            {
-                "company_key": company_key,
+            reason_counts[g.reason] = reason_counts.get(g.reason, 0) + 1
+        append_run_log(
+            script=SCRIPT_NAME,
+            started_at=started_at,
+            finished_at=datetime.now(timezone.utc),
+            counts={
+                **reason_counts,
                 "fetched": stats.fetched,
                 "skipped_cached": stats.skipped_cached,
                 "gaps": len(stats.gaps),
+            },
+            details={
+                "company_key": company_key,
                 "user_agent": USER_AGENT,
+                "gaps": [g.__dict__ for g in stats.gaps],
             },
         )
     return stats

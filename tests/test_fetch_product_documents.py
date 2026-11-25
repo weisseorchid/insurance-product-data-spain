@@ -412,3 +412,51 @@ def test_dry_run_makes_no_requests(tmp_path, capsys):
     fpd.run("C0058", manifest_dir=manifest_dir, fetcher=fetcher, dry_run=True)
     assert session.calls == []
     assert "coche_cg_0900ab44c391e066" in capsys.readouterr().out
+
+
+def test_run_log_matches_data_integrity_schema(tmp_path, mock_markitdown, monkeypatch):
+    """Fetcher run records must satisfy CI's runs.jsonl schema (script + started_at)."""
+    import scripts.utils.run_log
+    from scripts.ci.check_data_integrity import validate_jsonl_file
+    from scripts.utils.jsonl import load_jsonl
+
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    monkeypatch.setattr(scripts.utils.run_log, "BASE_STORAGE_PATH", data_dir)
+
+    manifest_dir = tmp_path / "sources"
+    manifest_dir.mkdir()
+    write_manifest(manifest_dir, MAPFRE_RECORDS)
+    routes: dict = {("GET", "https://www.mapfre.es/robots.txt"): ROBOTS_OK}
+    for doc_id in ("0900ab44c391e066", "0900ab44c48adb6a", "0900ab44c48b450d"):
+        routes[("POST", f"{API}docpreconcomercialesdocument?documentId={doc_id}")] = Resp(429)
+    fetcher, _, _ = make_fetcher(routes)
+    stats = fpd.run(
+        "C0058",
+        manifest_dir=manifest_dir,
+        cache=DocumentCache(tmp_path / "cache"),
+        fetcher=fetcher,
+        adapters={"mapfre_docprecon": fpd.MapfreDocpreconAdapter(api_key="k")},
+        company_folder=tmp_path / "company",
+    )
+    assert stats.fetched == 0
+    assert [g.reason for g in stats.gaps] == ["host_blocked"] * 3
+
+    runs_path = data_dir / "runs.jsonl"
+    errors, _warnings = validate_jsonl_file(runs_path, "started_at", ["script", "started_at"])
+    assert errors == []
+
+    runs = load_jsonl(runs_path)
+    assert len(runs) == 1
+    record = runs[0]
+    assert record["script"] == fpd.SCRIPT_NAME
+    assert "started_at" in record and "finished_at" in record
+    assert "event_type" not in record
+    assert record["counts"]["fetched"] == 0
+    assert record["counts"]["skipped_cached"] == 0
+    assert record["counts"]["gaps"] == 3
+    assert record["counts"]["host_blocked"] == 3
+    assert record["details"]["company_key"] == "C0058"
+    assert record["details"]["user_agent"] == fpd.USER_AGENT
+    assert len(record["details"]["gaps"]) == 3
+    assert all(gap["reason"] == "host_blocked" for gap in record["details"]["gaps"])

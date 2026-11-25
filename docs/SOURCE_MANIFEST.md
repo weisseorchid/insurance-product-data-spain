@@ -106,7 +106,7 @@ The fetcher:
 - is idempotent: documents whose source is already in `documents.jsonl` with PDF and markdown in the
   cache are skipped unless `--force`;
 - fetches a shared document once and upserts one `documents.jsonl` record per product using it;
-- logs `fetch_gap` and `fetch_run` events to `data/runs.jsonl` and exits non-zero if there were gaps.
+- logs one run record to `data/runs.jsonl` (`script`, `started_at`, `finished_at`, `counts`, and gap details) and exits non-zero if there were gaps.
 
 ### `documents.jsonl` records written by the fetcher
 
