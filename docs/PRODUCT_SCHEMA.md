@@ -194,5 +194,6 @@ violations fail CI; see [GENERATING_PRODUCT_POOL.md](GENERATING_PRODUCT_POOL.md#
 ## Related Documentation
 
 - [GENERATING_PRODUCT_POOL.md](GENERATING_PRODUCT_POOL.md) - How to generate product data
+- [SOURCE_MANIFEST.md](SOURCE_MANIFEST.md) - Where product documents come from (`data/sources/<company_key>.jsonl`)
 - [README.md](../README.md) - Package usage
 - [Database Schema](../insurance_product_data_sp/models/) - SQLModel definitions

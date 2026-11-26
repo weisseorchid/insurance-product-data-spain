@@ -3,7 +3,8 @@
 This script takes an insurance company key (e.g., C0737) and:
 1. Finds the company's folder in data/products_by_insurance_company/
 2. Reads the index.json to get all products
-3. For each product, finds the markdown files in sources/{product_name}/
+3. For each product, resolves its markdown from documents.jsonl + the document cache
+   (.cache/insurance-docs), or from a legacy sources/{product_name}/ folder if present
 4. Analyzes all markdown files using Gemini to extract structured information
 5. Saves the analysis results to analysis/{product_name}.json
 
@@ -18,12 +19,13 @@ from pathlib import Path
 from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GEMINI_MODEL, SCHEMA_VERSION, GeminiClient
-from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH, PROJECT_ROOT
+from scripts.config import PROJECT_ROOT
+from scripts.utils.companies import company_display_name, company_folder_path, company_key_for_folder, find_company
+from scripts.utils.document_store import MarkdownInput, markdown_inputs_from_documents
 from scripts.utils.document_validation import compute_markdown_hash
 from scripts.utils.jsonl import load_jsonl
 from scripts.utils.run_logging import log_analysis_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
-from scripts.utils.text_transformations import text_to_snake_case
 
 # Known bad markdown hashes (e.g. Mutua Madrileña Cloudflare blocks), shared with CI
 KNOWN_BLOCK_PAGE_HASHES_FILE = PROJECT_ROOT / "data" / "quality" / "known_block_page_hashes.jsonl"
@@ -108,32 +110,21 @@ def find_company_folder(company_key: str) -> Path | None:
     Returns:
         Path to the company folder or None if not found
     """
-    # Load companies data to get the company name
     try:
-        companies = load_json(INSURANCE_COMPANIES_JSON)
-    except FileNotFoundError:
-        logger.error(f"Companies JSON file not found: {INSURANCE_COMPANIES_JSON}")
+        company = find_company(company_key)
+    except FileNotFoundError as e:
+        logger.error(str(e))
         return None
-
-    # Find the company by key
-    company = None
-    for c in companies:
-        if c.get("company_key") == company_key:
-            company = c
-            break
 
     if not company:
         logger.error(f"Company with key {company_key} not found in companies data")
         return None
 
-    # Get the company name and convert to folder name
-    company_name = company.get("denomination", "")
-    if not company_name:
+    if not company_display_name(company):
         logger.error(f"Company {company_key} has no denomination")
         return None
 
-    folder_name = text_to_snake_case(company_name)
-    company_folder = PRODUCTS_STORAGE_PATH / folder_name
+    company_folder = company_folder_path(company)
 
     if not company_folder.exists():
         logger.error(f"Company folder not found: {company_folder}")
@@ -170,25 +161,38 @@ def load_product_index(company_folder: Path) -> list[dict] | None:
         return None
 
 
-def get_product_markdown_files(company_folder: Path, product_name: str) -> list[Path]:
+def get_product_markdown_inputs(company_folder: Path, product_name: str) -> list[MarkdownInput]:
     """
-    Get all markdown files for a product.
+    Resolve the markdown documents for a product.
+
+    Source of truth is the company's documents.jsonl plus the gitignored document
+    cache (see scripts/utils/document_store.py). For backward compatibility, a
+    legacy ``sources/{product_name}/*.md`` folder is used if it exists.
 
     Args:
         company_folder: Path to the company folder
-        product_name: Name of the product (folder name in sources/)
+        product_name: Product name (as in index.json / documents.jsonl)
 
     Returns:
-        List of paths to markdown files
+        List of MarkdownInput (path to read, display name), possibly empty
     """
-    product_folder = company_folder / "sources" / product_name
+    legacy_folder = company_folder / "sources" / product_name
+    if legacy_folder.exists():
+        return [MarkdownInput(p, p.name) for p in sorted(legacy_folder.glob("*.md"))]
 
-    if not product_folder.exists():
-        logger.warning(f"Product folder not found: {product_folder}")
-        return []
+    found, missing = markdown_inputs_from_documents(company_folder, product_name)
+    if missing:
+        logger.warning(
+            f"{len(missing)} document(s) of {product_name} have no cached markdown "
+            f"(run scripts.fetch_product_documents or scripts.process_pdfs): "
+            + ", ".join(str(r.get("filename")) for r in missing)
+        )
+    return found
 
-    markdown_files = list(product_folder.glob("*.md"))
-    return sorted(markdown_files)
+
+def get_product_markdown_files(company_folder: Path, product_name: str) -> list[Path]:
+    """Paths of the product's markdown documents (see get_product_markdown_inputs)."""
+    return [i.path for i in get_product_markdown_inputs(company_folder, product_name)]
 
 
 def should_skip_analysis(
@@ -274,8 +278,9 @@ def analyze_single_product(
 
     logger.info(f"Analyzing product: {product_name} ({product_id})")
 
-    # Get markdown files for this product
-    markdown_files = get_product_markdown_files(company_folder, product_name)
+    # Get markdown documents for this product (documents.jsonl + cache, or legacy sources/)
+    markdown_inputs = get_product_markdown_inputs(company_folder, product_name)
+    markdown_files = [i.path for i in markdown_inputs]
 
     if not markdown_files:
         logger.warning(f"No markdown files found for product: {product_name}")
@@ -323,6 +328,7 @@ def analyze_single_product(
         analysis = client.analyze_product_documents(
             markdown_paths=[str(f) for f in markdown_files],
             product_context=product_context,
+            document_names={str(i.path): i.name for i in markdown_inputs},
         )
 
         return ProductAnalysisResult(
@@ -340,11 +346,7 @@ def analyze_single_product(
         # Log analysis failure
         company_key = None
         try:
-            companies = load_json(INSURANCE_COMPANIES_JSON)
-            for c in companies:
-                if text_to_snake_case(c.get("denomination", "")) == company_folder.name:
-                    company_key = c.get("company_key")
-                    break
+            company_key = company_key_for_folder(company_folder.name)
         except Exception:
             pass
 
@@ -373,6 +375,7 @@ def save_product_analysis(
     client: GeminiClient,
     markdown_files: list[Path],
     has_quality_issues: bool = False,
+    markdown_names: list[str] | None = None,
 ) -> Path:
     """
     Save the product analysis to a JSON file.
@@ -383,6 +386,7 @@ def save_product_analysis(
         analysis: The ProductAnalysis to save
         client: GeminiClient instance for provenance
         markdown_files: List of markdown files used
+        markdown_names: Optional display names for markdown_files (default: file names)
         has_quality_issues: Whether the analysis has known quality issues
 
     Returns:
@@ -398,12 +402,13 @@ def save_product_analysis(
     input_hash = client.compute_input_hash([str(f) for f in markdown_files])
 
     # Compute individual markdown hashes for provenance
+    names = markdown_names if markdown_names is not None else [f.name for f in markdown_files]
     markdown_hashes = {}
-    for md_file in markdown_files:
+    for md_file, md_name in zip(markdown_files, names, strict=True):
         try:
             content = md_file.read_text(encoding="utf-8")
             md_hash = compute_markdown_hash(content)
-            markdown_hashes[md_file.name] = md_hash
+            markdown_hashes[md_name] = md_hash
         except Exception:
             pass
 
@@ -426,7 +431,7 @@ def save_product_analysis(
                 "schema_version": SCHEMA_VERSION,
                 "input_hash": input_hash,
                 "markdown_hashes": markdown_hashes,
-                "markdown_files": [f.name for f in markdown_files],
+                "markdown_files": names,
             },
         },
         analysis=analysis,
@@ -496,9 +501,8 @@ def analyze_company_products(
 
     # Get company name for context
     try:
-        companies = load_json(INSURANCE_COMPANIES_JSON)
-        company = next((c for c in companies if c.get("company_key") == company_key), None)
-        company_name = company.get("denomination", "Unknown") if company else "Unknown"
+        company = find_company(company_key)
+        company_name = (company_display_name(company) if company else "") or "Unknown"
     except Exception:
         company_name = "Unknown"
 
@@ -525,14 +529,15 @@ def analyze_company_products(
         # Save analysis if successful and not skipped
         if result.success and result.analysis and not result.skipped:
             # Get markdown files again for provenance
-            markdown_files = get_product_markdown_files(company_folder, product_entry.get("product_name", "unknown"))
+            markdown_inputs = get_product_markdown_inputs(company_folder, product_entry.get("product_name", "unknown"))
             save_product_analysis(
                 company_folder,
                 product_entry,
                 result.analysis,
                 client,
-                markdown_files,
+                [i.path for i in markdown_inputs],
                 has_quality_issues=result.has_quality_issues,
+                markdown_names=[i.name for i in markdown_inputs],
             )
 
     # Save summary

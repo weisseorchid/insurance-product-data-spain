@@ -299,6 +299,35 @@ def is_block_page_simple(markdown_content: str) -> bool:
     return bool(block_regex.search(markdown_content))
 
 
+def check_source_manifests(repo_root: Path) -> list[str]:
+    """Validate committed source manifests in data/sources/ (see docs/SOURCE_MANIFEST.md)."""
+    sources_dir = repo_root / "data" / "sources"
+    if not sources_dir.exists():
+        return []
+
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+    from scripts.utils.source_manifest import validate_manifest_file
+
+    def _keys(path: Path, field: str) -> set[str]:
+        with open(path, encoding="utf-8") as f:
+            return {str(json.loads(line)[field]) for line in f if line.strip()}
+
+    branch_codes = _keys(repo_root / "data" / "insurance_branches.jsonl", "code")
+    company_keys = _keys(repo_root / "data" / "insurance_companies.jsonl", "company_key")
+
+    errors: list[str] = []
+    for path in sorted(sources_dir.iterdir()):
+        rel = path.relative_to(repo_root).as_posix()
+        if path.is_dir() or path.suffix != ".jsonl":
+            errors.append(f"{rel}: unexpected file; manifests must be data/sources/<company_key>.jsonl")
+            continue
+        if path.stem not in company_keys:
+            errors.append(f"{rel}: company_key {path.stem!r} not found in data/insurance_companies.jsonl")
+        errors.extend(f"{rel}: {e}" for e in validate_manifest_file(path, branch_codes))
+    return errors
+
+
 def check_product_markdown_quality(products_dir: Path) -> tuple[list[str], list[str]]:
     """
     Check product markdown files for block pages and duplicate hashes.
@@ -704,6 +733,20 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  ❌ {error}")
         else:
             print("  ✅ Valid")
+        print()
+
+    # Check source manifests (data/sources/<company_key>.jsonl)
+    manifest_files = (
+        sorted((repo_root / "data" / "sources").glob("*")) if (repo_root / "data" / "sources").exists() else []
+    )
+    if manifest_files:
+        print("Validating source manifests in data/sources/...")
+        manifest_errors = check_source_manifests(repo_root)
+        all_errors.extend(manifest_errors)
+        for error in manifest_errors:
+            print(f"  ❌ {error}")
+        if not manifest_errors:
+            print(f"  ✅ {len(manifest_files)} manifest(s) valid")
         print()
 
     # Check product markdown files for block pages and duplicate hashes

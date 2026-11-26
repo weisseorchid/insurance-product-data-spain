@@ -102,6 +102,7 @@ class GeminiClient:
         self,
         markdown_paths: list[str],
         product_context: dict | None = None,
+        document_names: dict[str, str] | None = None,
     ) -> ProductAnalysis:
         """Analyze multiple documents for a single insurance product.
 
@@ -115,6 +116,8 @@ class GeminiClient:
             markdown_paths: List of paths to markdown files to analyze.
             product_context: Optional context about the product (name, branch, etc.)
                             to help guide the analysis.
+            document_names: Optional {path: display name}, e.g. the original filename for
+                            content-addressed cache paths.
 
         Returns:
             ProductAnalysis object with aggregated information from all documents.
@@ -128,7 +131,7 @@ class GeminiClient:
         for path in markdown_paths:
             with open(path, encoding="utf-8") as file:
                 content = file.read()
-                filename = Path(path).name
+                filename = (document_names or {}).get(str(path), Path(path).name)
                 documents_content.append(f"### Document: {filename}\n\n{content}")
 
         combined_content = "\n\n---\n\n".join(documents_content)

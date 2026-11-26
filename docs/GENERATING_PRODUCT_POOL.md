@@ -13,8 +13,12 @@ This differs from **regulatory products** (Ramos/Modalidades) from the DGSFP API
 ## Pipeline
 
 ```
-sync_data → sync_folders → Add PDFs → process_pdfs (with validation) → analyze_products (with validation & retry) → build_db
+sync_data → write data/sources/<company_key>.jsonl → fetch_product_documents (robots, rate limit, validation)
+          → [process_pdfs --source cache] → analyze_products (with validation & retry) → build_db
 ```
+
+The source manifest and fetcher are described in [SOURCE_MANIFEST.md](SOURCE_MANIFEST.md). The legacy
+flow (PDFs copied by hand into `sources/{product_name}/`, then `process_pdfs`) still works.
 
 ### Validation & Quality Control
 
@@ -65,9 +69,11 @@ uv run python -m scripts.sync_data
 # 2. Create company folder (creates for all companies)
 uv run python -m scripts.sync_folders
 
-# 3. Add PDFs to sources/{product_name}/ (manual step)
+# 3. Describe the products and documents in data/sources/M0083.jsonl (see SOURCE_MANIFEST.md), then fetch
+uv run python -m scripts.fetch_product_documents --company-key M0083 --dry-run
+uv run python -m scripts.fetch_product_documents --company-key M0083
 
-# 4. Convert PDFs to markdown
+# 4. (Optional) re-convert cached PDFs to markdown (the fetcher already converts)
 uv run python -m scripts.process_pdfs --company-key M0083
 
 # 5. Run AI analysis
@@ -132,6 +138,7 @@ See [PRODUCT_SCHEMA.md](PRODUCT_SCHEMA.md) for complete schema documentation.
 |--------|---------|
 | `scripts.sync_data` | Fetch regulatory data, rebuild database |
 | `scripts.sync_folders` | Create company folders |
+| `scripts.fetch_product_documents --company-key KEY` | Fetch documents listed in `data/sources/KEY.jsonl` (polite, validated) |
 | `scripts.process_pdfs --company-key KEY` | Convert PDFs to markdown (with validation) |
 | `scripts.analyze_products --company-key KEY` | AI analysis of products (with validation & retry) |
 | `scripts.build_db` | Build SQLite database from JSON |
@@ -213,6 +220,7 @@ Also includes `metadata.quality_flags`:
 ## Related Documentation
 
 - [PRODUCT_SCHEMA.md](PRODUCT_SCHEMA.md) - Product data schema v1 specification
+- [SOURCE_MANIFEST.md](SOURCE_MANIFEST.md) - Per-insurer source manifest and document fetcher
 - [INSURANCE_PUBLIC_DATA_FETCH.md](INSURANCE_PUBLIC_DATA_FETCH.md) - Regulatory data API
 - [README.md](../README.md) - Package usage
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Development setup

@@ -1,12 +1,17 @@
 """Script to process PDFs for insurance companies and convert them to markdown.
 
-This script takes an insurance company key (e.g., C0737) and:
-1. Finds the company's folder in data/products_by_insurance_company/
-2. Locates the sources/ subdirectory
-3. Converts all PDFs in each product folder to markdown
-4. Saves the markdown files alongside the original PDFs
+This script takes an insurance company key (e.g., C0737) and converts its PDFs to
+validated markdown. Two sources are supported:
 
-Run with: uv run python -m scripts.process_pdfs --company-key C0737
+- cache (default when there is no sources/ folder): documents listed in the company's
+  documents.jsonl whose PDF is in the document cache (.cache/insurance-docs) are
+  converted; the markdown is stored in the cache and markdown_sha256 is updated in
+  documents.jsonl. This is the normal path after scripts.fetch_product_documents
+  (which already converts, so this mostly re-converts with --force or fills gaps).
+- sources (legacy): PDFs in sources/{product}/ are converted and the markdown is saved
+  next to them.
+
+Run with: uv run python -m scripts.process_pdfs --company-key C0737 [--source auto|cache|sources] [--force]
 """
 
 import argparse
@@ -14,11 +19,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
-from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
+from scripts.utils.companies import company_display_name, company_folder_path, find_company
+from scripts.utils.document_cache import DocumentCache
+from scripts.utils.document_store import convert_cached_pdf, load_documents, save_documents
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
 from scripts.utils.run_logging import log_validation_failure
-from scripts.utils.storage import ensure_directory, load_json, save_json
-from scripts.utils.text_transformations import text_to_snake_case
+from scripts.utils.storage import ensure_directory, save_json
 
 
 def find_company_folder(company_key: str) -> Path | None:
@@ -31,32 +37,21 @@ def find_company_folder(company_key: str) -> Path | None:
     Returns:
         Path to the company folder or None if not found
     """
-    # Load companies data to get the company name
     try:
-        companies = load_json(INSURANCE_COMPANIES_JSON)
-    except FileNotFoundError:
-        logger.error(f"Companies JSON file not found: {INSURANCE_COMPANIES_JSON}")
+        company = find_company(company_key)
+    except FileNotFoundError as e:
+        logger.error(str(e))
         return None
-
-    # Find the company by key
-    company = None
-    for c in companies:
-        if c.get("company_key") == company_key:
-            company = c
-            break
 
     if not company:
         logger.error(f"Company with key {company_key} not found in companies data")
         return None
 
-    # Get the company name and convert to folder name
-    company_name = company.get("denomination", "")
-    if not company_name:
+    if not company_display_name(company):
         logger.error(f"Company {company_key} has no denomination")
         return None
 
-    folder_name = text_to_snake_case(company_name)
-    company_folder = PRODUCTS_STORAGE_PATH / folder_name
+    company_folder = company_folder_path(company)
 
     if not company_folder.exists():
         logger.error(f"Company folder not found: {company_folder}")
@@ -147,6 +142,8 @@ def process_company_pdfs(
     company_key: str,
     output_dir: Path | str | None = None,
     save_summary: bool = True,
+    source: str = "auto",
+    force: bool = False,
 ) -> dict[str, list[PDFConversionResult]]:
     """
     Process all PDFs for an insurance company.
@@ -156,6 +153,8 @@ def process_company_pdfs(
         output_dir: Optional output directory for markdown files.
                    If None, saves alongside the original PDFs.
         save_summary: Whether to save a processing summary JSON file
+        source: "cache" (documents.jsonl + cache), "sources" (legacy folder) or "auto"
+        force: Re-convert cached PDFs even if their markdown is already cached
 
     Returns:
         Dictionary with product names as keys and lists of conversion results as values
@@ -165,7 +164,14 @@ def process_company_pdfs(
     if not company_folder:
         return {}
 
-    # Get sources directory
+    use_sources = source == "sources" or (source == "auto" and (company_folder / "sources").exists())
+    if not use_sources:
+        all_cached = process_cached_documents(company_folder, company_key=company_key, force=force)
+        if save_summary:
+            _save_summary(company_folder, generate_processing_summary(company_key, all_cached))
+        return all_cached
+
+    # Legacy: sources/{product}/*.pdf
     sources_dir = get_sources_directory(company_folder)
     if not sources_dir:
         logger.warning(f"No sources directory found for company {company_key}")
@@ -189,14 +195,86 @@ def process_company_pdfs(
 
     # Generate and save summary
     if save_summary:
-        summary = generate_processing_summary(company_key, all_results)
-        metadata_folder = company_folder / "metadata"
-        ensure_directory(metadata_folder)
-        summary_path = metadata_folder / "processing_summary.json"
-        save_json(summary, summary_path)
-        logger.info(f"Saved processing summary to: {summary_path}")
+        _save_summary(company_folder, generate_processing_summary(company_key, all_results))
 
     return all_results
+
+
+def _save_summary(company_folder: Path, summary: dict) -> None:
+    metadata_folder = company_folder / "metadata"
+    ensure_directory(metadata_folder)
+    summary_path = metadata_folder / "processing_summary.json"
+    save_json(summary, summary_path)
+    logger.info(f"Saved processing summary to: {summary_path}")
+
+
+def process_cached_documents(
+    company_folder: Path,
+    company_key: str | None = None,
+    force: bool = False,
+    cache: DocumentCache | None = None,
+) -> dict[str, list[PDFConversionResult]]:
+    """
+    Convert cached PDFs referenced by documents.jsonl to markdown (stored in the cache).
+
+    Args:
+        company_folder: Path to the company folder
+        company_key: Optional company key for logging
+        force: Re-convert even if the markdown is already cached
+        cache: Document cache (default: .cache/insurance-docs)
+
+    Returns:
+        Dictionary with product name as key and list of conversion results as value
+    """
+    cache = cache or DocumentCache()
+    records = load_documents(company_folder)
+    results: dict[str, list[PDFConversionResult]] = {}
+    converted: dict[str, str | None] = {}  # pdf_sha256 -> markdown_sha256 (convert each PDF once)
+    changed = False
+
+    for record in records:
+        product_name = str(record.get("product_name", "unknown"))
+        pdf_sha = record.get("pdf_sha256")
+        md_sha = record.get("markdown_sha256")
+        if not pdf_sha:
+            continue
+        pdf = cache.get_pdf(pdf_sha)
+        if not pdf.exists:
+            logger.warning(f"PDF not in cache for {product_name}/{record.get('filename')}; fetch it first")
+            continue
+        if not force and md_sha and cache.get_markdown(md_sha).exists:
+            continue
+        if pdf_sha not in converted:
+            outcome = convert_cached_pdf(pdf_sha, cache)
+            converted[pdf_sha] = outcome.markdown_sha256 if outcome.success else None
+            results.setdefault(product_name, []).append(
+                PDFConversionResult(
+                    source_path=pdf.cache_path,
+                    markdown_content="",
+                    success=outcome.success,
+                    error=outcome.error,
+                    markdown_sha256=outcome.markdown_sha256,
+                    validation_failed=outcome.validation_failed,
+                )
+            )
+            if not outcome.success and outcome.validation_failed:
+                log_validation_failure(
+                    script_name="process_pdfs",
+                    file_path=str(record.get("filename")),
+                    reason=outcome.error or "Unknown validation error",
+                    company_key=company_key,
+                    product_name=product_name,
+                    markdown_sha256=outcome.markdown_sha256,
+                )
+        new_md = converted[pdf_sha]
+        if new_md and new_md != md_sha:
+            record["markdown_sha256"] = new_md
+            changed = True
+
+    if changed:
+        save_documents(company_folder, records)
+        logger.info(f"Updated markdown_sha256 in {company_folder / 'documents.jsonl'}")
+    return results
 
 
 def generate_processing_summary(company_key: str, results: dict[str, list[PDFConversionResult]]) -> dict:
@@ -279,6 +357,15 @@ def main():
         help="Don't save processing summary JSON",
     )
 
+    parser.add_argument(
+        "--source",
+        choices=["auto", "cache", "sources"],
+        default="auto",
+        help="cache = documents.jsonl + .cache/insurance-docs; sources = legacy sources/ folder; "
+        "auto = sources/ if it exists, else cache (default)",
+    )
+    parser.add_argument("--force", action="store_true", help="Re-convert even if markdown is already cached")
+
     args = parser.parse_args()
 
     logger.info(f"Starting PDF processing for company: {args.company_key}")
@@ -287,6 +374,8 @@ def main():
         company_key=args.company_key,
         output_dir=args.output_dir,
         save_summary=not args.no_summary,
+        source=args.source,
+        force=args.force,
     )
 
     # Print summary

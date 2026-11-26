@@ -22,6 +22,7 @@ def append_run_log(
     model: str | None = None,
     prompt_hash: str | None = None,
     error: str | None = None,
+    details: dict | None = None,
 ) -> None:
     """
     Append a run log entry to runs.jsonl.
@@ -34,6 +35,7 @@ def append_run_log(
         model: Model name (for AI-based scripts)
         prompt_hash: Hash of the prompt template (for AI-based scripts)
         error: Error message if the run failed
+        details: Optional free-form metadata (gaps, company_key, etc.)
     """
     if finished_at is None:
         finished_at = datetime.now(timezone.utc)
@@ -63,6 +65,7 @@ def append_run_log(
         "model": model,
         "prompt_hash": prompt_hash,
         "error": error,
+        "details": details or {},
     }
 
     # Load existing runs
