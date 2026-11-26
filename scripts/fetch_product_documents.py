@@ -47,7 +47,13 @@ from insurance_product_data_sp.core.logging import logger
 from scripts.utils.companies import company_folder_path, find_company
 from scripts.utils.document_cache import DocumentCache
 from scripts.utils.document_store import convert_cached_pdf, load_documents, save_documents, upsert_document
-from scripts.utils.document_validation import PDF_MAGIC_BYTES, is_block_page
+from scripts.utils.document_validation import (
+    PDF_MAGIC_BYTES,
+    is_block_page,
+    is_known_or_block_page_hash,
+    load_known_block_page_hashes,
+)
+from scripts.utils.gaps import write_gaps_report
 from scripts.utils.run_log import append_run_log
 from scripts.utils.source_manifest import (
     ManifestDocument,
@@ -462,6 +468,74 @@ def _cached_record(records: list[dict[str, Any]], document: ManifestDocument, ca
     return None
 
 
+def _clear_document_markdown(
+    records: list[dict[str, Any]],
+    document: ManifestDocument,
+    product_ids: list[str],
+) -> list[dict[str, Any]]:
+    """Keep provenance rows but drop markdown_sha256 so block pages are not re-used."""
+    filename = document.resolved_filename()
+    source = _source_dict(document)
+    product_id_set = set(product_ids)
+    updated: list[dict[str, Any]] = []
+    for record in records:
+        if record.get("product_id") in product_id_set and (
+            record.get("doc_id") == document.doc_id
+            or record.get("filename") == filename
+            or record.get("source") == source
+        ):
+            cleared = dict(record)
+            cleared.pop("markdown_sha256", None)
+            updated.append(cleared)
+        else:
+            updated.append(record)
+    return updated
+
+
+def _cached_is_block_page(
+    record: dict[str, Any],
+    cache: DocumentCache,
+    known_hashes: set[str],
+) -> bool:
+    md_sha = record.get("markdown_sha256")
+    if is_known_or_block_page_hash(md_sha if isinstance(md_sha, str) else None, known_hashes):
+        return True
+    if not md_sha:
+        return False
+    cached = cache.get_markdown(md_sha)
+    if not cached.exists:
+        return False
+    try:
+        content = cached.cache_path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return False
+    return is_block_page(content)
+
+
+def _gaps_for_report(
+    gaps: list[Gap],
+    products_by_id: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Expand document gaps into one report row per product that uses the document."""
+    rows: list[dict[str, Any]] = []
+    for g in gaps:
+        ids = g.product_ids or [None]
+        for product_id in ids:
+            product = products_by_id.get(product_id) if product_id else None
+            rows.append(
+                {
+                    "product_id": product_id,
+                    "product_name": getattr(product, "product_name", None),
+                    "doc_id": g.doc_id,
+                    "filename": None,
+                    "source": g.source,
+                    "reason": g.reason,
+                    "detail": g.detail,
+                }
+            )
+    return rows
+
+
 def run(
     company_key: str,
     product: str | None = None,
@@ -486,6 +560,8 @@ def run(
     for p in products:
         for doc_id in p.documents:
             users.setdefault(doc_id, []).append(p)
+    products_by_id = {p.product_id: p for p in products}
+    known_block_hashes = load_known_block_page_hashes()
 
     stats = FetchStats()
     if dry_run:
@@ -506,6 +582,7 @@ def run(
     adapters = adapters or default_adapters()
     records = load_documents(company_folder)
     started_at = datetime.now(timezone.utc)
+    usable_docs_by_product: dict[str, int] = {p.product_id: 0 for p in products}
 
     for doc_id in sorted(users):
         doc = manifest.documents[doc_id]
@@ -516,6 +593,11 @@ def run(
             logger.warning(f"Gap for {doc.doc_id} ({doc.source.key()}): {reason} {detail}")
 
         cached = None if force else _cached_record(records, doc, cache)
+        if cached and _cached_is_block_page(cached, cache, known_block_hashes):
+            gap("block_page", str(cached.get("markdown_sha256") or ""))
+            records = _clear_document_markdown(records, doc, product_ids)
+            save_documents(company_folder, records)
+            continue
         if cached:
             stats.skipped_cached += 1
             pdf_sha, md_sha, size = cached["pdf_sha256"], cached["markdown_sha256"], cached.get("pdf_size")
@@ -541,8 +623,30 @@ def run(
                 continue
             pdf_sha = _store_pdf_bytes(body, cache)
             outcome = convert_cached_pdf(pdf_sha, cache)
-            if not outcome.success or not outcome.markdown_sha256:
-                gap("validation_failed", outcome.error or "")
+            known_bad = is_known_or_block_page_hash(outcome.markdown_sha256, known_block_hashes)
+            error_text = (outcome.error or "").lower()
+            is_block = known_bad or "block page" in error_text
+            if not outcome.success or not outcome.markdown_sha256 or known_bad:
+                reason = "block_page" if is_block else "validation_failed"
+                gap(reason, outcome.error or (outcome.markdown_sha256 or ""))
+                records = _clear_document_markdown(records, doc, product_ids)
+                for p in users[doc_id]:
+                    records = upsert_document(
+                        records,
+                        {
+                            "doc_id": doc.doc_id,
+                            "doc_type": doc.doc_type,
+                            "filename": doc.resolved_filename(),
+                            "pdf_sha256": pdf_sha,
+                            "pdf_size": len(body),
+                            "product_id": p.product_id,
+                            "product_name": p.product_name,
+                            "retrieved_at": datetime.now(timezone.utc).isoformat(),
+                            "source": _source_dict(doc),
+                            "source_url": doc.source_url,
+                        },
+                    )
+                save_documents(company_folder, records)
                 continue
             md_sha, size = outcome.markdown_sha256, len(body)
             retrieved_at = datetime.now(timezone.utc).isoformat()
@@ -550,6 +654,7 @@ def run(
             logger.info(f"Fetched {doc.doc_id} -> {pdf_sha[:12]} ({size} bytes)")
 
         for p in users[doc_id]:
+            usable_docs_by_product[p.product_id] = usable_docs_by_product.get(p.product_id, 0) + 1
             records = upsert_document(
                 records,
                 {
@@ -567,6 +672,28 @@ def run(
                 },
             )
         save_documents(company_folder, records)
+
+    for product_id, usable in usable_docs_by_product.items():
+        if usable == 0:
+            product_obj = products_by_id[product_id]
+            stats.gaps.append(
+                Gap(
+                    company_key,
+                    doc_id="-",
+                    source="-",
+                    reason="no_usable_documents",
+                    detail="all documents for this product failed or are block pages",
+                    product_ids=[product_id],
+                )
+            )
+            logger.warning(f"Gap for product {product_obj.product_name}: no_usable_documents")
+
+    gap_rows = _gaps_for_report(stats.gaps, products_by_id)
+    for row in gap_rows:
+        doc_id = row.get("doc_id")
+        if doc_id and doc_id != "-" and doc_id in manifest.documents:
+            row["filename"] = manifest.documents[doc_id].resolved_filename()
+    write_gaps_report(company_folder, company_key, SCRIPT_NAME, gap_rows)
 
     if log_gaps:
         reason_counts: dict[str, int] = {}

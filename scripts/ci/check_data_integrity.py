@@ -276,27 +276,10 @@ def compute_markdown_hash_simple(content: str) -> str:
 
 
 def is_block_page_simple(markdown_content: str) -> bool:
-    """
-    Check if markdown content appears to be a bot/block page.
+    """Delegate to the shared block-page detector in document_validation."""
+    from scripts.utils.document_validation import is_block_page
 
-    Args:
-        markdown_content: The markdown text content
-
-    Returns:
-        True if content appears to be a block page
-    """
-    import re
-
-    block_patterns = [
-        r"Pardon Our Interruption",
-        r"Please stand by",
-        r"Cloudflare",
-        r"Just a moment",
-        r"checking your browser",
-        r"Enable JavaScript and cookies to continue",
-    ]
-    block_regex = re.compile("|".join(block_patterns), re.IGNORECASE)
-    return bool(block_regex.search(markdown_content))
+    return is_block_page(markdown_content)
 
 
 def check_source_manifests(repo_root: Path) -> list[str]:
@@ -685,19 +668,12 @@ def main(argv: list[str] | None = None) -> int:
                         md_hash = record["markdown_sha256"]
                         md_cache_path = repo_root / ".cache" / "insurance-docs" / md_hash[:2] / f"{md_hash}.md"
                         if md_cache_path.exists():
-                            # Check for block/cookie page indicators
                             with open(md_cache_path, encoding="utf-8", errors="ignore") as mf:
-                                content = mf.read(5000).lower()  # First 5KB
-                                block_indicators = [
-                                    "cloudflare",
-                                    "please stand by",
-                                    "checking your browser",
-                                    "enable cookies",
-                                ]
-                                if any(indicator in content for indicator in block_indicators):
-                                    bad_pdfs_warnings.append(
-                                        f"Line {line_num} ({record['filename']}): Markdown appears to be a block/cookie page"
-                                    )
+                                content = mf.read()
+                            if is_block_page_simple(content):
+                                bad_pdfs_warnings.append(
+                                    f"Line {line_num} ({record['filename']}): Markdown appears to be a block/cookie page"
+                                )
 
                 except json.JSONDecodeError as e:
                     errors_found.append(f"Line {line_num}: Invalid JSON - {e}")

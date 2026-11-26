@@ -202,14 +202,16 @@ Also includes `metadata.quality_flags`:
 
 ### Mutua Madrileña Cloudflare Blocks
 
-19 Mutua Madrileña markdown files are Cloudflare "Pardon Our Interruption" block pages (hash `9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4`).
+19 Mutua Madrileña documents historically resolved to a Cloudflare "Pardon Our Interruption" page
+(hash `9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4`).
 
-**Quarantine approach:**
-- Files remain in repository (not deleted)
-- The hash is listed in `data/quality/known_block_page_hashes.jsonl` and the affected documents are in the
-  known-issues baseline (doesn't fail CI, but any NEW document with a block-page hash does)
-- Analyses using these files are flagged as `untrusted` in metadata
-- Visible in reports but doesn't block pipeline
+**Current approach (block pages are gaps, not knowledge):**
+- The hash stays in `data/quality/known_block_page_hashes.jsonl` so the same page is recognized
+- `fetch_product_documents` and `process_pdfs` refuse to keep that markdown hash in `documents.jsonl`
+- `analyze_products` drops block-page inputs before calling Gemini; products with only block pages
+  are reported as `no_usable_documents` gaps in `metadata/gaps.json`
+- Existing baselined issues in `data/quality/known_data_issues.jsonl` remain until Data Ops cleans
+  the Mutua rows / analyses; NEW block-page hashes still fail CI
 
 ## Environment Variables
 
