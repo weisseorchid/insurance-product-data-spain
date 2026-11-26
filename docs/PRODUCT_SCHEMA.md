@@ -184,6 +184,12 @@ Product data is validated in CI using `scripts/ci/check_data_integrity.py`, whic
 - `branches` is a non-empty list
 - `document_references` structure is valid
 - No deprecated fields remain (`product_branch`, `source_folder`, `files`)
+- Branch codes (in `index.json` and analysis files) exist in `data/insurance_branches.jsonl`
+- Analysis files use `branches` (not `product_branch`) and carry `metadata.quality_flags`
+- `documents.jsonl` entries are not known block pages (by `markdown_sha256`)
+
+Pre-existing violations are tracked in `data/quality/known_data_issues.jsonl` so that only new
+violations fail CI; see [GENERATING_PRODUCT_POOL.md](GENERATING_PRODUCT_POOL.md#known-issues-baseline).
 
 ## Related Documentation
 

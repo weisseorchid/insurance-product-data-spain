@@ -1,11 +1,26 @@
 #!/usr/bin/env python3
 """Validate JSONL data integrity: valid JSON, sorting, no duplicates.
 
-Also checks product markdown files for block pages and duplicate hashes.
+Also checks product data quality without needing the gitignored document cache:
+
+- product branch codes (index.json ``branches`` and analysis files) exist in
+  ``data/insurance_branches.jsonl``
+- analyses do not use the deprecated singular ``product_branch`` field
+- analyses carry the documented ``metadata.quality_flags``
+- documents in ``documents.jsonl`` are not known block pages (by ``markdown_sha256``,
+  see ``data/quality/known_block_page_hashes.jsonl``) and different PDFs do not share
+  one markdown hash
+
+Existing violations are listed in ``data/quality/known_data_issues.jsonl``; only
+violations not in that baseline fail CI. Baseline entries that no longer occur are
+reported as warnings so the baseline can be shrunk.
+
+Locally (when ``sources/`` or ``.cache/`` exist) it also scans markdown content.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from collections import defaultdict
@@ -31,15 +46,34 @@ KNOWN_DISTRIBUTOR_DUPLICATES = {
     "J-068-CM",
 }
 
-# Known bad markdown hashes (Mutua Madrileña Cloudflare blocks)
-# Allowlisted to not fail CI, but flagged in reports
-KNOWN_BAD_MARKDOWN_HASHES = {
-    "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4": {
-        "reason": "Cloudflare block page",
-        "company": "Mutua Madrileña",
-        "note": "19 Mutua Madrileña markdown files share this hash (Cloudflare 'Pardon Our Interruption' page)",
-    }
-}
+REPO_ROOT = Path(__file__).parent.parent.parent
+QUALITY_DIR = REPO_ROOT / "data" / "quality"
+KNOWN_BLOCK_PAGE_HASHES_FILE = QUALITY_DIR / "known_block_page_hashes.jsonl"
+KNOWN_DATA_ISSUES_FILE = QUALITY_DIR / "known_data_issues.jsonl"
+
+# Keys every analysis must have in metadata.quality_flags (see docs/GENERATING_PRODUCT_POOL.md)
+REQUIRED_QUALITY_FLAGS = ("has_known_quality_issues", "untrusted")
+
+# Fields that identify a baseline entry
+ISSUE_KEY_FIELDS = ("check", "file", "item", "value")
+
+
+def load_known_block_page_hashes(path: Path = KNOWN_BLOCK_PAGE_HASHES_FILE) -> dict[str, dict]:
+    """Load known block-page markdown hashes ({markdown_sha256: info})."""
+    if not path.exists():
+        return {}
+    known: dict[str, dict] = {}
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                record = json.loads(line)
+                known[record["markdown_sha256"]] = record
+    return known
+
+
+# Known bad markdown hashes (e.g. Mutua Madrileña Cloudflare blocks); single source in data/quality/
+KNOWN_BAD_MARKDOWN_HASHES = load_known_block_page_hashes()
 
 
 def validate_jsonl_file(
@@ -329,7 +363,7 @@ def check_product_markdown_quality(products_dir: Path) -> tuple[list[str], list[
                 if md_hash in KNOWN_BAD_MARKDOWN_HASHES:
                     info = KNOWN_BAD_MARKDOWN_HASHES[md_hash]
                     warnings.append(
-                        f"{rel_path}: Block page detected (allowlisted - {info['company']}, {info['reason']})"
+                        f"{rel_path}: Block page detected (allowlisted - {info.get('company', info.get('company_key', '?'))}, {info['reason']})"
                     )
                 else:
                     errors.append(f"{rel_path}: NEW block page detected (hash: {md_hash})")
@@ -344,7 +378,7 @@ def check_product_markdown_quality(products_dir: Path) -> tuple[list[str], list[
             if md_hash in KNOWN_BAD_MARKDOWN_HASHES:
                 info = KNOWN_BAD_MARKDOWN_HASHES[md_hash]
                 warnings.append(
-                    f"Duplicate markdown hash {md_hash} (allowlisted - {info['company']}, {info['reason']}): "
+                    f"Duplicate markdown hash {md_hash} (allowlisted - {info.get('company', info.get('company_key', '?'))}, {info['reason']}): "
                     f"{len(files)} files"
                 )
             else:
@@ -356,12 +390,218 @@ def check_product_markdown_quality(products_dir: Path) -> tuple[list[str], list[
     return errors, warnings
 
 
-def main() -> int:
+def _issue(check: str, file: str, item: str, value: str, detail: str) -> dict[str, str]:
+    return {"check": check, "file": file, "item": item, "value": value, "detail": detail}
+
+
+def _issue_key(issue: dict) -> tuple[str, ...]:
+    return tuple(str(issue.get(k, "")) for k in ISSUE_KEY_FIELDS)
+
+
+def load_valid_branch_codes(branches_file: Path) -> set[str]:
+    """Return the set of branch codes in insurance_branches.jsonl."""
+    codes: set[str] = set()
+    with open(branches_file, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                codes.add(str(json.loads(line)["code"]))
+    return codes
+
+
+def _as_code_list(value: object) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, str | int):
+        return [str(value)]
+    if isinstance(value, list):
+        return [str(v) for v in value]
+    return [repr(value)]
+
+
+def collect_product_quality_issues(
+    products_dir: Path,
+    repo_root: Path,
+    valid_branch_codes: set[str],
+    known_block_hashes: dict[str, dict],
+) -> list[dict[str, str]]:
+    """Collect branch, analysis-schema and block-page violations for all companies.
+
+    Works only on committed files (index.json, analysis/*.json, documents.jsonl),
+    so it gives the same result in CI and locally.
+    """
+    issues: list[dict[str, str]] = []
+
+    for company_dir in sorted(p for p in products_dir.iterdir() if p.is_dir()):
+        # 1. Branch codes in index.json
+        index_path = company_dir / "index.json"
+        if index_path.exists():
+            rel = index_path.relative_to(repo_root).as_posix()
+            try:
+                data = json.loads(index_path.read_text(encoding="utf-8"))
+                products = data[0].get("products", []) if isinstance(data, list) and data else []
+            except (json.JSONDecodeError, AttributeError):
+                products = []  # structural errors are reported by validate_product_index
+            for product in products:
+                if not isinstance(product, dict):
+                    continue
+                pid = str(product.get("product_id", product.get("product_name", "?")))
+                for code in _as_code_list(product.get("branches")):
+                    if code not in valid_branch_codes:
+                        issues.append(
+                            _issue("invalid_branch_code", rel, pid, code, "not in data/insurance_branches.jsonl")
+                        )
+
+        # 2. Analyses: branch codes, deprecated product_branch, quality_flags
+        for analysis_path in sorted((company_dir / "analysis").glob("*.json")):
+            rel = analysis_path.relative_to(repo_root).as_posix()
+            try:
+                analysis = json.loads(analysis_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as e:
+                issues.append(_issue("invalid_json", rel, "-", "-", str(e)))
+                continue
+            if not isinstance(analysis, dict):
+                issues.append(_issue("invalid_json", rel, "-", "-", "analysis must be a JSON object"))
+                continue
+            pid = str(analysis.get("product_id", analysis_path.stem))
+
+            codes = _as_code_list(analysis.get("branches"))
+            if "product_branch" in analysis:
+                issues.append(
+                    _issue(
+                        "deprecated_product_branch", rel, pid, "-", "use 'branches' (list) instead of 'product_branch'"
+                    )
+                )
+                codes += _as_code_list(analysis.get("product_branch"))
+            for code in dict.fromkeys(codes):
+                if code not in valid_branch_codes:
+                    issues.append(_issue("invalid_branch_code", rel, pid, code, "not in data/insurance_branches.jsonl"))
+
+            metadata = analysis.get("metadata") if isinstance(analysis.get("metadata"), dict) else {}
+            flags = metadata.get("quality_flags")
+            if not isinstance(flags, dict):
+                issues.append(_issue("missing_quality_flags", rel, pid, "-", "metadata.quality_flags missing"))
+            else:
+                for flag in REQUIRED_QUALITY_FLAGS:
+                    if not isinstance(flags.get(flag), bool):
+                        issues.append(
+                            _issue(
+                                "missing_quality_flags", rel, pid, flag, f"metadata.quality_flags.{flag} must be a bool"
+                            )
+                        )
+
+        # 3. Block pages via documents.jsonl markdown_sha256 (no cache needed)
+        documents_path = company_dir / "documents.jsonl"
+        if documents_path.exists():
+            rel = documents_path.relative_to(repo_root).as_posix()
+            md_to_pdfs: dict[str, set[str]] = defaultdict(set)
+            with open(documents_path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        record = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue  # reported by the documents.jsonl structural check
+                    md_hash = record.get("markdown_sha256")
+                    if not md_hash:
+                        continue
+                    item = f"{record.get('product_id', '?')}/{record.get('filename', '?')}"
+                    if md_hash in known_block_hashes:
+                        reason = known_block_hashes[md_hash].get("reason", "known block page")
+                        issues.append(_issue("block_page_document", rel, item, md_hash, reason))
+                    if record.get("pdf_sha256"):
+                        md_to_pdfs[md_hash].add(record["pdf_sha256"])
+            for md_hash, pdfs in sorted(md_to_pdfs.items()):
+                if len(pdfs) > 1:
+                    issues.append(
+                        _issue(
+                            "duplicate_markdown_hash",
+                            rel,
+                            "-",
+                            md_hash,
+                            f"{len(pdfs)} different PDFs produced identical markdown (likely a block page)",
+                        )
+                    )
+
+    return issues
+
+
+def load_known_issues(path: Path = KNOWN_DATA_ISSUES_FILE) -> list[dict[str, str]]:
+    """Load the known-issues baseline (one JSON object per line)."""
+    if not path.exists():
+        return []
+    issues = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                issues.append(json.loads(line))
+    return issues
+
+
+def compare_with_baseline(
+    issues: list[dict[str, str]], baseline: list[dict[str, str]]
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    """Split issues into (new, stale): new are not in the baseline, stale are baseline entries no longer seen."""
+    baseline_keys = {_issue_key(b) for b in baseline}
+    current_keys = {_issue_key(i) for i in issues}
+    new = [i for i in issues if _issue_key(i) not in baseline_keys]
+    stale = [b for b in baseline if _issue_key(b) not in current_keys]
+    return new, stale
+
+
+def format_issue(issue: dict[str, str]) -> str:
+    return f"[{issue['check']}] {issue['file']} :: {issue['item']} = {issue['value']} ({issue.get('detail', '')})"
+
+
+def write_baseline(issues: list[dict[str, str]], path: Path = KNOWN_DATA_ISSUES_FILE) -> None:
+    """Write the baseline deterministically (sorted, stable keys)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    unique = {_issue_key(i): i for i in issues}
+    with open(path, "w", encoding="utf-8") as f:
+        for key in sorted(unique):
+            f.write(json.dumps(unique[key], ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n")
+
+
+def run_product_quality_checks(repo_root: Path) -> tuple[list[str], list[str]]:
+    """Run the baseline-gated product quality checks. Returns (errors, warnings)."""
+    products_dir = repo_root / "data" / "products_by_insurance_company"
+    if not products_dir.exists():
+        return [], []
+    valid_codes = load_valid_branch_codes(repo_root / "data" / "insurance_branches.jsonl")
+    issues = collect_product_quality_issues(products_dir, repo_root, valid_codes, KNOWN_BAD_MARKDOWN_HASHES)
+    new, stale = compare_with_baseline(issues, load_known_issues())
+    errors = [f"NEW {format_issue(i)}" for i in new]
+    warnings = [f"Known issue (baseline): {format_issue(i)}" for i in issues if i not in new]
+    warnings += [f"Resolved, remove from data/quality/known_data_issues.jsonl: {format_issue(b)}" for b in stale]
+    return errors, warnings
+
+
+def main(argv: list[str] | None = None) -> int:
     """Run all data integrity checks."""
+    parser = argparse.ArgumentParser(description="Validate committed data integrity")
+    parser.add_argument(
+        "--write-baseline",
+        action="store_true",
+        help="Rewrite data/quality/known_data_issues.jsonl with the current product quality issues and exit",
+    )
+    args = parser.parse_args(argv)
+    repo_root = REPO_ROOT
+
+    if args.write_baseline:
+        products_dir = repo_root / "data" / "products_by_insurance_company"
+        valid_codes = load_valid_branch_codes(repo_root / "data" / "insurance_branches.jsonl")
+        issues = collect_product_quality_issues(products_dir, repo_root, valid_codes, KNOWN_BAD_MARKDOWN_HASHES)
+        write_baseline(issues)
+        print(
+            f"Wrote {len({_issue_key(i) for i in issues})} issue(s) to {KNOWN_DATA_ISSUES_FILE.relative_to(repo_root)}"
+        )
+        return 0
+
     print("🔍 Checking data integrity...")
     print()
-
-    repo_root = Path(__file__).parent.parent.parent
     all_errors = []
     all_warnings = []
 
@@ -370,6 +610,7 @@ def main() -> int:
         ("data/insurance_companies.jsonl", "company_key", ["company_key", "denomination"]),
         ("data/insurance_distributors.jsonl", "distributor_key", ["distributor_key", "name"]),
         ("data/insurance_branches.jsonl", "code", ["code"]),  # branches only require 'code'
+        ("data/quality/known_block_page_hashes.jsonl", "markdown_sha256", ["markdown_sha256", "reason"]),
     ]
 
     for file_path, sort_key, required_fields in data_files:
@@ -527,6 +768,16 @@ def main() -> int:
         if not md_errors and not md_warnings:
             print("  ✅ No quality issues found")
         print()
+
+    # Branch codes, analysis schema and block pages (baseline-gated)
+    print("Checking product branches, analyses and block pages (baseline: data/quality/known_data_issues.jsonl)...")
+    pq_errors, pq_warnings = run_product_quality_checks(repo_root)
+    for error in pq_errors:
+        print(f"  ❌ {error}")
+    print(f"  ⚠️  {len(pq_warnings)} known/resolved issue(s) (see summary)" if pq_warnings else "  ✅ No issues")
+    all_errors.extend(pq_errors)
+    all_warnings.extend(pq_warnings)
+    print()
 
     # Print summary
     if all_warnings:

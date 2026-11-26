@@ -37,11 +37,28 @@ The pipeline includes comprehensive validation at each stage:
    - Provenance tracking (model, schema version, input hashes)
    - Quality flags for known bad documents (e.g., Mutua Madrileña blocks)
 
-3. **CI Checks**:
-   - Block page detection in committed files
-   - Duplicate markdown hash detection
-   - Allowlist for known issues (doesn't fail CI but flags them)
+3. **CI Checks** (`scripts/ci/check_data_integrity.py`, committed files only, no cache needed):
+   - Branch codes in `index.json` and analyses must exist in `data/insurance_branches.jsonl`
+   - Analyses must use `branches` (list), not the deprecated singular `product_branch`
+   - Analyses must have `metadata.quality_flags` with boolean `has_known_quality_issues` and `untrusted`
+   - Block pages: `documents.jsonl` `markdown_sha256` checked against `data/quality/known_block_page_hashes.jsonl`;
+     different PDFs sharing one markdown hash are also flagged
+   - Known-issues baseline: `data/quality/known_data_issues.jsonl` lists the current violations; only NEW ones fail CI
    - PR hygiene: scans all blobs in commit range for size/extension violations
+
+#### Known-issues baseline
+
+`data/quality/known_data_issues.jsonl` holds one violation per line, keyed by `check`, `file`, `item`, `value`
+(`detail` is informational). When you fix data, delete the matching lines (CI prints
+`Resolved, remove from ...` for entries that no longer occur). Never add lines to hide a new problem
+without a note in the PR. To regenerate the file from the current data:
+
+```bash
+uv run python scripts/ci/check_data_integrity.py --write-baseline
+```
+
+To add a newly discovered block-page markdown hash, append it to `data/quality/known_block_page_hashes.jsonl`
+(sorted by `markdown_sha256`; fields `markdown_sha256`, `reason`, optional `company_key`, `note`).
 
 ## Quick Start
 
@@ -189,7 +206,8 @@ Also includes `metadata.quality_flags`:
 
 **Quarantine approach:**
 - Files remain in repository (not deleted)
-- CI checks allowlist this hash (doesn't fail CI)
+- The hash is listed in `data/quality/known_block_page_hashes.jsonl` and the affected documents are in the
+  known-issues baseline (doesn't fail CI, but any NEW document with a block-page hash does)
 - Analyses using these files are flagged as `untrusted` in metadata
 - Visible in reports but doesn't block pipeline
 

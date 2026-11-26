@@ -19,21 +19,49 @@ from pathlib import Path
 from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GEMINI_MODEL, SCHEMA_VERSION, GeminiClient
+from scripts.config import PROJECT_ROOT
 from scripts.utils.companies import company_display_name, company_folder_path, company_key_for_folder, find_company
 from scripts.utils.document_store import MarkdownInput, markdown_inputs_from_documents
 from scripts.utils.document_validation import compute_markdown_hash
+from scripts.utils.jsonl import load_jsonl
 from scripts.utils.run_logging import log_analysis_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
 
-# Known bad markdown hashes (Mutua Madrileña Cloudflare blocks)
+# Known bad markdown hashes (e.g. Mutua Madrileña Cloudflare blocks), shared with CI
+KNOWN_BLOCK_PAGE_HASHES_FILE = PROJECT_ROOT / "data" / "quality" / "known_block_page_hashes.jsonl"
 KNOWN_BAD_MARKDOWN_HASHES = {
-    "9c2fcc5d899fb2a6196360ee14dfbff58676911c57fda1b59578702c341b0ff4",
+    record["markdown_sha256"]
+    for record in (load_jsonl(KNOWN_BLOCK_PAGE_HASHES_FILE) if KNOWN_BLOCK_PAGE_HASHES_FILE.exists() else [])
 }
 
 # Companies with known quality issues
 KNOWN_BAD_COMPANIES = {
     "mutua_madrileña_automovilista_sociedad_de_seguros_a_prima_fija",
 }
+
+
+# Deprecated InsuranceProduct fields that must not be written to new analyses
+DEPRECATED_ANALYSIS_FIELDS = ("product_branch", "source_urls")
+
+
+def get_product_branches(product_entry: dict) -> list[str]:
+    """Return the product's branch codes (schema v1 ``branches``, legacy ``product_branch`` as fallback)."""
+    branches = product_entry.get("branches")
+    if branches is None:
+        branches = product_entry.get("product_branch")
+    if branches is None:
+        return []
+    if isinstance(branches, str):
+        return [branches]
+    return [str(b) for b in branches]
+
+
+def analysis_payload(insurance_product: InsuranceProduct) -> dict:
+    """Serialize an analysis without deprecated fields (``branches`` replaces ``product_branch``)."""
+    payload = insurance_product.model_dump(mode="json")
+    for field in DEPRECATED_ANALYSIS_FIELDS:
+        payload.pop(field, None)
+    return payload
 
 
 @dataclass
@@ -246,7 +274,7 @@ def analyze_single_product(
     """
     product_name = product_entry.get("product_name", "unknown")
     product_id = product_entry.get("product_id", "unknown")
-    product_branch = product_entry.get("product_branch", "unknown")
+    branches = get_product_branches(product_entry)
 
     logger.info(f"Analyzing product: {product_name} ({product_id})")
 
@@ -291,7 +319,7 @@ def analyze_single_product(
     # Build product context for Gemini
     product_context = {
         "product_name": product_name,
-        "product_branch": product_branch,
+        "branches": branches,
         "company": company_name,
     }
 
@@ -366,8 +394,9 @@ def save_product_analysis(
     """
     product_name = product_entry.get("product_name", "unknown")
     product_id = product_entry.get("product_id", "unknown")
-    product_branch = product_entry.get("product_branch", "unknown")
-    source_url = product_entry.get("source_url", "")
+    branches = get_product_branches(product_entry)
+    source_url = product_entry.get("source_url") or None
+    company_key = product_entry.get("company_key") or ""
 
     # Compute input hash
     input_hash = client.compute_input_hash([str(f) for f in markdown_files])
@@ -385,10 +414,11 @@ def save_product_analysis(
 
     # Create the full InsuranceProduct
     insurance_product = InsuranceProduct(
-        product_name=product_name,
-        product_branch=product_branch,
         product_id=product_id,
-        source_urls=[source_url] if source_url else [],
+        company_key=company_key,
+        product_name=product_name,
+        branches=branches,
+        source_url=source_url,
         metadata={
             "analyzed_at": datetime.now(timezone.utc).isoformat(),
             "analyzer_version": "1.0.0",
@@ -412,7 +442,7 @@ def save_product_analysis(
     ensure_directory(analysis_folder)
 
     output_path = analysis_folder / f"{product_name}.json"
-    save_json(insurance_product.model_dump(mode="json"), output_path, indent=2)
+    save_json(analysis_payload(insurance_product), output_path, indent=2)
 
     logger.info(f"Saved analysis to: {output_path}")
     if has_quality_issues:
