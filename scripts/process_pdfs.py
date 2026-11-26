@@ -14,11 +14,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from insurance_product_data_sp.core.logging import logger
-from scripts.config import INSURANCE_COMPANIES_JSON, PRODUCTS_STORAGE_PATH
+from scripts.utils.companies import company_display_name, company_folder_path, find_company
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
 from scripts.utils.run_logging import log_validation_failure
-from scripts.utils.storage import ensure_directory, load_json, save_json
-from scripts.utils.text_transformations import text_to_snake_case
+from scripts.utils.storage import ensure_directory, save_json
 
 
 def find_company_folder(company_key: str) -> Path | None:
@@ -31,32 +30,21 @@ def find_company_folder(company_key: str) -> Path | None:
     Returns:
         Path to the company folder or None if not found
     """
-    # Load companies data to get the company name
     try:
-        companies = load_json(INSURANCE_COMPANIES_JSON)
-    except FileNotFoundError:
-        logger.error(f"Companies JSON file not found: {INSURANCE_COMPANIES_JSON}")
+        company = find_company(company_key)
+    except FileNotFoundError as e:
+        logger.error(str(e))
         return None
-
-    # Find the company by key
-    company = None
-    for c in companies:
-        if c.get("company_key") == company_key:
-            company = c
-            break
 
     if not company:
         logger.error(f"Company with key {company_key} not found in companies data")
         return None
 
-    # Get the company name and convert to folder name
-    company_name = company.get("denomination", "")
-    if not company_name:
+    if not company_display_name(company):
         logger.error(f"Company {company_key} has no denomination")
         return None
 
-    folder_name = text_to_snake_case(company_name)
-    company_folder = PRODUCTS_STORAGE_PATH / folder_name
+    company_folder = company_folder_path(company)
 
     if not company_folder.exists():
         logger.error(f"Company folder not found: {company_folder}")

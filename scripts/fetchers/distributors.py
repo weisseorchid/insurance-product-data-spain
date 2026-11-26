@@ -16,6 +16,7 @@ from scripts.clients.http_client import get_http_client
 from scripts.constants.api_headers import mineco_html_headers, mineco_params
 from scripts.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
 from scripts.utils.data_extraction import extract_js_data, extract_label_value
+from scripts.utils.text_transformations import normalize_website
 
 
 def get_insurance_distributors(
@@ -132,7 +133,7 @@ def get_insurance_distributor_details(
     details["province"] = extract_label_value(soup, "Provincia:")
     details["municipality"] = extract_label_value(soup, "Municipio postal:")
     details["country_of_origin"] = extract_label_value(soup, "País de Origen:")
-    details["website"] = extract_label_value(soup, "Dirección Web:")
+    details["website"] = normalize_website(extract_label_value(soup, "Dirección Web:"))
 
     # Extract contracts data from JavaScript variables
     contracts_raw = extract_js_data(soup, "loadGridContratos") or []
