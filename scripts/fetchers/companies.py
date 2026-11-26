@@ -15,6 +15,7 @@ from scripts.clients.http_client import get_http_client
 from scripts.constants.api_headers import mineco_headers, mineco_html_headers, mineco_params
 from scripts.constants.public_urls import INSURANCE_REGULATOR_SPAIN_URL
 from scripts.utils.data_extraction import extract_js_data, extract_label_value
+from scripts.utils.text_transformations import normalize_website
 
 
 def get_insurance_companies(
@@ -136,7 +137,7 @@ def get_insurance_company_details(
     details["denomination"] = extract_label_value(soup, "Denominación:")
     details["nif"] = extract_label_value(soup, "NIF:")
     details["status"] = extract_label_value(soup, "Situación:")
-    details["website"] = extract_label_value(soup, "Dirección Web:")
+    details["website"] = normalize_website(extract_label_value(soup, "Dirección Web:"))
     details["email"] = extract_label_value(soup, "Email:")
     details["authorization_date"] = extract_label_value(soup, "Fecha Autorización:")
     details["subscribed_capital"] = extract_label_value(soup, "Capital Suscrito:")
@@ -175,7 +176,7 @@ def get_insurance_company_details(
         sac_data["fax"] = extract_label_value(sac_container, "Fax:")
         sac_data["mobile_phone"] = extract_label_value(sac_container, "Télefono Móvil:")
         sac_data["email"] = extract_label_value(sac_container, "Email:")
-        sac_data["web"] = extract_label_value(sac_container, "Web:")
+        sac_data["web"] = normalize_website(extract_label_value(sac_container, "Web:"))
         details["customer_service"] = sac_data
 
     # Check for DE (Directorio de Entidades - Directory of Entities) - might be empty
