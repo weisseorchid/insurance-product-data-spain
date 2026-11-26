@@ -61,7 +61,7 @@ def test_saved_analysis_uses_branches_and_quality_flags(tmp_path):
         tmp_path,
         entry,
         ANALYSIS,
-        FakeClient(),  # type: ignore[arg-type]
+        FakeClient(),
         [md],
         has_quality_issues=True,
         incomplete_inputs=True,
@@ -100,7 +100,7 @@ def test_analyze_skips_client_when_only_block_pages(tmp_path, monkeypatch):
     client = FakeClient()
     client.analyze_product_documents: MagicMock = MagicMock(side_effect=AssertionError("must not call Gemini"))
     result = analyze_single_product(
-        client=client,  # type: ignore[arg-type]
+        client=client,
         company_folder=company,
         product_entry={"product_name": "hogar", "product_id": "urn:X0001-01", "branches": ["09"]},
         company_name="Foo",
@@ -122,7 +122,7 @@ def test_analyze_omits_block_pages_when_mixed(tmp_path):
     )
     client = FakeClient()
     result = analyze_single_product(
-        client=client,  # type: ignore[arg-type]
+        client=client,
         company_folder=company,
         product_entry={"product_name": "hogar", "product_id": "urn:X0001-01", "branches": ["09"]},
         company_name="Foo",

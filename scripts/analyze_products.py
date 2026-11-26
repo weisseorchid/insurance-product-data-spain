@@ -6,9 +6,10 @@ This script takes an insurance company key (e.g., C0737) and:
 3. For each product, resolves its markdown from documents.jsonl + the document cache
    (.cache/insurance-docs), or from a legacy sources/{product_name}/ folder if present
 4. Analyzes all markdown files using Gemini to extract structured information
+   (Mistral as fallback when Gemini keeps failing; see scripts/clients/llm.py)
 5. Saves the analysis results to analysis/{product_name}.json
 
-Run with: uv run python -m scripts.analyze_products --company-key C0737
+Run with: uv run python -m scripts.analyze_products --company-key C0737 [--provider auto|gemini|mistral]
 """
 
 import argparse
@@ -19,7 +20,8 @@ from pathlib import Path
 from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GEMINI_MODEL, SCHEMA_VERSION, GeminiClient
-from scripts.utils.companies import company_display_name, company_folder_path, company_key_for_folder, find_company
+from scripts.clients.llm import PROVIDER_CHOICES, AnalysisClient, ProviderConfigError, RoutedAnalysis, build_router
+from scripts.utils.companies import company_display_name, company_folder_path, find_company
 from scripts.utils.document_store import MarkdownInput, markdown_inputs_from_documents
 from scripts.utils.document_validation import (
     compute_markdown_hash,
@@ -27,7 +29,7 @@ from scripts.utils.document_validation import (
     markdown_is_unusable,
 )
 from scripts.utils.gaps import ANALYSIS_GAPS_FILENAME, write_gaps_report
-from scripts.utils.run_logging import log_analysis_failure
+from scripts.utils.run_log import append_run_log
 from scripts.utils.storage import ensure_directory, load_json, save_json
 
 # Known bad markdown hashes (e.g. Mutua Madrileña Cloudflare blocks), shared with CI
@@ -78,6 +80,22 @@ class ProductAnalysisResult:
     has_quality_issues: bool = False
     dropped_inputs: list[MarkdownInput] | None = None
     usable_inputs: list[MarkdownInput] | None = None
+    provider: str | None = None
+    model: str | None = None
+    fallback_from: str | None = None
+    fallback_reason: str | None = None
+
+
+def _analyze_with_provenance(client, markdown_paths, product_context, document_names) -> RoutedAnalysis:
+    """Call the router (or a bare provider client) and report which provider/model answered."""
+    if hasattr(client, "analyze_with_provenance"):
+        return client.analyze_with_provenance(markdown_paths, product_context, document_names)
+    analysis = client.analyze_product_documents(
+        markdown_paths=markdown_paths,
+        product_context=product_context,
+        document_names=document_names,
+    )
+    return RoutedAnalysis(analysis=analysis, provider=getattr(client, "provider", "gemini"), model=client.model)
 
 
 def has_known_bad_markdown(markdown_files: list[Path]) -> tuple[bool, str | None]:
@@ -222,7 +240,7 @@ def should_skip_analysis(
     company_folder: Path,
     product_entry: dict,
     markdown_files: list[Path],
-    client: GeminiClient,
+    client: AnalysisClient,
 ) -> tuple[bool, str | None]:
     """
     Check if analysis should be skipped (idempotency check).
@@ -231,7 +249,7 @@ def should_skip_analysis(
         company_folder: Path to the company folder
         product_entry: Product entry from index.json
         markdown_files: List of markdown files for this product
-        client: GeminiClient instance
+        client: Provider client or AnalysisRouter
 
     Returns:
         Tuple of (should_skip, reason)
@@ -254,8 +272,9 @@ def should_skip_analysis(
 
         provenance = existing_metadata["analysis_provenance"]
 
-        # Check if model and schema version match
-        if provenance.get("model") != client.model:
+        # Check if model and schema version match (any model in the provider chain counts)
+        accepted_models = getattr(client, "accepted_models", None) or {client.model}
+        if provenance.get("model") not in accepted_models:
             return False, f"Model changed: {provenance.get('model')} -> {client.model}"
 
         if provenance.get("schema_version") != SCHEMA_VERSION:
@@ -276,7 +295,7 @@ def should_skip_analysis(
 
 
 def analyze_single_product(
-    client: GeminiClient,
+    client: AnalysisClient,
     company_folder: Path,
     product_entry: dict,
     company_name: str,
@@ -286,7 +305,7 @@ def analyze_single_product(
     Analyze a single product using Gemini.
 
     Args:
-        client: GeminiClient instance
+        client: Provider client or AnalysisRouter
         company_folder: Path to the company folder
         product_entry: Product entry from index.json
         company_name: Name of the insurance company
@@ -358,42 +377,32 @@ def analyze_single_product(
     }
 
     try:
-        # Analyze using Gemini (block pages already excluded)
-        analysis = client.analyze_product_documents(
-            markdown_paths=[str(f) for f in markdown_files],
-            product_context=product_context,
-            document_names={str(i.path): i.name for i in usable_inputs},
+        # Analyze with Gemini, Mistral as fallback (block pages already excluded)
+        routed = _analyze_with_provenance(
+            client,
+            [str(f) for f in markdown_files],
+            product_context,
+            {str(i.path): i.name for i in usable_inputs},
         )
 
         return ProductAnalysisResult(
             product_name=product_name,
             product_id=product_id,
             success=True,
-            analysis=analysis,
+            analysis=routed.analysis,
             markdown_files_processed=len(markdown_files),
             has_quality_issues=has_quality_issues,
             dropped_inputs=dropped_inputs,
             usable_inputs=usable_inputs,
+            provider=routed.provider,
+            model=routed.model,
+            fallback_from=routed.fallback_from,
+            fallback_reason=routed.fallback_reason,
         )
 
     except Exception as e:
+        # Failures are recorded in the run's runs.jsonl entry (details.failures)
         logger.error(f"Failed to analyze product {product_name}: {e}")
-
-        # Log analysis failure
-        company_key = None
-        try:
-            company_key = company_key_for_folder(company_folder.name)
-        except Exception:
-            pass
-
-        log_analysis_failure(
-            script_name="analyze_products",
-            product_id=product_id,
-            product_name=product_name,
-            reason=str(e),
-            company_key=company_key,
-        )
-
         return ProductAnalysisResult(
             product_name=product_name,
             product_id=product_id,
@@ -410,11 +419,14 @@ def save_product_analysis(
     company_folder: Path,
     product_entry: dict,
     analysis: ProductAnalysis,
-    client: GeminiClient,
+    client: AnalysisClient,
     markdown_files: list[Path],
     has_quality_issues: bool = False,
     markdown_names: list[str] | None = None,
     incomplete_inputs: bool = False,
+    provider: str | None = None,
+    model: str | None = None,
+    fallback_reason: str | None = None,
 ) -> Path:
     """
     Save the product analysis to a JSON file.
@@ -423,11 +435,14 @@ def save_product_analysis(
         company_folder: Path to the company folder
         product_entry: Product entry from index.json
         analysis: The ProductAnalysis to save
-        client: GeminiClient instance for provenance
+        client: Provider client or AnalysisRouter (provenance defaults)
         markdown_files: List of markdown files used
         markdown_names: Optional display names for markdown_files (default: file names)
         has_quality_issues: Whether the analysis has known quality issues
         incomplete_inputs: Whether some source documents were dropped (e.g. block pages)
+        provider: Provider that produced the analysis (default: the client's primary provider)
+        model: Model that produced the analysis (default: client.model)
+        fallback_reason: Why the primary provider was skipped, when a fallback answered
 
     Returns:
         Path to the saved file
@@ -468,11 +483,13 @@ def save_product_analysis(
                 "incomplete_inputs": incomplete_inputs,
             },
             "analysis_provenance": {
-                "model": client.model,
+                "provider": provider or getattr(client, "provider", "gemini"),
+                "model": model or client.model,
                 "schema_version": SCHEMA_VERSION,
                 "input_hash": input_hash,
                 "markdown_hashes": markdown_hashes,
                 "markdown_files": names,
+                **({"fallback_reason": fallback_reason} if fallback_reason else {}),
             },
         },
         analysis=analysis,
@@ -498,6 +515,7 @@ def analyze_company_products(
     save_summary: bool = True,
     dry_run: bool = False,
     force_reanalysis: bool = False,
+    provider: str = "auto",
 ) -> list[ProductAnalysisResult]:
     """
     Analyze all products for an insurance company.
@@ -508,10 +526,15 @@ def analyze_company_products(
         save_summary: Whether to save an analysis summary JSON
         dry_run: If True, only list products without analyzing
         force_reanalysis: If True, skip idempotency checks and re-analyze all products
+        provider: "auto" (Gemini, Mistral fallback), "gemini" or "mistral"
 
     Returns:
         List of ProductAnalysisResult for each product
+
+    Raises:
+        ProviderConfigError: If the requested provider cannot be configured (e.g. missing key)
     """
+    started_at = datetime.now(timezone.utc)
     # Find company folder
     company_folder = find_company_folder(company_key)
     if not company_folder:
@@ -547,8 +570,8 @@ def analyze_company_products(
     except Exception:
         company_name = "Unknown"
 
-    # Initialize Gemini client
-    client = GeminiClient()
+    # Provider chain: Gemini primary, Mistral fallback (if MISTRAL_API_KEY is set)
+    client = build_router(provider, gemini_factory=GeminiClient)
 
     # Analyze each product
     results: list[ProductAnalysisResult] = []
@@ -579,6 +602,9 @@ def analyze_company_products(
                 has_quality_issues=result.has_quality_issues,
                 markdown_names=[i.name for i in usable],
                 incomplete_inputs=bool(result.dropped_inputs),
+                provider=result.provider,
+                model=result.model,
+                fallback_reason=result.fallback_reason,
             )
 
     gap_rows: list[dict] = []
@@ -616,9 +642,11 @@ def analyze_company_products(
         replace_product_ids={r.product_id for r in results} if product_filter else None,
     )
 
+    _append_analysis_run_log(company_key, provider, client, results, started_at)
+
     # Save summary
     if save_summary:
-        summary = generate_analysis_summary(company_key, results)
+        summary = generate_analysis_summary(company_key, results, primary_model=client.model)
         metadata_folder = company_folder / "metadata"
         ensure_directory(metadata_folder)
         summary_path = metadata_folder / "analysis_summary.json"
@@ -628,9 +656,67 @@ def analyze_company_products(
     return results
 
 
+def provider_counts(results: list[ProductAnalysisResult]) -> dict[str, int]:
+    """Analyses produced in this run per provider, plus how many came from a fallback."""
+    counts: dict[str, int] = {}
+    for r in results:
+        if r.success and not r.skipped and r.provider:
+            counts[f"by_provider_{r.provider}"] = counts.get(f"by_provider_{r.provider}", 0) + 1
+    counts["fallbacks"] = sum(1 for r in results if r.fallback_from and r.success and not r.skipped)
+    return counts
+
+
+def _append_analysis_run_log(
+    company_key: str,
+    provider_mode: str,
+    client,
+    results: list[ProductAnalysisResult],
+    started_at: datetime,
+) -> None:
+    """Append one runs.jsonl entry (started_at/script format checked by CI) for this analysis run."""
+    successful = sum(1 for r in results if r.success and not r.skipped)
+    skipped = sum(1 for r in results if r.skipped)
+    failures = [
+        {"product_id": r.product_id, "product_name": r.product_name, "error": (r.error or "")[:500]}
+        for r in results
+        if not r.success and not r.skipped
+    ]
+    fallbacks = [
+        {"product_id": r.product_id, "from": r.fallback_from, "to": r.provider, "reason": r.fallback_reason}
+        for r in results
+        if r.fallback_from and r.success and not r.skipped
+    ]
+    try:
+        append_run_log(
+            script="analyze_products",
+            started_at=started_at,
+            finished_at=datetime.now(timezone.utc),
+            counts={
+                "analyzed": successful,
+                "skipped": skipped,
+                "failed": len(failures),
+                **provider_counts(results),
+            },
+            model=client.model,
+            details={
+                "company_key": company_key,
+                "provider_mode": provider_mode,
+                "providers": [
+                    {"provider": getattr(c, "provider", "gemini"), "model": c.model}
+                    for c in getattr(client, "clients", [client])
+                ],
+                "failures": failures,
+                "fallbacks": fallbacks,
+            },
+        )
+    except Exception as e:  # the run log must never break an analysis run
+        logger.warning(f"Could not append analyze_products run log: {e}")
+
+
 def generate_analysis_summary(
     company_key: str,
     results: list[ProductAnalysisResult],
+    primary_model: str | None = None,
 ) -> dict:
     """
     Generate a summary of the product analysis results.
@@ -659,6 +745,8 @@ def generate_analysis_summary(
             "has_quality_issues": r.has_quality_issues,
             "markdown_files_processed": r.markdown_files_processed,
             "error": r.error,
+            "provider": r.provider,
+            "model": r.model,
         }
         for r in results
     ]
@@ -669,7 +757,7 @@ def generate_analysis_summary(
         "analyzer": {
             "name": "analyze_products",
             "version": "1.0.0",
-            "model": GEMINI_MODEL,
+            "model": primary_model or GEMINI_MODEL,
             "schema_version": SCHEMA_VERSION,
         },
         "company_key": company_key,
@@ -680,6 +768,7 @@ def generate_analysis_summary(
             "failed": failed,
             "quality_issues": quality_issues,
             "total_markdown_files": total_files,
+            **provider_counts(results),
         },
         "products": products_summary,
     }
@@ -714,18 +803,29 @@ def main() -> int:
         action="store_true",
         help="Force re-analysis even if already analyzed",
     )
+    parser.add_argument(
+        "--provider",
+        choices=PROVIDER_CHOICES,
+        default="auto",
+        help="LLM provider: auto = Gemini, then Mistral if Gemini keeps failing (needs MISTRAL_API_KEY)",
+    )
 
     args = parser.parse_args()
 
     logger.info(f"Starting product analysis for company: {args.company_key}")
 
-    results = analyze_company_products(
-        company_key=args.company_key,
-        product_filter=args.product,
-        save_summary=not args.no_summary,
-        dry_run=args.dry_run,
-        force_reanalysis=args.force,
-    )
+    try:
+        results = analyze_company_products(
+            company_key=args.company_key,
+            product_filter=args.product,
+            save_summary=not args.no_summary,
+            dry_run=args.dry_run,
+            force_reanalysis=args.force,
+            provider=getattr(args, "provider", "auto"),
+        )
+    except ProviderConfigError as e:
+        logger.error(str(e))
+        return 2
 
     if args.dry_run:
         return 0
