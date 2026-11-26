@@ -53,7 +53,7 @@ from scripts.utils.document_validation import (
     is_known_or_block_page_hash,
     load_known_block_page_hashes,
 )
-from scripts.utils.gaps import write_gaps_report
+from scripts.utils.gaps import FETCH_GAPS_FILENAME, write_gaps_report
 from scripts.utils.run_log import append_run_log
 from scripts.utils.source_manifest import (
     ManifestDocument,
@@ -629,23 +629,36 @@ def run(
             if not outcome.success or not outcome.markdown_sha256 or known_bad:
                 reason = "block_page" if is_block else "validation_failed"
                 gap(reason, outcome.error or (outcome.markdown_sha256 or ""))
-                records = _clear_document_markdown(records, doc, product_ids)
+                # Only clear markdown on validation/block failures — not converter crashes
+                clear_md = outcome.validation_failed or known_bad or is_block
+                if clear_md:
+                    records = _clear_document_markdown(records, doc, product_ids)
                 for p in users[doc_id]:
-                    records = upsert_document(
-                        records,
-                        {
-                            "doc_id": doc.doc_id,
-                            "doc_type": doc.doc_type,
-                            "filename": doc.resolved_filename(),
-                            "pdf_sha256": pdf_sha,
-                            "pdf_size": len(body),
-                            "product_id": p.product_id,
-                            "product_name": p.product_name,
-                            "retrieved_at": datetime.now(timezone.utc).isoformat(),
-                            "source": _source_dict(doc),
-                            "source_url": doc.source_url,
-                        },
-                    )
+                    record: dict[str, Any] = {
+                        "doc_id": doc.doc_id,
+                        "doc_type": doc.doc_type,
+                        "filename": doc.resolved_filename(),
+                        "pdf_sha256": pdf_sha,
+                        "pdf_size": len(body),
+                        "product_id": p.product_id,
+                        "product_name": p.product_name,
+                        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+                        "source": _source_dict(doc),
+                        "source_url": doc.source_url,
+                    }
+                    if not clear_md:
+                        prev = next(
+                            (
+                                r
+                                for r in records
+                                if r.get("product_id") == p.product_id
+                                and (r.get("doc_id") == doc.doc_id or r.get("filename") == doc.resolved_filename())
+                            ),
+                            None,
+                        )
+                        if prev and prev.get("markdown_sha256"):
+                            record["markdown_sha256"] = prev["markdown_sha256"]
+                    records = upsert_document(records, record)
                 save_documents(company_folder, records)
                 continue
             md_sha, size = outcome.markdown_sha256, len(body)
@@ -693,7 +706,14 @@ def run(
         doc_id = row.get("doc_id")
         if doc_id and doc_id != "-" and doc_id in manifest.documents:
             row["filename"] = manifest.documents[doc_id].resolved_filename()
-    write_gaps_report(company_folder, company_key, SCRIPT_NAME, gap_rows)
+    write_gaps_report(
+        company_folder,
+        company_key,
+        SCRIPT_NAME,
+        gap_rows,
+        filename=FETCH_GAPS_FILENAME,
+        replace_product_ids={p.product_id for p in products} if product else None,
+    )
 
     if log_gaps:
         reason_counts: dict[str, int] = {}

@@ -145,3 +145,31 @@ def test_process_pdfs_clears_markdown_hash_on_block_page(tmp_path, cache, monkey
         process_pdfs.process_cached_documents(company, company_key="X0001", cache=cache, force=True)
     records = load_documents(company)
     assert "markdown_sha256" not in records[0]
+
+
+def test_process_pdfs_keeps_markdown_hash_on_converter_crash(tmp_path, cache, monkeypatch):
+    import scripts.utils.run_logging as run_logging
+
+    monkeypatch.setattr(run_logging, "RUNS_LOG_PATH", tmp_path / "runs.jsonl")
+    pdf_path = cache.get_pdf_path("c" * 64)
+    pdf_path.parent.mkdir(parents=True)
+    pdf_path.write_bytes(PDF)
+    company = tmp_path / "company"
+    _write_documents(
+        company,
+        [
+            {
+                "product_id": "u1",
+                "product_name": "hogar",
+                "filename": "a.pdf",
+                "doc_type": "ipid",
+                "pdf_sha256": "c" * 64,
+                "markdown_sha256": "keep-me",
+            },
+        ],
+    )
+    with patch("scripts.utils.pdf_processing.MarkItDown") as mock:
+        mock.return_value.convert.side_effect = RuntimeError("markitdown exploded")
+        process_pdfs.process_cached_documents(company, company_key="X0001", cache=cache, force=True)
+    records = load_documents(company)
+    assert records[0]["markdown_sha256"] == "keep-me"

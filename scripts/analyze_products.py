@@ -26,7 +26,7 @@ from scripts.utils.document_validation import (
     load_known_block_page_hashes,
     markdown_is_unusable,
 )
-from scripts.utils.gaps import write_gaps_report
+from scripts.utils.gaps import ANALYSIS_GAPS_FILENAME, write_gaps_report
 from scripts.utils.run_logging import log_analysis_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
 
@@ -327,9 +327,12 @@ def analyze_single_product(
 
     # Check for known quality issues (company-level; block pages already dropped)
     has_quality_issues = company_folder.name in KNOWN_BAD_COMPANIES
+    incomplete_inputs = bool(dropped_inputs)
 
     if has_quality_issues:
         logger.warning(f"Product {product_name} has known quality issues (company={company_folder.name})")
+    if incomplete_inputs:
+        logger.warning(f"Product {product_name} has incomplete inputs ({len(dropped_inputs)} document(s) dropped)")
 
     # Check if we should skip analysis (idempotency)
     if skip_if_exists:
@@ -411,6 +414,7 @@ def save_product_analysis(
     markdown_files: list[Path],
     has_quality_issues: bool = False,
     markdown_names: list[str] | None = None,
+    incomplete_inputs: bool = False,
 ) -> Path:
     """
     Save the product analysis to a JSON file.
@@ -423,6 +427,7 @@ def save_product_analysis(
         markdown_files: List of markdown files used
         markdown_names: Optional display names for markdown_files (default: file names)
         has_quality_issues: Whether the analysis has known quality issues
+        incomplete_inputs: Whether some source documents were dropped (e.g. block pages)
 
     Returns:
         Path to the saved file
@@ -460,6 +465,7 @@ def save_product_analysis(
             "quality_flags": {
                 "has_known_quality_issues": has_quality_issues,
                 "untrusted": has_quality_issues,
+                "incomplete_inputs": incomplete_inputs,
             },
             "analysis_provenance": {
                 "model": client.model,
@@ -572,6 +578,7 @@ def analyze_company_products(
                 [i.path for i in usable],
                 has_quality_issues=result.has_quality_issues,
                 markdown_names=[i.name for i in usable],
+                incomplete_inputs=bool(result.dropped_inputs),
             )
 
     gap_rows: list[dict] = []
@@ -600,7 +607,14 @@ def analyze_company_products(
                     "detail": "all documents missing or are block/error pages",
                 }
             )
-    write_gaps_report(company_folder, company_key, "analyze_products", gap_rows)
+    write_gaps_report(
+        company_folder,
+        company_key,
+        "analyze_products",
+        gap_rows,
+        filename=ANALYSIS_GAPS_FILENAME,
+        replace_product_ids={r.product_id for r in results} if product_filter else None,
+    )
 
     # Save summary
     if save_summary:
@@ -741,8 +755,8 @@ def main() -> int:
             for r in results:
                 if not r.success and not r.skipped:
                     logger.warning(f"  - {r.product_name}: {r.error}")
-        elif dropped > 0:
-            exit_code = 1
+        # Dropped files on otherwise successful (mixed) products are warnings only;
+        # exit 1 is reserved for no_usable_documents / analysis failures (failed > 0).
 
     return exit_code
 

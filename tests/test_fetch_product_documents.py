@@ -479,9 +479,13 @@ def test_cached_known_block_page_becomes_gap_and_clears_markdown(tmp_path, mock_
     cg = [r for r in saved if r["doc_id"] == "coche_cg_0900ab44c391e066"]
     assert cg
     assert all("markdown_sha256" not in r for r in cg)
-    gaps_file = company / "metadata" / "gaps.json"
+
+    from scripts.utils.gaps import FETCH_GAPS_FILENAME
+
+    gaps_file = company / "metadata" / FETCH_GAPS_FILENAME
     assert gaps_file.exists()
     report = json.loads(gaps_file.read_text(encoding="utf-8"))
+    assert report["script"] == fpd.SCRIPT_NAME
     assert "written_at" not in report
     assert report["gap_count"] == len(report["gaps"])
     assert report["gaps"] == sorted(
@@ -496,6 +500,19 @@ def test_cached_known_block_page_becomes_gap_and_clears_markdown(tmp_path, mock_
             g.get("source") or "",
         ),
     )
+    # Report must include a block_page row for the cached document and
+    # no_usable_documents for products whose only document was rejected.
+    by_reason = {}
+    for g in report["gaps"]:
+        by_reason.setdefault(g["reason"], []).append(g)
+    assert by_reason["block_page"]
+    assert {g["doc_id"] for g in by_reason["block_page"]} == {"coche_cg_0900ab44c391e066"}
+    assert {g["product_id"] for g in by_reason["block_page"]} == {"urn:C0058-01", "urn:C0058-02"}
+    assert by_reason["no_usable_documents"]
+    assert {g["product_id"] for g in by_reason["no_usable_documents"]} >= {
+        "urn:C0058-01",
+        "urn:C0058-02",
+    }
 
 
 def test_run_log_matches_data_integrity_schema(tmp_path, mock_markitdown, monkeypatch):

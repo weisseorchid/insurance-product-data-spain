@@ -35,7 +35,9 @@ The pipeline includes comprehensive validation at each stage:
    - Automatic retry with exponential backoff (max 3 attempts)
    - Idempotency: skips re-analysis if inputs and schema unchanged
    - Provenance tracking (model, schema version, input hashes)
-   - Quality flags for known bad documents (e.g., Mutua Madrileña blocks)
+   - Quality flags: `has_known_quality_issues` / `untrusted` for known bad companies;
+     `incomplete_inputs` when some documents were dropped as block pages
+   - Writes local `metadata/analysis_gaps.json` (gitignored; see Gap reports below)
 
 3. **CI Checks** (`scripts/ci/check_data_integrity.py`, committed files only, no cache needed):
    - Branch codes in `index.json` and analyses must exist in `data/insurance_branches.jsonl`
@@ -209,9 +211,23 @@ Also includes `metadata.quality_flags`:
 - The hash stays in `data/quality/known_block_page_hashes.jsonl` so the same page is recognized
 - `fetch_product_documents` and `process_pdfs` refuse to keep that markdown hash in `documents.jsonl`
 - `analyze_products` drops block-page inputs before calling Gemini; products with only block pages
-  are reported as `no_usable_documents` gaps in `metadata/gaps.json`
+  are reported as `no_usable_documents` gaps; mixed products set `incomplete_inputs` and still analyze
+  the remaining documents (exit code 0 unless every document is unusable or analysis fails)
 - Existing baselined issues in `data/quality/known_data_issues.jsonl` remain until Data Ops cleans
   the Mutua rows / analyses; NEW block-page hashes still fail CI
+
+### Gap reports (local, gitignored)
+
+Per-script reports under each company folder (not committed):
+
+| File | Written by |
+|------|------------|
+| `metadata/fetch_gaps.json` | `fetch_product_documents` |
+| `metadata/analysis_gaps.json` | `analyze_products` |
+
+Stable JSON (sorted gaps, no timestamps). A full-company run replaces that script's file; `--product`
+merges by `product_id` so other products' gaps are kept. Patterns live in
+`scripts/utils/document_validation.py` (shared with CI).
 
 ## Environment Variables
 
