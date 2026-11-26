@@ -1,0 +1,341 @@
+[
+    {
+        "fetched_at": "2026-11-26T10:19:24.670203+00:00",
+        "version": "1.0",
+        "company_key": "C0058",
+        "status": "Active",
+        "products": [
+            {
+                "product_id": "urn:C0058-01",
+                "company_key": "C0058",
+                "product_name": "seguro_terceros",
+                "branches": [
+                    "03",
+                    "10"
+                ],
+                "document_references": [
+                    {
+                        "filename": "coche_cg_0900ab44c391e066.pdf",
+                        "pdf_sha256": "87b629e8d3a979863835dc39b49e94c37775b7537f0680ccc2e788a077a19416",
+                        "markdown_sha256": "c861fc92af77cbc922df309b83ac3af744e6a1e16041260900041140ec8cc0ab",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "terceros_ipid_0900ab44c48adb6a.pdf",
+                        "pdf_sha256": "46da3390ad232a9663398bae0ecb7e5132b4e6cccf689c78bb746790cfd127d2",
+                        "markdown_sha256": "2a9601af98a1187fc694c5d0e65fef03715a58b161143cdbb8e9702a02f9477b",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "terceros_nota_0900ab44c48b450d.pdf",
+                        "pdf_sha256": "9cd6d0b5bc641b392793f1cab82288ba86a74842404eaafc56cb9f8d8d6474d7",
+                        "markdown_sha256": "c7f5f3c2fb63337b42b3a7dcb08aa09911767597fcdca65c09f1a4818b106506",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:19:10.618497+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros/"
+            },
+            {
+                "product_id": "urn:C0058-02",
+                "company_key": "C0058",
+                "product_name": "seguro_terceros_ampliado",
+                "branches": [
+                    "03",
+                    "10"
+                ],
+                "document_references": [
+                    {
+                        "filename": "coche_cg_0900ab44c391e066.pdf",
+                        "pdf_sha256": "87b629e8d3a979863835dc39b49e94c37775b7537f0680ccc2e788a077a19416",
+                        "markdown_sha256": "c861fc92af77cbc922df309b83ac3af744e6a1e16041260900041140ec8cc0ab",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "terceros_ampliado_ipid_0900ab44c48adb67.pdf",
+                        "pdf_sha256": "d0f59825f75099d716b1b35ff583fbd0f13aec4a4f058bd9f566dadf4b4a0cda",
+                        "markdown_sha256": "39f4c71e3c705a7fce35a7e3086ba092fc9baa24b472402173133bf974f1e72c",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "terceros_ampliado_nota_0900ab44c48b2c7b.pdf",
+                        "pdf_sha256": "1c9a4e5b436ad6bd9bc743b137e2803e7e047938086fc331afdab119136c95ba",
+                        "markdown_sha256": "a91ddb8898b9735c113067311b709a7743cf2ab2216249ca255d7650dbb94c4e",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:58.546144+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros-ampliado/"
+            },
+            {
+                "product_id": "urn:C0058-03",
+                "company_key": "C0058",
+                "product_name": "seguro_todo_riesgo",
+                "branches": [
+                    "03",
+                    "10"
+                ],
+                "document_references": [
+                    {
+                        "filename": "coche_cg_0900ab44c391e066.pdf",
+                        "pdf_sha256": "87b629e8d3a979863835dc39b49e94c37775b7537f0680ccc2e788a077a19416",
+                        "markdown_sha256": "c861fc92af77cbc922df309b83ac3af744e6a1e16041260900041140ec8cc0ab",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "todo_riesgo_ipid_0900ab44c48adb6c.pdf",
+                        "pdf_sha256": "6b122da9b0830d4b9e156126b007eb36dcbc00e21cfed147b894978926546828",
+                        "markdown_sha256": "3095d440401b764b030401fd5594eedf77b9c5679ac0085f4ee4cb9b94096d7d",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "todo_riesgo_nota_0900ab44c48b450f.pdf",
+                        "pdf_sha256": "e5d14e86d2b7565d2625a3572e26a52c475045589f76bdb62711d6406e8cbde0",
+                        "markdown_sha256": "aa9c827f9a21d0bcd4262071f5002ef96bf1af40e26d961f18f3efff0e6adaee",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:19:24.670203+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/todo-riesgo/"
+            },
+            {
+                "product_id": "urn:C0058-04",
+                "company_key": "C0058",
+                "product_name": "seguro_moto_terceros_ampliado",
+                "branches": [
+                    "03",
+                    "10"
+                ],
+                "document_references": [
+                    {
+                        "filename": "moto_terceros_ampliado_ipid_0900ab44c48abf87.pdf",
+                        "pdf_sha256": "a8c899a8eca943512255ad1b229ee6955177d87cf473f425286bc455501fbdf3",
+                        "markdown_sha256": "1c9cc035a727a4bd84470e716bdf1446ad286b33f396e674c4daba25fa911c5f",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "moto_terceros_ampliado_nota_0900ab44c48b2c7a.pdf",
+                        "pdf_sha256": "f0371bdc9b61881ea0f692995c726f4769047a879129ad677d21fe479efc3808",
+                        "markdown_sha256": "8f73692d6df462305e48e031fded217b7544ebc0388924c18633c37ca5049912",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:40.510256+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-para-motos/moto-terceros-ampliado/"
+            },
+            {
+                "product_id": "urn:C0058-05",
+                "company_key": "C0058",
+                "product_name": "seguro_hogar_tu_eliges",
+                "branches": [
+                    "08",
+                    "09"
+                ],
+                "document_references": [
+                    {
+                        "filename": "hogar_tu_eliges_cg_0900ab44c8afa9a7.pdf",
+                        "pdf_sha256": "53969f243db492dcef7f1ad1f48f862379ec25d524d60601ed9f0362e0eb8d2c",
+                        "markdown_sha256": "6e80a79b59e5124f9b514ed83809ed247c8d9c12a59cf8112e2c89fcc2b1a9f3",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "hogar_tu_eliges_ipid_0900ab44c32452df.pdf",
+                        "pdf_sha256": "cd5a641efc1a13a126f5ad732f07c4a80fc00bda76888b8203b82ced7c98f342",
+                        "markdown_sha256": "72fda660a7fe445e17cbb2da998b3fd63e90d50174ff35e96f453009bb77cf07",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "hogar_tu_eliges_nota_0900ab44c32452e4.pdf",
+                        "pdf_sha256": "9de308dee64d446fb24b363313d0967932f8842f89ce59f22f5c2bb49f9b3f0b",
+                        "markdown_sha256": "14f8ba4267c7d0b9c8051746666c1cd6e9459b1c0fe8a75e610e64acba9de6a2",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:19.287067+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-tu-eliges/"
+            },
+            {
+                "product_id": "urn:C0058-06",
+                "company_key": "C0058",
+                "product_name": "seguro_hogar_familiar",
+                "branches": [
+                    "08",
+                    "09"
+                ],
+                "document_references": [
+                    {
+                        "filename": "hogar_familiar_cg_0900ab44c8af8e52.pdf",
+                        "pdf_sha256": "4151e65bb56949f858963a5c165de202472e4295ab61829ca58afd4f9e08af4c",
+                        "markdown_sha256": "1d109dc1dab8f6d8aba4a1316193e2a0f2338e91dd7c901327b2d9749d36c32a",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "hogar_familiar_ipid_0900ab44c324410d.pdf",
+                        "pdf_sha256": "6fc6a42bbc827d4381ed1e460fc1a1a5b58604ee40cad28cd5798750f3aac3aa",
+                        "markdown_sha256": "b299e942648a1628ba2d47e394f78396877d13a2750c5a8268b678c4e85bacd9",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "hogar_familiar_nota_0900ab44c32452e2.pdf",
+                        "pdf_sha256": "f1335905be96f22707aa5b72e28b0cefdd800be1e72735e9e0cb000045b15f31",
+                        "markdown_sha256": "67b35b2e7ceea7d894edd5f76ba7ab05810a3ae76e51be3d72b2132d42637bcf",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:17:42.701955+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-familiar/"
+            },
+            {
+                "product_id": "urn:C0058-07",
+                "company_key": "C0058",
+                "product_name": "seguro_hogar_platino",
+                "branches": [
+                    "08",
+                    "09"
+                ],
+                "document_references": [
+                    {
+                        "filename": "hogar_platino_cg_0900ab44c8af9bab.pdf",
+                        "pdf_sha256": "c43d2eda72d9bd366ba993dd9dc2116d9edf50fc4dddad80422c0f9c9a9f4ff3",
+                        "markdown_sha256": "091e97de05a5f4fc400555128fdacd071734252621d175ab9462beed8424a852",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "hogar_platino_ipid_0900ab44c324410e.pdf",
+                        "pdf_sha256": "07b4a1fdbc1eb5f3ae65bf00fa0e4eaea5e91257f5d7223d2c3cadbc40fcea2a",
+                        "markdown_sha256": "18a470c35d640309947d5bf7f29e71b56f553958b406867d1de5cab3f6c48d84",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "hogar_platino_nota_0900ab44c32452e3.pdf",
+                        "pdf_sha256": "fb0727713d57158a2604a3081056b43d59595f1c4b584ab959e55f16a8b57ee4",
+                        "markdown_sha256": "7303b11592e77833af06068ef196c4c8625efb1591ae08910823d67228a973d1",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:01.544597+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/platino/"
+            },
+            {
+                "product_id": "urn:C0058-08",
+                "company_key": "C0058",
+                "product_name": "seguro_asistencia_sanitaria_tu_eliges",
+                "branches": [
+                    "02"
+                ],
+                "document_references": [
+                    {
+                        "filename": "asistencia_sanitaria_tu_eliges_ipid_0900ab44c6322d6a.pdf",
+                        "pdf_sha256": "73742abe2c29de3706412abdaa32370e94638acd2133173dcde2069b6e9b6139",
+                        "markdown_sha256": "4cb7a0c4551dd3c6f768e62924024355746d81be33fd05b30f73ed7cc077b066",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "asistencia_sanitaria_tu_eliges_nota_0900ab44c63209e5.pdf",
+                        "pdf_sha256": "4d5acc61a6e6231d6b72ce890326f065774e1870a798e415caa20ad8b45879dc",
+                        "markdown_sha256": "79d07fc337c27e52dba646e0158fb263c9d6a484f7415b4158696aeb24d1239c",
+                        "doc_type": "nota_informativa"
+                    },
+                    {
+                        "filename": "salud_asistencia_cg_0900ab44c632d17b.pdf",
+                        "pdf_sha256": "94ec1cc48ee114231270c1878bfba5c741b07aa9d90721a5980dddd8ba3f36ac",
+                        "markdown_sha256": "d160a2a692948e80ee30e6c0455095b4430118413e32c0abb511900a48020b08",
+                        "doc_type": "condiciones_generales"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:48.205975+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-esencial/"
+            },
+            {
+                "product_id": "urn:C0058-09",
+                "company_key": "C0058",
+                "product_name": "seguro_asistencia_sanitaria_sin_copago",
+                "branches": [
+                    "02"
+                ],
+                "document_references": [
+                    {
+                        "filename": "asistencia_sanitaria_sin_copago_ipid_0900ab44c63209ee.pdf",
+                        "pdf_sha256": "c036790857bd28ea543fe5d475e281dd98c347f1a4fc40b87f86dcf24e2168ee",
+                        "markdown_sha256": "1ef8b4af5dc67840ff212e7c1d3e649b03b06033a7010a7bec97e3d8b1126a5b",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "asistencia_sanitaria_sin_copago_nota_0900ab44c62d5832.pdf",
+                        "pdf_sha256": "415c5dcee573f9a72a19ecfd74848f80ae81ac46a48ede076b046cd203b6e6b6",
+                        "markdown_sha256": "3337d82365804041ed51f59d9cbebc8d1ae0cf6a085520e6236eacbb13578075",
+                        "doc_type": "nota_informativa"
+                    },
+                    {
+                        "filename": "salud_asistencia_cg_0900ab44c632d17b.pdf",
+                        "pdf_sha256": "94ec1cc48ee114231270c1878bfba5c741b07aa9d90721a5980dddd8ba3f36ac",
+                        "markdown_sha256": "d160a2a692948e80ee30e6c0455095b4430118413e32c0abb511900a48020b08",
+                        "doc_type": "condiciones_generales"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:18:48.205975+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-sin-copago/"
+            },
+            {
+                "product_id": "urn:C0058-10",
+                "company_key": "C0058",
+                "product_name": "seguro_dental",
+                "branches": [
+                    "02"
+                ],
+                "document_references": [
+                    {
+                        "filename": "dental_cg_0900ab44c6322d70.pdf",
+                        "pdf_sha256": "27a4b7a99bc5b905671f561c157eb6de531edb0f3fcb8c271474407f741b6c6e",
+                        "markdown_sha256": "0dfd2c651e5c0664f6a49699823819959f66057295fc8a3cb571f9b7c0cde1f9",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "dental_ipid_0900ab44c63209ea.pdf",
+                        "pdf_sha256": "23bc5938ee341b566af8283ced8e66d4f400c9bd6ffd3a91f60034d1abd1f322",
+                        "markdown_sha256": "f7f07a1b002308f8f7f1567a99f5914bb5603092504b991553ae3511cbc15428",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "dental_nota_0900ab44c63209e6.pdf",
+                        "pdf_sha256": "eb5f7dd5ad5cff88ac7093fd0bf7d084e1a6f348fe91ae04e16283676317cf24",
+                        "markdown_sha256": "a2b733253c198fbd899c25f4bb11ef22a5abf379b2a44d33891c91aae57a9626",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:17:23.102405+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-dentales/"
+            },
+            {
+                "product_id": "urn:C0058-11",
+                "company_key": "C0058",
+                "product_name": "seguro_decesos_siempre",
+                "branches": [
+                    "19"
+                ],
+                "document_references": [
+                    {
+                        "filename": "decesos_siempre_cg_0900ab44c3f1917f.pdf",
+                        "pdf_sha256": "2e5a54cc4132112b3a0e86bb0376699c5d4b52b62e25749071eda8c71790430a",
+                        "markdown_sha256": "44ef9957bc6e3e667706414b5a64528681e823083563db0dd4664f9215205a51",
+                        "doc_type": "condiciones_generales"
+                    },
+                    {
+                        "filename": "decesos_siempre_ipid_0900ab44c3a3dbf2.pdf",
+                        "pdf_sha256": "5cd7f54e587f5186dfd05d0386617c2ca72ae9259c95280a35fbb4d5ea54a5f2",
+                        "markdown_sha256": "e8691f26eed5416dbd5fe182639f0229b835c4a2dc820d3a3b151d266934079e",
+                        "doc_type": "ipid"
+                    },
+                    {
+                        "filename": "decesos_siempre_nota_0900ab44c3a42aae.pdf",
+                        "pdf_sha256": "a915a787bd3f55e20cd5782ee2e3eb19d26b574ea87cec2b6ec4df6dd9a1fc32",
+                        "markdown_sha256": "869d03d7561129372b81fa77a24b789f687ed3400c7b56e082c1ada5f0e7eef1",
+                        "doc_type": "nota_informativa"
+                    }
+                ],
+                "fetched_at": "2026-11-26T10:17:04.538413+00:00",
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-decesos/siempre/"
+            }
+        ]
+    }
+]
