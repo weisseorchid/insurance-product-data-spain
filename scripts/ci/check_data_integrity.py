@@ -81,7 +81,7 @@ def validate_jsonl_file(
     sort_key: str,
     required_fields: list[str],
     allow_duplicates: set[str] | None = None,
-) -> list[str]:
+) -> tuple[list[str], list[str]]:
     """
     Validate a JSONL file.
 
@@ -92,13 +92,14 @@ def validate_jsonl_file(
         allow_duplicates: Set of keys that are allowed to be duplicated
 
     Returns:
-        List of error messages (empty if valid)
+        Tuple of (errors, warnings). Both lists are empty when the file is valid.
+        A missing file is reported as an error.
     """
-    errors = []
-    warnings = []
+    errors: list[str] = []
+    warnings: list[str] = []
 
     if not file_path.exists():
-        return [f"File not found: {file_path}"]
+        return [f"File not found: {file_path}"], []
 
     try:
         records = []

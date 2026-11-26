@@ -6,6 +6,7 @@ import sys
 import time
 from pathlib import Path
 
+from sqlalchemy.engine import Engine
 from sqlmodel import Session, SQLModel, create_engine, select
 
 from insurance_product_data_sp.core.db import BranchDatabase, CompanyDatabase, DistributorDatabase, ProductDatabase
@@ -50,7 +51,7 @@ def _check_db_locked(db_path: Path) -> bool:
         return False
 
 
-def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> tuple[Session, any]:
+def _prepare_db(db_path: Path, max_retries: int = 3, retry_delay: float = 1.0) -> tuple[Session, Engine]:
     """Prepare database: delete existing, create schema, return session and engine.
 
     Args:

@@ -39,7 +39,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Any, Protocol, cast
 from urllib.parse import urljoin, urlparse
 from urllib.robotparser import RobotFileParser
 
@@ -87,6 +87,22 @@ class HTTPSession(Protocol):
     def request(self, method: str, url: str, **kwargs: Any) -> HTTPResponse: ...
 
 
+class _RobotsPolicy(RobotFileParser):
+    """RobotFileParser with the allow/disallow flags ``can_fetch`` already honours.
+
+    CPython sets ``disallow_all`` and ``allow_all`` (see ``RobotFileParser.read``),
+    but the type stubs do not declare them.
+    """
+
+    disallow_all: bool
+    allow_all: bool
+
+    def __init__(self, url: str = "") -> None:
+        super().__init__(url)
+        self.disallow_all = False
+        self.allow_all = False
+
+
 @dataclass
 class Gap:
     """A document that could not be fetched (and why)."""
@@ -132,7 +148,8 @@ def _default_session() -> HTTPSession:
 
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
-    return session
+    # Session.request is not typed with **kwargs, so it is not a structural HTTPSession.
+    return cast(HTTPSession, session)
 
 
 def _is_timeout_or_connection_error(exc: Exception) -> bool:
@@ -203,7 +220,7 @@ class PoliteFetcher:
         if state.robots is not None:
             return state.robots
         robots_url = f"{_host_key(url)}/robots.txt"
-        parser = RobotFileParser(robots_url)
+        parser = _RobotsPolicy(robots_url)
         try:
             response = self._send("GET", robots_url, state)
             status = response.status_code

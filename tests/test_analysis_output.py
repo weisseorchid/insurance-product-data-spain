@@ -98,7 +98,7 @@ def test_analyze_skips_client_when_only_block_pages(tmp_path, monkeypatch):
         encoding="utf-8",
     )
     client = FakeClient()
-    client.analyze_product_documents = MagicMock(side_effect=AssertionError("must not call Gemini"))
+    client.analyze_product_documents: MagicMock = MagicMock(side_effect=AssertionError("must not call Gemini"))
     result = analyze_single_product(
         client=client,  # type: ignore[arg-type]
         company_folder=company,
