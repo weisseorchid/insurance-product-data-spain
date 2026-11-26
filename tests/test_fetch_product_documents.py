@@ -397,7 +397,9 @@ def test_run_records_gaps_on_block(tmp_path, mock_markitdown):
         log_gaps=False,
     )
     assert stats.fetched == 0
-    assert [g.reason for g in stats.gaps] == ["host_blocked"] * 3
+    blocked = [g for g in stats.gaps if g.reason == "host_blocked"]
+    assert len(blocked) == 3
+    assert {g.reason for g in stats.gaps} >= {"host_blocked", "no_usable_documents"}
     assert len([c for c in session.calls if c[0] == "POST"]) == 1  # stopped after the first 429
     shared = next(g for g in stats.gaps if g.doc_id == "coche_cg_0900ab44c391e066")
     assert shared.product_ids == ["urn:C0058-01", "urn:C0058-02"]
@@ -412,6 +414,105 @@ def test_dry_run_makes_no_requests(tmp_path, capsys):
     fpd.run("C0058", manifest_dir=manifest_dir, fetcher=fetcher, dry_run=True)
     assert session.calls == []
     assert "coche_cg_0900ab44c391e066" in capsys.readouterr().out
+
+
+def test_cached_known_block_page_becomes_gap_and_clears_markdown(tmp_path, mock_markitdown):
+    """A cache hit whose markdown is a known block page is a gap, not skipped_cached."""
+    from scripts.utils.document_validation import compute_markdown_hash
+
+    block_md = "# Pardon Our Interruption\n\nPlease stand by while we check your browser...\n"
+    block_hash = compute_markdown_hash(block_md)
+    manifest_dir = tmp_path / "sources"
+    manifest_dir.mkdir()
+    write_manifest(manifest_dir, MAPFRE_RECORDS)
+    cache = DocumentCache(tmp_path / "cache")
+    pdf_sha = fpd._store_pdf_bytes(PDF_A, cache)
+    cache.store_markdown(block_md, sha256=block_hash)
+
+    company = tmp_path / "company"
+    company.mkdir()
+    source = {"type": "mapfre_docprecon", "document_id": "0900ab44c391e066", "entidad": "001"}
+    records = [
+        {
+            "doc_id": "coche_cg_0900ab44c391e066",
+            "doc_type": "condiciones_generales",
+            "filename": "coche_cg_0900ab44c391e066.pdf",
+            "product_id": "urn:C0058-01",
+            "product_name": "seguro_terceros",
+            "pdf_sha256": pdf_sha,
+            "markdown_sha256": block_hash,
+            "pdf_size": len(PDF_A),
+            "source": source,
+            "source_url": "https://www.mapfre.es/documentacion-precontractual/",
+        },
+        {
+            "doc_id": "coche_cg_0900ab44c391e066",
+            "doc_type": "condiciones_generales",
+            "filename": "coche_cg_0900ab44c391e066.pdf",
+            "product_id": "urn:C0058-02",
+            "product_name": "seguro_terceros_ampliado",
+            "pdf_sha256": pdf_sha,
+            "markdown_sha256": block_hash,
+            "pdf_size": len(PDF_A),
+            "source": source,
+            "source_url": "https://www.mapfre.es/documentacion-precontractual/",
+        },
+    ]
+    (company / "documents.jsonl").write_text("".join(json.dumps(r) + "\n" for r in records), encoding="utf-8")
+
+    fetcher, _, _ = make_fetcher({("GET", "https://www.mapfre.es/robots.txt"): ROBOTS_OK})
+    with patch("scripts.fetch_product_documents.load_known_block_page_hashes", return_value={block_hash}):
+        stats = fpd.run(
+            "C0058",
+            manifest_dir=manifest_dir,
+            cache=cache,
+            fetcher=fetcher,
+            adapters={"mapfre_docprecon": fpd.MapfreDocpreconAdapter(api_key="k")},
+            company_folder=company,
+            log_gaps=False,
+        )
+
+    block_gaps = [g for g in stats.gaps if g.reason == "block_page"]
+    assert block_gaps
+    assert stats.skipped_cached == 0
+    saved = [json.loads(line) for line in (company / "documents.jsonl").read_text(encoding="utf-8").splitlines()]
+    cg = [r for r in saved if r["doc_id"] == "coche_cg_0900ab44c391e066"]
+    assert cg
+    assert all("markdown_sha256" not in r for r in cg)
+
+    from scripts.utils.gaps import FETCH_GAPS_FILENAME
+
+    gaps_file = company / "metadata" / FETCH_GAPS_FILENAME
+    assert gaps_file.exists()
+    report = json.loads(gaps_file.read_text(encoding="utf-8"))
+    assert report["script"] == fpd.SCRIPT_NAME
+    assert "written_at" not in report
+    assert report["gap_count"] == len(report["gaps"])
+    assert report["gaps"] == sorted(
+        report["gaps"],
+        key=lambda g: (
+            g.get("product_id") or "",
+            g.get("product_name") or "",
+            g.get("doc_id") or "",
+            g.get("filename") or "",
+            g.get("reason") or "",
+            g.get("detail") or "",
+            g.get("source") or "",
+        ),
+    )
+    # Report must include a block_page row for the cached document and
+    # no_usable_documents for products whose only document was rejected.
+    by_reason = {}
+    for g in report["gaps"]:
+        by_reason.setdefault(g["reason"], []).append(g)
+    assert by_reason["block_page"]
+    assert {g["doc_id"] for g in by_reason["block_page"]} == {"coche_cg_0900ab44c391e066"}
+    assert {g["product_id"] for g in by_reason["block_page"]} == {"urn:C0058-01", "urn:C0058-02"}
+    assert by_reason["no_usable_documents"]
+    assert {g["product_id"] for g in by_reason["no_usable_documents"]} >= {
+        "urn:C0058-01",
+        "urn:C0058-02",
+    }
 
 
 def test_run_log_matches_data_integrity_schema(tmp_path, mock_markitdown, monkeypatch):
@@ -440,7 +541,8 @@ def test_run_log_matches_data_integrity_schema(tmp_path, mock_markitdown, monkey
         company_folder=tmp_path / "company",
     )
     assert stats.fetched == 0
-    assert [g.reason for g in stats.gaps] == ["host_blocked"] * 3
+    assert sum(1 for g in stats.gaps if g.reason == "host_blocked") == 3
+    assert sum(1 for g in stats.gaps if g.reason == "no_usable_documents") == 2
 
     runs_path = data_dir / "runs.jsonl"
     errors, _warnings = validate_jsonl_file(runs_path, "started_at", ["script", "started_at"])
@@ -454,9 +556,10 @@ def test_run_log_matches_data_integrity_schema(tmp_path, mock_markitdown, monkey
     assert "event_type" not in record
     assert record["counts"]["fetched"] == 0
     assert record["counts"]["skipped_cached"] == 0
-    assert record["counts"]["gaps"] == 3
+    assert record["counts"]["gaps"] == 5
     assert record["counts"]["host_blocked"] == 3
+    assert record["counts"]["no_usable_documents"] == 2
     assert record["details"]["company_key"] == "C0058"
     assert record["details"]["user_agent"] == fpd.USER_AGENT
-    assert len(record["details"]["gaps"]) == 3
-    assert all(gap["reason"] == "host_blocked" for gap in record["details"]["gaps"])
+    assert len(record["details"]["gaps"]) == 5
+    assert sum(1 for gap in record["details"]["gaps"] if gap["reason"] == "host_blocked") == 3

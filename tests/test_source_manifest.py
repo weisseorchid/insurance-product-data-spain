@@ -112,10 +112,14 @@ def test_unknown_reference_and_orphan_document(tmp_path):
 
 
 def test_entidad_must_match_company(tmp_path):
-    records = [
-        {**r, "product_id": r["product_id"].replace("C0058", "C0511")} if r["record_type"] == "product" else r
-        for r in MAPFRE_RECORDS
-    ]
+    records = []
+    for record in MAPFRE_RECORDS:
+        if record["record_type"] != "product":
+            records.append(record)
+            continue
+        product_id = record["product_id"]
+        assert isinstance(product_id, str)
+        records.append({**record, "product_id": product_id.replace("C0058", "C0511")})
     errors = _errors_for(tmp_path, records, "C0511.jsonl")
     assert "entidad 001 belongs to C0058, not C0511" in errors
 

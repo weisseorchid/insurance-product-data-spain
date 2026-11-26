@@ -106,7 +106,9 @@ The fetcher:
 - is idempotent: documents whose source is already in `documents.jsonl` with PDF and markdown in the
   cache are skipped unless `--force`;
 - fetches a shared document once and upserts one `documents.jsonl` record per product using it;
-- logs one run record to `data/runs.jsonl` (`script`, `started_at`, `finished_at`, `counts`, and gap details) and exits non-zero if there were gaps.
+- logs one run record to `data/runs.jsonl` (`script`, `started_at`, `finished_at`, `counts`, and gap details) and exits non-zero if there were gaps;
+- writes a local, gitignored `metadata/fetch_gaps.json` (stable, no timestamps; `--product` merges by
+  `product_id`). Analysis uses a separate `metadata/analysis_gaps.json` so the two runs do not overwrite each other.
 
 ### `documents.jsonl` records written by the fetcher
 

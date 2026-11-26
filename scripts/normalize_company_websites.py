@@ -40,7 +40,8 @@ def normalize_company_record(record: dict[str, Any]) -> list[tuple[str, str, str
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    summary = (__doc__ or "").splitlines()
+    parser = argparse.ArgumentParser(description=summary[0] if summary else None)
     parser.add_argument("--path", type=Path, default=INSURANCE_COMPANIES_JSONL)
     parser.add_argument("--check", action="store_true", help="Only report; exit 1 if anything would change")
     args = parser.parse_args(argv)

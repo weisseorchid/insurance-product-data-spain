@@ -19,20 +19,19 @@ from pathlib import Path
 from insurance_product_data_sp.core.logging import logger
 from insurance_product_data_sp.schemas import InsuranceProduct, ProductAnalysis
 from scripts.clients.gemini import GEMINI_MODEL, SCHEMA_VERSION, GeminiClient
-from scripts.config import PROJECT_ROOT
 from scripts.utils.companies import company_display_name, company_folder_path, company_key_for_folder, find_company
 from scripts.utils.document_store import MarkdownInput, markdown_inputs_from_documents
-from scripts.utils.document_validation import compute_markdown_hash
-from scripts.utils.jsonl import load_jsonl
+from scripts.utils.document_validation import (
+    compute_markdown_hash,
+    load_known_block_page_hashes,
+    markdown_is_unusable,
+)
+from scripts.utils.gaps import ANALYSIS_GAPS_FILENAME, write_gaps_report
 from scripts.utils.run_logging import log_analysis_failure
 from scripts.utils.storage import ensure_directory, load_json, save_json
 
 # Known bad markdown hashes (e.g. Mutua Madrileña Cloudflare blocks), shared with CI
-KNOWN_BLOCK_PAGE_HASHES_FILE = PROJECT_ROOT / "data" / "quality" / "known_block_page_hashes.jsonl"
-KNOWN_BAD_MARKDOWN_HASHES = {
-    record["markdown_sha256"]
-    for record in (load_jsonl(KNOWN_BLOCK_PAGE_HASHES_FILE) if KNOWN_BLOCK_PAGE_HASHES_FILE.exists() else [])
-}
+KNOWN_BAD_MARKDOWN_HASHES = load_known_block_page_hashes()
 
 # Companies with known quality issues
 KNOWN_BAD_COMPANIES = {
@@ -77,6 +76,8 @@ class ProductAnalysisResult:
     skipped: bool = False
     skip_reason: str | None = None
     has_quality_issues: bool = False
+    dropped_inputs: list[MarkdownInput] | None = None
+    usable_inputs: list[MarkdownInput] | None = None
 
 
 def has_known_bad_markdown(markdown_files: list[Path]) -> tuple[bool, str | None]:
@@ -98,6 +99,28 @@ def has_known_bad_markdown(markdown_files: list[Path]) -> tuple[bool, str | None
         except Exception:
             pass
     return False, None
+
+
+def partition_usable_markdown(
+    markdown_inputs: list[MarkdownInput],
+    known_hashes: set[str] | None = None,
+) -> tuple[list[MarkdownInput], list[MarkdownInput]]:
+    """Split markdown inputs into (usable, dropped block/error pages)."""
+    known = known_hashes if known_hashes is not None else KNOWN_BAD_MARKDOWN_HASHES
+    usable: list[MarkdownInput] = []
+    dropped: list[MarkdownInput] = []
+    for item in markdown_inputs:
+        try:
+            content = item.path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            dropped.append(item)
+            continue
+        md_hash = compute_markdown_hash(content)
+        if markdown_is_unusable(content, md_hash, known):
+            dropped.append(item)
+        else:
+            usable.append(item)
+    return usable, dropped
 
 
 def find_company_folder(company_key: str) -> Path | None:
@@ -280,27 +303,36 @@ def analyze_single_product(
 
     # Get markdown documents for this product (documents.jsonl + cache, or legacy sources/)
     markdown_inputs = get_product_markdown_inputs(company_folder, product_name)
-    markdown_files = [i.path for i in markdown_inputs]
+    usable_inputs, dropped_inputs = partition_usable_markdown(markdown_inputs)
+    markdown_files = [i.path for i in usable_inputs]
+
+    if dropped_inputs:
+        logger.warning(
+            f"Dropping {len(dropped_inputs)} block/error page document(s) for {product_name}: "
+            + ", ".join(i.name for i in dropped_inputs)
+        )
 
     if not markdown_files:
-        logger.warning(f"No markdown files found for product: {product_name}")
+        logger.warning(f"No usable markdown files found for product: {product_name}")
         return ProductAnalysisResult(
             product_name=product_name,
             product_id=product_id,
             success=False,
-            error="No markdown files found",
+            error="no_usable_documents",
+            dropped_inputs=dropped_inputs,
+            usable_inputs=[],
         )
 
-    logger.info(f"Found {len(markdown_files)} markdown files for {product_name}")
+    logger.info(f"Found {len(markdown_files)} usable markdown files for {product_name}")
 
-    # Check for known quality issues
-    has_bad_hash, bad_hash = has_known_bad_markdown(markdown_files)
-    has_quality_issues = has_bad_hash or company_folder.name in KNOWN_BAD_COMPANIES
+    # Check for known quality issues (company-level; block pages already dropped)
+    has_quality_issues = company_folder.name in KNOWN_BAD_COMPANIES
+    incomplete_inputs = bool(dropped_inputs)
 
     if has_quality_issues:
-        logger.warning(
-            f"Product {product_name} has known quality issues (bad_hash={bad_hash}, company={company_folder.name})"
-        )
+        logger.warning(f"Product {product_name} has known quality issues (company={company_folder.name})")
+    if incomplete_inputs:
+        logger.warning(f"Product {product_name} has incomplete inputs ({len(dropped_inputs)} document(s) dropped)")
 
     # Check if we should skip analysis (idempotency)
     if skip_if_exists:
@@ -314,6 +346,8 @@ def analyze_single_product(
                 skip_reason=skip_reason,
                 markdown_files_processed=len(markdown_files),
                 has_quality_issues=has_quality_issues,
+                dropped_inputs=dropped_inputs,
+                usable_inputs=usable_inputs,
             )
 
     # Build product context for Gemini
@@ -324,11 +358,11 @@ def analyze_single_product(
     }
 
     try:
-        # Analyze using Gemini
+        # Analyze using Gemini (block pages already excluded)
         analysis = client.analyze_product_documents(
             markdown_paths=[str(f) for f in markdown_files],
             product_context=product_context,
-            document_names={str(i.path): i.name for i in markdown_inputs},
+            document_names={str(i.path): i.name for i in usable_inputs},
         )
 
         return ProductAnalysisResult(
@@ -338,6 +372,8 @@ def analyze_single_product(
             analysis=analysis,
             markdown_files_processed=len(markdown_files),
             has_quality_issues=has_quality_issues,
+            dropped_inputs=dropped_inputs,
+            usable_inputs=usable_inputs,
         )
 
     except Exception as e:
@@ -365,6 +401,8 @@ def analyze_single_product(
             error=str(e),
             markdown_files_processed=len(markdown_files),
             has_quality_issues=has_quality_issues,
+            dropped_inputs=dropped_inputs,
+            usable_inputs=usable_inputs,
         )
 
 
@@ -376,6 +414,7 @@ def save_product_analysis(
     markdown_files: list[Path],
     has_quality_issues: bool = False,
     markdown_names: list[str] | None = None,
+    incomplete_inputs: bool = False,
 ) -> Path:
     """
     Save the product analysis to a JSON file.
@@ -388,6 +427,7 @@ def save_product_analysis(
         markdown_files: List of markdown files used
         markdown_names: Optional display names for markdown_files (default: file names)
         has_quality_issues: Whether the analysis has known quality issues
+        incomplete_inputs: Whether some source documents were dropped (e.g. block pages)
 
     Returns:
         Path to the saved file
@@ -425,6 +465,7 @@ def save_product_analysis(
             "quality_flags": {
                 "has_known_quality_issues": has_quality_issues,
                 "untrusted": has_quality_issues,
+                "incomplete_inputs": incomplete_inputs,
             },
             "analysis_provenance": {
                 "model": client.model,
@@ -526,19 +567,54 @@ def analyze_company_products(
 
         results.append(result)
 
-        # Save analysis if successful and not skipped
+        # Save analysis if successful and not skipped (only usable, non-block-page inputs)
         if result.success and result.analysis and not result.skipped:
-            # Get markdown files again for provenance
-            markdown_inputs = get_product_markdown_inputs(company_folder, product_entry.get("product_name", "unknown"))
+            usable = result.usable_inputs or []
             save_product_analysis(
                 company_folder,
                 product_entry,
                 result.analysis,
                 client,
-                [i.path for i in markdown_inputs],
+                [i.path for i in usable],
                 has_quality_issues=result.has_quality_issues,
-                markdown_names=[i.name for i in markdown_inputs],
+                markdown_names=[i.name for i in usable],
+                incomplete_inputs=bool(result.dropped_inputs),
             )
+
+    gap_rows: list[dict] = []
+    for result in results:
+        for dropped in result.dropped_inputs or []:
+            gap_rows.append(
+                {
+                    "product_id": result.product_id,
+                    "product_name": result.product_name,
+                    "doc_id": None,
+                    "filename": dropped.name,
+                    "source": None,
+                    "reason": "block_page",
+                    "detail": "dropped before analysis",
+                }
+            )
+        if not result.success and result.error == "no_usable_documents":
+            gap_rows.append(
+                {
+                    "product_id": result.product_id,
+                    "product_name": result.product_name,
+                    "doc_id": None,
+                    "filename": None,
+                    "source": None,
+                    "reason": "no_usable_documents",
+                    "detail": "all documents missing or are block/error pages",
+                }
+            )
+    write_gaps_report(
+        company_folder,
+        company_key,
+        "analyze_products",
+        gap_rows,
+        filename=ANALYSIS_GAPS_FILENAME,
+        replace_product_ids={r.product_id for r in results} if product_filter else None,
+    )
 
     # Save summary
     if save_summary:
@@ -609,7 +685,7 @@ def generate_analysis_summary(
     }
 
 
-def main():
+def main() -> int:
     """Main entry point for the script."""
     parser = argparse.ArgumentParser(description="Analyze insurance products using Gemini AI")
     parser.add_argument(
@@ -652,29 +728,38 @@ def main():
     )
 
     if args.dry_run:
-        return
+        return 0
 
     # Print summary
+    exit_code = 0
     if results:
         successful = sum(1 for r in results if r.success and not r.skipped)
         skipped = sum(1 for r in results if r.skipped)
         failed = len(results) - successful - skipped
         quality_issues = sum(1 for r in results if r.has_quality_issues)
+        dropped = sum(len(r.dropped_inputs or []) for r in results)
 
         logger.info("Analysis complete!")
         logger.info(f"Total products: {len(results)}")
         logger.info(f"Successful: {successful}")
         logger.info(f"Skipped (up-to-date): {skipped}")
         logger.info(f"Failed: {failed}")
+        if dropped > 0:
+            logger.warning(f"Dropped block/error page documents: {dropped}")
         if quality_issues > 0:
             logger.warning(f"Products with quality issues (flagged as untrusted): {quality_issues}")
 
         if failed > 0:
+            exit_code = 1
             logger.warning("Failed products:")
             for r in results:
                 if not r.success and not r.skipped:
                     logger.warning(f"  - {r.product_name}: {r.error}")
+        # Dropped files on otherwise successful (mixed) products are warnings only;
+        # exit 1 is reserved for no_usable_documents / analysis failures (failed > 0).
+
+    return exit_code
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

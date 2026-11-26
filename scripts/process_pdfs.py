@@ -22,6 +22,7 @@ from insurance_product_data_sp.core.logging import logger
 from scripts.utils.companies import company_display_name, company_folder_path, find_company
 from scripts.utils.document_cache import DocumentCache
 from scripts.utils.document_store import convert_cached_pdf, load_documents, save_documents
+from scripts.utils.document_validation import is_known_or_block_page_hash, load_known_block_page_hashes
 from scripts.utils.pdf_processing import PDFConversionResult, convert_pdf_to_markdown
 from scripts.utils.run_logging import log_validation_failure
 from scripts.utils.storage import ensure_directory, save_json
@@ -229,7 +230,9 @@ def process_cached_documents(
     cache = cache or DocumentCache()
     records = load_documents(company_folder)
     results: dict[str, list[PDFConversionResult]] = {}
-    converted: dict[str, str | None] = {}  # pdf_sha256 -> markdown_sha256 (convert each PDF once)
+    # pdf_sha256 -> (markdown_sha256 | None, validation_failed)
+    converted: dict[str, tuple[str | None, bool]] = {}
+    known_block_hashes = load_known_block_page_hashes()
     changed = False
 
     for record in records:
@@ -242,11 +245,19 @@ def process_cached_documents(
         if not pdf.exists:
             logger.warning(f"PDF not in cache for {product_name}/{record.get('filename')}; fetch it first")
             continue
-        if not force and md_sha and cache.get_markdown(md_sha).exists:
+        if (
+            not force
+            and md_sha
+            and cache.get_markdown(md_sha).exists
+            and not is_known_or_block_page_hash(str(md_sha), known_block_hashes)
+        ):
             continue
         if pdf_sha not in converted:
             outcome = convert_cached_pdf(pdf_sha, cache)
-            converted[pdf_sha] = outcome.markdown_sha256 if outcome.success else None
+            converted[pdf_sha] = (
+                outcome.markdown_sha256 if outcome.success else None,
+                outcome.validation_failed,
+            )
             results.setdefault(product_name, []).append(
                 PDFConversionResult(
                     source_path=pdf.cache_path,
@@ -266,8 +277,13 @@ def process_cached_documents(
                     product_name=product_name,
                     markdown_sha256=outcome.markdown_sha256,
                 )
-        new_md = converted[pdf_sha]
-        if new_md and new_md != md_sha:
+        new_md, validation_failed = converted[pdf_sha]
+        if new_md is None and md_sha and validation_failed:
+            # Validation failed (block page / empty): do not keep a stale markdown hash.
+            # Converter crashes leave markdown_sha256 alone so valid provenance is kept.
+            record.pop("markdown_sha256", None)
+            changed = True
+        elif new_md and new_md != md_sha:
             record["markdown_sha256"] = new_md
             changed = True
 

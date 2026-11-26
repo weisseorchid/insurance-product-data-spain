@@ -7,7 +7,11 @@ This module provides validation functions to detect:
 - Duplicate markdown hashes across different PDFs
 """
 
+from __future__ import annotations
+
+import functools
 import hashlib
+import json
 import re
 from pathlib import Path
 from typing import NamedTuple
@@ -20,24 +24,45 @@ MIN_MARKDOWN_LENGTH = 100
 # PDF magic bytes (PDF files start with %PDF-)
 PDF_MAGIC_BYTES = b"%PDF-"
 
-# Bot/block page detection patterns
-BLOCK_PAGE_PATTERNS = [
+# Short docs are scanned with loose + exact patterns; longer policy markdown only
+# matches exact interstitial strings in the title region.
+SHORT_BLOCK_PAGE_MAX_CHARS = 2_000
+TITLE_REGION_MAX_CHARS = 1_500
+
+# Exact interstitial phrases (safe for the title region of long policy markdown).
+# Never bare status codes like "403"/"404" alone.
+EXACT_BLOCK_PAGE_PATTERNS = [
     r"Pardon Our Interruption",
     r"Please stand by",
+    r"Enable JavaScript and cookies to continue",
+    r"This website is using a security service to protect itself",
+    r"Cloudflare Ray ID",
+    r"Performance & security by Cloudflare",
+    r"403 Forbidden",
+    r"404 Not Found",
+    r"Request unsuccessful",
+    r"Powered by Incapsula",
+    r"Incapsula incident",
+    r"errors\.edgesuite\.net",
+    r"Reference #[0-9]+\.[0-9a-f]+\.[0-9a-f]+",  # Akamai reference id
+]
+
+# Loose tokens that also appear in cyber/IT policy intros — short docs only.
+LOOSE_BLOCK_PAGE_PATTERNS = [
     r"Cloudflare",
     r"Just a moment",
     r"checking your browser",
-    r"Enable JavaScript and cookies to continue",
-    r"This website is using a security service to protect itself",
     r"Ray ID:",
-    r"Cloudflare Ray ID",
-    r"Performance & security by Cloudflare",
     r"captcha",
     r"CAPTCHA",
     r"bot detection",
+    r"Access Denied",
 ]
 
-# Compile patterns for efficiency
+EXACT_BLOCK_PAGE_REGEX = re.compile("|".join(EXACT_BLOCK_PAGE_PATTERNS), re.IGNORECASE)
+LOOSE_BLOCK_PAGE_REGEX = re.compile("|".join(LOOSE_BLOCK_PAGE_PATTERNS), re.IGNORECASE)
+# Backward-compatible alias: union used by short-doc scans and older tests/docs.
+BLOCK_PAGE_PATTERNS = EXACT_BLOCK_PAGE_PATTERNS + LOOSE_BLOCK_PAGE_PATTERNS
 BLOCK_PAGE_REGEX = re.compile("|".join(BLOCK_PAGE_PATTERNS), re.IGNORECASE)
 
 
@@ -85,7 +110,9 @@ def is_block_page(markdown_content: str) -> bool:
     """
     Check if markdown content appears to be a bot/block page.
 
-    Detects Cloudflare blocks, captcha pages, and similar bot detection pages.
+    Short documents (typical interstitials) are scanned with loose and exact
+    patterns. Longer policy markdown is only checked for exact interstitial
+    strings in the title/heading region so cyber/IT policy intros are not flagged.
 
     Args:
         markdown_content: The markdown text content
@@ -93,7 +120,58 @@ def is_block_page(markdown_content: str) -> bool:
     Returns:
         True if content appears to be a block page, False otherwise
     """
-    return bool(BLOCK_PAGE_REGEX.search(markdown_content))
+    if len(markdown_content) <= SHORT_BLOCK_PAGE_MAX_CHARS:
+        return bool(BLOCK_PAGE_REGEX.search(markdown_content))
+    title = markdown_content[:TITLE_REGION_MAX_CHARS]
+    return bool(EXACT_BLOCK_PAGE_REGEX.search(title))
+
+
+@functools.lru_cache(maxsize=4)
+def _load_known_block_page_hashes_cached(path_str: str) -> frozenset[str]:
+    path = Path(path_str)
+    if not path.exists():
+        return frozenset()
+    hashes: set[str] = set()
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            record = json.loads(line)
+            md_hash = record.get("markdown_sha256")
+            if md_hash:
+                hashes.add(str(md_hash))
+    return frozenset(hashes)
+
+
+def load_known_block_page_hashes(path: Path | None = None) -> set[str]:
+    """Load known block-page markdown hashes from data/quality/known_block_page_hashes.jsonl."""
+    if path is None:
+        from scripts.config import PROJECT_ROOT
+
+        path = PROJECT_ROOT / "data" / "quality" / "known_block_page_hashes.jsonl"
+    return set(_load_known_block_page_hashes_cached(str(path.resolve())))
+
+
+def is_known_or_block_page_hash(markdown_sha256: str | None, known_hashes: set[str] | None = None) -> bool:
+    """True if the hash is listed in known_block_page_hashes.jsonl."""
+    if not markdown_sha256:
+        return False
+    known = known_hashes if known_hashes is not None else load_known_block_page_hashes()
+    return markdown_sha256 in known
+
+
+def markdown_is_unusable(
+    markdown_content: str | None = None,
+    markdown_sha256: str | None = None,
+    known_hashes: set[str] | None = None,
+) -> bool:
+    """True if content or hash is a known block/error page that must not enter the knowledge base."""
+    if markdown_sha256 and is_known_or_block_page_hash(markdown_sha256, known_hashes):
+        return True
+    if markdown_content is not None and is_block_page(markdown_content):
+        return True
+    return False
 
 
 def is_empty_or_near_empty(markdown_content: str, min_length: int = MIN_MARKDOWN_LENGTH) -> bool:

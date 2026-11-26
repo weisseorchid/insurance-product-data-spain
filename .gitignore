@@ -28,5 +28,9 @@ coverage.xml
 *.db-shm
 # Document cache (content-addressed by SHA256)
 .cache/
+# Per-run gap reports (local; not committed)
+**/metadata/fetch_gaps.json
+**/metadata/analysis_gaps.json
+**/metadata/gaps.json
 # Package data (built in CI)
 insurance_product_data_sp/data/*.db
