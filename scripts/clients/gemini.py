@@ -219,6 +219,13 @@ class GeminiClient:
                     logger.error(f"All {self.max_retries} attempts failed")
 
             except Exception as e:
+                # Auth/config errors (401/403/400/404) are not retried: a later 503 must not hide them
+                from scripts.clients.llm import ErrorKind, classify_error  # avoid an import cycle
+
+                if classify_error(e) in (ErrorKind.AUTH, ErrorKind.CONFIG):
+                    logger.error(f"Attempt {attempt} failed with auth/config error, not retrying: {e}")
+                    raise
+
                 # For other exceptions (network errors, API errors), also retry
                 last_exception = e
                 logger.warning(f"Attempt {attempt} failed with error: {e}")

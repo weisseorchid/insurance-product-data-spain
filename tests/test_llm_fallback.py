@@ -336,6 +336,30 @@ def test_real_gemini_retries_are_exhausted_before_fallback(tmp_path):
     assert routed.fallback_from == "gemini"
 
 
+@pytest.mark.parametrize("first", [(401, "UNAUTHENTICATED"), (400, "INVALID_ARGUMENT")])
+def test_gemini_auth_or_config_error_is_not_hidden_by_a_later_503(tmp_path, first):
+    """Review #5: a 401/400 on attempt 1 is raised at once, not retried until a 503 masks it."""
+    md = tmp_path / "doc.md"
+    md.write_text("# Doc\n\n" + "texto " * 50, encoding="utf-8")
+    with patch("scripts.clients.gemini.genai.Client"):
+        gemini = GeminiClient(model="gemini-test", max_retries=3)
+    generate = gemini.client.models.generate_content
+    generate.side_effect = [gemini_error(*first), gemini_error(503, "UNAVAILABLE"), gemini_error(503, "UNAVAILABLE")]
+    mistral = FakeProvider("mistral", "mistral-test")
+    router = AnalysisRouter([gemini, mistral])
+
+    with patch("scripts.clients.gemini.time.sleep") as sleep, pytest.raises(ProviderConfigError):
+        router.analyze_with_provenance([str(md)])
+
+    assert generate.call_count == 1
+    sleep.assert_not_called()
+    assert mistral.calls == 0
+    assert "gemini" in router._disabled
+    with pytest.raises(ProviderConfigError):  # next product: Gemini is not called again
+        router.analyze_with_provenance([str(md)])
+    assert generate.call_count == 1
+
+
 def test_build_router_missing_gemini_key_is_a_config_error(monkeypatch):
     monkeypatch.setenv("MISTRAL_API_KEY", "test-key-not-real")
 
