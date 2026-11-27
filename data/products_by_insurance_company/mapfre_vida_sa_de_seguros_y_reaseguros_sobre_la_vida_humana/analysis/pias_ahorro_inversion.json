@@ -1,0 +1,243 @@
+{
+  "product_id": "urn:C0511-06",
+  "company_key": "C0511",
+  "product_name": "pias_ahorro_inversion",
+  "branches": [
+    "00"
+  ],
+  "source_url": "https://www.mapfre.es/ahorro-inversion/ahorro/seguros-pias/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:32:54.069738+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "698699aa04daa1b4bbb3012fc94ccb1b881d2cb13e0252b90bd677a67efe0e99",
+      "markdown_hashes": {
+        "pias_ahorro_inversion_kid_0900ab44c361ea6c.md": "da05c9f6fef427022d8f262bba6bef7d18398fd5977c69bfe77c1cb2c493f98e",
+        "pias_ahorro_inversion_nota_0900ab44c69164db.md": "8bc9c03695f3fc91151d81b36c1edfcfa8860041b009693d1f47ecc79b79d89b"
+      },
+      "markdown_files": [
+        "pias_ahorro_inversion_kid_0900ab44c361ea6c.md",
+        "pias_ahorro_inversion_nota_0900ab44c69164db.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida - Plan Individual de Ahorro Sistemático (PIAS)",
+      "target_audience": "Particulares (clientes que buscan ahorro a largo plazo con ventajas fiscales)",
+      "description_es": "El PIAS Ahorro Inversión de MAPFRE VIDA es un seguro de ahorro temporal de prima única con capital garantizado al vencimiento en caso de supervivencia. Permite aportaciones extraordinarias (sujeto a condiciones de mercado) y ofrece la posibilidad de constituir una renta vitalicia con los derechos económicos acumulados. Incluye coberturas por fallecimiento y supervivencia, con flexibilidad en la percepción de prestaciones (capital o renta). El producto está diseñado para incentivar el ahorro a largo plazo con beneficios fiscales bajo la normativa de PIAS.",
+      "description_en": "The PIAS Ahorro Inversión from MAPFRE VIDA is a temporary single-premium life insurance savings plan with a guaranteed capital at maturity in case of survival. It allows extraordinary contributions (subject to market conditions) and offers the possibility to set up a lifetime annuity with accumulated economic rights. It includes death and survival coverages, with flexibility in benefit perception (capital or annuity). The product is designed to encourage long-term savings with tax benefits under the PIAS regulations.",
+      "key_benefits": [
+        "Capital garantizado al vencimiento en caso de supervivencia",
+        "Posibilidad de realizar aportaciones extraordinarias (sujeto a condiciones de mercado)",
+        "Flexibilidad en la percepción de prestaciones: capital o renta vitalicia",
+        "Beneficios fiscales según normativa PIAS (exención en constitución de renta vitalicia bajo condiciones)",
+        "Movilización de derechos económicos a otro PIAS",
+        "Cobertura por fallecimiento con capital variable en función del valor del fondo y capital en riesgo"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "00"
+    },
+    "coverages": [
+      {
+        "name": "Supervivencia",
+        "category": "basic",
+        "description": "Cobertura que garantiza el pago de una renta vitalicia al vencimiento del contrato si el asegurado sobrevive. El importe de la renta se determina según las tarifas vigentes del asegurador en el momento de la elección. Alternativamente, el tomador puede solicitar el pago en forma de capital igual a los derechos económicos acumulados, aunque esto extingue las ventajas fiscales del producto.",
+        "covered_events": [
+          "Supervivencia del asegurado en la fecha de vencimiento del contrato"
+        ],
+        "benefits": [
+          "Pago de renta vitalicia según tarifas vigentes en el momento de constitución",
+          "Pago en forma de capital igual a los derechos económicos acumulados (extingue ventajas fiscales)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El importe de la renta vitalicia se determina según las tarifas vigentes del asegurador en el momento de la elección",
+          "Durante el período entre vencimiento y constitución de la renta, no se devengan intereses sobre los derechos económicos acumulados"
+        ]
+      },
+      {
+        "name": "Fallecimiento",
+        "category": "basic",
+        "description": "Cobertura que garantiza el pago de un capital a los beneficiarios designados en caso de fallecimiento del asegurado durante la vigencia del contrato. El capital asegurado es variable y se calcula como la suma del valor del fondo asegurado a la fecha del siniestro más el capital en riesgo vigente en el mes natural del fallecimiento (5% del valor asegurado del fondo, con límites máximos según edad del asegurado).",
+        "covered_events": [
+          "Fallecimiento del asegurado durante la vigencia del contrato"
+        ],
+        "benefits": [
+          "Pago de capital a los beneficiarios designados",
+          "Capital asegurado = Valor del fondo asegurado + Capital en riesgo (5% del valor asegurado del fondo, con límites máximos según edad)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El capital en riesgo no puede superar los límites máximos según edad del asegurado: 4.000€ (hasta 65 años) o 2.000€ (mayor de 65 años)"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "No se admiten rescates parciales del contrato.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "La movilización de derechos económicos a otro PIAS se realiza mediante el ejercicio del derecho de rescate total, extinguiendo el contrato original.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "La constitución de una renta vitalicia extingue las coberturas por fallecimiento.",
+        "category": "Específica a cobertura de Fallecimiento",
+        "legal_reference": null
+      },
+      {
+        "description": "El incumplimiento de los plazos mínimos de mantenimiento y/o tipo de prestación previstos en la normativa fiscal extingue las ventajas fiscales del producto.",
+        "category": "Fiscal",
+        "legal_reference": null
+      },
+      {
+        "description": "No se garantiza la rentabilidad esperada, ya que depende de la evolución de los mercados financieros y de los activos subyacentes.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "No es posible realizar aportaciones extraordinarias si los tipos de interés de los mercados financieros no lo permiten.",
+        "category": "Condiciones de mercado",
+        "legal_reference": null
+      },
+      {
+        "description": "El valor de rescate total está sujeto a la aplicación de un coeficiente que puede reducir el importe percibido en función de la duración del contrato y la variación de valor de los activos asignados.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fallecimiento",
+        "limit_type": "capital_maximum",
+        "limit_value": "4.000€ (hasta 65 años) / 2.000€ (mayor de 65 años)",
+        "conditions": "El capital en riesgo no puede superar los límites máximos según edad del asegurado."
+      },
+      {
+        "coverage_name": "Fallecimiento",
+        "limit_type": "capital_variable",
+        "limit_value": "Capital asegurado = Valor del fondo asegurado + Capital en riesgo (5% del valor asegurado del fondo)",
+        "conditions": "El capital en riesgo se calcula como el 5% del valor asegurado del fondo en el mes natural del fallecimiento."
+      },
+      {
+        "coverage_name": "Rescate total",
+        "limit_type": "coefficient_applied",
+        "limit_value": "99% durante la primera anualidad / 100% durante la segunda y siguientes anualidades",
+        "conditions": "El valor de rescate se calcula aplicando un coeficiente al menor valor entre el valor del fondo asegurado y el valor de realización de los activos asignados a la póliza."
+      },
+      {
+        "coverage_name": "Rescate total",
+        "limit_type": "fiscal_impact",
+        "limit_value": "Extinción de ventajas fiscales si no se cumplen plazos mínimos de mantenimiento y/o tipo de prestación",
+        "conditions": "Los plazos mínimos y tipo de prestación están regulados por la normativa fiscal aplicable a los PIAS."
+      },
+      {
+        "coverage_name": "Aportaciones extraordinarias",
+        "limit_type": "market_conditions",
+        "limit_value": "No permitidas si los tipos de interés de los mercados financieros no lo permiten",
+        "conditions": "Sujeto a condiciones de mercado."
+      },
+      {
+        "coverage_name": "Límite fiscal",
+        "limit_type": "annual_premium",
+        "limit_value": "8.000€ anuales",
+        "conditions": "Límite máximo anual de primas que el tomador puede satisfacer en concepto de primas a contratos PIAS."
+      },
+      {
+        "coverage_name": "Límite fiscal",
+        "limit_type": "total_premium",
+        "limit_value": "240.000€",
+        "conditions": "Límite máximo total de primas acumuladas en contratos PIAS."
+      },
+      {
+        "coverage_name": "Gastos de gestión",
+        "limit_type": "management_fees",
+        "limit_value": "Hasta 1,10% sobre la prima (duración hasta 5 años) / Hasta 1,60% sobre la prima (duración 6-10 años) / 0,0583% mensual sobre el valor del fondo acumulado",
+        "conditions": "Los gastos de gestión varían según la duración del seguro y se aplican mensualmente."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima única en el momento del efecto del contrato",
+        "Comunicar al asegurador cualquier cambio en los datos del tomador o asegurado",
+        "Designar un domicilio en España si el asegurado está domiciliado en el extranjero (para efectos jurisdiccionales)",
+        "Cumplir con los plazos mínimos de mantenimiento y tipo de prestación para mantener las ventajas fiscales",
+        "Notificar al asegurador la decisión de movilización de derechos económicos a otro PIAS",
+        "Comunicar al asegurador la decisión de constitución de renta vitalicia con los derechos económicos derivados de la póliza"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Comunicar el fallecimiento del asegurado a la mayor brevedad posible para el pago del capital a los beneficiarios",
+        "Solicitar el rescate total mediante escrito dirigido al asegurador",
+        "Proporcionar la documentación requerida por el asegurador para la constitución de la renta vitalicia o el pago del capital"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Temporal (hasta la fecha de vencimiento establecida en las Condiciones Particulares)",
+      "renewal_type": "No renovable (el contrato finaliza en la fecha de vencimiento sin renovación automática)",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Ejercicio del derecho de rescate por el tomador",
+        "Fallecimiento del asegurado",
+        "Alcanzarse la fecha de vencimiento sin renovación del contrato",
+        "Devolución o impago del recibo inicial (rescisión automática)",
+        "Constitución de una renta vitalicia (extingue coberturas por fallecimiento)"
+      ],
+      "payment_method": "Prima única (con posibilidad de aportaciones extraordinarias sujetas a condiciones)",
+      "payment_frequency": [
+        "única"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Duración del contrato",
+        "Valor del fondo asegurado",
+        "Capital en riesgo",
+        "Gastos de gestión (porcentaje sobre prima y valor del fondo)",
+        "Costes de riesgo (mensuales según capital en riesgo y bases técnicas)",
+        "Evolución de los mercados financieros (para aportaciones extraordinarias)"
+      ],
+      "discounts": [
+        "No se mencionan descuentos específicos en los documentos analizados."
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "El contrato queda sometido a la jurisdicción española. Si el asegurado está domiciliado en el extranjero, debe designar un domicilio en España para efectos jurisdiccionales."
+    },
+    "source_documents": [
+      {
+        "filename": "pias_ahorro_inversion_kid_0900ab44c361ea6c.md",
+        "document_type": "other",
+        "extraction_confidence": 0.5
+      },
+      {
+        "filename": "pias_ahorro_inversion_nota_0900ab44c69164db.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

@@ -34,7 +34,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:19:10.618497+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros/",
+                "analysis_path": "analysis/seguro_terceros.json"
             },
             {
                 "product_id": "urn:C0058-02",
@@ -65,7 +66,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:58.546144+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros-ampliado/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros-ampliado/",
+                "analysis_path": "analysis/seguro_terceros_ampliado.json"
             },
             {
                 "product_id": "urn:C0058-03",
@@ -96,7 +98,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:19:24.670203+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/todo-riesgo/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/todo-riesgo/",
+                "analysis_path": "analysis/seguro_todo_riesgo.json"
             },
             {
                 "product_id": "urn:C0058-04",
@@ -121,7 +124,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:40.510256+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-para-motos/moto-terceros-ampliado/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-para-motos/moto-terceros-ampliado/",
+                "analysis_path": "analysis/seguro_moto_terceros_ampliado.json"
             },
             {
                 "product_id": "urn:C0058-05",
@@ -152,7 +156,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:19.287067+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-tu-eliges/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-tu-eliges/",
+                "analysis_path": "analysis/seguro_hogar_tu_eliges.json"
             },
             {
                 "product_id": "urn:C0058-06",
@@ -183,7 +188,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:17:42.701955+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-familiar/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-familiar/",
+                "analysis_path": null
             },
             {
                 "product_id": "urn:C0058-07",
@@ -214,7 +220,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:01.544597+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/platino/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/platino/",
+                "analysis_path": "analysis/seguro_hogar_platino.json"
             },
             {
                 "product_id": "urn:C0058-08",
@@ -244,7 +251,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:48.205975+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-esencial/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-esencial/",
+                "analysis_path": "analysis/seguro_asistencia_sanitaria_tu_eliges.json"
             },
             {
                 "product_id": "urn:C0058-09",
@@ -274,7 +282,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:18:48.205975+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-sin-copago/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-sin-copago/",
+                "analysis_path": "analysis/seguro_asistencia_sanitaria_sin_copago.json"
             },
             {
                 "product_id": "urn:C0058-10",
@@ -304,7 +313,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:17:23.102405+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-dentales/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-dentales/",
+                "analysis_path": "analysis/seguro_dental.json"
             },
             {
                 "product_id": "urn:C0058-11",
@@ -334,7 +344,8 @@
                     }
                 ],
                 "fetched_at": "2026-11-26T10:17:04.538413+00:00",
-                "source_url": "https://www.mapfre.es/particulares/seguros-de-decesos/siempre/"
+                "source_url": "https://www.mapfre.es/particulares/seguros-de-decesos/siempre/",
+                "analysis_path": "analysis/seguro_decesos_siempre.json"
             }
         ]
     }

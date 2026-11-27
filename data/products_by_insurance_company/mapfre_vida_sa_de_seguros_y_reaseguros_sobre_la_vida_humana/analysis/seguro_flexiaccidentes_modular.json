@@ -1,0 +1,700 @@
+{
+  "product_id": "urn:C0511-04",
+  "company_key": "C0511",
+  "product_name": "seguro_flexiaccidentes_modular",
+  "branches": [
+    "01"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-accidentes/modular-unisex/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:32:23.229598+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "4efa960d0b5fba2e6e31e1e6a03a2a7baf4faa03725b237ac4ea4cb4203a85e8",
+      "markdown_hashes": {
+        "flexiaccidentes_modular_cg_0900ab448ccb5a83.md": "9762f371439cf68a6ee8a0cf2082aeb6c4d8933560cc9a962a9519355cb0a017",
+        "flexiaccidentes_modular_ipid_0900ab449070008f.md": "1d222872fc2cf36b22dc553a4dacf317ee0e2bf966f8919cbf534a8fa703ad76",
+        "flexiaccidentes_modular_nota_0900ab44988d5dfc.md": "a3798110a0e3d99526aaac1ce70999501acaf2939d742e8ff43a833efe879c85"
+      },
+      "markdown_files": [
+        "flexiaccidentes_modular_cg_0900ab448ccb5a83.md",
+        "flexiaccidentes_modular_ipid_0900ab449070008f.md",
+        "flexiaccidentes_modular_nota_0900ab44988d5dfc.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Accidentes",
+      "target_audience": "Particulares y profesionales (cobertura 24h y en cualquier lugar del mundo)",
+      "description_es": "Seguro Flexiaccidentes Modular de MAPFRE VIDA que cubre los accidentes que pueda sufrir el asegurado en su vida privada y/o ejerciendo su actividad laboral, en cualquier lugar del mundo, las 24 horas del día y los 365 días del año. El asegurado elige la suma asegurada en el contrato en función de sus necesidades personales y económicas. El producto permite modular las coberturas según las necesidades del cliente, incluyendo garantías básicas y opcionales.",
+      "description_en": "MAPFRE VIDA's Flexiaccidentes Modular insurance covers accidents that the insured may suffer in their private life and/or while working, anywhere in the world, 24 hours a day and 365 days a year. The insured chooses the insured sum in the contract based on their personal and economic needs. The product allows modular coverage according to the customer's needs, including basic and optional guarantees.",
+      "key_benefits": [
+        "Cobertura 24 horas y en cualquier lugar del mundo",
+        "Modularidad: elección de coberturas básicas y opcionales",
+        "Suma asegurada configurable según necesidades",
+        "Cobertura de accidentes laborales y extraprofesionales",
+        "Asistencia en viaje, domicilio y psicológica",
+        "Garantías específicas como invalidez progresiva, cancelación de saldos pendientes, personal sustitutorio, fracturas, garantía hipotecaria y gastos de traslado por sepelio"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "C-0511"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento accidental",
+        "category": "basic",
+        "description": "Indemnización en caso de muerte del asegurado como consecuencia directa de un accidente cubierto por la póliza. Se puede pactar una renta mensual adicional a la indemnización inicial. Si se hubiera indemnizado previamente por invalidez del mismo accidente, se indemniza la diferencia entre lo pagado y la suma asegurada para fallecimiento.",
+        "covered_events": [
+          "Muerte del asegurado por accidente cubierto"
+        ],
+        "benefits": [
+          "Pago de la suma asegurada al beneficiario designado",
+          "Posibilidad de renta mensual adicional (plazo y cuantía según Condiciones Particulares)",
+          "Si no hay beneficiario designado, la suma forma parte del patrimonio del tomador"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El accidente debe ser cubierto según la definición de la póliza",
+          "No se cubre si el fallecimiento ocurre después de los 65 años (según garantías opcionales)"
+        ]
+      },
+      {
+        "name": "Invalidez permanente",
+        "category": "basic",
+        "description": "Indemnización por pérdida anatómica o impotencia funcional permanente de miembros u órganos como consecuencia de un accidente cubierto. La indemnización se calcula aplicando porcentajes sobre la suma asegurada según un baremo de lesiones incluido en la póliza. No se tienen en cuenta profesión, edad u otros factores ajenos al baremo.",
+        "covered_events": [
+          "Invalidez permanente derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Indemnización según baremo de lesiones (ejemplo: 100% para paraplejía, 70% para ceguera absoluta, etc.)",
+          "Reducción del 15% en indemnizaciones para miembros superiores no dominantes",
+          "Acumulación de porcentajes no puede superar el 100% de la suma asegurada"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La invalidez debe ser reconocida como permanente",
+          "No se indemniza si la invalidez preexistía al accidente (solo se indemniza la diferencia)"
+        ]
+      },
+      {
+        "name": "Incapacidad profesional",
+        "category": "optional",
+        "description": "Indemnización por incapacidad profesional total, absoluta o gran invalidez derivada de lesiones corporales causadas por un accidente cubierto. La indemnización se paga al ser reconocida como definitiva dentro de los dos años desde la fecha del accidente.",
+        "covered_events": [
+          "Incapacidad profesional total, absoluta o gran invalidez derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Pago de la suma asegurada según el grado de incapacidad reconocido",
+          "Posibilidad de renta mensual adicional (plazo y cuantía según Condiciones Particulares)",
+          "Extinción automática al cumplir 65 años"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La incapacidad debe ser reconocida como definitiva dentro de los 2 años desde el accidente",
+          "No se aplica si se contrata invalidez permanente y las lesiones no alcanzan el grado asegurado"
+        ]
+      },
+      {
+        "name": "Incapacidad temporal accidental",
+        "category": "optional",
+        "description": "Indemnización mensual por imposibilidad temporal para realizar el trabajo u ocupación habitual como consecuencia de un accidente cubierto. La indemnización se paga por meses vencidos mientras persista la situación incapacitante y durante un máximo de dos años desde la fecha del accidente.",
+        "covered_events": [
+          "Incapacidad temporal derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Indemnización mensual (carácter de indemnización) hasta un máximo de 2 años",
+          "Pago complementario por hospitalización (hasta 3 meses de indemnización adicional)",
+          "Extinción automática al cumplir 65 años"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 0,
+        "conditions": [
+          "La incapacidad debe ser determinada por los servicios médicos de la compañía",
+          "No se aplica el período de carencia si la duración supera 60 días",
+          "El alta médica o incorporación a la actividad habitual extingue la prestación"
+        ]
+      },
+      {
+        "name": "Gastos sanitarios",
+        "category": "optional",
+        "description": "Cobertura de gastos médicos, farmacia, rehabilitación, prótesis, cirugía plástica, trasplantes y desplazamientos por asistencia ambulatoria no disponible en la localidad de residencia, durante un período máximo de dos años desde la fecha del accidente.",
+        "covered_events": [
+          "Gastos sanitarios derivados de un accidente cubierto"
+        ],
+        "benefits": [
+          "Asistencia médica, ambulancias, farmacia, internamiento sanatorial y rehabilitación física",
+          "Desplazamientos y estancias por asistencia ambulatoria no disponible localmente (autorizados previamente)",
+          "Implantación de prótesis o aparatos ortopédicos (hasta 10% de la suma asegurada más alta y máximo 3.010€)",
+          "Cirugía plástica o trasplantes (hasta 10% de la suma asegurada más alta y máximo 3.010€)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Los servicios deben ser realizados por profesionales o proveedores designados o aceptados por la compañía",
+          "Si no se autoriza previamente, el asegurado asume el 50% de los gastos"
+        ]
+      },
+      {
+        "name": "Asistencia en viaje",
+        "category": "optional",
+        "description": "Cobertura de gastos de curación por enfermedad o accidente en el extranjero, prolongación del viaje, traslado o repatriación, localización y salvamento, gastos de acompañante, retorno anticipado, equipaje, envío de medicamentos, envío de fondos y transmisión de mensajes urgentes durante viajes.",
+        "covered_events": [
+          "Accidente o enfermedad durante un viaje (hasta 60 días, salvo estudios reglados en España)"
+        ],
+        "benefits": [
+          "Gastos de farmacia, honorarios médicos, ambulancias, hospitalización e intervenciones quirúrgicas en el extranjero (hasta 12.025€)",
+          "Prolongación del viaje por prescripción facultativa (hasta 155€/día y máximo 1.505€)",
+          "Traslado o repatriación (organizado por la compañía)",
+          "Localización y salvamento (hasta 1.505€)",
+          "Gastos de acompañante si hospitalización >5 días (hasta 125€/día y 1.205€ en España; 155€/día y 1.505€ en el extranjero)",
+          "Retorno anticipado por siniestro grave en domicilio o enfermedad/fallecimiento de familiar (hasta el coste del viaje de vuelta)",
+          "Equipaje: reembolso por robo o extravío (hasta 305€/persona y 1.205€ por siniestro; 24h para vuelos públicos)",
+          "Envío de medicamentos no disponibles en el lugar (sin límite especificado)",
+          "Envío de fondos en caso de necesidad urgente en el extranjero (hasta 905€ o equivalente, préstamo sin interés a devolver en 60 días)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El viaje debe tener una duración máxima de 60 días (excepto estudios reglados en España)",
+          "Cobertura solo aplica si el hecho ocurre a más de 15 km del domicilio habitual (10 km si reside fuera de la península)",
+          "No cubre gastos sanitarios en España ni tratamientos crónicos previsibles"
+        ]
+      },
+      {
+        "name": "Asistencia en domicilio",
+        "category": "optional",
+        "description": "Cobertura de servicios de personal sanitario, doméstico o docente para el asegurado lesionado temporalmente por un accidente cubierto, que requiera atención sanitaria a domicilio, ayuda doméstica o escolar.",
+        "covered_events": [
+          "Accidente cubierto que requiera atención sanitaria a domicilio, ayuda doméstica o escolar"
+        ],
+        "benefits": [
+          "Personal sanitario (fisioterapeutas, ayudantes técnicos sanitarios) durante máximo 3 meses y hasta 3.010€ (no cubierto por otros seguros)",
+          "Personal doméstico para labores de limpieza a partir del día 10 del accidente, durante máximo 3 meses y hasta 20€/día y 1.505€ por siniestro",
+          "Personal docente para clases particulares a partir del día 30 del accidente, durante máximo 6 meses y hasta 1.205€",
+          "Adaptación de vivienda y/o automóvil si el asegurado requiere silla de ruedas de por vida (hasta 3.010€ por siniestro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Los servicios deben ser autorizados previamente por la compañía",
+          "No cubre si la atención puede obtenerse por otros seguros (públicos o privados)"
+        ]
+      },
+      {
+        "name": "Defensa jurídica",
+        "category": "optional",
+        "description": "Cobertura de gastos legales y asistencia jurídica para la defensa del asegurado en procedimientos legales derivados de hechos ocurridos durante la vigencia de la póliza, siempre que la cuantía de la reclamación sea superior a 305€.",
+        "covered_events": [
+          "Procedimientos legales derivados de hechos cubiertos por la póliza"
+        ],
+        "benefits": [
+          "Honorarios de abogado y procurador (según normas colegiales)",
+          "Otorgamiento de poderes necesarios",
+          "Dictámenes periciales, certificaciones y gastos pertinentes",
+          "Costas judiciales si son impuestas al asegurado"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre sanciones, multas ni obligaciones impuestas por sentencia",
+          "No cubre reclamaciones derivadas del uso de vehículos a motor si el asegurado es propietario o conductor",
+          "No cubre reclamaciones de empleados del asegurado (excepto servicio doméstico) ni derivadas de su actividad profesional"
+        ]
+      },
+      {
+        "name": "Asistencia al fallecimiento",
+        "category": "optional",
+        "description": "Servicios de coordinación y gestión de trámites para el sepelio del asegurado fallecido, así como gestión y pago de gastos para la obtención de documentación necesaria en España.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Coordinación y gestión de servicios de sepelio con profesionales concertados",
+          "Gestión y pago de gastos para obtención de documentación: certificado de defunción, libro de familia, solicitudes de pensiones (viudedad, orfandad), certificados de actos de última voluntad, baja en sistemas públicos, etc. (hasta 60€ por gestión si no se usan profesionales designados)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Los familiares deben pagar directamente a los profesionales contratados para el sepelio",
+          "No cubre gastos de abogados, procuradores, notarios, registradores ni gestorías"
+        ]
+      },
+      {
+        "name": "Asistencia psicológica",
+        "category": "optional",
+        "description": "Servicio de asistencia psicológica para el asegurado o sus familiares en caso de fallecimiento accidental del asegurado, invalidez permanente superior al 50% o declaración de incapacidad permanente total, absoluta o gran invalidez.",
+        "covered_events": [
+          "Fallecimiento accidental del asegurado",
+          "Invalidez permanente superior al 50% según baremo",
+          "Incapacidad permanente total, absoluta o gran invalidez"
+        ],
+        "benefits": [
+          "Hasta 5 sesiones presenciales por beneficiario y máximo 10 sesiones por siniestro",
+          "Durante los 3 meses siguientes a la fecha del siniestro"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Beneficiarios: cónyuge/pareja de hecho e hijos (fallecimiento); asegurado (incapacidades)",
+          "No reembolsa honorarios de profesionales ajenos a la compañía"
+        ]
+      },
+      {
+        "name": "Invalidez progresiva",
+        "category": "optional",
+        "description": "Ampliación del baremo de lesiones para indemnizar ponderadamente la invalidez permanente que resulte de un accidente cubierto. Modalidades de 225% o 350% según el porcentaje de indemnización.",
+        "covered_events": [
+          "Invalidez permanente derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Indemnización ponderada según baremo ampliado (ejemplo: 225% o 350% de la suma asegurada según modalidad contratada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La indemnización máxima no puede superar el 225% o 350% según la modalidad contratada"
+        ]
+      },
+      {
+        "name": "Cancelación de saldos pendientes",
+        "category": "optional",
+        "description": "Indemnización por el pago de saldos pendientes cargados en la cuenta bancaria del asegurado en los 6 meses posteriores a un accidente cubierto que cause fallecimiento o incapacidad permanente absoluta.",
+        "covered_events": [
+          "Fallecimiento accidental del asegurado",
+          "Incapacidad permanente absoluta derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Pago de hasta 600€ por siniestro (independiente de otras indemnizaciones)"
+        ],
+        "capital_or_limit": "600€",
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Personal sustitutorio",
+        "category": "optional",
+        "description": "Reembolso de gastos para la contratación de un profesional que sustituya al asegurado temporalmente impedido para desarrollar su actividad laboral habitual como consecuencia de un accidente cubierto.",
+        "covered_events": [
+          "Accidente cubierto que cause incapacidad temporal para la actividad laboral habitual"
+        ],
+        "benefits": [
+          "Reembolso mensual de gastos hasta el límite de la suma asegurada para invalidez temporal",
+          "Máximo 12 meses de cobertura"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 30,
+        "conditions": [
+          "El asegurado debe acreditar la contratación del profesional mediante copia del contrato de trabajo"
+        ]
+      },
+      {
+        "name": "Fracturas",
+        "category": "optional",
+        "description": "Indemnización única por fractura ósea completa derivada de un accidente cubierto, independientemente de procesos de asistencia o rehabilitación.",
+        "covered_events": [
+          "Fractura ósea completa derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "180€ si se requiere intervención quirúrgica con reducción abierta",
+          "100€ en caso contrario"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Solo cubre fracturas completas (trazo de fractura afecta a todo un plano del hueso, formándose dos o más fragmentos)"
+        ]
+      },
+      {
+        "name": "Garantía hipotecaria",
+        "category": "optional",
+        "description": "Reembolso de cuotas mensuales del préstamo hipotecario cargadas en la cuenta bancaria del asegurado en caso de fallecimiento accidental o incapacidad permanente absoluta derivada de un accidente cubierto.",
+        "covered_events": [
+          "Fallecimiento accidental del asegurado",
+          "Incapacidad permanente absoluta derivada de un accidente cubierto"
+        ],
+        "benefits": [
+          "Pago de hasta 600€ mensuales durante 12 meses (independiente de otras indemnizaciones)",
+          "El exceso de la cuota hipotecaria debe ser asumido por el beneficiario"
+        ],
+        "capital_or_limit": "600€/mes (máximo 12 meses)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Beneficiarios: cónyuge/pareja de hecho e hijos (fallecimiento); asegurado (incapacidad permanente absoluta)"
+        ]
+      },
+      {
+        "name": "Gastos de traslado por sepelio",
+        "category": "optional",
+        "description": "Pago de gastos de traslado por sepelio derivados de la muerte del asegurado como consecuencia de un accidente cubierto, incluyendo traslado desde el lugar del accidente hasta el de inhumación.",
+        "covered_events": [
+          "Fallecimiento accidental del asegurado"
+        ],
+        "benefits": [
+          "Pago de gastos de traslado (excepto enterramiento) hasta 1.500€ por siniestro"
+        ],
+        "capital_or_limit": "1.500€",
+        "waiting_period_days": null,
+        "conditions": [
+          "Pago contra presentación de justificantes en un plazo máximo de 5 días desde su recepción"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Provocación intencionada del siniestro por parte del asegurado",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conflictos armados (haya mediado o no declaración oficial de guerra)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Motines y tumultos populares",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos relacionados directa o indirectamente con el uso de armas atómicas, bacteriológicas o químicas",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Inundaciones extraordinarias o catastróficas, huracanes, tempestades, movimientos sísmicos y, en general, hechos calificados de catastróficos por la autoridad competente",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Consecuencias o secuelas de accidentes acaecidos con anterioridad a la entrada en vigor del seguro, aunque se manifiesten durante su vigencia",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación en competiciones o torneos organizados por federaciones deportivas u organismos similares, así como práctica de deportes o actividades notoriamente peligrosas (automovilismo, motociclismo, submarinismo, navegación de altura, escalada, espeleología, caza, boxeo, paracaidismo, aerostación, vuelo libre y vuelo sin motor)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Utilización, como pasajero o tripulante, de helicópteros y medios de navegación aérea no autorizados para el transporte público de viajeros",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Tirones, roturas o desgarros musculares, lumbalgias y hernias de cualquier naturaleza",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación activa del asegurado en actos delictivos, o en apuestas, desafíos o riñas, salvo en casos de legítima defensa o estado de necesidad",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes sufridos estando embriagado o bajo el efecto de drogas, tóxicos o estupefacientes (se considera embriaguez cuando el grado de alcohol en sangre supere el límite permitido por la legislación de Tráfico y Circulación vigente)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Lesiones y enfermedades consecuencia de intervenciones quirúrgicas o tratamientos médicos no motivados por un accidente cubierto; enfermedades de cualquier naturaleza (incluso de origen infeccioso), infartos, episodios cardiovasculares, ataques de epilepsia y pérdida de facultades mentales, salvo que sean ocasionadas por un accidente",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros que, según la regulación sobre riesgos extraordinarios, tengan tal consideración",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Infartos y otros episodios cardiovasculares o cerebrovasculares análogos o similares (salvo que se contrate como garantía opcional)",
+        "category": "Específica a cobertura",
+        "legal_reference": null
+      },
+      {
+        "description": "Prestaciones que correspondan al asegurado por otro seguro o cobertura a su favor (la garantía complementa en defecto o exceso dentro de los límites asegurados)",
+        "category": "Asistencia en viaje",
+        "legal_reference": null
+      },
+      {
+        "description": "Servicios contratados directamente por el asegurado sin previo consentimiento de la compañía (excepto en casos de urgente necesidad)",
+        "category": "Asistencia en viaje",
+        "legal_reference": null
+      },
+      {
+        "description": "Servicios que tengan su origen en riesgos no asegurados por la cobertura de accidentes",
+        "category": "Asistencia en viaje",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades de cualquier naturaleza (incluso de origen infeccioso) no derivadas de un accidente cubierto",
+        "category": "Gastos sanitarios",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños en prótesis preexistentes",
+        "category": "Gastos sanitarios",
+        "legal_reference": null
+      },
+      {
+        "description": "Reclamaciones derivadas del uso y circulación de vehículos a motor cuando el asegurado fuera propietario o conductor",
+        "category": "Defensa jurídica",
+        "legal_reference": null
+      },
+      {
+        "description": "Reclamaciones de empleados del asegurado (excepto servicio doméstico) y de terceros por actos u omisiones de aquéllos en el desempeño de sus funciones laborales",
+        "category": "Defensa jurídica",
+        "legal_reference": null
+      },
+      {
+        "description": "Reclamaciones cuya causa sea la actividad profesional del asegurado, excepto en casos previstos como prestaciones aseguradas en 'derecho laboral'",
+        "category": "Defensa jurídica",
+        "legal_reference": null
+      },
+      {
+        "description": "Gastos derivados de la intervención profesional de abogados, procuradores, notarios, registradores y gestorías en asistencia al fallecimiento",
+        "category": "Asistencia al fallecimiento",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Incapacidad permanente total",
+        "limit_type": "maximum_age",
+        "limit_value": "65 años",
+        "conditions": "Cobertura hasta los 65 años"
+      },
+      {
+        "coverage_name": "Incapacidad temporal accidental",
+        "limit_type": "maximum_duration",
+        "limit_value": "2 años",
+        "conditions": "Cobertura hasta los 65 años y máximo 2 años"
+      },
+      {
+        "coverage_name": "Accidentes vasculares",
+        "limit_type": "maximum_age",
+        "limit_value": "65 años",
+        "conditions": "Cobertura hasta los 65 años"
+      },
+      {
+        "coverage_name": "Gastos sanitarios (prótesis, cirugía plástica, trasplantes)",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.010€",
+        "conditions": "Hasta el 10% de la suma asegurada más alta (fallecimiento, invalidez permanente o incapacidad profesional) y máximo 3.010€ por cada una"
+      },
+      {
+        "coverage_name": "Asistencia en viaje (gastos de curación en el extranjero)",
+        "limit_type": "maximum_amount",
+        "limit_value": "12.025€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia en viaje (gastos de acompañante)",
+        "limit_type": "maximum_amount_per_day_and_total",
+        "limit_value": "125€/día y 1.205€ por accidente (España); 155€/día y 1.505€ (extranjero)",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia en viaje (extravío de equipajes)",
+        "limit_type": "maximum_amount_per_person_and_total",
+        "limit_value": "305€/persona y 1.205€ por accidente",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia en domicilio (personal sanitario)",
+        "limit_type": "maximum_duration_and_amount",
+        "limit_value": "3 meses y 3.010€",
+        "conditions": "No cubierto si puede obtenerse por otros seguros (públicos o privados)"
+      },
+      {
+        "coverage_name": "Asistencia en domicilio (personal doméstico)",
+        "limit_type": "maximum_amount_per_day_and_total",
+        "limit_value": "20€/día y 1.505€ por accidente",
+        "conditions": "A partir del día 10 del accidente y durante máximo 3 meses"
+      },
+      {
+        "coverage_name": "Asistencia en domicilio (personal docente)",
+        "limit_type": "maximum_duration_and_amount",
+        "limit_value": "30 días (coste asumido por asegurado); máximo 1.205€",
+        "conditions": "A partir del día 30 del accidente y durante máximo 6 meses"
+      },
+      {
+        "coverage_name": "Asistencia psicológica",
+        "limit_type": "maximum_sessions",
+        "limit_value": "5 sesiones por beneficiario y 10 por accidente",
+        "conditions": "Durante los 3 meses siguientes al siniestro"
+      },
+      {
+        "coverage_name": "Cancelación de saldos pendientes",
+        "limit_type": "maximum_amount",
+        "limit_value": "600€",
+        "conditions": "Por siniestro"
+      },
+      {
+        "coverage_name": "Personal sustitutorio",
+        "limit_type": "maximum_duration",
+        "limit_value": "12 meses",
+        "conditions": "No se disfruta la cobertura durante los primeros 30 días desde el accidente"
+      },
+      {
+        "coverage_name": "Fracturas",
+        "limit_type": "fixed_amount",
+        "limit_value": "180€ (con cirugía) o 100€ (sin cirugía)",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Garantía hipotecaria",
+        "limit_type": "maximum_amount_per_month_and_total",
+        "limit_value": "600€/mes y 12 mensualidades",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Gastos de traslado por sepelio",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Becas de estudio",
+        "limit_type": "maximum_amount_per_year_and_total",
+        "limit_value": "1.500€ al año por cada hijo y 15.000€ por accidente",
+        "conditions": "Hijos menores de 25 años, solteros y que convivan con el asegurado"
+      },
+      {
+        "coverage_name": "Abono de seguros particulares",
+        "limit_type": "maximum_amount",
+        "limit_value": "1 anualidad",
+        "conditions": "Excepto planes de pensiones y productos financieros"
+      },
+      {
+        "coverage_name": "Gastos hospitalarios",
+        "limit_type": "maximum_amount_per_day_and_total",
+        "limit_value": "75€/día y 1.500€ por accidente",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Defensa jurídica",
+        "limit_type": "minimum_claim_amount",
+        "limit_value": "305€",
+        "conditions": "Solo cubre reclamaciones con cuantía superior a 305€"
+      },
+      {
+        "coverage_name": "Asistencia en viaje (envío de fondos)",
+        "limit_type": "maximum_amount",
+        "limit_value": "905€ o equivalente en moneda local",
+        "conditions": "Préstamo sin interés a devolver en 60 días"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima según lo establecido en las Condiciones Generales y Particulares",
+        "Facilitar información veraz y completa al contratar el seguro (salud, profesión, etc.)",
+        "Comunicar cualquier cambio en las circunstancias declaradas que agrave el riesgo (ejemplo: cambio de actividad laboral)",
+        "Comunicar a la aseguradora cualquier reserva o inexactitud en las declaraciones que pueda influir en la valoración del riesgo",
+        "Permitir el acceso al reconocimiento médico por facultativos designados por la compañía",
+        "Autorizar a facultativos y profesionales a facilitar información a la compañía sobre el siniestro y sus circunstancias",
+        "Facilitar cuanta información pueda necesitar la compañía respecto a las circunstancias del siniestro y la salud del asegurado",
+        "Comunicar a la compañía cualquier cambio de domicilio, teléfono, fax o dirección de correo electrónico facilitado",
+        "Notificar el siniestro en el plazo de 7 días desde que se conozca (salvo pacto de plazo más amplio)",
+        "Acreditar la contratación de un profesional sustitutorio mediante copia del contrato de trabajo (para la cobertura de personal sustitutorio)"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Notificar el siniestro a la compañía lo antes posible y, como máximo, en 7 días desde que se conozca",
+        "Ratificar la notificación por escrito si la compañía lo considera necesario",
+        "Presentar la documentación necesaria para comprobar o valorar los daños",
+        "Permitir la actuación de los técnicos designados por la compañía para valorar los daños",
+        "En caso de terceros responsables, la compañía puede ejercer acciones de recobro",
+        "En defensa jurídica, el asegurado debe obtener el consentimiento previo de la compañía para realizar acuerdos con la parte contraria"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática por periodos anuales sucesivos",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Falta de pago de la prima",
+        "Rescisión por reserva o inexactitud en las declaraciones (con conocimiento previo al siniestro)",
+        "Rescisión por agravación del riesgo no aceptada por la compañía",
+        "Extinción por cumplimiento del plazo establecido en las Condiciones Particulares",
+        "Extinción por declaración de concurso o liquidación intervenida de la compañía",
+        "Extinción por falta de pago de primas dentro de los 6 meses siguientes a su vencimiento"
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados por la aseguradora",
+      "payment_frequency": [
+        "anual",
+        "fraccionada (según pacto en Condiciones Particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Suma asegurada contratada",
+        "Coberturas seleccionadas (básicas y opcionales)",
+        "Edad y profesión del asegurado",
+        "Historial médico y declaraciones de salud",
+        "Ámbito territorial de cobertura",
+        "Franquicias pactadas (si aplica)"
+      ],
+      "discounts": [
+        "Posibles descuentos por contratación de múltiples coberturas o por pago anual",
+        "Descuentos por no fraccionamiento de prima (según condiciones de la compañía)"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "Mundial",
+      "worldwide_coverage": [
+        "Fallecimiento accidental",
+        "Invalidez permanente",
+        "Incapacidad profesional",
+        "Incapacidad temporal accidental",
+        "Gastos sanitarios",
+        "Asistencia en viaje",
+        "Asistencia en domicilio",
+        "Defensa jurídica",
+        "Asistencia al fallecimiento",
+        "Asistencia psicológica",
+        "Invalidez progresiva",
+        "Cancelación de saldos pendientes",
+        "Personal sustitutorio",
+        "Fracturas",
+        "Garantía hipotecaria",
+        "Gastos de traslado por sepelio"
+      ],
+      "special_conditions_abroad": "Las indemnizaciones se satisfacen en España y en Euros. En viajes, la cobertura aplica si el hecho ocurre a más de 15 km del domicilio habitual (10 km si reside fuera de la península). Para viajes de más de 60 días, la cobertura no aplica salvo estudios reglados en España."
+    },
+    "source_documents": [
+      {
+        "filename": "flexiaccidentes_modular_cg_0900ab448ccb5a83.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "flexiaccidentes_modular_ipid_0900ab449070008f.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "flexiaccidentes_modular_nota_0900ab44988d5dfc.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

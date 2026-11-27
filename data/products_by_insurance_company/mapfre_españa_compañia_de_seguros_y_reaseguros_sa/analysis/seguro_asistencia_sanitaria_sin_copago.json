@@ -1,0 +1,964 @@
+{
+  "product_id": "urn:C0058-09",
+  "company_key": "C0058",
+  "product_name": "seguro_asistencia_sanitaria_sin_copago",
+  "branches": [
+    "02"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-salud/asistencia-sanitaria-sin-copago/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:49:08.205843+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "a49f992a1c8f4f46a441c0cd862b3653b99ceff0156934fbaabfe73dca980773",
+      "markdown_hashes": {
+        "salud_asistencia_cg_0900ab44c632d17b.md": "d160a2a692948e80ee30e6c0455095b4430118413e32c0abb511900a48020b08",
+        "asistencia_sanitaria_sin_copago_ipid_0900ab44c63209ee.md": "1ef8b4af5dc67840ff212e7c1d3e649b03b06033a7010a7bec97e3d8b1126a5b",
+        "asistencia_sanitaria_sin_copago_nota_0900ab44c62d5832.md": "3337d82365804041ed51f59d9cbebc8d1ae0cf6a085520e6236eacbb13578075"
+      },
+      "markdown_files": [
+        "salud_asistencia_cg_0900ab44c632d17b.md",
+        "asistencia_sanitaria_sin_copago_ipid_0900ab44c63209ee.md",
+        "asistencia_sanitaria_sin_copago_nota_0900ab44c62d5832.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Asistencia Sanitaria",
+      "target_audience": "Particulares",
+      "description_es": "Seguro de asistencia sanitaria que cubre la atención médica prestada por profesionales y centros concertados por la aseguradora, sin copago por parte del asegurado. Incluye garantías extrahospitalarias, hospitalarias, complementarias y opcionales como la garantía bucodental. La cobertura se presta exclusivamente a través de la red de servicios concertados por Mapfre España.",
+      "description_en": "Health insurance that covers medical care provided by professionals and centers contracted by the insurer, with no copayment by the insured. It includes outpatient, hospital, complementary, and optional guarantees such as dental coverage. Coverage is provided exclusively through Mapfre España's contracted service network.",
+      "key_benefits": [
+        "Asistencia sanitaria sin copago en red concertada",
+        "Acceso a especialistas y pruebas diagnósticas sin coste adicional",
+        "Cobertura hospitalaria con habitación individual y servicios incluidos",
+        "Programas de medicina preventiva y detección precoz",
+        "Garantías complementarias como segundo diagnóstico internacional y acceso a red hospitalaria en EE.UU.",
+        "Opción de garantía bucodental con precios convenidos",
+        "Asistencia en viaje con cobertura médica y repatriación",
+        "Fallecimiento por accidente con indemnización",
+        "Adopción nacional e internacional con reembolso de gastos"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑIA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Asistencia Primaria",
+        "category": "basic",
+        "description": "Incluye consulta con facultativo en consulta o domicilio, medicina general, pediatría y puericultura (hasta 14 años), enfermería, medios de diagnóstico básicos (análisis clínicos y radiología convencional sin contraste), atención de urgencias domiciliarias y ambulatorias, y programa del niño sano (exploración neonatal, exámenes periódicos, vacunaciones según calendario oficial, registro de incidencias y educación para la salud infantil).",
+        "covered_events": [
+          "Consultas médicas de medicina general y pediatría",
+          "Visitas domiciliarias por enfermedad o lesión",
+          "Urgencias extrahospitalarias en servicios concertados",
+          "Programa del niño sano (hasta 14 años)"
+        ],
+        "benefits": [
+          "Consulta médica en consulta o domicilio",
+          "Medios de diagnóstico básicos (análisis clínicos y radiología convencional sin contraste)",
+          "Atención de enfermería",
+          "Vacunaciones según calendario oficial",
+          "Exploración neonatal y detección precoz de anomalías",
+          "Exámenes periódicos de salud para control de nutrición y desarrollo psicofísico"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La asistencia domiciliaria requiere prescripción escrita de facultativo y solo procede cuando el enfermo no pueda desplazarse por razón de la enfermedad o lesión",
+          "Para urgencias extrahospitalarias, se debe contactar con el Servicio Telefónico de Urgencias de la Aseguradora para ser dirigido al servicio concertado más cercano"
+        ]
+      },
+      {
+        "name": "Asistencia Especializada Ambulatoria",
+        "category": "basic",
+        "description": "Incluye consulta con facultativos de distintas especialidades médico-quirúrgicas, procedimientos de diagnóstico y terapéuticos, cirugía menor ambulatoria, contrastes radiológicos y servicios especiales como psicoterapia breve, osteopatía, estudio biomecánico de la marcha y tratamiento de esterilidad de la pareja.",
+        "covered_events": [
+          "Consultas con especialistas médicos",
+          "Pruebas diagnósticas y terapéuticas",
+          "Cirugía menor ambulatoria",
+          "Tratamientos especiales (psicoterapia, osteopatía, estudio biomecánico de la marcha, esterilidad)"
+        ],
+        "benefits": [
+          "Consulta con especialistas en las especialidades cubiertas",
+          "Pruebas diagnósticas y terapéuticas según especialidad",
+          "Cirugía menor ambulatoria",
+          "Tratamientos de psicoterapia breve (hasta 20 sesiones/año, 40 en casos de trastornos de la alimentación, acoso escolar o violencia de género)",
+          "Tratamientos de osteopatía (hasta 8 sesiones/año)",
+          "Estudio biomecánico de la marcha (cada 5 años en adultos, cada 2 años en niños hasta 14 años)",
+          "Tratamiento de esterilidad de la pareja (hasta 2 intentos de inseminación artificial y 1 de fecundación in vitro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado puede elegir y concertar cita directamente con los servicios concertados",
+          "Para determinados métodos terapéuticos o pruebas diagnósticas se requiere autorización expresa de la aseguradora",
+          "No se cubre sedación en procedimientos de diagnóstico"
+        ]
+      },
+      {
+        "name": "Asistencia Especializada Obstétrica",
+        "category": "basic",
+        "description": "Incluye asistencia del obstetra o ginecólogo en consulta, procedimientos diagnósticos y terapéuticos propios del seguimiento del embarazo, programas de medicina preventiva como preparación al parto y seguimiento de diabetes en el embarazo.",
+        "covered_events": [
+          "Seguimiento del embarazo",
+          "Consultas con obstetra o ginecólogo",
+          "Pruebas diagnósticas y terapéuticas obstétricas"
+        ],
+        "benefits": [
+          "Consulta y seguimiento del embarazo",
+          "Pruebas diagnósticas y terapéuticas propias del embarazo",
+          "Programa de preparación al parto",
+          "Programa de seguimiento y tratamiento de diabetes en el embarazo",
+          "Test prenatal no invasivo en sangre materna (DNA fetal) en casos específicos"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La asistencia se presta exclusivamente en consulta y no incluye hospitalización"
+        ]
+      },
+      {
+        "name": "Hospitalización Quirúrgica",
+        "category": "basic",
+        "description": "Incluye asistencia hospitalaria para tratamiento de enfermedades o lesiones que precisen cirugía en distintas especialidades quirúrgicas, cirugía mayor ambulatoria, cirugía endoscópica, láser (en indicaciones específicas), cirugía robótica (en indicaciones oncológicas específicas), trasplantes de córnea y autólogo de médula ósea, y reembolso de prótesis, implantes y kits según catálogo.",
+        "covered_events": [
+          "Intervenciones quirúrgicas en distintas especialidades",
+          "Cirugía mayor ambulatoria",
+          "Cirugía endoscópica",
+          "Cirugía robótica (en indicaciones oncológicas específicas)",
+          "Trasplantes de córnea y autólogo de médula ósea"
+        ],
+        "benefits": [
+          "Estancia en hospital concertado con habitación individual",
+          "Manutención del asegurado ingresado",
+          "Cama de acompañante (si el hospital dispone)",
+          "Uso de quirófano, material fungible, material de osteosíntesis, prótesis, implantes y kits según catálogo",
+          "Medicamentos según ficha técnica de la AEMPS",
+          "Tratamientos y pruebas diagnósticas",
+          "Honorarios de profesionales concertados",
+          "Reembolso de prótesis, implantes y kits según catálogo (hasta la cuantía máxima fijada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 240,
+        "conditions": [
+          "Para hospitalización quirúrgica se requiere autorización previa de la aseguradora con al menos 48 horas de antelación (excepto urgencias)",
+          "La cirugía robótica está cubierta exclusivamente en indicaciones oncológicas específicas",
+          "El trasplante de médula ósea autólogo y de córnea está cubierto"
+        ]
+      },
+      {
+        "name": "Hospitalización No Quirúrgica",
+        "category": "basic",
+        "description": "Incluye asistencia hospitalaria para diagnóstico y/o tratamiento de enfermedades o lesiones en distintas especialidades médicas, hospitalización psiquiátrica (hasta 60 días/año), hospitalización en unidades especiales (UVI, unidad coronaria, unidad de aislamiento, unidad de rehabilitación neurológica cerebral y/o medular), y tratamientos específicos como radioterapia y quimioterapia en indicaciones específicas.",
+        "covered_events": [
+          "Hospitalización por enfermedades o lesiones médicas",
+          "Hospitalización psiquiátrica (procesos agudos o crónicos reagudizados)",
+          "Hospitalización en unidades especiales",
+          "Tratamientos específicos (radioterapia, quimioterapia intraperitoneal, quimioterapia intratecal)"
+        ],
+        "benefits": [
+          "Estancia en hospital concertado",
+          "Tratamientos y pruebas diagnósticas según especialidad",
+          "Hospitalización psiquiátrica hasta 60 días/año",
+          "Hospitalización en unidades especiales (UVI, unidad coronaria, etc.)",
+          "Radioterapia en procesos oncológicos",
+          "Quimioterapia intraperitoneal para carcinomatosis peritoneal secundaria a tumores avanzados de ovario y digestivos",
+          "Quimioterapia intratecal para linfomas de alto grado y carcinomatosis meníngea",
+          "RNM multiparamétrica de próstata y biopsia de próstata por fusión de imágenes en indicaciones específicas",
+          "Coronariografía por TAC en indicaciones específicas"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 240,
+        "conditions": [
+          "Para Daño Cerebral Adquirido y Daño Medular, la hospitalización en unidades de rehabilitación neurológica tiene un límite de 60 días durante los 12 primeros meses posteriores al diagnóstico",
+          "La hospitalización psiquiátrica tiene un límite de 60 días/año"
+        ]
+      },
+      {
+        "name": "Hospitalización Obstétrica",
+        "category": "basic",
+        "description": "Incluye asistencia hospitalaria por motivos obstétricos, asistencia al parto o cesárea por especialista y matrona, y asistencia en nido al neonato no incorporado a la póliza (hasta 3 días en parto normal y 5 días en parto por cesárea).",
+        "covered_events": [
+          "Parto normal o por cesárea",
+          "Asistencia hospitalaria obstétrica"
+        ],
+        "benefits": [
+          "Asistencia al parto o cesárea por especialista y matrona",
+          "Asistencia en nido al neonato no incorporado a la póliza (hasta 3 días en parto normal y 5 días en parto por cesárea)",
+          "Anestesia epidural a petición de la asegurada (si existe indicación médica y el centro dispone de medios)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 240,
+        "conditions": []
+      },
+      {
+        "name": "Segundo Diagnóstico Internacional",
+        "category": "basic",
+        "description": "Incluye interconsulta clínica con especialista o centro hospitalario acreditado a nivel mundial para confirmar un diagnóstico o diferentes alternativas terapéuticas según la relevancia de la patología a tratar.",
+        "covered_events": [
+          "Confirmación de diagnóstico o alternativas terapéuticas para patologías relevantes"
+        ],
+        "benefits": [
+          "Interconsulta con especialista o centro hospitalario de prestigio mundial",
+          "Elaboración de expediente clínico por facultativo de la aseguradora",
+          "Remisión de respuesta de la consulta al solicitante"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 180,
+        "conditions": [
+          "El asegurado o médico responsable puede solicitar la interconsulta con previo consentimiento escrito",
+          "La aseguradora analiza cada caso y envía al hospital más experto en la patología relevante"
+        ]
+      },
+      {
+        "name": "Acceso a la Red Hospitalaria en EE.UU.",
+        "category": "basic",
+        "description": "Incluye reembolso del 60% de los gastos médicos y hospitalarios para tratamiento del asegurado hospitalizado en EE.UU. si, como consecuencia de la garantía de segundo diagnóstico internacional, se desprendiera la necesidad de tratamiento cubierto por la póliza en la red hospitalaria de EE.UU.",
+        "covered_events": [
+          "Tratamiento hospitalario en EE.UU. derivado de segundo diagnóstico internacional"
+        ],
+        "benefits": [
+          "Reembolso del 60% de los gastos médicos y hospitalarios cubiertos por la póliza",
+          "Hasta el límite establecido para cada acto médico en las condiciones generales"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 180,
+        "conditions": [
+          "El asegurado debe solicitar presupuesto al centro médico y facilitarlo a la aseguradora para aprobación previa",
+          "La aseguradora no asume reintegro si no ha aceptado el presupuesto previamente",
+          "Solo cubre enfermedades o lesiones diagnosticadas en España y cubiertas por la póliza",
+          "No cubre gastos de traslado, acompañantes, intérpretes ni hospitalización por causas no cubiertas"
+        ]
+      },
+      {
+        "name": "Garantía Bucodental/Suplemento Odontológico",
+        "category": "optional",
+        "description": "Amplía la cobertura odontoestomatológica de la garantía de asistencia especializada ambulatoria, incluyendo actos odontológicos con coste asumido directamente por la aseguradora y otros con precio convenido pagado por el asegurado según tabla específica.",
+        "covered_events": [
+          "Tratamientos odontológicos y estomatológicos"
+        ],
+        "benefits": [
+          "Actos odontológicos sin coste para el asegurado según tabla específica",
+          "Actos odontológicos con precio convenido pagado por el asegurado según tabla específica",
+          "Presupuesto bucodental previo al tratamiento",
+          "Entrega de documentación justificativa (ticket de datáfono o factura) tras el tratamiento"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado debe elegir y concertar cita con especialista concertado",
+          "Es imprescindible la presentación de la tarjeta Mapfre España",
+          "El asegurado abona directamente al servicio concertado los precios convenidos",
+          "La aseguradora no reembolsa importe alguno satisfecho o adelantado por el asegurado"
+        ]
+      },
+      {
+        "name": "Adopción Nacional e Internacional",
+        "category": "basic",
+        "description": "Incluye reembolso de gastos ocasionados por la tramitación de un proceso de adopción nacional e internacional hasta un máximo de 12.000 euros, para asegurados que cumplan las condiciones exigidas por la ley y hayan solicitado el inicio de los trámites 48 meses después de la fecha de alta en la póliza.",
+        "covered_events": [
+          "Tramitación de adopción nacional e internacional"
+        ],
+        "benefits": [
+          "Reembolso de gastos hasta 12.000 euros por adopción",
+          "Gastos cubiertos: certificado de idoneidad, documentos legales, traducciones, donaciones a orfanatos, emisión de pasaportes o visados, gastos de viaje, alojamiento y manutención"
+        ],
+        "capital_or_limit": "12.000€",
+        "waiting_period_days": 1440,
+        "conditions": [
+          "El asegurado debe tener contratadas las garantías extrahospitalaria y hospitalaria",
+          "El inicio de los trámites de adopción debe haberse solicitado 48 meses después de la fecha de alta en la póliza",
+          "No son reembolsables trámites iniciados antes de la fecha de efecto de la cobertura",
+          "No se cubren gastos de gestación por sustitución"
+        ]
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "basic",
+        "description": "Incluye prestaciones como asistencia médica urgente por enfermedad o accidente, desplazamiento y alojamiento de acompañante, prolongación de estancia, envío de medicamentos, repatriación sanitaria, repatriación de fallecidos, transporte de acompañantes, interrupción del viaje y entrega de efectivo en el extranjero.",
+        "covered_events": [
+          "Enfermedad o accidente durante viaje en el extranjero",
+          "Fallecimiento durante viaje en el extranjero",
+          "Pérdida o demora de equipaje",
+          "Retraso en transporte"
+        ],
+        "benefits": [
+          "Asistencia médica urgente por enfermedad o accidente (hasta 15.000€ por siniestro)",
+          "Gastos de hospitalización, intervenciones quirúrgicas, honorarios médicos, enfermería y productos farmacéuticos hasta estabilización",
+          "Gastos de odontología de urgencia (hasta 120€ por siniestro)",
+          "Desplazamiento y alojamiento de acompañante hospitalizado (hasta 45€/día y 450€ máximo)",
+          "Prolongación de estancia por enfermedad o accidente (hasta 45€/día y 450€ máximo)",
+          "Envío de medicamentos prescritos",
+          "Repatriación sanitaria del asegurado",
+          "Repatriación del asegurado fallecido",
+          "Transporte de acompañantes del asegurado fallecido",
+          "Interrupción del viaje por fallecimiento de familiar (hasta 45€/día y 450€ máximo)",
+          "Interrupción del viaje por siniestro grave en residencia o locales profesionales (hasta 45€/día y 450€ máximo)",
+          "Entrega de efectivo en el extranjero (hasta 1.500€)",
+          "Indemnización por pérdida, robo o deterioro de equipaje facturado (hasta 500€, con límite de 60€ para deterioro exterior)",
+          "Localización y envío de equipajes y efectos personales extraviados"
+        ],
+        "capital_or_limit": "15.000€ (asistencia médica), 500€ (equipaje), 1.500€ (efectivo)",
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura aplica durante los 90 primeros días consecutivos de un viaje en el extranjero",
+          "Para asistencia médica, el asegurado debe contactar con Mapfre España antes de acudir a un centro médico (excepto en emergencias)",
+          "Para repatriación sanitaria, el equipo médico de la aseguradora decide el centro y si es necesaria la repatriación",
+          "Para indemnización por equipaje, se requiere presentación de documentación específica (PIR, reclamación a compañía aérea, relación de contenido)"
+        ]
+      },
+      {
+        "name": "Fallecimiento por Accidente",
+        "category": "basic",
+        "description": "Incluye indemnización de 12.000 euros a los beneficiarios designados en la póliza si, como consecuencia de un accidente ocurrido durante la vigencia de la póliza, se produjera el fallecimiento del asegurado inmediatamente o en el plazo máximo de 365 días.",
+        "covered_events": [
+          "Fallecimiento del asegurado por accidente"
+        ],
+        "benefits": [
+          "Indemnización de 12.000 euros a los beneficiarios designados"
+        ],
+        "capital_or_limit": "12.000€",
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado debe tener entre 14 y 65 años",
+          "No cubre accidentes ocurridos en regiones inexploradas o desérticas, viajes de exploración, o por causas excluidas (dolo, negligencia grave, participación en actos delictivos, etc.)",
+          "Los beneficiarios deben presentar documentación justificativa (certificado de defunción, informe médico, documentos de personalidad, liquidación del impuesto de sucesiones)"
+        ]
+      },
+      {
+        "name": "Programas de Medicina Preventiva",
+        "category": "included_service",
+        "description": "Incluye programas específicos de detección precoz y prevención de enfermedades como cáncer de mama, ginecológico, coronario, de próstata, diabetes, glaucoma, sordera en niños, melanoma, pie diabético, cáncer de pulmón y rehabilitación cardíaca.",
+        "covered_events": [
+          "Detección precoz de enfermedades y prevención"
+        ],
+        "benefits": [
+          "Programa de detección precoz de cáncer de mama (mujeres mayores de 40 años con factores de riesgo)",
+          "Programa de detección precoz de enfermedades ginecológicas (mujeres mayores de 25 años con factores de riesgo)",
+          "Programa de detección precoz de enfermedades coronarias e ictus (personas mayores de 40 años con factores de riesgo)",
+          "Programa de detección precoz de cáncer de próstata (varones mayores de 50 años)",
+          "Programa de detección precoz de diabetes y seguimiento del enfermo diabético",
+          "Programa de detección precoz de glaucoma",
+          "Programa de detección precoz de sordera en niños (hasta 7 años, con requisito de antigüedad en póliza de 8 meses para los padres)",
+          "Programa de detección precoz de melanoma",
+          "Programa de cribaje neuroisquémico del pie diabético (pacientes insulinodependientes con más de 10 años de evolución)",
+          "Programa de detección precoz de cáncer de pulmón (personas entre 55 y 80 años fumadoras o exfumadoras)",
+          "Programa de rehabilitación cardíaca (hasta 30 sesiones/año)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Para el programa de detección precoz de sordera en niños, es imprescindible que en el momento del nacimiento la madre o el padre tuvieran una antigüedad en póliza superior a 8 meses",
+          "Para el programa de detección precoz de cáncer de pulmón, el asegurado debe ser fumador en activo o exfumador en los últimos 15 años con consumo de 30 o más paquetes al año"
+        ]
+      },
+      {
+        "name": "Reembolso de Gastos de Farmacia",
+        "category": "optional",
+        "description": "Incluye reembolso de gastos de medicamentos prescritos bajo receta médica, siempre que el proceso a tratar esté cubierto por el seguro, y medicamentos prescritos por la Seguridad Social en la parte no financiada por la misma.",
+        "covered_events": [
+          "Compra de medicamentos prescritos bajo receta médica"
+        ],
+        "benefits": [
+          "Reembolso de gastos de medicamentos prescritos bajo receta médica",
+          "Reembolso de medicamentos prescritos por la Seguridad Social en la parte no financiada",
+          "Incluye vacunas para desensibilización alérgica, vacunas del calendario vacunal obligatorio, vacuna antitetánica, antineumónica y de la gripe en personas con factores de riesgo"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Se abonará la factura o ticket si el importe de los medicamentos incluidos es superior a 10€ y se acompaña de prescripción médica",
+          "No se incluyen vacunas por motivos de viajes al extranjero ni vacunas preventivas no enumeradas"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Asistencia sanitaria prestada por médicos, servicios o centros no concertados con Mapfre España (públicos o privados), así como gastos derivados de prestaciones prescritas por estos.",
+        "category": "General",
+        "legal_reference": "Artículo 10.1 Condiciones Generales"
+      },
+      {
+        "description": "Enfermedades, defectos y malformaciones preexistentes a la fecha de contratación del seguro que, siendo conocidas por el asegurado, no hayan sido declaradas en el cuestionario de salud.",
+        "category": "General",
+        "legal_reference": "Artículo 10.2 Condiciones Generales"
+      },
+      {
+        "description": "Accidentes producidos con anterioridad a la entrada en vigor de la póliza.",
+        "category": "General",
+        "legal_reference": "Artículo 10.3 Condiciones Generales"
+      },
+      {
+        "description": "Procedimientos médicos, quirúrgicos y medios de diagnóstico considerados técnicas novedosas o de nueva implantación.",
+        "category": "General",
+        "legal_reference": "Artículo 10.4 Condiciones Generales"
+      },
+      {
+        "description": "Intervenciones y/o tratamientos por razones estéticas en general, salvo si son necesarios como consecuencia de un accidente cubierto por la póliza.",
+        "category": "General",
+        "legal_reference": "Artículo 10.5 Condiciones Generales"
+      },
+      {
+        "description": "Mamoplastia o cirugía mamaria de aumento, mastopexia, cirugía reconstructora de mama (excepto después de mastectomía oncológica o cirugía profiláctica específica), mamoplastia de reducción (excepto en casos específicos).",
+        "category": "General",
+        "legal_reference": "Artículo 10.6 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos e intervenciones esclerosantes venosos, tratamientos cosméticos y de alopecia androgénica.",
+        "category": "General",
+        "legal_reference": "Artículo 10.7 Condiciones Generales"
+      },
+      {
+        "description": "Piezas anatómicas ortopédicas, material ortopédico, injertos osteoconductores, osteoinductores, terapias celulares, factores de crecimiento/plasma rico en plaquetas, prótesis, implantes y kits (excepto los incluidos en el catálogo y hasta la cuantía máxima fijada).",
+        "category": "General",
+        "legal_reference": "Artículo 10.8 Condiciones Generales"
+      },
+      {
+        "description": "Órtesis, miembros u órganos artificiales, material ortopédico (sillas de ruedas, camas ortopédicas, colchones antiescaras, corsés, collarines, bastones, aparatos de rehabilitación pasiva, monitorizaciones), gastos de mantenimiento y reparación, productos farmacéuticos, vacunas (excepto las del Programa del Niño Sano), autovacunas, jeringuillas, DIU (excepto en programas de medicina preventiva).",
+        "category": "General",
+        "legal_reference": "Artículo 10.9 Condiciones Generales"
+      },
+      {
+        "description": "Mantenimiento de audífonos incluidos en el Programa de Tratamiento de la Sordera en Niños.",
+        "category": "General",
+        "legal_reference": "Artículo 10.10 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos con cámara hiperbárica, monitores de apnea, tratamientos farmacológicos y concentradores de oxígeno portátiles.",
+        "category": "General",
+        "legal_reference": "Artículo 10.11 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos médicos, quirúrgicos y/o farmacológicos experimentales, medicamentos de uso compasivo y medicinas alternativas (acupuntura, homeopatía, etc.).",
+        "category": "General",
+        "legal_reference": "Artículo 10.12 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos médicos derivados del tratamiento de patologías adictivas.",
+        "category": "General",
+        "legal_reference": "Artículo 10.13 Condiciones Generales"
+      },
+      {
+        "description": "Medicación complementaria a tratamientos quimioterápicos.",
+        "category": "General",
+        "legal_reference": "Artículo 10.14 Condiciones Generales"
+      },
+      {
+        "description": "Cirugía reconstructiva de técnicas anticonceptivas previas.",
+        "category": "General",
+        "legal_reference": "Artículo 10.15 Condiciones Generales"
+      },
+      {
+        "description": "Cirugía refractiva (miopía, astigmatismo, hipermetropía), cirugía de la presbicia, gafas, lentillas y aparatos auditivos. Terapia fotodinámica en oftalmología.",
+        "category": "General",
+        "legal_reference": "Artículo 10.16 Condiciones Generales"
+      },
+      {
+        "description": "Cirugías preventivas, chequeos, exámenes médicos generales de carácter preventivo (excepto los incluidos en programas de medicina preventiva pactados).",
+        "category": "General",
+        "legal_reference": "Artículo 10.17 Condiciones Generales"
+      },
+      {
+        "description": "Periodoncia, endodoncia, empastes, ortodoncia, prótesis dentales, implantes y demás tratamientos dentales (excepto con garantía bucodental y servicios concertados).",
+        "category": "General",
+        "legal_reference": "Artículo 10.18 Condiciones Generales"
+      },
+      {
+        "description": "Traslados requeridos para asistencia a consultas médicas, pruebas diagnósticas, fisioterapia y rehabilitación (excepto en casos de hospitalización autorizada).",
+        "category": "General",
+        "legal_reference": "Artículo 10.19 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos médicos derivados de tentativa de suicidio o autolesión.",
+        "category": "General",
+        "legal_reference": "Artículo 10.20 Condiciones Generales"
+      },
+      {
+        "description": "Trasplantes de órganos (excepto asistencia médico-quirúrgica para trasplantes expresamente incluidos: médula ósea autólogo, córnea, y otros específicos).",
+        "category": "General",
+        "legal_reference": "Artículo 10.21 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos médicos derivados de participación en carreras, apuestas, deportes profesionales o actividades de riesgo (aéreas, submarinismo con pulmón artificial, boxeo, escalada, carreras de vehículos, espeleología, toreo, etc.).",
+        "category": "General",
+        "legal_reference": "Artículo 10.22 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos médicos derivados de participación en actos delictivos, alborotos, reyertas o riñas (excepto legítima defensa).",
+        "category": "General",
+        "legal_reference": "Artículo 10.23 Condiciones Generales"
+      },
+      {
+        "description": "Enfermedades y accidentes consecuencia de guerra, terrorismo, insurrecciones, movimientos sísmicos, inundaciones, huracanes, erupciones volcánicas, radiación nuclear, catástrofes naturales o epidemias declaradas oficialmente.",
+        "category": "General",
+        "legal_reference": "Artículo 10.24 Condiciones Generales"
+      },
+      {
+        "description": "Servicios hosteleros y sociales (teléfono, televisión, comidas del acompañante, habitación tipo suite, cama de acompañante en unidades especiales).",
+        "category": "General",
+        "legal_reference": "Artículo 10.25 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos y/o internamientos en centros para curas de reposo, adelgazamiento, balnearios, residencias asistidas, geriátricos, cuidados paliativos.",
+        "category": "General",
+        "legal_reference": "Artículo 10.26 Condiciones Generales"
+      },
+      {
+        "description": "Hospitalización, hospital de día y tratamiento extrahospitalario en procesos psiquiátricos crónicos, test psicológicos, psicoanálisis, hipnosis, sofrología, rehabilitación psicosocial o neuropsicológica.",
+        "category": "General",
+        "legal_reference": "Artículo 10.27 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos correspondientes a atención a recién nacidos (excepto si están incluidos en la póliza).",
+        "category": "General",
+        "legal_reference": "Artículo 10.28 Condiciones Generales"
+      },
+      {
+        "description": "Reembolso de gastos de tramitación de adopción iniciada antes de la fecha de alta en la póliza.",
+        "category": "General",
+        "legal_reference": "Artículo 10.29 Condiciones Generales"
+      },
+      {
+        "description": "Interrupción voluntaria del embarazo y asistencia sanitaria relacionada.",
+        "category": "General",
+        "legal_reference": "Artículo 10.30 Condiciones Generales"
+      },
+      {
+        "description": "Cualquier estudio genético (excepto cuando la confirmación del diagnóstico genético condicione la instauración de un tratamiento específico y figure en el listado del Anexo I).",
+        "category": "General",
+        "legal_reference": "Artículo 10.31 Condiciones Generales"
+      },
+      {
+        "description": "Partos en medios acuáticos, a domicilio, por medios alternativos y técnicas de recuperación postparto.",
+        "category": "General",
+        "legal_reference": "Artículo 10.32 Condiciones Generales"
+      },
+      {
+        "description": "Cirugía de cambio de sexo.",
+        "category": "General",
+        "legal_reference": "Artículo 10.33 Condiciones Generales"
+      },
+      {
+        "description": "Educación para el lenguaje, terapia y rehabilitación especial en enfermos con afectación psicomotora, terapia de mantenimiento u ocupacional, rehabilitación extrahospitalaria para Daño Medular.",
+        "category": "General",
+        "legal_reference": "Artículo 10.34 Condiciones Generales"
+      },
+      {
+        "description": "Técnicas quirúrgicas o procedimientos terapéuticos que usen láser (excepto los expresamente incluidos en hospitalización quirúrgica), cirugía del Parkinson y cirugía de la Epilepsia.",
+        "category": "General",
+        "legal_reference": "Artículo 10.35 Condiciones Generales"
+      },
+      {
+        "description": "Digitalización del estudio biomecánico de la marcha y fabricación de plantillas personalizadas.",
+        "category": "General",
+        "legal_reference": "Artículo 10.36 Condiciones Generales"
+      },
+      {
+        "description": "En reproducción asistida: medicación, congelación/descongelación de embriones, esperma y óvulos, diagnóstico preimplantacional, gastos de donación de ovocitos y esperma.",
+        "category": "General",
+        "legal_reference": "Artículo 10.37 Condiciones Generales"
+      },
+      {
+        "description": "Tratamiento quirúrgico de la impotencia coeundi.",
+        "category": "General",
+        "legal_reference": "Artículo 10.38 Condiciones Generales"
+      },
+      {
+        "description": "Gastos relacionados con procesos de gestación por sustitución.",
+        "category": "General",
+        "legal_reference": "Artículo 10.39 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos farmacológicos en Oncología, Reumatología u otras especialidades que no precisen aplicación en centro hospitalario (aunque se dispensen en hospital).",
+        "category": "General",
+        "legal_reference": "Artículo 10.40 Condiciones Generales"
+      },
+      {
+        "description": "Utilización de aparatos, dispositivos o fungibles de uso médico reciente aparición con coste superior a 1.000€.",
+        "category": "General",
+        "legal_reference": "Artículo 10.41 Condiciones Generales"
+      },
+      {
+        "description": "Tratamientos de radioterapia mediante protones.",
+        "category": "General",
+        "legal_reference": "Artículo 10.42 Condiciones Generales"
+      },
+      {
+        "description": "Medicamentos novedosos, biomateriales y medicamentos de terapias avanzadas (génica, celular), medicamentos biológicos (excepto vacunas, anticuerpos monoclonales, productos derivados de la sangre, plasma humano y anticuerpos monoclonales para uso no oncológico con coste por dosis superior a 700€).",
+        "category": "General",
+        "legal_reference": "Artículo 10.43 Condiciones Generales"
+      },
+      {
+        "description": "En garantía de reembolso de gastos de farmacia: vacunas por motivos de viajes al extranjero, vacunas preventivas no enumeradas, productos sin principio activo medicamentoso (dermocosmética, parafarmacia, complementos alimenticios, geles, cremas, sueros fisiológicos, cosméticos, etc.).",
+        "category": "General",
+        "legal_reference": "Artículo 10.44 Condiciones Generales"
+      },
+      {
+        "description": "Gastos médicos derivados del tratamiento del lipedema.",
+        "category": "General",
+        "legal_reference": "Artículo 10.45 Condiciones Generales"
+      },
+      {
+        "description": "Cirugía de la obesidad y/o bariátrica.",
+        "category": "General",
+        "legal_reference": "Artículo 10.46 Condiciones Generales"
+      },
+      {
+        "description": "Fisioterapia y/o rehabilitación respiratoria y de la articulación temporo-mandibular (ATM), así como cualquier otro tipo/técnica de fisioterapia/rehabilitación no expresamente cubierta.",
+        "category": "General",
+        "legal_reference": "Artículo 10.47 Condiciones Generales"
+      },
+      {
+        "description": "Trasplante heterólogo de médula ósea y cualquier otro trasplante no expresamente incluido.",
+        "category": "General",
+        "legal_reference": "Artículo 10.48 Condiciones Generales"
+      },
+      {
+        "description": "Tratamiento de crioterapia y cualquier otra terapia focal para tratamiento de cáncer.",
+        "category": "General",
+        "legal_reference": "Artículo 10.49 Condiciones Generales"
+      },
+      {
+        "description": "Paneles de biología molecular para diagnóstico por PCR de enfermedades infecciosas.",
+        "category": "General",
+        "legal_reference": "Artículo 10.50 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria y gastos médicos derivados de hechos de la circulación cubiertos por el Seguro Obligatorio de Responsabilidad Civil en la circulación de vehículos a motor.",
+        "category": "General",
+        "legal_reference": "Artículo 10.51 Condiciones Generales"
+      },
+      {
+        "description": "Terapia con campos eléctricos para el tratamiento de tumores.",
+        "category": "General",
+        "legal_reference": "Artículo 10.52 Condiciones Generales"
+      },
+      {
+        "description": "Asistencia sanitaria prestada por médicos, servicios o centros no concertados durante viajes en el extranjero (excepto en emergencias).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Enfermedades preexistentes o crónicas sin carácter de urgencia vital durante viajes en el extranjero (hasta la estabilización).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Asistencia sanitaria a neonatos no incluidos en la póliza durante viajes en el extranjero (excepto en casos específicos de complicaciones imprevisibles en el embarazo de la asegurada).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Prestaciones cubiertas por otro seguro de asistencia en viaje contratado específicamente para el viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Enfermedades o estados patológicos producidos por ingestión voluntaria de alcohol, drogas, sustancias tóxicas o medicamentos sin prescripción médica.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Tratamientos de rehabilitación y revisiones médicas periódicas o preventivas durante viajes en el extranjero.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Prótesis, material ortopédico u órtesis y material de osteosíntesis durante viajes en el extranjero.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Viajes iniciados con intención de recibir tratamiento médico o asistencia sanitaria, o para tratamiento de enfermedad terminal.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Accidentes laborales en actividades de riesgo específico durante viajes en el extranjero.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Gastos producidos una vez transcurridos 90 días desde el inicio del viaje (excepto ampliación a 100 días por siniestro cubierto).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Enfermedades y accidentes consecuencia de fenómenos naturales distintos a los especificados (terremotos, maremotos, inundaciones extraordinarias, erupciones volcánicas, tempestad ciclónica atípica, caída de cuerpos siderales), actos de terrorismo, guerra, motines, rebeliones, disturbios, etc.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.2 Nota Informativa Previa"
+      },
+      {
+        "description": "Participación en actividades de riesgo específico (esquí, deportes de aventura, artes marciales, automovilismo, buceo, boxeo, escalada, etc.).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Servicios concertados por el asegurado sin previa comunicación o consentimiento de la aseguradora (excepto en caso de urgente necesidad justificada).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Gastos derivados de rescate en caso necesario o lesiones tratables in situ que no impidan proseguir el viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Artículo 11.2.58 Nota Informativa Previa"
+      },
+      {
+        "description": "Accidentes ocurridos en regiones inexploradas o desérticas, viajes de exploración, o por causas excluidas en la garantía de fallecimiento por accidente (dolo, negligencia grave, participación en actos delictivos, etc.).",
+        "category": "Fallecimiento por Accidente",
+        "legal_reference": "Artículo 11.1 Condiciones Generales"
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Hospitalización Quirúrgica",
+        "limit_type": "maximum_amount",
+        "limit_value": "Según catálogo de prótesis, implantes y kits cubiertos (hasta la cuantía máxima fijada en euros)",
+        "conditions": "Solo se cubren prótesis, implantes y kits incluidos en el catálogo y autorizados por la aseguradora para la intervención quirúrgica"
+      },
+      {
+        "coverage_name": "Hospitalización No Quirúrgica",
+        "limit_type": "maximum_days",
+        "limit_value": "60 días por asegurado y año (para Daño Cerebral Adquirido y Daño Medular)",
+        "conditions": "Solo aplica para Daño Cerebral Adquirido y Daño Medular en unidades específicas de rehabilitación neurológica cerebral y/o medular, con varios déficits neurológicos simultáneos y en indicaciones específicas"
+      },
+      {
+        "coverage_name": "Hospitalización Psiquiátrica",
+        "limit_type": "maximum_days",
+        "limit_value": "60 días por asegurado y año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "20 sesiones por asegurado y año (40 sesiones para trastornos de la alimentación, acoso escolar o violencia de género) para psicoterapia breve",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "8 sesiones por asegurado y año para osteopatía",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "20 sesiones de logopedia por asegurado y año para detección precoz y tratamiento de sordera en niños",
+        "conditions": "Solo aplica para niños hasta 7 años, con requisito de antigüedad en póliza de 8 meses para los padres en el momento del nacimiento"
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_amount",
+        "limit_value": "2.000€ por audífono (hasta 2 audífonos por asegurado)",
+        "conditions": "Solo aplica para casos de sordera bilateral y mayor de 40 dBHL en el oído más sano"
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_amount",
+        "limit_value": "22.000€ por asegurado",
+        "conditions": "Solo aplica para implante coclear en casos de sordera bilateral y mayor de 40 dBHL en el oído más sano en niños hasta 7 años"
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "30 sesiones por asegurado y año para rehabilitación cardíaca",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "5 sesiones por asegurado y año para rehabilitación vestibular",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "8 sesiones por asegurado y año para tratamientos de ondas de choque",
+        "conditions": "Solo aplica para patologías específicas (tendinopatías calcificantes, degenerativas, enfermedad de De Quervain, fracturas de estrés, pseudoartrosis, osteonecrosis, osteocondritis disecante)"
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "4 sesiones por asegurado y año para tratamientos de quiropodia",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Programas de Medicina Preventiva",
+        "limit_type": "maximum_sessions",
+        "limit_value": "8 sesiones por asegurado y año para rehabilitación del suelo pélvico",
+        "conditions": "Solo aplica tras embarazo/parto y para tratamiento de incontinencia urinaria y/o anal"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje",
+        "limit_type": "maximum_amount",
+        "limit_value": "15.000€ por siniestro",
+        "conditions": "Para asistencia médica urgente por enfermedad o accidente durante viaje en el extranjero"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje",
+        "limit_type": "maximum_amount",
+        "limit_value": "500€",
+        "conditions": "Para indemnización por pérdida, robo o deterioro de equipaje facturado"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.500€",
+        "conditions": "Para entrega de efectivo en el extranjero"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje",
+        "limit_type": "maximum_days",
+        "limit_value": "90 días consecutivos",
+        "conditions": "Para cobertura durante viajes en el extranjero"
+      },
+      {
+        "coverage_name": "Adopción Nacional e Internacional",
+        "limit_type": "maximum_amount",
+        "limit_value": "12.000€ por adopción",
+        "conditions": "Solo aplica para trámites iniciados 48 meses después de la fecha de alta en la póliza"
+      },
+      {
+        "coverage_name": "Fallecimiento por Accidente",
+        "limit_type": "maximum_amount",
+        "limit_value": "12.000€",
+        "conditions": "Solo aplica para asegurados entre 14 y 65 años"
+      },
+      {
+        "coverage_name": "Reproducción Asistida",
+        "limit_type": "maximum_attempts",
+        "limit_value": "2 intentos de inseminación artificial y 1 intento de fecundación in vitro",
+        "conditions": "Solo aplica para parejas sin descendencia, ambos asegurados, sin cirugía anticonceptiva, menores de 40 años, con diagnóstico de esterilidad confirmado"
+      },
+      {
+        "coverage_name": "Reproducción Asistida",
+        "limit_type": "maximum_amount",
+        "limit_value": "360€",
+        "conditions": "Para aplicación de técnicas ICSY o micro inyección espermática"
+      },
+      {
+        "coverage_name": "Reproducción Asistida",
+        "limit_type": "maximum_amount",
+        "limit_value": "300€",
+        "conditions": "Para punción testicular (obtención de espermatozoides)"
+      },
+      {
+        "coverage_name": "Psicoterapia Breve o Terapia Focal",
+        "limit_type": "maximum_amount",
+        "limit_value": "12€ por consulta/sesión",
+        "conditions": "Franquicia a cargo del asegurado"
+      },
+      {
+        "coverage_name": "Osteopatía",
+        "limit_type": "maximum_amount",
+        "limit_value": "12€ por consulta/sesión",
+        "conditions": "Franquicia a cargo del asegurado"
+      },
+      {
+        "coverage_name": "Garantía Bucodental",
+        "limit_type": "maximum_amount",
+        "limit_value": "Según tabla de precios convenidos (ejemplo: corona o unidad de puente metal porcelana 350€, corona o unidad de puente porcelana alta resistencia o zirconio 430€, etc.)",
+        "conditions": "Solo aplica para actos con precio convenido según tabla específica"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima del seguro en los términos y plazos establecidos",
+        "Facilitar a la aseguradora toda la información necesaria para valorar el riesgo antes de formalizar el contrato (cuestionario de salud)",
+        "Comunicar a la aseguradora cualquier cambio en la información dada en la contratación durante toda la vigencia del contrato (ejemplo: cambio de domicilio, estado de salud relevante)",
+        "Comunicar a la aseguradora los hechos que puedan dar lugar a indemnización u otras prestaciones en el plazo de siete días desde que se conozcan, aportando la información y documentación necesaria",
+        "Permitir la actuación de los técnicos nombrados por la aseguradora para comprobar y valorar los daños",
+        "Utilizar exclusivamente los servicios concertados por la aseguradora para recibir la asistencia sanitaria (excepto en urgencias extremas o vitales)",
+        "Presentar la tarjeta Mapfre España y documento de identidad al acceder a servicios concertados",
+        "Cumplir con las normas de autorización de prestaciones (presentar informes médicos, autorizaciones previas, etc.)",
+        "No anticipar el pago de los gastos ocasionados por la utilización de servicios concertados (la aseguradora abona directamente al profesional o centro)",
+        "Comprobar que el profesional o centro es concertado antes de acudir",
+        "Facilitar a los servicios médicos de la aseguradora cuanta documentación e información médica sea requerida para valorar la cobertura de las prestaciones solicitadas"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "En caso de siniestro, contactar con la aseguradora en el plazo de siete días desde que se conozcan los hechos",
+        "Aportar toda la documentación e información requerida por la aseguradora para valorar la cobertura (informes médicos, partes de accidente, etc.)",
+        "En caso de urgencia hospitalaria, identificar al asegurado como cliente de Mapfre España en el centro hospitalario",
+        "Comunicar el ingreso a la aseguradora en el plazo máximo de 72 horas en casos de hospitalización urgente",
+        "Presentar informe médico que justifique la urgencia extrema o vital si se atiende en centro no concertado",
+        "Para adopción nacional e internacional, entregar documentación justificativa (certificado de idoneidad, facturas originales, etc.)",
+        "Para garantía bucodental, presentar presupuesto bucodental firmado y factura justificativa tras el tratamiento"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga por cualquiera de las partes con el plazo establecido",
+        "Incumplimiento de obligaciones contractuales por parte del tomador o asegurado",
+        "Reserva o inexactitud en la declaración del riesgo",
+        "Impago de primas",
+        "Extinción de la póliza por falta de pago",
+        "Cambio de domicilio del asegurado fuera de España (extinción automática)",
+        "Fallecimiento del asegurado",
+        "Rescisión del contrato por la aseguradora en caso de reserva o inexactitud en la declaración del riesgo"
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados",
+      "payment_frequency": [
+        "anual",
+        "fraccionado (según condiciones particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "No aplica copago en este producto (seguro sin copago)",
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Zona de residencia",
+        "Garantías contratadas",
+        "Historial de siniestralidad de la póliza",
+        "Incorporación de innovaciones tecnológicas u otras mejoras",
+        "Frecuencia de utilización de los servicios médicos"
+      ],
+      "discounts": [
+        "No se mencionan descuentos específicos en los documentos analizados"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Asistencia en Viaje (durante los 90 primeros días consecutivos de un viaje en el extranjero)",
+        "Acceso a la Red Hospitalaria en EE.UU. (con reembolso del 60% de los gastos médicos y hospitalarios cubiertos por la póliza)",
+        "Fallecimiento por Accidente (en todo el mundo, excepto regiones inexploradas o desérticas)"
+      ],
+      "special_conditions_abroad": "Para asistencia en viaje, la cobertura aplica durante los 90 primeros días consecutivos de un viaje en el extranjero. Para acceso a red hospitalaria en EE.UU., solo cubre enfermedades o lesiones diagnosticadas en España y cubiertas por la póliza. Para fallecimiento por accidente, no cubre regiones inexploradas o desérticas ni viajes de exploración."
+    },
+    "source_documents": [
+      {
+        "filename": "salud_asistencia_cg_0900ab44c632d17b.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "asistencia_sanitaria_sin_copago_ipid_0900ab44c63209ee.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "asistencia_sanitaria_sin_copago_nota_0900ab44c62d5832.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}
