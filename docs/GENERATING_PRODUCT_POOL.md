@@ -159,7 +159,7 @@ Validates each PDF and its markdown output:
 
 ### analyze_products Options
 
-- `--product NAME` - Analyze single product
+- `--product NAME` - Analyze a single product. Merges that product into the existing `metadata/analysis_summary.json` (upserts the entry and recomputes totals and per-provider counts from the merged set) instead of replacing the file with only this run.
 - `--dry-run` - List products without analyzing
 - `--force` - Force re-analysis (skip idempotency check)
 - `--provider auto|gemini|mistral` - LLM provider (default `auto`: Gemini, then Mistral)
@@ -170,6 +170,8 @@ Validates each PDF and its markdown output:
 - Provenance: Stores model name, schema version, input hashes
 - Quality flags: Marks analyses with known bad input as `untrusted`
 - Logs one run entry (counts, failures, fallbacks) to `data/runs.jsonl`
+- `index.json`: after a successful analysis (including an already-up-to-date skip, if the file is already there), sets `analysis_path` (e.g. `analysis/seguro_hogar.json`). A failed product does not set or clear it. The write is idempotent.
+- `analysis_summary.json`: a partial run merges into the existing summary so other products are not dropped. A failed re-run does not replace a previous successful entry for that product.
 
 ### LLM providers and Mistral fallback
 
