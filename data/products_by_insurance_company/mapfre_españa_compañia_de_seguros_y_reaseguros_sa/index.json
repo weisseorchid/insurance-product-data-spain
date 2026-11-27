@@ -189,7 +189,7 @@
                 ],
                 "fetched_at": "2026-11-26T10:17:42.701955+00:00",
                 "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/hogar-familiar/",
-                "analysis_path": null
+                "analysis_path": "analysis/seguro_hogar_familiar.json"
             },
             {
                 "product_id": "urn:C0058-07",

@@ -50,11 +50,11 @@ First batch, fetched on 26 November 2026 from the public [documentación precont
 
 | Company | Products | Unique source docs | Fetched | Analyses |
 |---------|----------|--------------------|---------|----------|
-| Mapfre España (C0058) | 11 | 30 | 29 | 10 of 11 |
+| Mapfre España (C0058) | 11 | 30 | 29 | 11 of 11 |
 | Mapfre Vida (C0511) | 6 | 11 | 11 | 6 of 6 |
-| **Total** | **17** | **41** | **40** | **16 of 17** |
+| **Total** | **17** | **41** | **40** | **17 of 17** |
 
-The 16 analyses were produced on 27 November 2026 with `--provider mistral` and `MISTRAL_MODEL=mistral-small-latest`. Gemini (`gemini-3.8-flash`) was the intended primary, but it returned `503 UNAVAILABLE` (high demand) on repeated test calls, so the batch used Mistral Small. Each analysis records provider and model under `metadata.analysis_provenance`.
+The 17 analyses were produced on 27 November 2026 with `--provider mistral` and `MISTRAL_MODEL=mistral-small-latest`. Gemini (`gemini-3.8-flash`) was the intended primary, but it returned `503 UNAVAILABLE` (high demand) on repeated test calls, so the batch used Mistral Small. Each analysis records provider and model under `metadata.analysis_provenance`.
 
 Branch codes for this batch look consistent with the products (life `00`, accidents `01`, illness `02`, motor `03`+`10`, household `08`+`09`, death `19`).
 
@@ -62,10 +62,6 @@ Branch codes for this batch look consistent with the products (life `00`, accide
 
 - **Moto general conditions, `source_error`.** Docprecon document `0900ab44c3920abc` (`moto_cg_0900ab44c3920abc`, listed as the motorcycle CG and shared by `seguro_moto_terceros_ampliado`) was not retrieved. The portal returned a body of `Error` rather than a PDF. This is recorded in the C0058 source manifest and in `data/runs.jsonl`. The motorcycle analysis therefore ran on the IPID and prior note only. The pipeline did not set `incomplete_inputs` because the missing file never reached the analysis stage.
 - **PIAS KID broken text layer.** `pias_ahorro_inversion_kid_0900ab44c361ea6c` is a real 3-page PDF (~2.8 MB) whose extracted markdown is unusable (`(cid:…)` glyphs, 118 characters). The prior note (`pias_ahorro_inversion_nota_0900ab44c69164db`) is usable and was the main analysis input. The KID was still passed to the model; its `extraction_confidence` in `source_documents` is `0.5`. Official length validation still accepted the markdown (threshold is 100 characters).
-
-### Analysis gap
-
-- **`seguro_hogar_familiar` (`urn:C0058-06`)** has no analysis file and `analysis_path` is `null`. A first-pass Mistral `429` rate limit was retried once, after a cooldown; the retry also returned `429`. No second retry pass was run. Source documents for this product were fetched and converted successfully.
 
 ### Spot-check notes (Mistral Small)
 

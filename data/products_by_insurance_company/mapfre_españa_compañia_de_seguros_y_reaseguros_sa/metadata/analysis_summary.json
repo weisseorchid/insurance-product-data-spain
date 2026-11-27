@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "analyzed_at": "2026-11-27T10:53:54.146050+00:00",
+  "analyzed_at": "2026-11-27T12:42:57.226445+00:00",
   "analyzer": {
     "name": "analyze_products",
     "version": "1.0.0",
@@ -10,12 +10,12 @@
   "company_key": "C0058",
   "summary": {
     "total_products": 11,
-    "successful": 10,
+    "successful": 11,
     "skipped": 0,
-    "failed": 1,
+    "failed": 0,
     "quality_issues": 0,
-    "total_markdown_files": 29,
-    "by_provider_mistral": 10,
+    "total_markdown_files": 32,
+    "by_provider_mistral": 11,
     "fallbacks": 0
   },
   "products": [
@@ -82,12 +82,12 @@
     {
       "product_name": "seguro_hogar_familiar",
       "product_id": "urn:C0058-06",
-      "success": false,
+      "success": true,
       "skipped": false,
       "skip_reason": null,
       "has_quality_issues": false,
-      "markdown_files_processed": 0,
-      "error": "mistral rate limited after one retry pass: API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}",
+      "markdown_files_processed": 3,
+      "error": null,
       "provider": "mistral",
       "model": "mistral-small-latest"
     },
@@ -152,5 +152,5 @@
       "model": "mistral-small-latest"
     }
   ],
-  "notes": "Aggregated from the 27 Nov 2026 analyze_products runs (provider=mistral, model=mistral-small-latest), including the one allowed retry pass. seguro_hogar_familiar was not analysed: Mistral returned 429 after that retry."
+  "notes": "Aggregated from the 27 Nov 2026 analyze_products runs (provider=mistral, model=mistral-small-latest). seguro_hogar_familiar was completed in a follow-up run after an earlier Mistral 429."
 }
