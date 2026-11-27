@@ -505,3 +505,135 @@ def test_mistral_client_does_not_retry_auth_errors(tmp_path):
 def test_mistral_client_requires_key():
     with pytest.raises(ValueError, match="MISTRAL_API_KEY"):
         MistralClient()
+
+
+# --- partial-run summary merge and index analysis_path --------------------------------
+
+
+def _summary(company):
+    return json.loads((company / "metadata" / "analysis_summary.json").read_text(encoding="utf-8"))
+
+
+def _index_products(company):
+    return json.loads((company / "index.json").read_text(encoding="utf-8"))[0]["products"]
+
+
+def _by_name(products):
+    return {p["product_name"]: p for p in products}
+
+
+def test_partial_run_merges_into_existing_analysis_summary(company, monkeypatch):
+    """A --product run upserts that product and keeps the other summary entries."""
+    gemini = FakeProvider("gemini", "gemini-test")
+    use_router(monkeypatch, gemini)
+    analyze_company_products("X0001", force_reanalysis=True)
+
+    first = _summary(company)
+    assert first["summary"]["total_products"] == 2
+    assert first["summary"]["successful"] == 2
+    assert first["summary"]["by_provider_gemini"] == 2
+    assert first["summary"]["fallbacks"] == 0
+    first_auto = _by_name(first["products"])["auto"]
+
+    mistral = FakeProvider("mistral", "mistral-test")
+    use_router(monkeypatch, mistral, mode="mistral")
+    analyze_company_products(
+        "X0001",
+        product_filter="hogar",
+        force_reanalysis=True,
+        provider="mistral",
+    )
+
+    merged = _summary(company)
+    by_name = _by_name(merged["products"])
+    assert set(by_name) == {"hogar", "auto"}
+    assert by_name["hogar"]["success"] is True
+    assert by_name["hogar"]["provider"] == "mistral"
+    assert by_name["hogar"]["model"] == "mistral-test"
+    assert by_name["auto"] == first_auto
+    assert merged["summary"]["total_products"] == 2
+    assert merged["summary"]["successful"] == 2
+    assert merged["summary"]["failed"] == 0
+    assert merged["summary"]["skipped"] == 0
+    assert merged["summary"]["by_provider_gemini"] == 1
+    assert merged["summary"]["by_provider_mistral"] == 1
+    assert merged["summary"]["fallbacks"] == 0
+
+    # Idempotent: a second --product run keeps both entries and the same counts.
+    analyze_company_products(
+        "X0001",
+        product_filter="hogar",
+        force_reanalysis=True,
+        provider="mistral",
+    )
+    again = _summary(company)
+    assert again["summary"] == merged["summary"]
+    assert _by_name(again["products"]).keys() == by_name.keys()
+    assert _by_name(again["products"])["auto"] == first_auto
+    assert _by_name(again["products"])["hogar"]["provider"] == "mistral"
+
+
+def test_successful_analysis_sets_analysis_path_in_index(company, monkeypatch):
+    """Full and --product runs set analysis_path; the write is idempotent."""
+    gemini = FakeProvider("gemini", "gemini-test")
+    use_router(monkeypatch, gemini)
+    analyze_company_products("X0001", product_filter="hogar", force_reanalysis=True)
+
+    products = _by_name(_index_products(company))
+    assert products["hogar"]["analysis_path"] == "analysis/hogar.json"
+    assert "analysis_path" not in products["auto"]
+
+    analyze_company_products("X0001", force_reanalysis=True)
+    products = _by_name(_index_products(company))
+    assert products["hogar"]["analysis_path"] == "analysis/hogar.json"
+    assert products["auto"]["analysis_path"] == "analysis/auto.json"
+
+    # Already set to the same value: a later skip still leaves it in place.
+    analyze_company_products("X0001")
+    products = _by_name(_index_products(company))
+    assert products["hogar"]["analysis_path"] == "analysis/hogar.json"
+    assert products["auto"]["analysis_path"] == "analysis/auto.json"
+
+
+def test_failed_product_keeps_old_summary_entry_and_does_not_set_analysis_path(company, monkeypatch):
+    """A failed --product run must not drop the old summary row or set analysis_path."""
+    gemini = FakeProvider("gemini", "gemini-test")
+    use_router(monkeypatch, gemini)
+    analyze_company_products("X0001", force_reanalysis=True)
+
+    # Simulate the pre-fix state: summary is complete, but analysis_path was never written.
+    index = json.loads((company / "index.json").read_text(encoding="utf-8"))
+    for product in index[0]["products"]:
+        if product["product_name"] == "hogar":
+            product["analysis_path"] = None
+    (company / "index.json").write_text(json.dumps(index), encoding="utf-8")
+    (company / "analysis" / "hogar.json").unlink()
+
+    before = _summary(company)
+    old_hogar = _by_name(before["products"])["hogar"]
+    old_auto = _by_name(before["products"])["auto"]
+    assert old_hogar["success"] is True
+
+    failing = FakeProvider("gemini", "gemini-test", error=gemini_error(503, "UNAVAILABLE"))
+    use_router(monkeypatch, failing)
+    results = analyze_company_products(
+        "X0001",
+        product_filter="hogar",
+        force_reanalysis=True,
+    )
+    assert results[0].success is False
+    assert not (company / "analysis" / "hogar.json").exists()
+
+    after = _summary(company)
+    by_name = _by_name(after["products"])
+    assert set(by_name) == {"hogar", "auto"}
+    assert by_name["hogar"] == old_hogar
+    assert by_name["auto"] == old_auto
+    assert after["summary"]["total_products"] == 2
+    assert after["summary"]["successful"] == 2
+    assert after["summary"]["failed"] == 0
+    assert after["summary"]["by_provider_gemini"] == 2
+
+    products = _by_name(_index_products(company))
+    assert products["hogar"]["analysis_path"] is None
+    assert products["auto"]["analysis_path"] == "analysis/auto.json"

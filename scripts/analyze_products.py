@@ -7,7 +7,10 @@ This script takes an insurance company key (e.g., C0737) and:
    (.cache/insurance-docs), or from a legacy sources/{product_name}/ folder if present
 4. Analyzes all markdown files using Gemini to extract structured information
    (Mistral as fallback when Gemini keeps failing; see scripts/clients/llm.py)
-5. Saves the analysis results to analysis/{product_name}.json
+5. Saves the analysis results to analysis/{product_name}.json and sets
+   analysis_path on that product in index.json
+6. Writes metadata/analysis_summary.json, merging into an existing summary on
+   a --product (or other partial) run so earlier products are not dropped
 
 Run with: uv run python -m scripts.analyze_products --company-key C0737 [--provider auto|gemini|mistral]
 """
@@ -607,6 +610,11 @@ def analyze_company_products(
                 fallback_reason=result.fallback_reason,
             )
 
+        # Successful analyses (including already-up-to-date skips) get analysis_path
+        # in index.json. A failure never sets or clears it.
+        if result.success:
+            set_index_analysis_path(company_folder, result.product_id, result.product_name)
+
     gap_rows: list[dict] = []
     for result in results:
         for dropped in result.dropped_inputs or []:
@@ -644,12 +652,19 @@ def analyze_company_products(
 
     _append_analysis_run_log(company_key, provider, client, results, started_at)
 
-    # Save summary
+    # Save summary (merge into an existing file on partial/--product runs)
     if save_summary:
-        summary = generate_analysis_summary(company_key, results, primary_model=client.model)
         metadata_folder = company_folder / "metadata"
         ensure_directory(metadata_folder)
         summary_path = metadata_folder / "analysis_summary.json"
+        existing = _load_existing_summary(summary_path)
+        summary = generate_analysis_summary(
+            company_key,
+            results,
+            primary_model=client.model,
+            existing=existing,
+            keep_products_not_in_run=product_filter is not None,
+        )
         save_json(summary, summary_path)
         logger.info(f"Saved analysis summary to: {summary_path}")
 
@@ -713,65 +728,248 @@ def _append_analysis_run_log(
         logger.warning(f"Could not append analyze_products run log: {e}")
 
 
+def _product_key(product_name: str, product_id: str | None) -> str:
+    """Stable identity for a product in the summary or index (prefer product_id)."""
+    if product_id and product_id != "unknown":
+        return f"id:{product_id}"
+    return f"name:{product_name}"
+
+
+def _product_summary_entry(result: ProductAnalysisResult) -> dict:
+    """One product row in analysis_summary.json."""
+    entry = {
+        "product_name": result.product_name,
+        "product_id": result.product_id,
+        "success": result.success,
+        "skipped": result.skipped,
+        "skip_reason": result.skip_reason,
+        "has_quality_issues": result.has_quality_issues,
+        "markdown_files_processed": result.markdown_files_processed,
+        "error": result.error,
+        "provider": result.provider,
+        "model": result.model,
+    }
+    if result.fallback_from:
+        entry["fallback_from"] = result.fallback_from
+    return entry
+
+
+def _entry_key(entry: dict) -> str:
+    return _product_key(str(entry.get("product_name") or "unknown"), entry.get("product_id"))
+
+
+def _result_key(result: ProductAnalysisResult) -> str:
+    return _product_key(result.product_name, result.product_id)
+
+
+def _choose_summary_entry(existing_entry: dict | None, result: ProductAnalysisResult) -> dict:
+    """Upsert a run result into a summary row without dropping a prior success on failure."""
+    if result.success and not result.skipped:
+        return _product_summary_entry(result)
+    if existing_entry is not None:
+        # Skip (already up-to-date) and failure keep the previous row, including a
+        # successful analysis that this run did not replace.
+        return existing_entry
+    return _product_summary_entry(result)
+
+
+def merge_summary_products(
+    results: list[ProductAnalysisResult],
+    existing_products: list[dict] | None,
+    *,
+    keep_products_not_in_run: bool,
+) -> list[dict]:
+    """Merge this run's results into existing summary product rows.
+
+    Successful new analyses are upserted. A skipped or failed product keeps its
+    previous row when one exists (a failure does not drop a prior success).
+    Products not in this run are kept when ``keep_products_not_in_run`` is true
+    (a ``--product`` / partial run); a full company run drops rows no longer in
+    the index.
+    """
+    results_by_key = {_result_key(result): result for result in results}
+    seen: set[str] = set()
+    merged: list[dict] = []
+
+    for entry in existing_products or []:
+        if not isinstance(entry, dict):
+            continue
+        key = _entry_key(entry)
+        result = results_by_key.get(key)
+        if result is None:
+            if keep_products_not_in_run:
+                merged.append(entry)
+            seen.add(key)
+            continue
+        merged.append(_choose_summary_entry(entry, result))
+        seen.add(key)
+
+    for result in results:
+        key = _result_key(result)
+        if key not in seen:
+            merged.append(_choose_summary_entry(None, result))
+            seen.add(key)
+
+    return merged
+
+
+def summary_counts(products: list[dict]) -> dict:
+    """Totals and per-provider counts from the merged product set."""
+    total_products = len(products)
+    successful = sum(1 for p in products if p.get("success") and not p.get("skipped"))
+    skipped = sum(1 for p in products if p.get("skipped"))
+    failed = total_products - successful - skipped
+    quality_issues = sum(1 for p in products if p.get("has_quality_issues"))
+    total_files = sum(int(p.get("markdown_files_processed") or 0) for p in products)
+    counts: dict[str, int] = {}
+    for product in products:
+        if product.get("success") and not product.get("skipped") and product.get("provider"):
+            key = f"by_provider_{product['provider']}"
+            counts[key] = counts.get(key, 0) + 1
+    counts["fallbacks"] = sum(
+        1 for p in products if p.get("success") and not p.get("skipped") and p.get("fallback_from")
+    )
+    return {
+        "total_products": total_products,
+        "successful": successful,
+        "skipped": skipped,
+        "failed": failed,
+        "quality_issues": quality_issues,
+        "total_markdown_files": total_files,
+        **counts,
+    }
+
+
+def _load_existing_summary(summary_path: Path) -> dict | None:
+    """Load an on-disk analysis summary, or None if missing or unreadable."""
+    if not summary_path.exists():
+        return None
+    try:
+        existing = load_json(summary_path)
+    except Exception as exc:
+        logger.warning(f"Could not load existing analysis summary {summary_path}: {exc}")
+        return None
+    return existing if isinstance(existing, dict) else None
+
+
+def analysis_relative_path(product_name: str) -> str:
+    """Index ``analysis_path`` value for a saved analysis file."""
+    return f"analysis/{product_name}.json"
+
+
+def set_index_analysis_path(company_folder: Path, product_id: str, product_name: str) -> bool:
+    """Set ``analysis_path`` on the matching product in index.json if the analysis file exists.
+
+    Idempotent: no write when the path is already set to the same relative value.
+    Does nothing when the analysis file or the index is missing. Never clears a
+    path (callers must not invoke this for a failed analysis).
+
+    Returns:
+        True when index.json was written.
+    """
+    relative_path = analysis_relative_path(product_name)
+    if not (company_folder / relative_path).exists():
+        return False
+
+    index_path = company_folder / "index.json"
+    if not index_path.exists():
+        logger.warning(f"Index file not found, cannot set analysis_path: {index_path}")
+        return False
+
+    try:
+        index_data = load_json(index_path)
+    except Exception as exc:
+        logger.warning(f"Failed to load index.json to set analysis_path: {exc}")
+        return False
+
+    if not isinstance(index_data, list):
+        logger.warning(f"Unexpected index.json format, cannot set analysis_path: {index_path}")
+        return False
+
+    target = _product_key(product_name, product_id)
+    changed = False
+    for company_entry in index_data:
+        if not isinstance(company_entry, dict):
+            continue
+        for product in company_entry.get("products") or []:
+            if not isinstance(product, dict):
+                continue
+            if _entry_key(product) != target:
+                continue
+            if product.get("analysis_path") != relative_path:
+                product["analysis_path"] = relative_path
+                changed = True
+
+    if changed:
+        save_json(index_data, index_path)
+        logger.info(f"Set analysis_path={relative_path} for {product_name} in {index_path}")
+    return changed
+
+
+def _existing_analyzer_model(existing: dict | None) -> str | None:
+    """Return analyzer.model from a previous summary, if it is a string."""
+    if not existing:
+        return None
+    analyzer = existing.get("analyzer")
+    if not isinstance(analyzer, dict):
+        return None
+    model = analyzer.get("model")
+    return model if isinstance(model, str) and model else None
+
+
 def generate_analysis_summary(
     company_key: str,
     results: list[ProductAnalysisResult],
     primary_model: str | None = None,
+    existing: dict | None = None,
+    keep_products_not_in_run: bool = False,
 ) -> dict:
     """
     Generate a summary of the product analysis results.
 
+    When ``existing`` is a previous analysis_summary.json, this run's products
+    are upserted into it and totals / per-provider counts are recomputed from
+    the merged set. A ``--product`` run should pass ``keep_products_not_in_run``
+    so other products are not dropped.
+
     Args:
         company_key: The company key
-        results: List of analysis results
+        results: List of analysis results for this run
+        primary_model: Model name recorded under analyzer.model
+        existing: Previously written summary, if any
+        keep_products_not_in_run: Keep existing rows for products not in results
 
     Returns:
         Summary dictionary
     """
-    total_products = len(results)
-    successful = sum(1 for r in results if r.success and not r.skipped)
-    skipped = sum(1 for r in results if r.skipped)
-    failed = total_products - successful - skipped
-    quality_issues = sum(1 for r in results if r.has_quality_issues)
-    total_files = sum(r.markdown_files_processed for r in results)
+    existing_products = None
+    if existing and isinstance(existing.get("products"), list):
+        existing_products = existing["products"]
 
-    products_summary = [
-        {
-            "product_name": r.product_name,
-            "product_id": r.product_id,
-            "success": r.success,
-            "skipped": r.skipped,
-            "skip_reason": r.skip_reason,
-            "has_quality_issues": r.has_quality_issues,
-            "markdown_files_processed": r.markdown_files_processed,
-            "error": r.error,
-            "provider": r.provider,
-            "model": r.model,
-        }
-        for r in results
-    ]
+    products_summary = merge_summary_products(
+        results,
+        existing_products,
+        keep_products_not_in_run=keep_products_not_in_run,
+    )
 
-    return {
+    summary = {
         "schema_version": "1.0",
         "analyzed_at": datetime.now(timezone.utc).isoformat(),
         "analyzer": {
             "name": "analyze_products",
             "version": "1.0.0",
-            "model": primary_model or GEMINI_MODEL,
+            "model": primary_model or _existing_analyzer_model(existing) or GEMINI_MODEL,
             "schema_version": SCHEMA_VERSION,
         },
         "company_key": company_key,
-        "summary": {
-            "total_products": total_products,
-            "successful": successful,
-            "skipped": skipped,
-            "failed": failed,
-            "quality_issues": quality_issues,
-            "total_markdown_files": total_files,
-            **provider_counts(results),
-        },
+        "summary": summary_counts(products_summary),
         "products": products_summary,
     }
+    if existing:
+        for key, value in existing.items():
+            if key not in summary:
+                summary[key] = value
+    return summary
 
 
 def main() -> int:
