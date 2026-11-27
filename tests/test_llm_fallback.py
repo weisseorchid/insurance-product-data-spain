@@ -47,7 +47,7 @@ def validation_error() -> ValidationError:
 class FakeProvider:
     """Provider client double: returns ANALYSIS or raises the configured error."""
 
-    def __init__(self, provider: str, model: str, error: BaseException | None = None):
+    def __init__(self, provider: str, model: str, error: BaseException | list | None = None):
         self.provider = provider
         self.model = model
         self.error = error
@@ -59,8 +59,9 @@ class FakeProvider:
 
     def analyze_product_documents(self, markdown_paths, product_context=None, document_names=None):
         self.calls += 1
-        if self.error is not None:
-            raise self.error
+        error = self.error.pop(0) if isinstance(self.error, list) else self.error
+        if error is not None:
+            raise error
         return ANALYSIS
 
 
@@ -148,6 +149,12 @@ def test_classify_mistral_status_codes():
     assert classify_error(sdk_error(429)) is ErrorKind.RETRYABLE
     assert classify_error(sdk_error(502)) is ErrorKind.RETRYABLE
     assert classify_error(sdk_error(401)) is ErrorKind.AUTH
+
+
+def mistral_error(status: int):
+    from mistralai.client.errors import SDKError
+
+    return SDKError(f"Mistral HTTP {status}", httpx_response(status))
 
 
 def httpx_response(status: int):
@@ -243,6 +250,36 @@ def test_auth_error_does_not_fall_back_and_stops_calling_gemini(company, monkeyp
     assert "--provider" in (results[0].error or "")
     assert gemini.calls == 1  # second product fails fast
     assert mistral.calls == 0
+
+
+def test_fallback_400_fails_only_that_product(company, monkeypatch):
+    """Review #1: a request-scoped Mistral 400/422 must not disable the fallback for later products."""
+    gemini = FakeProvider("gemini", "gemini-test", error=gemini_error(503, "UNAVAILABLE"))
+    mistral = FakeProvider("mistral", "mistral-test", error=[mistral_error(400), None])
+    use_router(monkeypatch, gemini, mistral)
+
+    results = analyze_company_products("X0001", save_summary=False, force_reanalysis=True)
+    by_name = {r.product_name: r for r in results}
+
+    assert not by_name["hogar"].success
+    assert "mistral config error" in (by_name["hogar"].error or "")
+    assert by_name["auto"].success and by_name["auto"].provider == "mistral"
+    assert provenance(company, "auto")["provider"] == "mistral"
+    assert mistral.calls == 2 and gemini.calls == 2
+
+
+@pytest.mark.parametrize("status", [401, 403, 404])
+def test_fallback_auth_or_unknown_model_latches(company, monkeypatch, status):
+    """A broken fallback key/model (401/403/404) disables the fallback for the rest of the run."""
+    gemini = FakeProvider("gemini", "gemini-test", error=gemini_error(503, "UNAVAILABLE"))
+    mistral = FakeProvider("mistral", "mistral-test", error=[mistral_error(status), None])
+    use_router(monkeypatch, gemini, mistral)
+
+    results = analyze_company_products("X0001", save_summary=False, force_reanalysis=True)
+
+    assert all(not r.success for r in results)
+    assert mistral.calls == 1  # second product fails fast without calling Mistral
+    assert gemini.calls == 2  # Gemini (retryable 503) is still tried for each product
 
 
 def test_provider_mistral_forces_mistral(company, monkeypatch, tmp_path):

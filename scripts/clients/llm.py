@@ -10,7 +10,8 @@ Every provider client implements :class:`AnalysisClient` (``provider``, ``model`
 * Auth or config errors (401/403, 400, 404 unknown model, missing key) and unknown
   exceptions never fall back silently: they are logged and the product fails. After the
   first auth/config error the primary is disabled for the rest of the run, so the run
-  does not hammer a broken key once per product.
+  does not hammer a broken key once per product. A fallback provider is disabled only on
+  401/403/404; its 400/422 fails that product only.
 * No ``MISTRAL_API_KEY`` means no fallback at all (logged once when the router is built).
 * ``gemini`` / ``mistral`` force a single provider.
 """
@@ -32,6 +33,8 @@ PROVIDER_CHOICES = ("auto", "gemini", "mistral")
 
 RETRYABLE_STATUS_CODES = frozenset({408, 429})
 AUTH_STATUS_CODES = frozenset({401, 403})
+# Statuses that disable a non-primary (fallback) provider for the rest of the run
+LATCHING_FALLBACK_STATUS_CODES = frozenset({401, 403, 404})
 _TRANSPORT_ERROR_NAMES = frozenset({"TransportError", "TimeoutException", "NetworkError", "NoResponseError"})
 
 
@@ -188,7 +191,11 @@ class AnalysisRouter:
                         f"fix the {provider} key/model, or rerun with --provider explicitly."
                     )
                     logger.error(message)
-                    self._disabled[provider] = message
+                    # The primary is latched on any auth/config error. A fallback provider is latched
+                    # only when the key or model is broken (401/403/404); a request-scoped 400/422
+                    # (e.g. a prompt too long for its context) fails this product only.
+                    if index == 0 or _status_code(exc) in LATCHING_FALLBACK_STATUS_CODES:
+                        self._disabled[provider] = message
                     raise ProviderConfigError(message) from exc
                 if kind not in FALLBACK_KINDS or not has_next:
                     raise
