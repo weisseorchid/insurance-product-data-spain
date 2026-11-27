@@ -33,6 +33,7 @@ The pipeline includes comprehensive validation at each stage:
 2. **Analysis Validation** (`analyze_products`):
    - Pydantic v2 schema validation
    - Automatic retry with exponential backoff (max 3 attempts)
+   - Mistral fallback when Gemini keeps failing (see "LLM providers and Mistral fallback")
    - Idempotency: skips re-analysis if inputs and schema unchanged
    - Provenance tracking (model, schema version, input hashes)
    - Quality flags: `has_known_quality_issues` / `untrusted` for known bad companies;
@@ -161,36 +162,68 @@ Validates each PDF and its markdown output:
 - `--product NAME` - Analyze single product
 - `--dry-run` - List products without analyzing
 - `--force` - Force re-analysis (skip idempotency check)
+- `--provider auto|gemini|mistral` - LLM provider (default `auto`: Gemini, then Mistral)
 
 **New features:**
 - Idempotency: Skips analysis if input files and schema unchanged
 - Retry logic: 3 attempts with exponential backoff on API/validation errors
 - Provenance: Stores model name, schema version, input hashes
 - Quality flags: Marks analyses with known bad input as `untrusted`
-- Logs failures to `data/runs.jsonl`
+- Logs one run entry (counts, failures, fallbacks) to `data/runs.jsonl`
+
+### LLM providers and Mistral fallback
+
+`scripts/clients/llm.py` chains provider clients (`scripts/clients/gemini.py`,
+`scripts/clients/mistral.py`). Both send the same prompt, use the same backoff
+(2s, 4s, ... max 16s, 3 attempts) and validate the output with the same `ProductAnalysis` model.
+Mistral uses JSON mode (`response_format={"type": "json_object"}`) with the schema in the system prompt.
+
+| `--provider` | Behaviour |
+|--------------|-----------|
+| `auto` (default) | Gemini first. Falls back to Mistral only after Gemini's retries are exhausted with a retryable error (429, 5xx, 408, timeout, connection error) or invalid output (validation failure, empty response). No fallback when `MISTRAL_API_KEY` is unset (logged once). |
+| `gemini` | Gemini only (previous behaviour). |
+| `mistral` | Mistral only; exits 2 if `MISTRAL_API_KEY` is unset. |
+
+Auth and config errors never fall back silently: 401/403, 400 (including an invalid API key),
+404 (unknown model), a missing `GEMINI_API_KEY`, and unexpected exceptions fail the product with a
+clear error. Gemini does not retry them, so a later 503 cannot hide them. After the first auth/config
+error Gemini is not called again in that run. Mistral is disabled for the run only on 401/403/404;
+a Mistral 400/422 (e.g. a prompt too long for its context) fails only that product. To use Mistral
+anyway, rerun with `--provider mistral`. The reason: a broken key is a setup problem, and switching
+every analysis to another model without anyone noticing would hide it.
+
+Idempotency accepts an existing analysis made by any model in the current chain, so an analysis
+produced by the fallback is not re-run (and re-billed) on the next `auto` run. Use `--force`, or
+`--provider gemini`, to redo it with Gemini.
 
 ## Logs and Provenance
 
 ### data/runs.jsonl
 
-Append-only log of processing events (JSONL format, one event per line):
-- `validation_failure`: Document rejected during PDF processing
-- `analysis_failure`: Product analysis failed after all retries
-
-Each event includes timestamp, script name, status, and event-specific details.
+Append-only log (JSONL, checked by CI for `script` and `started_at`):
+- `fetch_product_documents` and `analyze_products` append one run entry each, with `counts`,
+  `model` and `details`. For `analyze_products`, `counts` has `analyzed`, `skipped`, `failed`,
+  `by_provider_<provider>` and `fallbacks`; `details` has `provider_mode`, the provider chain,
+  `failures` (product and error) and `fallbacks` (from, to, reason).
+- `process_pdfs` still appends `validation_failure` events (`timestamp`/`event_type` format).
 
 ### Analysis Provenance
 
 Each analysis JSON includes `metadata.analysis_provenance`:
 ```json
 {
-  "model": "gemini-3-flash-preview",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
   "schema_version": "1.0",
   "input_hash": "abc123...",
   "markdown_hashes": {"doc1.md": "def456..."},
   "markdown_files": ["doc1.md", "doc2.md"]
 }
 ```
+
+`provider` and `model` are the ones that actually produced the analysis. When Mistral answered as a
+fallback, `provider` is `mistral` and `fallback_reason` says why Gemini was skipped
+(e.g. `retryable: ServerError: 503 UNAVAILABLE...`).
 
 Also includes `metadata.quality_flags`:
 ```json
@@ -233,7 +266,9 @@ merges by `product_id` so other products' gaps are kept. Patterns live in
 
 | Variable | Required |
 |----------|----------|
-| `GEMINI_API_KEY` | Yes, for `analyze_products` |
+| `GEMINI_API_KEY` | Yes, for `analyze_products` (`auto` / `gemini`) |
+| `MISTRAL_API_KEY` | Optional; enables the Mistral fallback, required for `--provider mistral` (from console.mistral.ai) |
+| `MISTRAL_MODEL` | Optional; default `mistral-large-latest` |
 
 ## Related Documentation
 

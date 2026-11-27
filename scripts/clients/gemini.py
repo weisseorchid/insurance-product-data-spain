@@ -67,8 +67,60 @@ def _format_branches(product_context: dict) -> str:
     return ", ".join(branches) if branches else "Unknown"
 
 
+def build_user_prompt(
+    markdown_paths: list[str],
+    product_context: dict | None = None,
+    document_names: dict[str, str] | None = None,
+) -> str:
+    """Build the analysis prompt shared by every LLM provider (Gemini, Mistral).
+
+    Args:
+        markdown_paths: Paths to the markdown files to analyze.
+        product_context: Optional product name, branches and company.
+        document_names: Optional {path: display name} for content-addressed cache paths.
+
+    Returns:
+        The user prompt with all documents inlined.
+    """
+    # Collect all document contents
+    documents_content = []
+    for path in markdown_paths:
+        with open(path, encoding="utf-8") as file:
+            content = file.read()
+            filename = (document_names or {}).get(str(path), Path(path).name)
+            documents_content.append(f"### Document: {filename}\n\n{content}")
+
+    combined_content = "\n\n---\n\n".join(documents_content)
+
+    # Build context string if provided
+    context_str = ""
+    if product_context:
+        context_str = f"""
+Product context:
+- Product name: {product_context.get("product_name", "Unknown")}
+- Product branches (DGSFP codes): {_format_branches(product_context)}
+- Company: {product_context.get("company", "Unknown")}
+"""
+
+    user_prompt = f"""Analyze the following insurance policy documents and extract comprehensive information about the insurance product.
+Multiple documents are provided - combine information from all of them to create a complete analysis.
+{context_str}
+The following documents are provided:
+
+{combined_content}
+
+---
+
+Extract and combine information from ALL documents into a single comprehensive analysis.
+For each source document, classify its type and include it in the source_documents list.
+Aggregate coverages, exclusions, and limits from all documents, avoiding duplicates."""
+    return user_prompt
+
+
 class GeminiClient:
     """Client for analyzing insurance documents using Google Gemini AI."""
+
+    provider = "gemini"
 
     def __init__(self, model: str | None = None, max_retries: int = MAX_RETRY_ATTEMPTS):
         """Initialize the Gemini client.
@@ -126,38 +178,7 @@ class GeminiClient:
             ValueError: If API returns None or validation fails after all retries
             ValidationError: If response doesn't match ProductAnalysis schema after all retries
         """
-        # Collect all document contents
-        documents_content = []
-        for path in markdown_paths:
-            with open(path, encoding="utf-8") as file:
-                content = file.read()
-                filename = (document_names or {}).get(str(path), Path(path).name)
-                documents_content.append(f"### Document: {filename}\n\n{content}")
-
-        combined_content = "\n\n---\n\n".join(documents_content)
-
-        # Build context string if provided
-        context_str = ""
-        if product_context:
-            context_str = f"""
-Product context:
-- Product name: {product_context.get("product_name", "Unknown")}
-- Product branches (DGSFP codes): {_format_branches(product_context)}
-- Company: {product_context.get("company", "Unknown")}
-"""
-
-        user_prompt = f"""Analyze the following insurance policy documents and extract comprehensive information about the insurance product.
-Multiple documents are provided - combine information from all of them to create a complete analysis.
-{context_str}
-The following documents are provided:
-
-{combined_content}
-
----
-
-Extract and combine information from ALL documents into a single comprehensive analysis.
-For each source document, classify its type and include it in the source_documents list.
-Aggregate coverages, exclusions, and limits from all documents, avoiding duplicates."""
+        user_prompt = build_user_prompt(markdown_paths, product_context, document_names)
 
         # Retry loop with exponential backoff
         last_exception = None
@@ -198,6 +219,13 @@ Aggregate coverages, exclusions, and limits from all documents, avoiding duplica
                     logger.error(f"All {self.max_retries} attempts failed")
 
             except Exception as e:
+                # Auth/config errors (401/403/400/404) are not retried: a later 503 must not hide them
+                from scripts.clients.llm import ErrorKind, classify_error  # avoid an import cycle
+
+                if classify_error(e) in (ErrorKind.AUTH, ErrorKind.CONFIG):
+                    logger.error(f"Attempt {attempt} failed with auth/config error, not retrying: {e}")
+                    raise
+
                 # For other exceptions (network errors, API errors), also retry
                 last_exception = e
                 logger.warning(f"Attempt {attempt} failed with error: {e}")

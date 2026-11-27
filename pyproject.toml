@@ -41,6 +41,7 @@ sync = [
 ]
 ai = [
     "google-genai>=1.0.0",
+    "mistralai>=3.9.0",
     "python-dotenv>=1.0.0",
 ]
 dev = [
