@@ -2,6 +2,7 @@
 
 import json
 from types import SimpleNamespace
+from typing import cast
 from unittest.mock import MagicMock, patch
 
 import httpx
@@ -282,6 +283,53 @@ def test_fallback_auth_or_unknown_model_latches(company, monkeypatch, status):
     assert gemini.calls == 2  # Gemini (retryable 503) is still tried for each product
 
 
+def test_unknown_gemini_error_fails_without_fallback_or_latch(company, monkeypatch):
+    """UNKNOWN errors fail the product, never fall back, and do not disable Gemini."""
+    gemini = FakeProvider("gemini", "gemini-test", error=RuntimeError("boom"))
+    mistral = FakeProvider("mistral", "mistral-test")
+    use_router(monkeypatch, gemini, mistral)
+
+    results = analyze_company_products("X0001", save_summary=False, force_reanalysis=True)
+
+    assert all(not r.success for r in results)
+    assert all("boom" in (r.error or "") for r in results)
+    assert mistral.calls == 0
+    assert gemini.calls == 2
+
+
+def test_fallback_failure_reports_the_last_provider_error(company, monkeypatch, tmp_path):
+    """If Mistral also fails after Gemini's retries, the product fails with Mistral's error."""
+    gemini = FakeProvider("gemini", "gemini-test", error=gemini_error(503, "UNAVAILABLE"))
+    mistral = FakeProvider("mistral", "mistral-test", error=mistral_error(502))
+    use_router(monkeypatch, gemini, mistral)
+
+    results = analyze_company_products("X0001", product_filter="hogar", save_summary=False, force_reanalysis=True)
+
+    assert not results[0].success
+    assert "Mistral HTTP 502" in (results[0].error or "")
+    assert not (company / "analysis" / "hogar.json").exists()
+    assert mistral.calls == 1
+    run = last_run_entry(tmp_path)
+    assert run["counts"]["failed"] == 1
+    assert run["counts"]["fallbacks"] == 0
+
+
+def test_analyze_run_log_matches_data_integrity_schema(company, monkeypatch, tmp_path):
+    """The analyze_products runs.jsonl line passes the same check CI runs on data/runs.jsonl."""
+    from scripts.ci.check_data_integrity import validate_jsonl_file
+
+    gemini = FakeProvider("gemini", "gemini-test", error=[gemini_error(503, "UNAVAILABLE"), None])
+    mistral = FakeProvider("mistral", "mistral-test")
+    use_router(monkeypatch, gemini, mistral)
+    analyze_company_products("X0001", save_summary=False, force_reanalysis=True)
+    analyze_company_products("X0001", save_summary=False)
+
+    runs_path = tmp_path / "isolated-data" / "runs.jsonl"
+    assert len(runs_path.read_text(encoding="utf-8").splitlines()) == 2
+    errors, _warnings = validate_jsonl_file(runs_path, "started_at", ["script", "started_at"])
+    assert errors == []
+
+
 def test_provider_mistral_forces_mistral(company, monkeypatch, tmp_path):
     monkeypatch.setenv("MISTRAL_API_KEY", "test-key-not-real")
     gemini_factory = MagicMock(side_effect=AssertionError("Gemini must not be built"))
@@ -303,7 +351,7 @@ def test_provider_mistral_without_key_exits_2(company, monkeypatch):
         assert analyze_main() == 2
 
 
-def test_mistral_analysis_is_up_to_date_for_auto_mode(company, monkeypatch):
+def test_mistral_analysis_is_up_to_date_for_auto_mode(company, monkeypatch, tmp_path):
     """An analysis produced by the fallback is not re-run (and re-billed) on the next auto run."""
     gemini = FakeProvider("gemini", "gemini-test", error=gemini_error(503, "UNAVAILABLE"))
     mistral = FakeProvider("mistral", "mistral-test")
@@ -314,6 +362,21 @@ def test_mistral_analysis_is_up_to_date_for_auto_mode(company, monkeypatch):
     results = analyze_company_products("X0001", product_filter="hogar", save_summary=False)
     assert results[0].skipped
     assert gemini.calls == 1
+    run = last_run_entry(tmp_path)
+    assert run["counts"]["analyzed"] == 0
+    assert run["counts"]["skipped"] == 1
+    assert run["counts"]["failed"] == 0
+    assert run["counts"]["fallbacks"] == 0
+    assert run["details"]["failures"] == []
+    assert run["details"]["fallbacks"] == []
+
+    # Review #2: a Gemini-only chain does not accept the Mistral model and redoes the analysis
+    use_router(monkeypatch, gemini, mode="gemini")
+    results = analyze_company_products("X0001", product_filter="hogar", save_summary=False)
+    assert not results[0].skipped
+    assert results[0].success and results[0].provider == "gemini"
+    assert gemini.calls == 2
+    assert provenance(company, "hogar")["provider"] == "gemini"
 
 
 # --- real GeminiClient retries feed the router ------------------------------------------
@@ -343,7 +406,7 @@ def test_gemini_auth_or_config_error_is_not_hidden_by_a_later_503(tmp_path, firs
     md.write_text("# Doc\n\n" + "texto " * 50, encoding="utf-8")
     with patch("scripts.clients.gemini.genai.Client"):
         gemini = GeminiClient(model="gemini-test", max_retries=3)
-    generate = gemini.client.models.generate_content
+    generate = cast(MagicMock, gemini.client.models.generate_content)
     generate.side_effect = [gemini_error(*first), gemini_error(503, "UNAVAILABLE"), gemini_error(503, "UNAVAILABLE")]
     mistral = FakeProvider("mistral", "mistral-test")
     router = AnalysisRouter([gemini, mistral])
@@ -358,6 +421,27 @@ def test_gemini_auth_or_config_error_is_not_hidden_by_a_later_503(tmp_path, firs
     with pytest.raises(ProviderConfigError):  # next product: Gemini is not called again
         router.analyze_with_provenance([str(md)])
     assert generate.call_count == 1
+
+
+def test_build_router_chain_by_mode(monkeypatch):
+    """Review #8: with a key, auto adds Mistral after Gemini; --provider gemini never builds Mistral."""
+    monkeypatch.setenv("MISTRAL_API_KEY", "test-key-not-real")
+    gemini_factory = MagicMock(side_effect=lambda: FakeProvider("gemini", "gemini-test"))
+    mistral_factory = MagicMock(side_effect=lambda: FakeProvider("mistral", "mistral-test"))
+
+    auto = build_router("auto", gemini_factory=gemini_factory, mistral_factory=mistral_factory)
+    assert [c.provider for c in auto.clients] == ["gemini", "mistral"]
+    assert auto.accepted_models == {"gemini-test", "mistral-test"}
+    mistral_factory.assert_called_once()
+
+    mistral_factory.reset_mock()
+    gemini_only = build_router("gemini", gemini_factory=gemini_factory, mistral_factory=mistral_factory)
+    assert [c.provider for c in gemini_only.clients] == ["gemini"]
+    mistral_factory.assert_not_called()
+
+    mistral_only = build_router("mistral", gemini_factory=gemini_factory, mistral_factory=mistral_factory)
+    assert [c.provider for c in mistral_only.clients] == ["mistral"]
+    assert gemini_factory.call_count == 2  # auto + gemini, not mistral
 
 
 def test_build_router_missing_gemini_key_is_a_config_error(monkeypatch):

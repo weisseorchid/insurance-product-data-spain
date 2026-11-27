@@ -186,7 +186,9 @@ Mistral uses JSON mode (`response_format={"type": "json_object"}`) with the sche
 
 Auth and config errors never fall back silently: 401/403, 400 (including an invalid API key),
 404 (unknown model), a missing `GEMINI_API_KEY`, and unexpected exceptions fail the product with a
-clear error. After the first auth/config error Gemini is not called again in that run. To use Mistral
+clear error. Gemini does not retry them, so a later 503 cannot hide them. After the first auth/config
+error Gemini is not called again in that run. Mistral is disabled for the run only on 401/403/404;
+a Mistral 400/422 (e.g. a prompt too long for its context) fails only that product. To use Mistral
 anyway, rerun with `--provider mistral`. The reason: a broken key is a setup problem, and switching
 every analysis to another model without anyone noticing would hide it.
 
