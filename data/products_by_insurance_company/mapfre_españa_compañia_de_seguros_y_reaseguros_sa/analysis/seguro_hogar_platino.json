@@ -1,0 +1,1467 @@
+{
+  "product_id": "urn:C0058-07",
+  "company_key": "C0058",
+  "product_name": "seguro_hogar_platino",
+  "branches": [
+    "08",
+    "09"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-hogar/platino/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:53:54.146050+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "06c12647432a9286e7c5b60d08a66638282d71937661812aa6ec76f543003c5a",
+      "markdown_hashes": {
+        "hogar_platino_cg_0900ab44c8af9bab.md": "091e97de05a5f4fc400555128fdacd071734252621d175ab9462beed8424a852",
+        "hogar_platino_ipid_0900ab44c324410e.md": "18a470c35d640309947d5bf7f29e71b56f553958b406867d1de5cab3f6c48d84",
+        "hogar_platino_nota_0900ab44c32452e3.md": "7303b11592e77833af06068ef196c4c8625efb1591ae08910823d67228a973d1"
+      },
+      "markdown_files": [
+        "hogar_platino_cg_0900ab44c8af9bab.md",
+        "hogar_platino_ipid_0900ab44c324410e.md",
+        "hogar_platino_nota_0900ab44c32452e3.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Hogar",
+      "target_audience": "Particulares (propietarios, inquilinos, usuarios de viviendas en régimen de alquiler, propietarios de viviendas secundarias o de temporada)",
+      "description_es": "Seguro Combinado del Hogar Platino de MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A. (DGSFP código C-0058) que cubre daños en la vivienda (continente), mobiliario (contenido), joyas, dinero y tarjetas de crédito, así como asistencia al hogar, responsabilidad civil, defensa jurídica, animales de compañía, asistencia en viaje y protección frente a la ocupación ilegal. Incluye coberturas básicas y opcionales con límites específicos, franquicias y servicios adicionales como reparación de electrodomésticos, bricolaje, orientación médica, asistencia informática, protección digital y asistencia a personas +55. El producto está diseñado para viviendas habituales, secundarias, en alquiler o de temporada, con opciones adaptadas a cada perfil (ej. cláusulas MH-03, MH-04, MH-05).",
+      "description_en": "MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A. (DGSFP code C-0058) offers the 'Seguro Combinado del Hogar Platino', a comprehensive home insurance policy covering property (structure), contents (furniture, jewelry, cash, credit cards), and additional services such as home assistance, civil liability, legal defense, pet coverage, travel assistance, and protection against illegal occupation. The policy includes basic and optional coverages with specific limits, deductibles, and value-added services like appliance repair, DIY assistance, medical guidance, IT support, digital protection, and assistance for people over 55. The product is tailored for primary residences, secondary homes, rental properties, or seasonal homes, with clauses adapted to each profile (e.g., MH-03, MH-04, MH-05).",
+      "key_benefits": [
+        "Cobertura integral de daños en vivienda y mobiliario (incendio, fenómenos atmosféricos, daños eléctricos, agua, roturas, robo, todo riesgo accidental y tecnológico, daños estéticos)",
+        "Asistencia en el hogar (urgente, reparaciones, electrodomésticos, bricolaje, familiar, informática, protección digital, asistencia a personas +55)",
+        "Responsabilidad Civil (incluyendo por alquiler de viviendas)",
+        "Defensa Jurídica (modalidad básica y amplia)",
+        "Animales de Compañía (daños, robo, extravío, sacrificio, estancia en residencia)",
+        "Asistencia en Viaje (médica, repatriación, equipaje, gestión de efectivo)",
+        "Protección frente a la Ocupación Ilegal (asesoramiento, defensa jurídica, compensación por alojamiento, daños vandálicos, recuperación del inmueble)",
+        "Coberturas especiales para propietarios de viviendas en alquiler, usuarios de viviendas en alquiler y viviendas secundarias o de temporada",
+        "Actualización automática de sumas aseguradas según índice pactado",
+        "Servicios adicionales como orientación médica telefónica, servicio informativo sobre animales, reparación de electrodomésticos y bricolaje"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Daños Materiales (Incendio y otros daños)",
+        "category": "basic",
+        "description": "Cubre daños en la vivienda y mobiliario por incendio, explosión, implosión, humo accidental, impacto de rayo, corrientes eléctricas anormales, hundimiento accidental del terreno por obras ajenas, colisión o impacto de vehículos terrestres/aeronaves, ondas sónicas, turbulencias y actos vandálicos. Incluye prestaciones especiales como inhabitabilidad, reobtención de documentos, gastos de extinción, contención, salvamento, desescombro, demolición y extracción de lodos.",
+        "covered_events": [
+          "Incendio, explosión o implosión",
+          "Humo de origen accidental",
+          "Impacto directo del rayo o corrientes eléctricas anormales inducidas por el mismo",
+          "Hundimiento accidental del terreno por obras ajenas al inmueble asegurado",
+          "Colisión o impacto de vehículos terrestres, aeronaves, ondas sónicas y turbulencias producidas por estos y objetos procedentes del exterior",
+          "Actos vandálicos"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales sin límite específico (S/L.E.)",
+          "Alojamiento provisional en hotel (hasta 10 días, 300€/día/persona, máximo 9.000€/siniestro)",
+          "Alquiler de vivienda provisional (hasta 12 meses, 18.000€/siniestro)",
+          "Gastos de traslado, estancia y retorno de bienes a guardamuebles o vivienda provisional (máximo 1 mes)",
+          "Daños a bienes durante transporte y estancia en guardamuebles o vivienda provisional (100%)",
+          "Gastos de restaurante y lavandería por siniestros en cocina (hasta 10 días, 300€/día, máximo 3.000€/siniestro)",
+          "Reobtención de documentos (S/L.E.)",
+          "Gastos de extinción y contención del siniestro (S/L.E.)",
+          "Gastos de salvamento, desescombro, demolición y extracción de lodos (5% de la suma asegurada para vivienda y/o mobiliario por siniestro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura de inhabitabilidad aplica cuando la vivienda sea habitada por el asegurado y se produzca la inhabitabilidad por un siniestro cubierto",
+          "Los gastos de salvamento, desescombro, demolición y extracción de lodos tienen un límite conjunto del 5% de la suma asegurada para vivienda y/o mobiliario por siniestro"
+        ]
+      },
+      {
+        "name": "Daños Materiales (Fenómenos Atmosféricos)",
+        "category": "basic",
+        "description": "Cubre daños en la vivienda y mobiliario por fenómenos atmosféricos como lluvia (superior a 40 l/m²/h), viento (superior a 80 km/h), pedrisco y nieve (sin límite específico).",
+        "covered_events": [
+          "Lluvia superior a 40 l/m²/h",
+          "Viento superior a 80 km/h",
+          "Pedrisco y nieve"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales sin límite específico (S/L.E.)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La magnitud e intensidad de los fenómenos debe acreditarse mediante certificado de la Agencia Estatal de Meteorología o periciales"
+        ]
+      },
+      {
+        "name": "Daños Materiales (Daños Eléctricos)",
+        "category": "optional",
+        "description": "Cubre daños en la instalación eléctrica de la vivienda y aparatos conectados por corrientes anormales o cortocircuitos en la red.",
+        "covered_events": [
+          "Corrientes anormales o cortocircuitos en la red eléctrica"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales sin límite específico (S/L.E.)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Daños Materiales (Daños por Agua)",
+        "category": "optional",
+        "description": "Cubre daños en la vivienda y mobiliario por derrames accidentales o fugas de agua en instalaciones fijas, conducciones o aparatos electrodomésticos. Incluye localización de averías y reparación de tuberías, congelación (hasta 1.200€/siniestro) y garantías complementarias como atascos y localización de averías (hasta 900€/siniestro).",
+        "covered_events": [
+          "Derrames accidentales o fugas de agua en instalaciones fijas, conducciones o aparatos electrodomésticos",
+          "Congelación de tuberías",
+          "Atascos en tuberías y desagües",
+          "Localización y reparación de fugas o averías que no produzcan daños directos"
+        ],
+        "benefits": [
+          "Indemnización por daños materiales sin límite específico (S/L.E.)",
+          "Localización de averías y reparación de tuberías (S/L.E.)",
+          "Congelación (hasta 1.200€/siniestro)",
+          "Atascos y localización de averías (hasta 900€/siniestro)",
+          "Localización y reparación de fugas o averías que no produzcan daños directos (S/L.E.)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La reparación de tuberías solo cubre conducciones fijas y privativas de la vivienda asegurada",
+          "En caso de corrosión o deterioro generalizado de tuberías, la cobertura se limita a 1.200€/siniestro y requiere reparaciones previas para evitar culpa grave"
+        ]
+      },
+      {
+        "name": "Daños Materiales (Roturas)",
+        "category": "optional",
+        "description": "Cubre roturas de cristales, lunas, espejos, vidrieras, fregaderos y aparatos sanitarios fijos en la vivienda. Incluye garantías complementarias como rotura de encimeras, repisas y placas de cocina de materiales específicos (hasta 12.000€/pieza).",
+        "covered_events": [
+          "Rotura de cristales, lunas, espejos y vidrieras en la vivienda",
+          "Rotura de fregaderos y aparatos sanitarios fijos",
+          "Rotura de encimeras, repisas y placas de cocina de metacrilato, mármol, granito, piedra o materiales cerámicos vitrificados"
+        ],
+        "benefits": [
+          "Indemnización por roturas (100% máximo por pieza)",
+          "Rotura de encimeras, repisas y placas de cocina (hasta 12.000€/pieza)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La rotura de marcos, molduras, objetos decorativos, lámparas, cristalerías, vajillas y menaje en general no está cubierta, salvo que se contrate 'Todo Riesgo Accidental'"
+        ]
+      },
+      {
+        "name": "Robo",
+        "category": "basic",
+        "description": "Cubre robo, hurto, apropiación indebida y uso fraudulento de tarjetas de crédito en la vivienda. Incluye garantías complementarias como sustitución de cerraduras y llaves (S/L.E.), hurto en el exterior (hasta 1.200€/siniestro) y robo con violencia o intimidación en el exterior (hasta 1.500€/siniestro por concepto).",
+        "covered_events": [
+          "Robo en la vivienda",
+          "Hurto en la vivienda",
+          "Apropiación indebida en la vivienda",
+          "Uso fraudulento de tarjetas de crédito en la vivienda",
+          "Sustitución de cerraduras y llaves por robo, hurto, apropiación indebida o extravío de llaves",
+          "Hurto, apropiación indebida y robo con fuerza en el exterior de la vivienda",
+          "Robo con violencia o intimidación en el exterior de la vivienda"
+        ],
+        "benefits": [
+          "Indemnización por robo y daños por esta causa (S/L.E.)",
+          "Hurto y apropiación indebida (hasta 6.000€/siniestro)",
+          "Uso fraudulento de tarjetas de crédito (hasta 1.500€/siniestro, 50€/tarjeta)",
+          "Sustitución de cerraduras y llaves (S/L.E.)",
+          "Hurto en el exterior (hasta 1.200€/siniestro)",
+          "Robo con violencia o intimidación en el exterior: ropa y efectos personales (hasta 1.500€/siniestro), reobtención de documentos (hasta 300€/siniestro), joyas (hasta 1.500€/siniestro), dinero en efectivo (hasta 600€/siniestro), cheques (hasta 1.500€/siniestro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Para robo en el exterior, los bienes deben ser propiedad del asegurado y estar en el exterior de la vivienda",
+          "El uso fraudulento de tarjetas requiere denuncia previa y que el proveedor de servicios de pago no haya devuelto el importe"
+        ]
+      },
+      {
+        "name": "Todo Riesgo Accidental",
+        "category": "optional",
+        "description": "Cubre cualquier daño accidental en los bienes asegurados (excepto aparatos de telefonía, informática, imagen, sonido y dispositivos wearables) con franquicia de 100€. Incluye asistencia sanitaria urgente por accidentes domésticos (hasta 600€/asegurado).",
+        "covered_events": [
+          "Cualquier daño accidental en los bienes asegurados (excepto aparatos de telefonía, informática, imagen, sonido y dispositivos wearables)"
+        ],
+        "benefits": [
+          "Indemnización por daños accidentales (suma asegurada, franquicia 100€)",
+          "Asistencia sanitaria urgente por accidentes domésticos (hasta 600€/asegurado)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No se indemniza ni repara siniestros con importe igual o inferior a 100€",
+          "Los daños superﬁciales o causados por derrames de líquidos no están cubiertos"
+        ]
+      },
+      {
+        "name": "Todo Riesgo Tecnológico",
+        "category": "optional",
+        "description": "Cubre daños accidentales en aparatos de telefonía, informática, imagen, sonido y dispositivos wearables (hasta 5% de la suma asegurada para mobiliario y 6.000€/siniestro/anualidad, franquicia 100€).",
+        "covered_events": [
+          "Daños accidentales en aparatos de telefonía, informática, imagen, sonido y dispositivos wearables"
+        ],
+        "benefits": [
+          "Indemnización por daños tecnológicos (5% de la suma asegurada para mobiliario, máximo 6.000€/siniestro/anualidad, franquicia 100€)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No se indemniza ni repara siniestros con importe igual o inferior a 100€"
+        ]
+      },
+      {
+        "name": "Daños Estéticos",
+        "category": "optional",
+        "description": "Cubre gastos de reparación o reposición para restaurar la coherencia estética de los bienes dañados por un siniestro cubierto (hasta la suma asegurada).",
+        "covered_events": [
+          "Daños estéticos derivados de siniestros cubiertos por Daños Materiales, Robo o Todo Riesgo"
+        ],
+        "benefits": [
+          "Gastos de reposición estética (hasta la suma asegurada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre vehículos a motor, embarcaciones, menoscabos no derivados de siniestros cubiertos, colecciones, bibliotecas, restauración por corrosión de tuberías o daños en lentes y monturas"
+        ]
+      },
+      {
+        "name": "Responsabilidad Civil (Básica)",
+        "category": "basic",
+        "description": "Cubre indemnizaciones y fianzas por daños corporales o materiales a terceros, costes judiciales y dirección jurídica por responsabilidad civil del asegurado como persona privada o por propiedad/uso de viviendas. Incluye daños por animales domésticos (excepto razas excluidas) y acciones de personal doméstico.",
+        "covered_events": [
+          "Daños corporales o materiales a terceros por responsabilidad civil del asegurado como persona privada",
+          "Daños por propiedad o uso de viviendas (incluyendo cuota proporcional en comunidades de propietarios)",
+          "Daños por animales domésticos (perros, gatos, aves, roedores enjaulados, peces, tortugas)",
+          "Acciones u omisiones del personal doméstico en el desempeño de sus funciones"
+        ],
+        "benefits": [
+          "Indemnizaciones y fianzas (hasta la suma asegurada)",
+          "Costes judiciales y dirección jurídica (hasta la suma asegurada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre daños por razas de perros excluidas (ej. Pitbull, Rottweiler, Dogo Argentino, etc.)",
+          "No cubre responsabilidad civil por explotación de negocios o actividades profesionales"
+        ]
+      },
+      {
+        "name": "Responsabilidad Civil (Propietarios de Viviendas en Alquiler)",
+        "category": "optional",
+        "description": "Ampliación de la cobertura de Responsabilidad Civil para propietarios de viviendas en alquiler, incluyendo daños causados por el inquilino, pérdida de alquileres (hasta 18.000€/siniestro), gastos de traslado y estancia en guardamuebles (hasta 6 meses), y daños a bienes del inquilino por incendios, explosiones o daños por agua.",
+        "covered_events": [
+          "Daños causados por el inquilino",
+          "Pérdida de alquileres por inhabitabilidad",
+          "Gastos de traslado y estancia de bienes en guardamuebles",
+          "Daños a bienes del inquilino por incendios, explosiones o daños por agua"
+        ],
+        "benefits": [
+          "Indemnizaciones y fianzas por daños causados por el inquilino (hasta la suma asegurada)",
+          "Pérdida de alquileres (hasta 18.000€/siniestro, franquicia de 1 mes de alquiler con mínimo 600€)",
+          "Gastos de traslado y estancia en guardamuebles (hasta 6 meses)",
+          "Daños a bienes del inquilino por incendios, explosiones o daños por agua (hasta la suma asegurada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura de pérdida de alquileres tiene un límite de 6.000€/año",
+          "Los daños por actos vandálicos del inquilino tienen un límite de 3.000€/siniestro y 6.000€/anualidad"
+        ]
+      },
+      {
+        "name": "Responsabilidad Civil (Usuarios de Viviendas en Alquiler)",
+        "category": "optional",
+        "description": "Cobertura para usuarios de viviendas en alquiler, incluyendo vivienda (excluyendo cuota proporcional de comunidad de propietarios) y mobiliario del arrendador (hasta 6.000€/siniestro). Incluye ampliación por daños a terceros por fugas de agua.",
+        "covered_events": [
+          "Daños a terceros por fugas de agua de instalaciones propias de la vivienda"
+        ],
+        "benefits": [
+          "Vivienda (hasta la suma asegurada, excluyendo cuota proporcional de comunidad de propietarios)",
+          "Mobiliario del arrendador (hasta 6.000€/siniestro, valor real)",
+          "Ampliación por daños a terceros por fugas de agua (hasta la suma asegurada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Defensa Jurídica (Modalidad Básica)",
+        "category": "optional",
+        "description": "Cubre costes judiciales, dirección jurídica y gastos conexos por reclamación de daños y perjuicios (incluso por culpa contractual) y defensa penal por delitos leves. Incluye servicio telefónico de orientación jurídica.",
+        "covered_events": [
+          "Reclamación de daños y perjuicios por culpa o negligencia extracontractual",
+          "Reclamación de daños y perjuicios por culpa o negligencia contractual (servicios médicos, hostelería, enseñanza, limpieza, mudanzas, reparaciones, reformas)",
+          "Defensa penal por delitos leves",
+          "Reclamaciones laborales por empleados de servicio doméstico"
+        ],
+        "benefits": [
+          "Costes judiciales, dirección jurídica y gastos conexos (hasta la suma asegurada)",
+          "Servicio telefónico de orientación jurídica (libre disponibilidad)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre reclamaciones de cuantía litigiosa inferior a 300€, derivadas de actividades bancarias, suministros, contratos de transporte (excepto mudanzas), reclamaciones de empleados (excepto servicio doméstico), reclamaciones por actividad profesional del asegurado, acciones por uso y circulación de vehículos a motor, reclamaciones por compraventa de inmuebles, acciones contra la compañía o empresas vinculadas a MAPFRE, acciones contra promotores/constructores/arquitectos, hechos ocurridos antes de la vigencia de la garantía, reclamaciones derivadas de contratos de arrendamiento"
+        ]
+      },
+      {
+        "name": "Defensa Jurídica (Modalidad Amplia)",
+        "category": "optional",
+        "description": "Ampliación de la cobertura de Defensa Jurídica para incluir derecho de propiedad y derecho de arrendamiento.",
+        "covered_events": [
+          "Reclamaciones por derecho de propiedad (contra promotores, constructores, dirección facultativa, vendedores de viviendas)",
+          "Reclamaciones por derecho de arrendamiento (conflictos con arrendadores)"
+        ],
+        "benefits": [
+          "Costes judiciales, dirección jurídica y gastos conexos por derecho de propiedad y arrendamiento (hasta la suma asegurada)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Animales de Compañía",
+        "category": "optional",
+        "description": "Cubre daños, robo, extravío, sacrificio por vejez/enfermedad incurable y estancia en residencia canina o felina para animales de compañía (perros y gatos). Incluye gastos veterinarios por accidentes (hasta 1.000€/animal) y búsqueda por extravío (hasta 150€/animal).",
+        "covered_events": [
+          "Accidentes en animales de compañía (atropello, peleas, roturas, traumatismos, ingestión de cuerpos extraños, golpe de calor, parto distócico, cesárea)",
+          "Robo o extravío de animales",
+          "Sacrificio y eliminación del cadáver por vejez o enfermedad incurable",
+          "Estancia en residencia canina o felina por hospitalización del propietario"
+        ],
+        "benefits": [
+          "Indemnización por daños por accidente (100% suma asegurada)",
+          "Gastos veterinarios por accidente (hasta 1.000€/animal)",
+          "Indemnización por robo (100% suma asegurada)",
+          "Búsqueda por extravío (hasta 150€/animal)",
+          "Sacrificio y eliminación del cadáver por vejez o enfermedad incurable (hasta 150€/animal)",
+          "Estancia en residencia canina o felina (hasta 300€/anualidad)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 15,
+        "conditions": [
+          "Cobertura de daños por accidente tiene carencia de 15 días",
+          "Cobertura de robo/extravío tiene carencia de 15 días",
+          "Cobertura de sacrificio por vejez/enfermedad incurable tiene carencia de 1 año",
+          "No cubre enfermedades infectocontagiosas, envenenamientos, intervenciones quirúrgicas estéticas, caza, razas peligrosas (ej. Pitbull, Rottweiler, etc.)"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicios Urgentes)",
+        "category": "included_service",
+        "description": "Servicios urgentes como vigilancia y protección de la vivienda (hasta 3 días) y sustitución temporal de aparatos de TV o vídeo (hasta 15 días) tras siniestros de incendio, explosión, inundación o robo.",
+        "covered_events": [
+          "Siniestros de incendio, explosión, inundación o robo"
+        ],
+        "benefits": [
+          "Vigilancia y protección de la vivienda (hasta 3 días)",
+          "Sustitución temporal de aparatos de TV o vídeo (hasta 15 días)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Asistencia en el Hogar (Reparaciones, Reformas y Otros Servicios)",
+        "category": "included_service",
+        "description": "Reparación de urgencia (hasta 3 horas de mano de obra y desplazamientos) para averías de cerrajería, cristalería, electricidad y fontanería no cubiertas por otras garantías. Incluye salvamento de personas encerradas en la vivienda por averías de cerrajería (hasta 600€/siniestro).",
+        "covered_events": [
+          "Averías de cerrajería, cristalería, electricidad y fontanería no cubiertas por otras garantías"
+        ],
+        "benefits": [
+          "Reparación de urgencia (3 horas de mano de obra y desplazamientos, materiales y exceso de tiempo a cargo del asegurado)",
+          "Salvamento de personas encerradas en la vivienda por averías de cerrajería (hasta 600€/siniestro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado asume el coste de materiales y exceso de tiempo de mano de obra"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicio de Reparación de Electrodomésticos)",
+        "category": "included_service",
+        "description": "Reparación de electrodomésticos de línea blanca (nevera, lavadora/secadora, lavavajillas, cocina eléctrica/vitrocerámica, horno/microondas, campana extractora) con hasta 4 intervenciones por anualidad (3 horas de mano de obra, desplazamientos y piezas a cargo de la compañía).",
+        "covered_events": [
+          "Averías mecánicas, eléctricas o electrónicas en electrodomésticos de línea blanca"
+        ],
+        "benefits": [
+          "Reparación de electrodomésticos (hasta 4 intervenciones por anualidad, 3 horas de mano de obra, desplazamientos y piezas a cargo de la compañía)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre electrodomésticos con antigüedad superior a 10 años, daños por golpes, subidas de tensión, vertidos de líquidos, defectos estéticos, corrosión u oxidación",
+          "No cubre reparaciones cubiertas por garantía del fabricante"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicio de Bricolaje)",
+        "category": "included_service",
+        "description": "Servicio de bricolaje no urgente con hasta 4 intervenciones por anualidad (3 horas de mano de obra y desplazamientos a cargo de la compañía, materiales a cargo del asegurado). Incluye instalación de dispositivos de domótica, sustitución de enchufes, interruptores, grifos, llaves de paso, montaje de muebles kit, colocación de burletes, estanterías, cuadros, cortinas, tendedero, reparación de persianas, etc.",
+        "covered_events": [
+          "Trabajos de bricolaje no urgentes en la vivienda"
+        ],
+        "benefits": [
+          "Servicio de bricolaje (hasta 4 intervenciones por anualidad, 3 horas de mano de obra y desplazamientos a cargo de la compañía, materiales a cargo del asegurado)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado asume el coste de materiales y exceso de tiempo de mano de obra",
+          "No cubre instalaciones que no garanticen estabilidad"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Asistencia Familiar)",
+        "category": "included_service",
+        "description": "Asistencia familiar por accidentes en la vivienda, incluyendo personal sanitario (hasta 6 meses y 6.000€/siniestro), personal doméstico (hasta 6 meses, 30€/día y 3.000€/siniestro) y personal docente (hasta 6 meses y 2.500€/siniestro).",
+        "covered_events": [
+          "Accidentes en la vivienda que requieran atención sanitaria, doméstica o docente"
+        ],
+        "benefits": [
+          "Personal sanitario a domicilio (hasta 6 meses y 6.000€/siniestro)",
+          "Personal doméstico a domicilio (a partir del décimo día de baja, hasta 6 meses, 30€/día y 3.000€/siniestro)",
+          "Personal docente a domicilio (a partir del trigésimo día de baja, hasta 6 meses y 2.500€/siniestro)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicio Informativo sobre Animales)",
+        "category": "included_service",
+        "description": "Servicio telefónico de orientación sobre legislación, consultas veterinarias, residencias caninas/felinas y consultas generales relacionadas con animales (horario de 9:00 a 14:00, de lunes a viernes, excepto festivos).",
+        "covered_events": [
+          "Consultas sobre legislación, veterinaria, residencias caninas/felinas y consultas generales sobre animales"
+        ],
+        "benefits": [
+          "Orientación telefónica (libre disponibilidad)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicio de Orientación Médica Telefónica)",
+        "category": "included_service",
+        "description": "Servicio de orientación médica telefónica 24/7 para consultas sobre salud, prevención, preparación para pruebas diagnósticas, uso de medicamentos, elección de especialistas y otros aspectos relacionados con la salud.",
+        "covered_events": [
+          "Consultas o problemas relacionados con la salud de las personas"
+        ],
+        "benefits": [
+          "Orientación médica telefónica (libre disponibilidad, 24/7)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Asistencia en el Hogar (Servicio de Asistencia Informática)",
+        "category": "included_service",
+        "description": "Servicio de asistencia informática remota, recuperación de datos, copia de seguridad remota, antivirus y control parental, y asistencia técnica a domicilio (hasta 3 ordenadores por póliza y 2 intervenciones por ordenador/anualidad).",
+        "covered_events": [
+          "Incidencias en sistemas operativos, hardware, software, dispositivos móviles, plataformas de streaming, redes sociales, recuperación de datos, copia de seguridad, antivirus y control parental"
+        ],
+        "benefits": [
+          "Asistencia informática remota (hasta 3 ordenadores y 3 dispositivos móviles/póliza)",
+          "Servicio de recuperación de datos (hasta 2 servicios por anualidad)",
+          "Servicio de copia de seguridad remota (hasta 15 Gbytes/ordenador)",
+          "Antivirus y control parental (hasta 5 instalaciones/póliza)",
+          "Asistencia técnica a domicilio (hasta 3 ordenadores por póliza y 2 intervenciones por ordenador/anualidad)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre pérdida de datos, daños por causas físicas (caídas, agua), perjuicio o lucro cesante, ni incidencias en equipos infectados por virus o software malicioso"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Protección Digital)",
+        "category": "included_service",
+        "description": "Servicio de protección digital que incluye certificación electrónica ante violencia digital, seguimiento y borrado de huella digital, localización y bloqueo de dispositivos móviles, canal Guardián para ciberacoso y asesoramiento en privacidad y seguridad (hasta 6 identidades o dispositivos/póliza).",
+        "covered_events": [
+          "Violencia digital, seguimiento y borrado de huella digital, localización y bloqueo de dispositivos móviles, ciberacoso"
+        ],
+        "benefits": [
+          "Certificación electrónica ante violencia digital",
+          "Seguimiento y borrado de huella digital",
+          "Localización y bloqueo de dispositivos móviles",
+          "Canal Guardión para ciberacoso (asesoramiento y actuación técnica)",
+          "Asesoramiento en privacidad y seguridad"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre acciones legales ni defensa por uso incorrecto de la cobertura"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Asistencia en Actividades Online: Teletrabajo, Estudio, Ocio y Compras)",
+        "category": "included_service",
+        "description": "Servicio de asistencia para teletrabajo (test de velocidad, configuración VPN, configuración multiusuario, asesoramiento en oficina en casa), educación y ocio en casa (asistencia a herramientas escolares, optimización de dispositivos para juegos en la nube) y compras online (informe de riesgo en webs de comercio electrónico, consejos para compras seguras) (hasta 4 peticiones por anualidad).",
+        "covered_events": [
+          "Teletrabajo, educación y ocio en casa, compras online"
+        ],
+        "benefits": [
+          "Test de velocidad y chequeo de cobertura (hasta 4 peticiones por anualidad)",
+          "Conexión VPN (hasta 4 estaciones de trabajo/póliza)",
+          "Configuración multiusuario",
+          "Asesoramiento en oficina en casa",
+          "Asistencia a herramientas escolares (hasta 4 peticiones por anualidad)",
+          "Optimización de dispositivos para juegos en la nube",
+          "Informe de riesgo en webs de comercio electrónico y consejos para compras seguras"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Requiere dispositivos con soporte del fabricante y niveles de administrador para instalación de programas"
+        ]
+      },
+      {
+        "name": "Asistencia en el Hogar (Asistencia a Personas +55)",
+        "category": "included_service",
+        "description": "Asistencia a personas de 55 años o más por accidentes fuera de la vivienda, incluyendo limpieza general (hasta 8 horas por anualidad), lavado y planchado de ropa, realización de pequeñas compras (hasta 50€), cuidado y atención personal y cuidado de animales de compañía (especies caninas y felinas no peligrosas).",
+        "covered_events": [
+          "Accidentes fuera de la vivienda en personas de 55 años o más"
+        ],
+        "benefits": [
+          "Limpieza de carácter general en la vivienda (incluida)",
+          "Lavado y planchado de ropa (incluido)",
+          "Realización de pequeñas compras (hasta 50€)",
+          "Cuidado y atención personal (incluido)",
+          "Cuidado de animales de compañía (especies caninas y felinas no peligrosas, incluidas)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "No cubre cuidado de animales de razas peligrosas (ej. Pitbull, Rottweiler, etc.), caza o deporte, ni traslados en transporte público para acompañamientos"
+        ]
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "optional",
+        "description": "Cobertura de asistencia médica urgente por enfermedad o accidente fuera de España (hasta 15.000€), gastos de odontología de urgencia (hasta 120€), desplazamiento y alojamiento de acompañante hospitalizado (hasta 45€/día y 450€/10 días), envío de medicamentos, traslado o repatriación sanitaria, repatriación de asegurados acompañantes, acompañamiento de menores o personas con discapacidad, repatriación del asegurado fallecido, gestión de entrega de efectivo en el extranjero (hasta 1.500€), indemnización por pérdida, robo o deterioro exterior del equipaje facturado (hasta 500€), localización y envío de equipajes, reembolso por demora de equipajes (hasta 300€) e información general.",
+        "covered_events": [
+          "Enfermedad o accidente fuera de España",
+          "Hospitalización fuera de España",
+          "Fallecimiento fuera de España",
+          "Pérdida, robo o deterioro de equipaje facturado",
+          "Demora en entrega de equipaje"
+        ],
+        "benefits": [
+          "Asistencia médica urgente por enfermedad o accidente (hasta 15.000€)",
+          "Gastos de odontología de urgencia (hasta 120€/siniestro)",
+          "Desplazamiento de acompañante hospitalizado (incluido)",
+          "Alojamiento de acompañante hospitalizado (hasta 45€/día y 450€/10 días)",
+          "Envío de medicamentos (incluido)",
+          "Traslado o repatriación sanitaria (incluido)",
+          "Traslado o repatriación de acompañantes (incluido)",
+          "Acompañamiento de menores o personas con discapacidad (incluido)",
+          "Repatriación del asegurado fallecido (incluida)",
+          "Repatriación de acompañantes (incluida)",
+          "Acompañamiento de menores o personas con discapacidad en caso de fallecimiento (incluido)",
+          "Desplazamiento de acompañante del asegurado fallecido (incluido)",
+          "Retorno anticipado por fallecimiento de familiar o siniestro grave en residencia (incluido)",
+          "Gestión de entrega de efectivo en el extranjero (hasta 1.500€)",
+          "Indemnización por pérdida, robo o deterioro exterior del equipaje facturado (hasta 500€, máximo 60€ por deterioro exterior)",
+          "Localización y envío de equipajes (incluido)",
+          "Reembolso por demora de equipajes (hasta 300€)",
+          "Información general (recomendaciones de viajes, visados, divisas, vacunación, meteorología)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Cobertura aplica a desplazamientos de hasta 90 días consecutivos fuera de España, con prórroga automática hasta 10 días adicionales en caso de siniestro cubierto",
+          "No cubre enfermedades preexistentes no urgentes, tratamientos de rehabilitación, revisiones médicas preventivas, prótesis, material ortopédico, accidentes laborales, deportes de riesgo, participación en apuestas o riñas, o hechos ocurridos en países no recomendados por el Ministerio de Asuntos Exteriores"
+        ]
+      },
+      {
+        "name": "Protección frente a la Ocupación Ilegal",
+        "category": "optional",
+        "description": "Cobertura para protección frente a ocupación ilegal de la vivienda asegurada, incluyendo asesoramiento jurídico telefónico, defensa jurídica (gastos de mediación y reclamación judicial de la posesión), responsabilidad civil por daños a terceros, compensación por alojamiento alternativo (hasta 100€/día/persona y 3.000€/siniestro en hotel, hasta 12.000€/siniestro en alquiler de vivienda provisional), compensación por pago de suministros (hasta 1.500€/siniestro/anualidad), asistencia psicológica (hasta 3 sesiones por anualidad y 100€/sesión) y daños causados por actos vandálicos (hasta 3.000€/siniestro) y gastos de recuperación del inmueble (hasta 1.500€/siniestro con 3 intervenciones profesionales).",
+        "covered_events": [
+          "Ocupación ilegal de la vivienda asegurada"
+        ],
+        "benefits": [
+          "Asesoramiento jurídico telefónico (incluido)",
+          "Defensa jurídica (gastos de mediación y reclamación judicial de la posesión, hasta la suma asegurada)",
+          "Responsabilidad civil por daños a terceros (hasta la suma asegurada)",
+          "Compensación por alojamiento alternativo (hasta 100€/día/persona y 3.000€/siniestro en hotel, hasta 12.000€/siniestro en alquiler de vivienda provisional)",
+          "Compensación por pago de suministros (hasta 1.000€/siniestro/anualidad)",
+          "Asistencia psicológica (hasta 3 sesiones por anualidad y 100€/sesión)",
+          "Daños causados por actos vandálicos (hasta 3.000€/siniestro)",
+          "Gastos de recuperación del inmueble (hasta 1.500€/siniestro con 3 intervenciones profesionales: cerrajería, fontanería, albañilería, cristalería, electricidad, carpintería)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 15,
+        "conditions": [
+          "La ocupación debe iniciarse tras el período de carencia de 15 días y requiere denuncia y atestado policial para activar las prestaciones",
+          "La aplicación de coberturas de daños vandálicos y gastos de recuperación del inmueble requiere acreditación fehaciente de la desocupación del inmueble"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Provocación intencionada del siniestro por parte del asegurado.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10 (dolo o culpa grave)"
+      },
+      {
+        "description": "Conflictos armados (haya mediado o no declaración oficial de guerra).",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10"
+      },
+      {
+        "description": "Motines y tumultos populares.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10"
+      },
+      {
+        "description": "Reacción o radiación nuclear o contaminación radiactiva.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10"
+      },
+      {
+        "description": "Inundaciones extraordinarias, huracanes, tempestades, erupciones volcánicas, movimientos sísmicos y, en general, hechos calificados como catástrofe o calamidad nacional por el Gobierno de la Nación.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10"
+      },
+      {
+        "description": "Cualquier pérdida, daño, responsabilidad, reclamación, coste o gasto causado por, contribuido por, resultante de, derivado de, o en relación con una Enfermedad Transmisible o el temor o amenaza de una Enfermedad Transmisible, independientemente de cualquier otra causa o evento que contribuya de forma concurrente.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980 de Contrato de Seguro, Artículo 10"
+      },
+      {
+        "description": "Pérdidas indirectas que no estén expresamente aseguradas.",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Robo y hurto (en coberturas de Daños Materiales).",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Daños o pérdidas por defecto en los materiales utilizados, instalación o montaje, impericia, mala praxis o vicio propio de los bienes asegurados (excepto en incendio).",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Asentamientos o movimientos de tierra (hundimientos, corrimientos o desprendimientos) y/o colapso de edificaciones por pérdida de resistencia mecánica o estabilidad (excepto por obras ajenas que comprometan la seguridad estructural y requieran desalojo).",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Fenómenos atmosféricos, meteorológicos, sísmicos o geológicos no asegurados expresamente.",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Siniestros cuya cobertura corresponde al Consorcio de Compensación de Seguros.",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Daños por deterioro gradual, defectos propios o falta de mantenimiento y conservación (excepto en incendio).",
+        "category": "Daños Materiales",
+        "legal_reference": "Condiciones Generales, Artículo 5"
+      },
+      {
+        "description": "Daños que deriven de asentamientos o movimientos de tierra por causas distintas a obras ajenas que comprometan la seguridad estructural.",
+        "category": "Incendio y otros daños",
+        "legal_reference": "Condiciones Generales, Artículo 5.1"
+      },
+      {
+        "description": "Daños producidos por obras realizadas con anterioridad a la fecha de efecto de la póliza.",
+        "category": "Incendio y otros daños",
+        "legal_reference": "Condiciones Generales, Artículo 5.1"
+      },
+      {
+        "description": "Daños materiales que no comprometan la seguridad estructural del edificio ni impliquen desalojo.",
+        "category": "Incendio y otros daños",
+        "legal_reference": "Condiciones Generales, Artículo 5.1"
+      },
+      {
+        "description": "Daños sufridos por los bienes durante su construcción o montaje.",
+        "category": "Incendio y otros daños",
+        "legal_reference": "Condiciones Generales, Artículo 5.1"
+      },
+      {
+        "description": "Daños que se deriven de defectos o falta de mantenimiento y conservación de los bienes asegurados.",
+        "category": "Fenómenos Atmosféricos",
+        "legal_reference": "Condiciones Generales, Artículo 5.2"
+      },
+      {
+        "description": "Daños que se manifiesten en forma de goteras, filtraciones, humedades, condensaciones u oxidaciones producidas de forma paulatina.",
+        "category": "Fenómenos Atmosféricos",
+        "legal_reference": "Condiciones Generales, Artículo 5.2"
+      },
+      {
+        "description": "Daños que puedan sufrir los aparatos o equipos por defectos de funcionamiento de los mismos.",
+        "category": "Daños Eléctricos",
+        "legal_reference": "Condiciones Generales, Artículo 5.3"
+      },
+      {
+        "description": "Daños, filtraciones o goteras causados por fenómenos meteorológicos (excepto fugas en bajantes ocultas de aguas pluviales).",
+        "category": "Daños por Agua",
+        "legal_reference": "Condiciones Generales, Artículo 5.4"
+      },
+      {
+        "description": "Daños, filtraciones o goteras causados por humedad ambiental, transmitida por el terreno o cimentación, o por crecida, desbordamiento o acción paulatina de aguas de mares, ríos, rías, lagos, embalses, canales, acequias o redes de saneamiento público.",
+        "category": "Daños por Agua",
+        "legal_reference": "Condiciones Generales, Artículo 5.4"
+      },
+      {
+        "description": "Reparación o ajuste de grifos, llaves de paso, elementos o aparatos sanitarios, calderas, calentadores, acumuladores, radiadores, aire acondicionado y electrodomésticos.",
+        "category": "Daños por Agua",
+        "legal_reference": "Condiciones Generales, Artículo 5.4"
+      },
+      {
+        "description": "Atascos en inodoros eléctricos y trituradores.",
+        "category": "Daños por Agua",
+        "legal_reference": "Condiciones Generales, Artículo 5.4"
+      },
+      {
+        "description": "Localización y reparación de fugas o averías con origen en vasos de piscinas, estanques, pozos, fosas sépticas, redes de riego, sumideros, arquetas, canalones o bajantes de aguas pluviales.",
+        "category": "Daños por Agua",
+        "legal_reference": "Condiciones Generales, Artículo 5.4"
+      },
+      {
+        "description": "Rotura de marcos, molduras, objetos decorativos, lámparas, cristalerías, vajillas, menaje en general, pantallas y componentes de aparatos o instrumentos de óptica (excepto con 'Todo Riesgo Accidental').",
+        "category": "Roturas",
+        "legal_reference": "Condiciones Generales, Artículo 5.5"
+      },
+      {
+        "description": "Rotura de dispositivos wearables y de aparatos de telefonía, informática, imagen y sonido, pantallas y componentes (excepto con 'Todo Riesgo Tecnológico').",
+        "category": "Roturas",
+        "legal_reference": "Condiciones Generales, Artículo 5.5"
+      },
+      {
+        "description": "Rotura de lentes y sus monturas.",
+        "category": "Roturas",
+        "legal_reference": "Condiciones Generales, Artículo 5.5"
+      },
+      {
+        "description": "Arañazos, raspaduras, desconchones y otros deterioros similares en superficies y azogados (excepto si van acompañados de otros daños de mayor entidad en el mismo siniestro).",
+        "category": "Roturas",
+        "legal_reference": "Condiciones Generales, Artículo 5.5"
+      },
+      {
+        "description": "Simples pérdidas o extravíos.",
+        "category": "Robo",
+        "legal_reference": "Condiciones Generales, Artículo 6"
+      },
+      {
+        "description": "Bienes que se encuentren fuera de la vivienda descrita en las Condiciones Particulares (excepto en casos previstos específicamente).",
+        "category": "Robo",
+        "legal_reference": "Condiciones Generales, Artículo 6"
+      },
+      {
+        "description": "Siniestros en los que concurra negligencia grave del asegurado, tomador del seguro o personas que de ellos dependan o convivan con ellos.",
+        "category": "Robo",
+        "legal_reference": "Condiciones Generales, Artículo 6"
+      },
+      {
+        "description": "Hechos ocurridos en el exterior de la vivienda asegurada.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Caída o desprendimiento de muebles, baldas u otros objetos por instalación incorrecta, sobreutilización con exceso de peso o desgaste de agarres.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Deterioro o desgaste inherente al uso de los bienes, o averías de tipo mecánico, eléctrico o electrónico en los mismos.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Cualquier clase de contaminación.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Acción de termitas, gusanos, polillas o cualquier plaga de insectos.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Expropiación, confiscación, nacionalización, requisa o daños por imperativo de gobierno o autoridad.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Derrames de líquidos de cualquier clase o naturaleza.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Daños provocados por fluidos y restos de naturaleza corporal de personas o animales.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Caída de un bien asegurado por el desagüe de un lavabo, fregadero, inodoro o aparato sanitario (ni daños al bien ni gastos de recuperación).",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Simples pérdidas o extravíos de los bienes asegurados.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Arañazos, raspaduras, desconchones, salpicaduras, rayones u otras alteraciones superficiales (excepto si van acompañados de otros daños de mayor entidad en el mismo siniestro).",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Daños producidos a Objetos de Especial Valor.",
+        "category": "Todo Riesgo",
+        "legal_reference": "Condiciones Generales, Artículo 9.3"
+      },
+      {
+        "description": "Vehículos a motor y embarcaciones.",
+        "category": "Daños Estéticos",
+        "legal_reference": "Condiciones Generales, Artículo 10"
+      },
+      {
+        "description": "Menoscabos o daños que no se deriven de siniestros amparados por Daños Materiales, Robo o Todo Riesgo.",
+        "category": "Daños Estéticos",
+        "legal_reference": "Condiciones Generales, Artículo 10"
+      },
+      {
+        "description": "Descabalamiento o menoscabo de colecciones, bibliotecas y conjuntos de bienes muebles (excepto muebles propiamente dichos).",
+        "category": "Daños Estéticos",
+        "legal_reference": "Condiciones Generales, Artículo 10"
+      },
+      {
+        "description": "Restauración estética por corrosión o deterioro generalizado de tuberías o conducciones.",
+        "category": "Daños Estéticos",
+        "legal_reference": "Condiciones Generales, Artículo 10"
+      },
+      {
+        "description": "Hechos dolosos o causados intencionadamente por el asegurado, asalariado o personas por las que deba responder.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños cuyo origen sea el deliberado incumplimiento de normas, leyes, ordenanzas y reglamentos referentes al mantenimiento de viviendas o edificios y sus instalaciones o declaración de ruina inminente.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños cuyo origen sea la corrosión o deterioro generalizado de tuberías o conducciones por cualquier causa, sin reparaciones previas tras conocimiento en siniestro previo.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños causados por animales distintos a los domésticos (perros, gatos, aves, roedores enjaulados, peces, tortugas).",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños causados por razas de perros excluidas (ej. Pitbull, Rottweiler, Dogo Argentino, etc.).",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.1"
+      },
+      {
+        "description": "Pago de sanciones y multas, así como consecuencias de su impago.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños a bienes muebles o inmuebles confiados, cedidos o arrendados al asegurado o bajo su posesión o ámbito de control (excepto en supuestos expresamente establecidos).",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Obligaciones asumidas en virtud de pactos o acuerdos no legalmente exigibles.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Responsabilidades reconocidas por la jurisdicción laboral o administración.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Responsabilidades derivadas de explotación de industrias, negocios, profesiones retribuidas, cargos o actividades en asociaciones o comunidades.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Responsabilidades y reclamaciones por daños causados con vehículos a motor, embarcaciones, buques, aeronaves, drones o aeromodelos (excepto en supuestos previstos).",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Daños por reacción o radiación nuclear o contaminación radiactiva.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Pérdidas económicas no consecuencia de daño corporal o material amparado por la póliza.",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Responsabilidades por daños al medioambiente (emisiones, vertidos, radiaciones, ruidos, vibraciones, olores, calor, modificaciones de temperatura, campos electromagnéticos, humos tóxicos).",
+        "category": "Responsabilidad Civil",
+        "legal_reference": "Condiciones Generales, Artículo 12.3"
+      },
+      {
+        "description": "Pago de sanciones y multas, recursos contra ellas y gastos por su imposición.",
+        "category": "Defensa Jurídica",
+        "legal_reference": "Condiciones Generales, Artículo 13.2"
+      },
+      {
+        "description": "Gestiones, trámites o procedimientos de cuantía litigiosa inferior a 300€, derivados de actividades bancarias, suministros, contratos de transporte (excepto mudanzas), reclamaciones de empleados (excepto servicio doméstico), reclamaciones por actividad profesional del asegurado, acciones por uso y circulación de vehículos a motor, reclamaciones por compraventa de inmuebles, acciones contra la compañía o empresas vinculadas a MAPFRE, acciones contra promotores/constructores/arquitectos, hechos ocurridos antes de la vigencia de la garantía, reclamaciones derivadas de contratos de arrendamiento.",
+        "category": "Defensa Jurídica",
+        "legal_reference": "Condiciones Generales, Artículo 13.2"
+      },
+      {
+        "description": "Reclamaciones injustificadas por falta de medio de prueba o manifiestamente desproporcionadas (excepto si el asegurado obtiene resolución favorable).",
+        "category": "Defensa Jurídica",
+        "legal_reference": "Condiciones Generales, Artículo 13.2"
+      },
+      {
+        "description": "Enfermedades infectocontagiosas, epizoóticas, parasitarias o de cualquier tipo, incluidas transmitidas por picaduras o mordeduras de insectos, ácaros, roedores u otros mamíferos.",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Envenenamientos e intoxicaciones.",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Daños distintos a los descritos en el apartado de Riesgos Cubiertos.",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Lesiones o enfermedades debidas o derivadas de la edad del animal.",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Intervenciones quirúrgicas de tipo estético (ej. modelar orejas o rabos, extirpación de uñas).",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Cualquier suceso derivado del ejercicio de la caza.",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Cesárea o parto distócico en hembras de razas braquiocéfalas (ej. bulldog francés, bulldog inglés, boston terrier).",
+        "category": "Animales de Compañía",
+        "legal_reference": "Condiciones Generales, Artículo 14.3"
+      },
+      {
+        "description": "Accidentes laborales en actividades de riesgo (trabajo en obras, maquinaria peligrosa, manejo de productos tóxicos, etc.).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Participación en apuestas, desafíos o riñas (excepto legítima defensa o necesidad).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Práctica de deportes de riesgo (esquí, alpinismo, buceo, paracaidismo, etc.).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Enfermedades preexistentes o crónicas no urgentes (excepto traslado o repatriación sanitaria por urgencia vital).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Enfermedades o estados patológicos por ingestión voluntaria de alcohol, drogas, sustancias tóxicas o medicamentos no prescritos.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Servicios concertados sin previa comunicación o consentimiento de la aseguradora (excepto urgente necesidad).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Gastos incurridos fuera del ámbito de aplicación de las garantías o después de 90 días de viaje (excepto prórroga por siniestro cubierto).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Mercancías, material profesional, billetes, colecciones, títulos, documentos, tarjetas de crédito, dinero, joyas, contenido en medios electrónicos, documentos en bandas magnéticas o filmados (excepto ordenadores personales).",
+        "category": "Asistencia en Viaje (Equipaje)",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Pérdidas por objetos no entregados a custodia de transportista o olvidados por el asegurado.",
+        "category": "Asistencia en Viaje (Equipaje)",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Daños por uso o desgaste normal, vicio propio o acción de la intemperie.",
+        "category": "Asistencia en Viaje (Equipaje)",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Robo durante camping, caravaning o alojamiento no fijo.",
+        "category": "Asistencia en Viaje (Equipaje)",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Daños en equipajes no embalados o identificados correctamente, equipajes frágiles o productos perecederos.",
+        "category": "Asistencia en Viaje (Equipaje)",
+        "legal_reference": "Condiciones Generales, Artículo 15.5"
+      },
+      {
+        "description": "Deterioro del uso normal del inmueble o sus instalaciones, falta de mantenimiento o vicio propio (en coberturas de Protección frente a la Ocupación Ilegal).",
+        "category": "Protección frente a la Ocupación Ilegal",
+        "legal_reference": "Condiciones Generales, Artículo 16"
+      },
+      {
+        "description": "Ocupación en la que el propietario haya facilitado acceso voluntariamente al ocupante (cesión, arrendamiento, préstamo).",
+        "category": "Protección frente a la Ocupación Ilegal",
+        "legal_reference": "Condiciones Generales, Artículo 16"
+      },
+      {
+        "description": "Ocupación iniciada antes de la fecha de efecto de la cobertura o durante el período de carencia de 15 días.",
+        "category": "Protección frente a la Ocupación Ilegal",
+        "legal_reference": "Condiciones Generales, Artículo 16"
+      },
+      {
+        "description": "Daños causados por ocupantes ilegales (no cubiertos por Responsabilidad Civil).",
+        "category": "Protección frente a la Ocupación Ilegal",
+        "legal_reference": "Condiciones Generales, Artículo 16"
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Daños Materiales (Vivienda)",
+        "limit_type": "maximum_amount",
+        "limit_value": "Sin límite específico (S/L.E.)",
+        "conditions": "La indemnización no puede superar el valor de reconstrucción de la vivienda en el momento del siniestro"
+      },
+      {
+        "coverage_name": "Daños Materiales (Mobiliario)",
+        "limit_type": "maximum_amount",
+        "limit_value": "Sin límite específico (S/L.E.)",
+        "conditions": "La indemnización no puede superar el valor de reposición del mobiliario en el momento del siniestro"
+      },
+      {
+        "coverage_name": "Objetos de Especial Valor (Mobiliario)",
+        "limit_type": "maximum_amount_per_item",
+        "limit_value": "12.000€ por objeto o colección",
+        "conditions": "Límite por siniestro del 50% de la suma asegurada para mobiliario, salvo declaración individual en Condiciones Particulares"
+      },
+      {
+        "coverage_name": "Bienes para Uso Profesional (Mobiliario)",
+        "limit_type": "percentage_of_sum_insured",
+        "limit_value": "25% de la suma asegurada para mobiliario",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Objetos en Jardines, Garajes y Similares (Mobiliario)",
+        "limit_type": "percentage_of_sum_insured_and_maximum_per_event",
+        "limit_value": "10% de la suma asegurada para mobiliario y 9.000€ por siniestro",
+        "conditions": "Bienes deben estar en terrazas, jardines, porches debidamente cercados o vallados, trasteros y garajes cerrados y aislados para uso exclusivo de la vivienda"
+      },
+      {
+        "coverage_name": "Vehículos a Motor y Embarcaciones (Mobiliario)",
+        "limit_type": "percentage_of_sum_insured_and_maximum_per_event",
+        "limit_value": "25% de la suma asegurada para mobiliario y 6.000€ por siniestro",
+        "conditions": "Solo cubiertos contra rayo, incendio o explosión de procedencia externa, y deben estar en el mismo edificio o adosados a la vivienda"
+      },
+      {
+        "coverage_name": "Propiedades de Terceras Personas (Mobiliario)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "6.000€ por siniestro",
+        "conditions": "Bienes deben estar dentro de la vivienda asegurada"
+      },
+      {
+        "coverage_name": "Joyas (Depósito en Caja Fuerte)",
+        "limit_type": "percentage_of_sum_insured_and_maximum_per_event",
+        "limit_value": "25% de la suma asegurada para joyas y 6.000€ por siniestro",
+        "conditions": "Solo aplica si se declara existencia de caja fuerte de seguridad en Condiciones Particulares"
+      },
+      {
+        "coverage_name": "Joyas (Fuera de Caja Fuerte)",
+        "limit_type": "percentage_of_sum_insured_and_maximum_per_event",
+        "limit_value": "25% de la suma asegurada para joyas con máximo de 6.000€/siniestro",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Dinero y Tarjetas de Crédito",
+        "limit_type": "maximum_per_event",
+        "limit_value": "1.500€ por siniestro",
+        "conditions": "Solo aplica si se contrata suma asegurada para joyas en Condiciones Particulares"
+      },
+      {
+        "coverage_name": "Uso Fraudulento de Tarjetas de Crédito",
+        "limit_type": "maximum_per_event_and_per_card",
+        "limit_value": "1.500€ por siniestro y 50€ por tarjeta",
+        "conditions": "Requiere denuncia previa y que el proveedor de servicios de pago no haya devuelto el importe"
+      },
+      {
+        "coverage_name": "Robo (Hurto y Apropiación Indebida)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "6.000€ por siniestro",
+        "conditions": "No cubre colecciones, objetos de valor histórico/artístico, pieles, joyas ni dinero"
+      },
+      {
+        "coverage_name": "Robo en el Exterior (Hurto, Apropiación Indebida y Robo con Fuerza)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "1.200€ por siniestro",
+        "conditions": "Incluye reobtención de documentos hasta 300€ y dinero en efectivo hasta 150€ (si está contratada cobertura de joyas)"
+      },
+      {
+        "coverage_name": "Robo con Violencia o Intimidación en el Exterior",
+        "limit_type": "maximum_per_event",
+        "limit_value": "1.500€ por siniestro",
+        "conditions": "Incluye ropa y efectos personales, reobtención de documentos, joyas, dinero en efectivo y cheques (hasta 1.500€ por concepto)"
+      },
+      {
+        "coverage_name": "Todo Riesgo Accidental",
+        "limit_type": "franchise",
+        "limit_value": "100€",
+        "conditions": "No se indemniza ni repara siniestros con importe igual o inferior a 100€"
+      },
+      {
+        "coverage_name": "Todo Riesgo Tecnológico",
+        "limit_type": "percentage_of_sum_insured_and_maximum_per_event_and_franchise",
+        "limit_value": "5% de la suma asegurada para mobiliario, máximo 6.000€ por siniestro/anualidad y franquicia 100€",
+        "conditions": "No se indemniza ni repara siniestros con importe igual o inferior a 100€"
+      },
+      {
+        "coverage_name": "Inhabitabilidad de la Vivienda (Alojamiento en Hotel)",
+        "limit_type": "maximum_days_and_daily_amount_and_total",
+        "limit_value": "10 días, 300€/día/persona, máximo 9.000€ por siniestro",
+        "conditions": "Solo aplica si la vivienda es habitada por el asegurado y se produce inhabitabilidad por siniestro cubierto"
+      },
+      {
+        "coverage_name": "Inhabitabilidad de la Vivienda (Alquiler de Vivienda Provisional)",
+        "limit_type": "maximum_duration_and_total",
+        "limit_value": "12 meses y 18.000€ por siniestro",
+        "conditions": "Solo aplica si la vivienda es habitada por el asegurado y se produce inhabitabilidad por siniestro cubierto"
+      },
+      {
+        "coverage_name": "Inhabitabilidad de la Vivienda (Gastos de Restaurante y Lavandería)",
+        "limit_type": "maximum_days_and_daily_amount_and_total",
+        "limit_value": "10 días, 300€/día, máximo 3.000€ por siniestro",
+        "conditions": "Solo aplica si la cocina de la vivienda asegurada queda inutilizable por siniestro cubierto"
+      },
+      {
+        "coverage_name": "Gastos de Salvamento, Desescombro, Demolición y Extracción de Lodos",
+        "limit_type": "percentage_of_sum_insured",
+        "limit_value": "5% de la suma asegurada para vivienda y/o mobiliario por siniestro",
+        "conditions": "No cubre desescombro o demolición de elementos de cimentación no dañados por el siniestro"
+      },
+      {
+        "coverage_name": "Daños por Agua (Congelación)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "1.200€ por siniestro",
+        "conditions": "Solo aplica si la vivienda está asegurada bajo esta garantía"
+      },
+      {
+        "coverage_name": "Daños por Agua (Atascos y Localización de Averías)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "900€ por siniestro",
+        "conditions": "Incluye desatascos, limpieza y reparación de conducciones de desagüe, sumideros y arquetas obturados o atascados"
+      },
+      {
+        "coverage_name": "Roturas (Cristales, Lunar, Espejos, Vidrieras)",
+        "limit_type": "maximum_per_piece",
+        "limit_value": "100% máximo por pieza",
+        "conditions": "Límite de 12.000€ por pieza individual dañada"
+      },
+      {
+        "coverage_name": "Roturas (Encimeras, Repisas y Placas de Cocina)",
+        "limit_type": "maximum_per_piece",
+        "limit_value": "100% y máximo de 12.000€/pieza",
+        "conditions": "Solo aplica si se contrata garantía complementaria"
+      },
+      {
+        "coverage_name": "Asistencia en el Hogar (Reparación de Electrodomésticos)",
+        "limit_type": "maximum_interventions_per_year",
+        "limit_value": "4 intervenciones por anualidad",
+        "conditions": "Cada intervención incluye 3 horas de mano de obra, desplazamientos y piezas a cargo de la compañía"
+      },
+      {
+        "coverage_name": "Asistencia en el Hogar (Servicio de Bricolaje)",
+        "limit_type": "maximum_interventions_per_year",
+        "limit_value": "4 intervenciones por anualidad",
+        "conditions": "Cada intervención incluye 3 horas de mano de obra y desplazamientos a cargo de la compañía, materiales a cargo del asegurado"
+      },
+      {
+        "coverage_name": "Asistencia Familiar (Personal Sanitario)",
+        "limit_type": "maximum_duration_and_total",
+        "limit_value": "6 meses y 6.000€ por siniestro",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia Familiar (Personal Doméstico)",
+        "limit_type": "maximum_duration_and_daily_amount_and_total",
+        "limit_value": "6 meses, 30€/día, máximo 3.000€ por siniestro",
+        "conditions": "A partir del décimo día de baja del asegurado"
+      },
+      {
+        "coverage_name": "Asistencia Familiar (Personal Docente)",
+        "limit_type": "maximum_duration_and_total",
+        "limit_value": "6 meses y 2.500€ por siniestro",
+        "conditions": "A partir del trigésimo día de baja del asegurado"
+      },
+      {
+        "coverage_name": "Asistencia a Personas +55",
+        "limit_type": "maximum_hours_per_year_and_interventions",
+        "limit_value": "8 horas por anualidad y 3 intervenciones por anualidad",
+        "conditions": "Mínimo 2 horas por intervención, horario de 9:00 a 21:00 de lunes a viernes (no festivos)"
+      },
+      {
+        "coverage_name": "Asistencia Informática (Recuperación de Datos)",
+        "limit_type": "maximum_services_per_year",
+        "limit_value": "2 servicios por anualidad",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia Informática (Asistencia Técnica a Domicilio)",
+        "limit_type": "maximum_computers_per_policy_and_interventions",
+        "limit_value": "3 ordenadores por póliza y 2 intervenciones por ordenador/anualidad",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Protección Digital",
+        "limit_type": "maximum_identities_or_devices",
+        "limit_value": "6 identidades o dispositivos con acceso a internet por póliza",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia en Actividades Online",
+        "limit_type": "maximum_requests_per_year",
+        "limit_value": "4 peticiones por anualidad",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Animales de Compañía (Daños por Accidente)",
+        "limit_type": "maximum_per_animal",
+        "limit_value": "100% suma asegurada",
+        "conditions": "Incluye indemnización por muerte o sacrificio necesario y gastos veterinarios hasta 1.000€/animal"
+      },
+      {
+        "coverage_name": "Animales de Compañía (Robo o Extravío)",
+        "limit_type": "maximum_per_animal",
+        "limit_value": "100% suma asegurada",
+        "conditions": "Incluye indemnización por pérdida del animal y búsqueda por extravío hasta 150€/animal"
+      },
+      {
+        "coverage_name": "Animales de Compañía (Sacrificio por Vejez o Enfermedad Incurable)",
+        "limit_type": "maximum_per_animal",
+        "limit_value": "150€ por animal",
+        "conditions": "Carencia de 1 año desde la inclusión del animal en la cobertura"
+      },
+      {
+        "coverage_name": "Animales de Compañía (Estancia en Residencia)",
+        "limit_type": "maximum_per_year",
+        "limit_value": "300€ por anualidad",
+        "conditions": "Solo aplica por hospitalización del propietario del animal"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Asistencia Médica Urgente)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "15.000€",
+        "conditions": "Aplica a desplazamientos fuera de España de hasta 90 días consecutivos"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Gastos de Odontología de Urgencia)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "120€ por siniestro",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Alojamiento de Acompañante Hospitalizado)",
+        "limit_type": "maximum_daily_amount_and_total",
+        "limit_value": "45€/día y 450€/10 días",
+        "conditions": "Solo aplica si hospitalización del asegurado fuera de España es superior a 5 días"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Indemnización por Pérdida, Robo o Deterioro Exterior de Equipaje)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "500€ (máximo 60€ por deterioro exterior)",
+        "conditions": "Aplica a equipaje facturado en vuelo"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Reembolso por Demora de Equipajes)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "300€",
+        "conditions": "Solo aplica a demoras superiores a 6 horas desde la llegada del vuelo"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje (Gestión de Entrega de Efectivo en el Extranjero)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "1.500€",
+        "conditions": "Requiere justificantes, certificados o denuncias correspondientes"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Alojamiento en Hotel)",
+        "limit_type": "maximum_daily_amount_and_total",
+        "limit_value": "100€/día/persona y 3.000€ por siniestro",
+        "conditions": "Solo aplica si la vivienda estaba habitada por el asegurado antes de la ocupación"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Alquiler de Vivienda Provisional)",
+        "limit_type": "maximum_duration_and_total",
+        "limit_value": "12 meses y 12.000€ por siniestro",
+        "conditions": "Solo aplica si la vivienda estaba habitada por el asegurado antes de la ocupación"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Compensación por Pago de Suministros)",
+        "limit_type": "maximum_per_event_and_year",
+        "limit_value": "1.500€ por siniestro y anualidad",
+        "conditions": "Solo aplica a consumos devengados a partir del día siguiente al cumplimiento de 1 mes de ocupación ilegal"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Asistencia Psicológica)",
+        "limit_type": "maximum_sessions_per_year_and_per_session",
+        "limit_value": "3 sesiones por anualidad y 100€ por sesión",
+        "conditions": "Solo aplica a impacto emocional directamente derivado de la ocupación ilegal"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Daños por Actos Vandálicos)",
+        "limit_type": "maximum_per_event",
+        "limit_value": "3.000€ por siniestro",
+        "conditions": "Solo aplica a daños materiales en bienes asegurados por actos vandálicos de ocupantes ilegales"
+      },
+      {
+        "coverage_name": "Protección frente a la Ocupación Ilegal (Gastos de Recuperación del Inmueble)",
+        "limit_type": "maximum_interventions_and_total",
+        "limit_value": "3 intervenciones profesionales por siniestro y 1.500€ por siniestro",
+        "conditions": "Incluye cerrajería, fontanería, albañilería, cristalería, electricidad y carpintería"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima del seguro en los términos y plazos acordados",
+        "Facilitar información veraz y completa sobre el riesgo y los bienes asegurados en el momento de la contratación",
+        "Comunicar a la aseguradora cualquier cambio en la información proporcionada que pueda agravar el riesgo (ej. reformas, cambios de uso, instalación de sistemas de seguridad)",
+        "Comunicar a la aseguradora cualquier variación en los valores asegurados para actualizar las sumas aseguradas y primas",
+        "Permitir la actuación de peritos y técnicos designados por la aseguradora para la valoración de siniestros",
+        "Notificar a la aseguradora cualquier siniestro en el plazo máximo de 7 días desde que se conozca",
+        "Facilitar toda la documentación e información requerida por la aseguradora para la tramitación del siniestro (denuncias, informes, facturas, etc.)",
+        "No negociar, admitir o rechazar reclamaciones de terceros sin autorización expresa de la aseguradora",
+        "En caso de robo, hurto, apropiación indebida o uso fraudulento de tarjetas, presentar denuncia ante la autoridad competente y notificar a la entidad emisora de la tarjeta",
+        "En caso de siniestro que afecte a la cobertura de robo, notificar la posible recuperación de los bienes sustraídos y, si aparecen antes de 60 días, recibirlos y devolver la compensación percibida (salvo pacto en contrario)",
+        "En caso de siniestro, colaborar con la aseguradora en la investigación y valoración de daños, permitiendo inspecciones y peritaciones",
+        "En caso de siniestro, no realizar reparaciones o reposiciones sin autorización expresa de la aseguradora (excepto en casos de urgencia justificada)",
+        "En caso de siniestro, no abandonar los bienes dañados sin autorización de la aseguradora",
+        "En caso de siniestro, no efectuar reparaciones definitivas sin consentimiento de la aseguradora",
+        "En caso de siniestro, no aceptar ni rechazar ofertas de indemnización de terceros sin autorización de la aseguradora",
+        "En caso de concurrencia de seguros, comunicar a MAPFRE la existencia de otras pólizas que cubran el mismo riesgo"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Presentar denuncia ante la autoridad competente en caso de robo, hurto, apropiación indebida o uso fraudulento de tarjetas",
+        "Notificar a la entidad emisora de la tarjeta la desaparición de tarjetas de crédito/débito o de compra",
+        "Ratificar por escrito la notificación del siniestro cuando la aseguradora lo considere necesario",
+        "Comunicar por escrito en el plazo máximo de 5 días desde la comunicación inicial la relación de objetos existentes en el momento del siniestro, la de los salvados y la estimación de daños o pérdidas",
+        "Facilitar toda clase de informaciones sobre las circunstancias y consecuencias del siniestro",
+        "Comunicar en el plazo más breve posible cualquier notificación judicial, extrajudicial o administrativa relacionada con el siniestro",
+        "En caso de siniestro de robo, presentar la denuncia incluyendo referencia a MAPFRE y el número de póliza",
+        "En caso de siniestro de asistencia, solicitar el servicio por teléfono o cualquier medio de comunicación inmediato indicando datos identificativos y número de póliza"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática por periodos de igual duración (1 año si el periodo inicial es superior a 1 año)",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Incumplimiento de obligaciones por parte del tomador o asegurado (ej. impago de primas, agravación del riesgo sin comunicación)",
+        "Rescisión por mutuo acuerdo entre las partes",
+        "Extinción por falta de pago de primas (tras 6 meses de impago sin reclamación)",
+        "Extinción por resolución judicial en concurso o liquidación intervenida de la aseguradora",
+        "Extinción por incumplimiento de obligaciones legales o normativas",
+        "Extinción por siniestro total de los bienes asegurados (con devolución de prima proporcional al período no transcurrido)",
+        "Extinción por declaración de ruina de la vivienda asegurada"
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados por la aseguradora",
+      "payment_frequency": [
+        "anual",
+        "fraccionada (según pacto en Condiciones Particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "En servicios de reparación de electrodomésticos y bricolaje, el asegurado asume el coste de materiales y exceso de tiempo de mano de obra. En asistencia a personas +55, el asegurado asume el coste de desplazamientos en transporte público y de compras superiores a 50€.",
+      "pricing_factors": [
+        "Valor de reconstrucción o reposición de la vivienda y mobiliario",
+        "Ubicación de la vivienda (provincia, tipo de construcción)",
+        "Suma asegurada y límites de cobertura contratados",
+        "Franquicias aplicables",
+        "Historial de siniestralidad de la póliza",
+        "Actualización automática de sumas aseguradas según índice pactado",
+        "Tipo de construcción (estándar, madera, prefabricados, suelos y vigas de madera)",
+        "Medidas de protección contra incendio y robo instaladas en la vivienda",
+        "Uso de la vivienda (habitual, secundaria, alquiler)",
+        "Edad y estado de conservación de la vivienda y mobiliario",
+        "Número de asegurados y personas a cargo",
+        "Coberturas adicionales contratadas (ej. todo riesgo, defensa jurídica, animales de compañía)"
+      ],
+      "discounts": [
+        "Descuentos por instalación de sistemas de seguridad (ej. alarmas conectadas a central autorizada, puertas acorazadas, cajas fuertes de seguridad)",
+        "Descuentos por bundling con otros seguros de MAPFRE (ej. seguro de coche, vida)",
+        "Descuentos por no siniestralidad en periodos anteriores",
+        "Descuentos por pago anual frente a fraccionado"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Asistencia en Viaje (con limitaciones geográficas y temporales)",
+        "Desplazamiento temporal de bienes asegurados (mobiliario y joyas) en hoteles o viviendas utilizadas por el asegurado con motivo de un viaje o desplazamiento temporal de hasta 3 meses",
+        "Robo en el exterior de la vivienda (con limitaciones geográficas y temporales)",
+        "Responsabilidad Civil en el extranjero para desplazamientos ocasionales de carácter privado de hasta 3 meses consecutivos"
+      ],
+      "special_conditions_abroad": "Para Asistencia en Viaje, la cobertura aplica a desplazamientos fuera de España de hasta 90 días consecutivos, con prórroga automática hasta 10 días adicionales en caso de siniestro cubierto. No aplica en países no recomendados por el Ministerio de Asuntos Exteriores de España o sujetos a embargo del Consejo de Seguridad de la ONU. Para Responsabilidad Civil en el extranjero, aplica a hechos ocurridos en el extranjero durante desplazamientos ocasionales de carácter privado de hasta 3 meses consecutivos."
+    },
+    "source_documents": [
+      {
+        "filename": "hogar_platino_cg_0900ab44c8af9bab.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "hogar_platino_ipid_0900ab44c324410e.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "hogar_platino_nota_0900ab44c32452e3.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "analyzed_at": "2026-11-27T10:32:54.076838+00:00",
+  "analyzer": {
+    "name": "analyze_products",
+    "version": "1.0.0",
+    "model": "mistral-small-latest",
+    "schema_version": "1.0"
+  },
+  "company_key": "C0511",
+  "summary": {
+    "total_products": 6,
+    "successful": 6,
+    "skipped": 0,
+    "failed": 0,
+    "quality_issues": 0,
+    "total_markdown_files": 11,
+    "by_provider_mistral": 6,
+    "fallbacks": 0
+  },
+  "products": [
+    {
+      "product_name": "seguro_v80",
+      "product_id": "urn:C0511-01",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 1,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_familife",
+      "product_id": "urn:C0511-02",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 1,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_amortizacion_cuota_constante",
+      "product_id": "urn:C0511-03",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 1,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_flexiaccidentes_modular",
+      "product_id": "urn:C0511-04",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "millon_vida_otras_duraciones",
+      "product_id": "urn:C0511-05",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "pias_ahorro_inversion",
+      "product_id": "urn:C0511-06",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 2,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ]
+}

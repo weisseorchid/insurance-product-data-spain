@@ -1,0 +1,193 @@
+{
+  "product_id": "urn:C0511-01",
+  "company_key": "C0511",
+  "product_name": "seguro_v80",
+  "branches": [
+    "00"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-vida/vida-riesgo-v80/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:30:55.277400+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "0c5a51218a2eacc344b8253bf8da4f64cea108f860e0f3390de1bc637a798411",
+      "markdown_hashes": {
+        "v80_nota_0900ab44c6a25b20.md": "0c5a51218a2eacc344b8253bf8da4f64cea108f860e0f3390de1bc637a798411"
+      },
+      "markdown_files": [
+        "v80_nota_0900ab44c6a25b20.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida Temporal Renovable",
+      "target_audience": "Particulares",
+      "description_es": "El seguro V80 (503) es un seguro de vida temporal renovable anualmente que garantiza el pago del capital asegurado a los beneficiarios en caso de fallecimiento del Asegurado por cualquier causa. El contrato se prorroga tácitamente por periodos anuales hasta la edad de salida establecida (57 años para la garantía principal), salvo oposición de alguna de las partes con el plazo de preaviso correspondiente. Incluye un cuestionario de salud obligatorio para la valoración del riesgo y cálculo de la prima.",
+      "description_en": "The V80 (503) insurance is an annually renewable term life insurance that guarantees the payment of the insured capital to the beneficiaries in the event of the insured's death from any cause. The contract is tacitly renewed for annual periods until the established exit age (57 years for the main guarantee), unless either party opposes the renewal with the corresponding notice period. It includes a mandatory health questionnaire for risk assessment and premium calculation.",
+      "key_benefits": [
+        "Cobertura por fallecimiento por cualquier causa",
+        "Renovación anual automática hasta los 57 años",
+        "Capital asegurado pagadero a los beneficiarios designados",
+        "Posibilidad de designación de beneficiarios",
+        "Procedimiento de reclamaciones y mediación establecido"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "C-0000"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por cualquier causa",
+        "category": "basic",
+        "description": "Garantiza el pago del capital asegurado a los beneficiarios designados en caso de fallecimiento del Asegurado por cualquier causa durante la vigencia de la póliza. La garantía es de contratación obligatoria y su cancelación dará lugar a la rescisión total de la póliza.",
+        "covered_events": [
+          "Fallecimiento del Asegurado por cualquier causa"
+        ],
+        "benefits": [
+          "Pago del capital asegurado a los beneficiarios designados"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Edad máxima de permanencia: 57 años",
+          "Cancelación de la garantía principal implica rescisión total de la póliza"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Siniestros derivados de reacción o radiación nuclear o contaminación radiactiva.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros derivados de guerra, invasión, hostilidades u operaciones bélicas (con o sin declaración de guerra), guerra civil, derrocamiento de gobierno, revolución, rebelión, sedición, insurrección, poder militar o usurpado, ley marcial, terrorismo, motín, tumulto o conmoción civil.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros relacionados directa o indirectamente con el desarrollo, tenencia o uso de armas atómicas, bacteriológicas o químicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros consecuencia de enfermedad o accidente conocida o diagnosticada con anterioridad a la entrada en vigor del seguro y no comunicada al Asegurador en el cuestionario de salud para su análisis.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros acaecidos como consecuencia de epidemias o pandemias declaradas oficialmente por un organismo nacional o internacional.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros derivados de toda enfermedad declarada por la OMS como Pandemia en Fase 5 con tasa de mortalidad igual o superior al 30%.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos con carácter extraordinario sobre las personas no residentes habitualmente en España o excluidos por el Consorcio de Compensación de Seguros según la legislación vigente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros originados por actos de imprudencia temeraria o negligencia grave del Asegurado, así como derivados de actos delictivos, altercados o riñas, salvo que el Asegurado actuara en legítima defensa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros sufridos por el Asegurado en situación de enajenación mental, bajo el efecto de bebidas alcohólicas (tasa superior a la legalmente permitida en España) o por el uso de drogas tóxicas, estupefacientes o sustancias psicotrópicas no prescritas médicamente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros derivados de aviación no cubierta: vuelos no comerciales regulares, vuelos no autorizados o aparatos sin certificado de navegabilidad válido, o conducidos por personas sin título de piloto válido.",
+        "category": "Específica",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fallecimiento por cualquier causa",
+        "limit_type": "edad_maxima_permanencia",
+        "limit_value": "57 años",
+        "conditions": "La garantía principal tiene una edad máxima de permanencia de 57 años."
+      },
+      {
+        "coverage_name": "Fallecimiento por cualquier causa",
+        "limit_type": "cancelacion_garantia_principal",
+        "limit_value": "Rescisión total de la póliza",
+        "conditions": "La cancelación de la garantía principal implica la rescisión total de la póliza."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar todas las circunstancias relacionadas con el estado de salud que puedan influir en la valoración del riesgo mediante el cuestionario de salud proporcionado por el Asegurador.",
+        "Pagar las primas correspondientes en el momento de efecto del contrato o según el fraccionamiento acordado.",
+        "Comunicar al Asegurador cualquier cambio en las circunstancias declaradas que puedan afectar al riesgo asegurado.",
+        "Designar beneficiarios en caso de fallecimiento del Asegurado."
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Notificar al Asegurador cualquier siniestro que pueda dar lugar a una prestación según lo establecido en el contrato.",
+        "Proporcionar toda la documentación requerida por el Asegurador para la tramitación del siniestro (ej. certificado de defunción, informe médico, etc.)."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga tácita",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 1,
+      "cancellation_notice_days_insurer": 2,
+      "termination_causes": [
+        "Pago total del capital correspondiente a la garantía principal.",
+        "Al finalizar la anualidad del seguro dentro de la cual cumpla la edad de salida de la garantía principal (57 años).",
+        "Oposición a la prórroga del contrato por cualquiera de las partes con el plazo de preaviso correspondiente.",
+        "Rescisión por incumplimiento de obligaciones del Tomador (ej. falta de pago de primas).",
+        "Rescisión por reserva, inexactitud u omisión en las declaraciones de salud."
+      ],
+      "payment_method": "Transferencia, domiciliación bancaria u otros medios acordados con el Asegurador.",
+      "payment_frequency": [
+        "anual",
+        "fraccionada (según acuerdo)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Edad del Asegurado",
+        "Capital asegurado",
+        "Estado de salud declarado en el cuestionario",
+        "Historial médico del Asegurado",
+        "Ocupación y actividades de riesgo"
+      ],
+      "discounts": [
+        "Descuentos por contratación de múltiples seguros con MAPFRE (si aplica)",
+        "Descuentos por pago anual en lugar de fraccionado (si aplica)"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Los riesgos extraordinarios sobre las personas no residentes habitualmente en España o excluidos por el Consorcio de Compensación de Seguros según la legislación vigente no están cubiertos."
+    },
+    "source_documents": [
+      {
+        "filename": "v80_nota_0900ab44c6a25b20.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

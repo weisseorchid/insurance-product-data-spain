@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "processed_at": "2026-11-26T10:21:47.163247+00:00",
+  "processor": {
+    "name": "process_pdfs",
+    "version": "1.0.0",
+    "converter": "markitdown[pdf]"
+  },
+  "company_key": "C0511",
+  "summary": {
+    "total_files": 11,
+    "successful": 11,
+    "failed": 0
+  },
+  "products": [
+    {
+      "product_name": "millon_vida_otras_duraciones",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "185cc13f330b3dc9b8988d9f3a8063da925c34861dbeecdf4cdf4067ff50c3f9.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "1e8dc24ca9cfef264bfbb1a6a2e082fd4b4920c3ab3f8a7705dc1b1e15a53d60.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "314d1bf48bb256d934263c37b6d78e6939ac7acdd90c87ce6de0aa900beeb080.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "pias_ahorro_inversion",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "a58f9c8c48f09af1d5517318c57443b91e95bc02d98f6d8452efe82cac006219.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "ed329c0a7923afd6b6d45df6c79d15f83cb34757b09d1de4c423e2d22857afc9.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_amortizacion_cuota_constante",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "26e2b2d60d1b7e9a25de7b41f22a894f2ee1634614c58339eb7204141ba014b1.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_familife",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "093a543ac872fa6413668d831835584bda404479826c2854baf51f1554bbc153.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_flexiaccidentes_modular",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "5041c29f3aee0a4fd86c7b2e6dafbf00ba7d63be74679383dda3f6acc3e335ff.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "fb356bff20a581dc64a23b53d342879cb74b077055600446995aa20d4a982a31.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "c8c041eb046a92e7ef46d14f587e19136b95f82a5ebc6e450c7ae61a182baba3.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_v80",
+      "total_files": 1,
+      "successful": 1,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "35ec9d4c87a5df2f9069ecbcaf781f8feda9197a3aedbb712a5b0b9256c690a3.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

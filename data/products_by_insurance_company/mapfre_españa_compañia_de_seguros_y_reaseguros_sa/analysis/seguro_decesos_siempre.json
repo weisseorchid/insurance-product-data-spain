@@ -1,0 +1,615 @@
+{
+  "product_id": "urn:C0058-11",
+  "company_key": "C0058",
+  "product_name": "seguro_decesos_siempre",
+  "branches": [
+    "19"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-decesos/siempre/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:38:16.419708+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "896f903302477cf6b3225774a9e40c22172b72e7b03b5c42ea2bf8e57604922f",
+      "markdown_hashes": {
+        "decesos_siempre_cg_0900ab44c3f1917f.md": "44ef9957bc6e3e667706414b5a64528681e823083563db0dd4664f9215205a51",
+        "decesos_siempre_ipid_0900ab44c3a3dbf2.md": "e8691f26eed5416dbd5fe182639f0229b835c4a2dc820d3a3b151d266934079e",
+        "decesos_siempre_nota_0900ab44c3a42aae.md": "869d03d7561129372b81fa77a24b789f687ed3400c7b56e082c1ada5f0e7eef1"
+      },
+      "markdown_files": [
+        "decesos_siempre_cg_0900ab44c3f1917f.md",
+        "decesos_siempre_ipid_0900ab44c3a3dbf2.md",
+        "decesos_siempre_nota_0900ab44c3a42aae.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Decesos",
+      "target_audience": "Particulares",
+      "description_es": "Seguro de Decesos que garantiza la prestación del servicio funerario al fallecimiento de cada uno de los asegurados incluidos en el contrato, junto con coberturas complementarias como asistencia en viaje, accidentes, odontología (opcional) y servicios de apoyo psicológico y jurídico. Incluye también garantías adicionales como traslados, gastos extraordinarios, coordinación del servicio y tramitación de documentos por fallecimiento.",
+      "description_en": "Life insurance policy that guarantees the provision of funeral services upon the death of each insured person included in the contract, along with complementary coverages such as travel assistance, accidents, optional dental coverage, and psychological and legal support services. It also includes additional guarantees such as transfers, extraordinary expenses, service coordination, and processing of death-related documents.",
+      "key_benefits": [
+        "Prestación del servicio funerario sin límite de capital asegurado",
+        "Cobertura de asistencia en viaje a nivel mundial",
+        "Indemnización por fallecimiento por accidente en cualquier lugar del mundo",
+        "Doble capital por fallecimiento de ambos cónyuges",
+        "Servicios odontológicos básicos sin coste (opcional)",
+        "Ayuda psicológica y consulta jurídica familiar",
+        "Tramitación de documentos por fallecimiento",
+        "Cobertura de gastos extraordinarios y traslados"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Servicio Decesos",
+        "category": "basic",
+        "description": "Prestación del servicio funerario al fallecimiento del asegurado, incluyendo arca, coche fúnebre, acompañamiento, acondicionamiento sanitario, nicho, incineración, tasas de inhumación, recordatorios, esquelas, lápida y otros elementos funerarios. La suma asegurada no tiene límite.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Prestación del servicio funerario completo",
+          "Incluye elementos funerarios como arca, coche fúnebre, nicho, incineración, etc."
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": [
+          "El servicio funerario se realizará por profesionales o empresas contratadas por la aseguradora",
+          "Si la aseguradora no puede prestar el servicio por causas ajenas a su voluntad, pagará la suma asegurada a los herederos",
+          "Para menores de 14 años, se abonarán los gastos hasta el límite de la suma asegurada con facturas acreditativas"
+        ]
+      },
+      {
+        "name": "Traslado",
+        "category": "basic",
+        "description": "Cobertura de los costes necesarios para el traslado del asegurado fallecido hasta el cementerio de la localidad elegida por sus familiares dentro del territorio nacional.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Traslado del asegurado fallecido a cementerio elegido"
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": [
+          "El traslado debe realizarse por empresa funeraria autorizada por la aseguradora",
+          "No aplica si hay impedimento de autoridades competentes"
+        ]
+      },
+      {
+        "name": "Coordinación del servicio",
+        "category": "basic",
+        "description": "La aseguradora se compromete a organizar, coordinar y gestionar todos los servicios contratados en la póliza para los familiares del asegurado fallecido.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Coordinación y gestión de servicios funerarios y complementarios"
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Ayuda psicológica",
+        "category": "basic",
+        "description": "Servicio de atención psicológica para los familiares del asegurado fallecido en casos específicos como fallecimiento por accidente, supervivencia de menores de edad o fallecimiento de menores de edad.",
+        "covered_events": [
+          "Fallecimiento del asegurado por accidente",
+          "Supervivencia de menores de edad",
+          "Fallecimiento de menores de edad"
+        ],
+        "benefits": [
+          "Atención psicológica por profesionales durante un máximo de 3 horas"
+        ],
+        "capital_or_limit": "Prestación o 60€ máximo",
+        "waiting_period_days": null,
+        "conditions": [
+          "La prestación se realizará antes del sepelio en el lugar de inhumación o fallecimiento"
+        ]
+      },
+      {
+        "name": "Tramitación de documentos por fallecimiento",
+        "category": "basic",
+        "description": "Gestión y asunción de gastos necesarios para la tramitación y obtención de documentación oficial en España tras el fallecimiento del asegurado.",
+        "covered_events": [
+          "Fallecimiento del asegurado"
+        ],
+        "benefits": [
+          "Gestión de documentación para pensiones, seguros, ayudas, sucesiones y bajas administrativas"
+        ],
+        "capital_or_limit": "Prestación o 60€ máximo",
+        "waiting_period_days": null,
+        "conditions": [
+          "La aseguradora no cubre gastos de abogados, procuradores, notarios, registradores ni gestorías",
+          "En caso de necesidad de presencia de derechohabientes, la actuación se limita al asesoramiento"
+        ]
+      },
+      {
+        "name": "Gastos extraordinarios",
+        "category": "basic",
+        "description": "Cobertura de gastos médico-legales derivados de fallecimiento traumático o intervención judicial.",
+        "covered_events": [
+          "Fallecimiento traumático del asegurado",
+          "Intervención judicial por fallecimiento"
+        ],
+        "benefits": [
+          "Asunción de gastos médico-legales y judiciales"
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": [
+          "Se considera como elemento del servicio funerario"
+        ]
+      },
+      {
+        "name": "Servicios especiales",
+        "category": "basic",
+        "description": "Servicios específicos como prestación de servicio funerario para neonatos o incineración de extremidades amputadas.",
+        "covered_events": [
+          "Fallecimiento de hijos durante la gestación o antes de 30 días de edad",
+          "Amputación de extremidades de asegurados"
+        ],
+        "benefits": [
+          "Servicio funerario específico para neonatos",
+          "Inhumación o incineración de extremidades amputadas"
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": []
+      },
+      {
+        "name": "Consulta Jurídica Familiar",
+        "category": "basic",
+        "description": "Servicio de orientación jurídica telefónica para el asegurado sobre materias como derecho laboral, administrativo, civil, penal, sucesiones, pensiones, seguros y contratos de arrendamiento.",
+        "covered_events": [
+          "Consulta jurídica solicitada por el asegurado"
+        ],
+        "benefits": [
+          "Orientación jurídica telefónica sin emisión de dictamen escrito"
+        ],
+        "capital_or_limit": "Sin límite",
+        "waiting_period_days": null,
+        "conditions": [
+          "El servicio se limita a orientación telefónica"
+        ]
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "basic",
+        "description": "Cobertura de asistencia médica urgente, traslados, repatriaciones, alojamiento, gestión de equipaje y otros servicios durante viajes fuera de España.",
+        "covered_events": [
+          "Enfermedad o accidente del asegurado durante un viaje fuera de España",
+          "Fallecimiento del asegurado durante un viaje fuera de España",
+          "Pérdida o demora de equipaje facturado",
+          "Retorno anticipado por siniestro grave en residencia o locales profesionales en España"
+        ],
+        "benefits": [
+          "Asistencia médica urgente hasta 15.000€ por siniestro",
+          "Traslado de acompañante hospitalizado fuera de España",
+          "Alojamiento de acompañante hasta 45€/día (máximo 450€ o 10 días)",
+          "Prolongación de estancia del asegurado hasta 45€/día (máximo 450€ o 10 días)",
+          "Repatriación sanitaria o del asegurado fallecido",
+          "Gestión de entrega de efectivo en el extranjero hasta 1.502,23€",
+          "Indemnización por pérdida o robo de equipaje hasta 500€ (máximo 60€ por deterioro exterior)",
+          "Reembolso por demora de equipaje hasta 300€",
+          "Localización y envío de equipajes extraviados",
+          "Retorno anticipado por fallecimiento de familiar o siniestro grave en residencia"
+        ],
+        "capital_or_limit": "Varía según prestación (ej. 15.000€ por siniestro médico, 450€ por alojamiento, 1.502,23€ para efectivo, 500€ por equipaje)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Cobertura aplicable a viajes de hasta 90 días consecutivos fuera de la localidad de residencia",
+          "Para repatriación sanitaria, ámbito territorial: Europa y países ribereños del Mediterráneo (incluyendo Jordania)",
+          "No cubre viajes a países en guerra civil, con conflictos internacionales o sujetos a embargo",
+          "No cubre enfermedades preexistentes no urgentes ni tratamientos de rehabilitación",
+          "No cubre accidentes laborales en actividades específicas",
+          "No cubre gastos en España ni después de 90 días de viaje (salvo ampliación por siniestro cubierto)"
+        ]
+      },
+      {
+        "name": "Fallecimiento por accidente",
+        "category": "basic",
+        "description": "Indemnización por fallecimiento del asegurado como consecuencia de un accidente ocurrido en cualquier lugar del mundo, 24 horas al día, 365 días al año.",
+        "covered_events": [
+          "Fallecimiento del asegurado por accidente"
+        ],
+        "benefits": [
+          "Pago del capital garantizado al beneficiario"
+        ],
+        "capital_or_limit": "Capital asegurado según condiciones particulares",
+        "waiting_period_days": null,
+        "conditions": [
+          "Si se ha pagado indemnización por invalidez por el mismo accidente, se indemniza la diferencia hasta la suma asegurada",
+          "No cubre fallecimiento de menores de 14 años ni personas incapacitadas (salvo adaptación al cumplir 14 años)"
+        ]
+      },
+      {
+        "name": "Doble capital por fallecimiento de ambos cónyuges",
+        "category": "basic",
+        "description": "Capital adicional igual a la suma asegurada en caso de fallecimiento de ambos cónyuges por el mismo accidente, dejando hijos menores de 18 años o mayores con discapacidad legal permanente y absoluta.",
+        "covered_events": [
+          "Fallecimiento de ambos cónyuges por el mismo accidente"
+        ],
+        "benefits": [
+          "Pago de capital adicional equivalente a la suma asegurada de cada cónyuge"
+        ],
+        "capital_or_limit": "Capital adicional igual a la suma asegurada de cada cónyuge",
+        "waiting_period_days": null,
+        "conditions": [
+          "Se consideran cónyuges a las parejas de hecho"
+        ]
+      },
+      {
+        "name": "Cobertura odontológica",
+        "category": "optional",
+        "description": "Servicios odontoestomatológicos básicos sin coste y otros servicios específicos con franquicia. Incluye examen, presupuesto, tratamientos y garantía de materiales.",
+        "covered_events": [
+          "Necesidad de servicios odontológicos del asegurado"
+        ],
+        "benefits": [
+          "Servicios odontológicos básicos sin coste",
+          "Tratamientos específicos con franquicia según baremo",
+          "Garantía de materiales (1 año para tratamientos generales, 5 años para implantes)"
+        ],
+        "capital_or_limit": "Hasta el límite del baremo de precios máximos por acto",
+        "waiting_period_days": 30,
+        "conditions": [
+          "El asegurado debe presentar la Tarjeta Dental para acceder a los servicios",
+          "Los servicios deben ser realizados por profesionales concertados",
+          "El asegurado abona directamente las franquicias dentales",
+          "No incluye honorarios profesionales, gastos hospitalarios ni de anestesia cuando se precise medio hospitalario"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Fallecimientos ocurridos cuando el contratante hubiere ocultado en el cuestionario la existencia de enfermedad grave que hiciera peligrar la vida del asegurado.",
+        "category": "General",
+        "legal_reference": "Ley 50/1980, Artículo 13"
+      },
+      {
+        "description": "Asistencias por estados patológicos derivados de ingesta de alcohol, drogas o medicamentos no prescritos.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": null
+      },
+      {
+        "description": "Conflictos armados (haya mediado o no declaración oficial de guerra), motines y tumultos populares.",
+        "category": "General",
+        "legal_reference": "Condiciones Generales, Apartado 1.7"
+      },
+      {
+        "description": "Reacción, radiación nuclear o contaminación radiactiva.",
+        "category": "General",
+        "legal_reference": "Condiciones Generales, Apartado 1.7"
+      },
+      {
+        "description": "Inundaciones, huracanes, tempestades, movimientos sísmicos y, en general, hechos calificados por el Gobierno como catástrofe o calamidad nacional.",
+        "category": "General",
+        "legal_reference": "Condiciones Generales, Apartado 1.7"
+      },
+      {
+        "description": "Mala fe del asegurado, participación en actos delictivos, acciones dolosas, gravemente negligentes o de imprudencia grave.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Acontecimientos extraordinarios como terremotos, maremotos, erupciones volcánicas, tempestad ciclónica atípica, caída de cuerpos siderales, guerras, motines, terrorismo, etc.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Consecuencias de acciones del asegurado en estado de enajenación mental o bajo tratamiento psiquiátrico.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Participación del asegurado en apuestas, desafíos o riñas (salvo legítima defensa o necesidad).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Práctica de deportes peligrosos como esquí, alpinismo, buceo, paracaidismo, automovilismo, artes marciales, etc.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Participación en competiciones deportivas organizadas por federaciones o participación en actividades notoriamente peligrosas.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Utilización de helicópteros o medios de navegación aérea no autorizados para transporte público de viajeros.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Tirones, roturas o desgarros musculares, lumbalgias y hernias de cualquier naturaleza.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Accidentes sufridos por estar embriagado (grado de alcohol en sangre superior a 0,50 g/L) o bajo efectos de drogas, tóxicos o estupefacientes que sean causa determinante del accidente.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Lesiones y enfermedades consecuencia de intervenciones quirúrgicas o tratamientos médicos no motivados por un accidente cubierto, infartos, episodios cardiovasculares, epilepsia, etc.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Siniestros cuya cobertura corresponde al Consorcio de Compensación de Seguros.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Servicios dentales prescritos por facultativos no concertados con la aseguradora (salvo autorización previa y por escrito).",
+        "category": "Cobertura Odontológica",
+        "legal_reference": "Condiciones Generales, Apartado 4.1.2"
+      },
+      {
+        "description": "Enfermedades preexistentes no urgentes ni tratamientos de rehabilitación en asistencia en viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Asistencia sanitaria requerida por neonatos no identificados como asegurados (salvo nacimientos durante viaje por complicaciones imprevisibles en embarazo de la asegurada).",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Prestaciones que correspondan al asegurado por otro seguro de asistencia en viaje contratado específicamente para el viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Enfermedades o estados patológicos producidos por ingestión voluntaria de alcohol, drogas, sustancias tóxicas, narcóticos o medicamentos adquiridos sin prescripción médica.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Accidentes laborales en actividades específicas como trabajo en obras, manejo de maquinaria peligrosa, manipulación de productos tóxicos, etc.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Fallecimientos de menores de 14 años y personas incapacitadas en cobertura de accidentes (salvo adaptación al cumplir 14 años).",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Provocación intencionada del siniestro por parte del asegurado o con su complicidad.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Consecuencias o secuelas de accidentes acaecidos con anterioridad a la entrada en vigor del seguro.",
+        "category": "Accidentes",
+        "legal_reference": "Condiciones Generales, Apartado 4.2.2"
+      },
+      {
+        "description": "Prestaciones requeridas para atención de enfermedades preexistentes o crónicas que no tengan carácter de urgencia vital.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Prestaciones que sean objeto de cobertura por otro seguro de asistencia en viaje contratado específicamente para el viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Gastos derivados del rescate en caso de necesidad en asistencia en viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Afecciones o lesiones que puedan ser tratadas in situ y/o no impidan proseguir el viaje en asistencia en viaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Prestaciones para atención de enfermedades terminales o viajes con intención de recibir tratamiento médico.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Mercancías, material profesional, billetes, colecciones, documentos, valores, joyas, dinero, equipos electrónicos profesionales, etc., en cobertura de equipaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Pérdidas resultantes de objetos no entregados a custodia de transportista o extravío por el asegurado.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Daños por uso o desgaste normal, vicio propio o acción de la intemperie en cobertura de equipaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Robo durante práctica de camping, caravaning o en alojamientos no fijos en cobertura de equipaje.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      },
+      {
+        "description": "Daños en equipajes no embalados o identificados correctamente, equipajes frágiles o productos perecederos.",
+        "category": "Asistencia en Viaje",
+        "legal_reference": "Condiciones Generales, Apartado 3.3.5"
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Ayuda psicológica",
+        "limit_type": "maximum_amount",
+        "limit_value": "60€ máximo o 3 horas",
+        "conditions": "Prestación máxima de 3 horas antes del sepelio"
+      },
+      {
+        "coverage_name": "Tramitación de documentos por fallecimiento",
+        "limit_type": "maximum_amount",
+        "limit_value": "60€ máximo",
+        "conditions": "Gestión de documentación con límite de 60€ si se requiere intervención profesional"
+      },
+      {
+        "coverage_name": "Asistencia médica urgente por enfermedad o accidente del asegurado desplazado fuera de España",
+        "limit_type": "maximum_amount",
+        "limit_value": "15.000€ por siniestro",
+        "conditions": "Incluye gastos de hospitalización, intervenciones quirúrgicas, honorarios médicos, enfermería y productos farmacéuticos hasta estabilización"
+      },
+      {
+        "coverage_name": "Servicios de odontología de urgencia",
+        "limit_type": "maximum_amount",
+        "limit_value": "120€ por siniestro",
+        "conditions": "Solo para urgencias odontológicas durante viaje"
+      },
+      {
+        "coverage_name": "Alojamiento de acompañante del asegurado hospitalizado fuera de España",
+        "limit_type": "maximum_amount_and_days",
+        "limit_value": "45€ diarios, máximo 450€ o 10 días",
+        "conditions": "Solo si hospitalización se prevé superior a 5 días"
+      },
+      {
+        "coverage_name": "Prolongación de la estancia del asegurado por enfermedad o accidente fuera de España",
+        "limit_type": "maximum_amount_and_days",
+        "limit_value": "45€ diarios, máximo 450€ o 10 días",
+        "conditions": "Solo por prescripción facultativa"
+      },
+      {
+        "coverage_name": "Gestión de entrega de efectivo en el extranjero",
+        "limit_type": "maximum_amount",
+        "limit_value": "1.502,23€",
+        "conditions": "Previa presentación de justificantes y depósito de la cantidad en cuenta bancaria de la aseguradora"
+      },
+      {
+        "coverage_name": "Indemnización por pérdida definitiva, robo o deterioro exterior del equipaje facturado en vuelo",
+        "limit_type": "maximum_amount",
+        "limit_value": "500€ (máximo 60€ por deterioro exterior)",
+        "conditions": "Complementa indemnización de compañía aérea hasta límite de 500€"
+      },
+      {
+        "coverage_name": "Reembolso por demora de equipajes facturados en vuelo",
+        "limit_type": "maximum_amount",
+        "limit_value": "300€",
+        "conditions": "Solo para demoras superiores a 6 horas y compras de artículos de primera necesidad"
+      },
+      {
+        "coverage_name": "Traslado o repatriación sanitaria en caso de enfermedad o accidente del asegurado desplazado",
+        "limit_type": "geographic_scope",
+        "limit_value": "Europa y países ribereños del Mediterráneo (incluyendo Jordania)",
+        "conditions": "Excluye traslados en avión sanitario especial desde/hacia países no incluidos en este ámbito"
+      },
+      {
+        "coverage_name": "Cobertura odontológica",
+        "limit_type": "maximum_amount_per_service",
+        "limit_value": "Baremo de precios máximos por acto según documento SEGURO DENTAL",
+        "conditions": "Incluye franquicias dentales para servicios específicos"
+      },
+      {
+        "coverage_name": "Fallecimiento por accidente",
+        "limit_type": "age_restriction",
+        "limit_value": "Menores de 14 años y personas incapacitadas no cubiertos (salvo adaptación al cumplir 14 años)",
+        "conditions": null
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima del seguro en los términos y plazos establecidos",
+        "Facilitar información veraz y completa al contratar el seguro y durante su vigencia",
+        "Comunicar cualquier cambio en la información proporcionada que pueda influir en la valoración del riesgo",
+        "Notificar a la aseguradora cualquier siniestro o hecho que pueda dar lugar a indemnización en el plazo de 7 días desde que se conozcan",
+        "Permitir la actuación de técnicos designados por la aseguradora para verificar el siniestro",
+        "Autorizar a facultativos y profesionales a facilitar información a la aseguradora sobre el siniestro y salud del asegurado",
+        "Aceptar específicamente las cláusulas limitativas de derechos del asegurado destacadas en negrita en las Condiciones Generales",
+        "Comunicar a la aseguradora cualquier cambio de domicilio, teléfono o correo electrónico facilitado",
+        "En caso de contratación a distancia, disponer de 14 días naturales para desistir del contrato sin penalización ni indicación de motivos"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro a la aseguradora lo antes posible a través del teléfono 24 horas de la Central de Asistencia Telefónica",
+        "Facilitar cuanta información sea requerida por la aseguradora sobre las circunstancias del siniestro y salud del asegurado",
+        "Autorizar a facultativos y profesionales a proporcionar información a la aseguradora",
+        "Acceder al reconocimiento del asegurado por médicos designados por la aseguradora y realizar pruebas recomendadas",
+        "En siniestros en el extranjero, contactar con la aseguradora a través del teléfono de asistencia en el extranjero",
+        "Presentar la documentación necesaria para reclamar prestaciones (facturas, certificados, denuncias, etc.)",
+        "Justificar la condición de heredero o beneficiario cuando sea requerido",
+        "En caso de fallecimiento, aportar certificado de defunción y documentación acreditativa de la condición de beneficiario"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática por periodos sucesivos de un año",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Impago de la prima",
+        "Reserva o inexactitud en la declaración del riesgo por parte del tomador con dolo o culpa grave",
+        "Comunicación escrita del tomador con al menos 1 mes de antelación a la conclusión del periodo en curso",
+        "Acuerdo mutuo entre ambas partes después de la declaración de un siniestro",
+        "Falta de pago de la prima inicial antes de que se produzca un siniestro",
+        "Extinción del contrato por falta de pago de primas sucesivas (6 meses sin reclamación de pago)",
+        "Rescisión del contrato por la aseguradora en caso de prima inicial no pagada"
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito o pago directo",
+      "payment_frequency": [
+        "anual",
+        "fraccionada"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Cobertura odontológica: franquicias dentales para servicios específicos según baremo",
+      "pricing_factors": [
+        "Edad de los asegurados",
+        "Evolución del coste de los servicios funerarios",
+        "Capital asegurado",
+        "Coberturas adicionales contratadas (asistencia en viaje, odontología, accidentes)",
+        "Modalidad de prima (nivelada o mixta hasta 65 años)"
+      ],
+      "discounts": [
+        "Bonificaciones comerciales aplicables según condiciones particulares"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España y cualquier lugar del mundo para coberturas específicas",
+      "worldwide_coverage": [
+        "Asistencia en Viaje (con limitaciones territoriales para repatriación sanitaria)",
+        "Fallecimiento por accidente en cualquier lugar del mundo",
+        "Servicios funerarios en cualquier lugar del mundo (con adaptación a costumbres locales)"
+      ],
+      "special_conditions_abroad": "Para repatriación sanitaria, ámbito territorial limitado a Europa y países ribereños del Mediterráneo (incluyendo Jordania). Excluye países en guerra civil, con conflictos internacionales o sujetos a embargo."
+    },
+    "source_documents": [
+      {
+        "filename": "decesos_siempre_cg_0900ab44c3f1917f.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "decesos_siempre_ipid_0900ab44c3a3dbf2.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "decesos_siempre_nota_0900ab44c3a42aae.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

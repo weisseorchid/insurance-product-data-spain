@@ -1,0 +1,847 @@
+{
+  "product_id": "urn:C0058-02",
+  "company_key": "C0058",
+  "product_name": "seguro_terceros_ampliado",
+  "branches": [
+    "03",
+    "10"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-coche/terceros-ampliado/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:42:17.532521+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "348f20ebe2638602e541d69bae9bc9787dd9d17c91930cf182c90892c5d1e683",
+      "markdown_hashes": {
+        "coche_cg_0900ab44c391e066.md": "c861fc92af77cbc922df309b83ac3af744e6a1e16041260900041140ec8cc0ab",
+        "terceros_ampliado_ipid_0900ab44c48adb67.md": "39f4c71e3c705a7fce35a7e3086ba092fc9baa24b472402173133bf974f1e72c",
+        "terceros_ampliado_nota_0900ab44c48b2c7b.md": "a91ddb8898b9735c113067311b709a7743cf2ab2216249ca255d7650dbb94c4e"
+      },
+      "markdown_files": [
+        "coche_cg_0900ab44c391e066.md",
+        "terceros_ampliado_ipid_0900ab44c48adb67.md",
+        "terceros_ampliado_nota_0900ab44c48b2c7b.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Automóviles - Terceros Ampliado",
+      "target_audience": "Particulares y PYMES que requieren cobertura básica de responsabilidad civil con ampliaciones opcionales para su vehículo y ocupantes",
+      "description_es": "Seguro de automóviles que combina el seguro obligatorio de responsabilidad civil en la circulación con coberturas voluntarias ampliadas para el vehículo asegurado, el conductor y los ocupantes. Incluye garantías como responsabilidad civil suplementaria, seguro del conductor (accidentes personales), defensa jurídica, asistencia en viaje, incendio, rotura de parabrisas y lunas, y opciones adicionales como robo, daños por fenómenos atmosféricos, atropello de especies cinegéticas, vehículo de sustitución, gestión de multas, indemnización por privación del permiso de conducir, intereses y gastos de préstamo para reparación, e indemnización de grandes daños. La cobertura territorial principal abarca el Espacio Económico Europeo y otros Estados asociados, con extensiones específicas según la cobertura contratada.",
+      "description_en": "Car insurance that combines mandatory third-party liability coverage with extended voluntary coverages for the insured vehicle, driver, and passengers. Includes guarantees such as supplementary liability insurance, driver accident insurance, legal defense, travel assistance, fire, windshield and glass breakage, and optional add-ons like theft, weather-related damage, collision with game animals, replacement vehicle, fine management, driver's license deprivation compensation, loan interest and expenses for repairs, and large damage compensation. The main territorial coverage includes the European Economic Area and other associated states, with specific extensions depending on the contracted coverage.",
+      "key_benefits": [
+        "Cobertura obligatoria de responsabilidad civil con límites elevados (hasta 70.000.000 € por daños a personas y 15.000.000 € por daños a bienes)",
+        "Cobertura voluntaria ampliada para el vehículo asegurado (incendio, rotura de lunas, fenómenos atmosféricos, etc.)",
+        "Seguro del conductor con garantías de fallecimiento, invalidez permanente y asistencia sanitaria",
+        "Defensa jurídica y asistencia en viaje con alcance territorial europeo",
+        "Opciones adicionales como robo, vehículo de sustitución, gestión de multas e indemnización por privación del permiso de conducir",
+        "Flexibilidad en la contratación de coberturas según necesidades del asegurado",
+        "Cobertura en el Espacio Económico Europeo y otros Estados asociados"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑIA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Seguro Obligatorio de Responsabilidad Civil en la Circulación",
+        "category": "basic",
+        "description": "Cubre la responsabilidad civil del conductor derivada de la circulación del vehículo asegurado, con límites establecidos por ley: hasta 70.000.000 € por daños a personas y 15.000.000 € por daños a bienes por accidente. Incluye la indemnización a terceros perjudicados por daños corporales o materiales causados por el vehículo asegurado. La cobertura se aplica en los Estados adheridos al Acuerdo entre las oficinas nacionales de seguros del Espacio Económico Europeo y otros Estados asociados.",
+        "covered_events": [
+          "Accidentes de circulación con daños a terceros",
+          "Daños corporales a terceros",
+          "Daños materiales a terceros"
+        ],
+        "benefits": [
+          "Indemnización por daños a personas hasta 70.000.000 € por accidente",
+          "Indemnización por daños a bienes hasta 15.000.000 € por accidente",
+          "Cobertura en el Espacio Económico Europeo y otros Estados asociados"
+        ],
+        "capital_or_limit": "70.000.000 € (daños a personas) / 15.000.000 € (daños a bienes)",
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura se rige por la Ley sobre Responsabilidad Civil y Seguro en la Circulación de Vehículos a Motor (Real Decreto Legislativo 8/2004)",
+          "Exclusión de daños al conductor del vehículo asegurado y a bienes propios o de personas vinculadas al asegurado"
+        ]
+      },
+      {
+        "name": "Responsabilidad Civil Suplementaria",
+        "category": "basic",
+        "description": "Cubre el exceso de indemnización por responsabilidad civil más allá de los límites del seguro obligatorio, hasta el límite pactado en las Condiciones Particulares de la póliza (hasta 50.000.000 € por accidente). Incluye daños causados por objetos transportados en el vehículo asegurado, salvo en vehículos de hasta 3.500 kg con seguro específico para estos daños.",
+        "covered_events": [
+          "Accidentes de circulación con daños a terceros no cubiertos por el seguro obligatorio",
+          "Daños causados por objetos transportados en el vehículo asegurado"
+        ],
+        "benefits": [
+          "Indemnización por exceso de responsabilidad civil hasta 50.000.000 € por accidente",
+          "Cobertura de daños a terceros por objetos transportados (excepto en vehículos de hasta 3.500 kg con seguro específico)"
+        ],
+        "capital_or_limit": "50.000.000 € por accidente",
+        "waiting_period_days": null,
+        "conditions": [
+          "Se aplica después de agotar los límites del seguro obligatorio",
+          "Exclusión de daños al conductor del vehículo asegurado y a bienes propios o de personas vinculadas al asegurado"
+        ]
+      },
+      {
+        "name": "Responsabilidad Civil Ampliada",
+        "category": "optional",
+        "description": "Cobertura opcional que garantiza la responsabilidad civil del tomador y del conductor habitual como ciclistas en accidentes de circulación con implicación de vehículos a motor, hasta un máximo de 60.200 € por siniestro. Excluye la práctica profesional del ciclismo.",
+        "covered_events": [
+          "Accidentes de circulación como ciclista con implicación de vehículos a motor"
+        ],
+        "benefits": [
+          "Indemnización por responsabilidad civil como ciclista hasta 60.200 € por siniestro"
+        ],
+        "capital_or_limit": "60.200 € por siniestro",
+        "waiting_period_days": null,
+        "conditions": [
+          "Solo aplicable si está expresamente contratada en las Condiciones Particulares",
+          "Exclusión de práctica profesional del ciclismo"
+        ]
+      },
+      {
+        "name": "Seguro del Conductor - Accidentes Personales",
+        "category": "basic",
+        "description": "Cubre indemnizaciones por daños corporales sufridos por el conductor autorizado y legalmente habilitado en accidentes de circulación con el vehículo asegurado. Incluye garantías de fallecimiento, invalidez permanente, asistencia sanitaria y ayudas complementarias por adaptación de vehículo, adecuación de vivienda y necesidad de ayuda de otra persona. La cobertura se extiende al tomador y al conductor habitual como peatón o ciclista si está contratada la modalidad de Responsabilidad Civil Ampliada.",
+        "covered_events": [
+          "Accidentes de circulación con el vehículo asegurado",
+          "Accidentes como peatón o ciclista (si está contratada la Responsabilidad Civil Ampliada)"
+        ],
+        "benefits": [
+          "Indemnización por fallecimiento (capital contratable desde 30.000 € hasta 250.000 €)",
+          "Indemnización por invalidez permanente según baremo (capital contratable desde 30.000 € hasta 250.000 €)",
+          "Asistencia sanitaria hasta el límite contratado (desde 30.000 € hasta 250.000 €; máximo 365 días)",
+          "Ayudas complementarias por adaptación de vehículo, adecuación de vivienda y necesidad de ayuda de otra persona (hasta 17.000 € en total)",
+          "Ayuda psico-emocional en caso de grave accidente de circulación o robo con intimidación"
+        ],
+        "capital_or_limit": "Hasta 250.000 € (según garantías contratadas)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Solo aplicable al conductor autorizado y legalmente habilitado",
+          "Exclusión de daños intencionados o bajo influencia de alcohol/drogas",
+          "Asistencia sanitaria limitada a 365 días desde el accidente"
+        ]
+      },
+      {
+        "name": "Defensa Jurídica",
+        "category": "basic",
+        "description": "Cubre la asistencia jurídica, judicial y extrajudicial para la defensa del asegurado en procedimientos derivados de accidentes de circulación con el vehículo asegurado. Incluye defensa penal del conductor, reclamación de daños frente a terceros responsables, y orientación legal en multas de tráfico y trámites administrativos relacionados con el vehículo. El asegurado tiene derecho a elegir abogado.",
+        "covered_events": [
+          "Accidentes de circulación con el vehículo asegurado",
+          "Multas de tráfico y trámites administrativos relacionados con el vehículo"
+        ],
+        "benefits": [
+          "Asistencia y defensa jurídica por abogado y procurador (hasta 3.000 € por accidente)",
+          "Constitución de fianza para libertad provisional (excluyendo multas)",
+          "Reclamación de daños frente a terceros responsables",
+          "Orientación legal en multas de tráfico y trámites administrativos"
+        ],
+        "capital_or_limit": "3.000 € por accidente",
+        "waiting_period_days": null,
+        "conditions": [
+          "El asegurado tiene derecho a elegir abogado desde el momento en que tenga derecho a reclamar la intervención de la aseguradora",
+          "Exclusión de multas y sanciones pecuniarias"
+        ]
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "basic",
+        "description": "Prestaciones de asistencia durante desplazamientos con el vehículo asegurado, incluyendo remolque, reparación, alojamiento, transporte de heridos, regreso al domicilio, y otras ayudas en caso de avería, accidente, robo o enfermedad. La cobertura se aplica en España y Europa, con extensiones específicas según la cobertura contratada.",
+        "covered_events": [
+          "Avería mecánica del vehículo",
+          "Accidente de circulación",
+          "Robo del vehículo o sus piezas",
+          "Enfermedad o lesión repentina del tomador o conductor declarado",
+          "Fallecimiento del tomador o conductor declarado"
+        ],
+        "benefits": [
+          "Remolque y reparación del vehículo en España y Europa",
+          "Transporte de heridos a centro sanitario",
+          "Alojamiento durante reparación (hasta 3 noches, 50 €/noche)",
+          "Regreso al domicilio habitual o continuación del viaje",
+          "Transporte funerario y alojamiento de acompañante por fallecimiento",
+          "Envío de llaves de repuesto o depósito y custodia del vehículo (hasta 95 €)",
+          "Préstamo sin intereses para reparación en el extranjero (hasta 460 €)",
+          "Localización y envío de piezas de recambio"
+        ],
+        "capital_or_limit": "Límites variables según prestación (ej. 220 € para vehículo de alquiler, 50 €/noche para alojamiento, 460 € para préstamo en extranjero)",
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura se activa desde el domicilio habitual (Kilómetro Cero) para contingencias del vehículo y fuera del Kilómetro 15 para otras contingencias",
+          "Exclusión de servicios concertados sin consentimiento previo de la aseguradora"
+        ]
+      },
+      {
+        "name": "Incendio del Vehículo Asegurado",
+        "category": "basic",
+        "description": "Cubre los daños al vehículo asegurado por incendio o explosión, incluyendo los gastos de extinción del incendio por bomberos hasta 610 € por siniestro. La cobertura excluye daños por dolo o culpa grave del asegurado.",
+        "covered_events": [
+          "Incendio o explosión del vehículo asegurado"
+        ],
+        "benefits": [
+          "Indemnización por daños al vehículo por incendio o explosión",
+          "Gastos de extinción del incendio por bomberos (hasta 610 €)"
+        ],
+        "capital_or_limit": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños por dolo o culpa grave del asegurado",
+          "Cobertura limitada a daños directos por incendio o explosión"
+        ]
+      },
+      {
+        "name": "Rotura de Parabrisas y Lunas del Vehículo Asegurado",
+        "category": "basic",
+        "description": "Cubre la reparación, reposición o indemnización por daños a parabrisas delantero, ventanas laterales y luna trasera del vehículo asegurado, causados por causas exteriores, súbitas e imprevistas. Incluye láminas plásticas adhesivas instaladas antes o después de la salida de fábrica si están declaradas en las Condiciones Particulares.",
+        "covered_events": [
+          "Daños a parabrisas, ventanas laterales o luna trasera por causas exteriores, súbitas e imprevistas"
+        ],
+        "benefits": [
+          "Reparación, reposición o indemnización por daños a cristales del vehículo"
+        ],
+        "capital_or_limit": "Coste de reparación o reposición según factura presentada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños a otros elementos acristalados no mencionados",
+          "Exclusión de rayados por uso o marcas superficiales sin rotura"
+        ]
+      },
+      {
+        "name": "Robo del Vehículo Asegurado",
+        "category": "optional",
+        "description": "Cubre la indemnización por sustracción ilegítima del vehículo asegurado o sus piezas, así como los daños causados durante la sustracción. Incluye indemnización por piezas sustraídas y daños al vehículo durante el tiempo en poder de terceros. La cobertura excluye sustracción por negligencia grave, llaves como único elemento sustraído, y actos vandálicos.",
+        "covered_events": [
+          "Sustracción ilegítima del vehículo asegurado o sus piezas",
+          "Daños al vehículo durante la sustracción"
+        ],
+        "benefits": [
+          "Indemnización por sustracción del vehículo completo o sus piezas",
+          "Indemnización por daños al vehículo durante la sustracción"
+        ],
+        "capital_or_limit": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de sustracción por negligencia grave del asegurado",
+          "Exclusión de sustracción de llaves como único elemento",
+          "Exclusión de actos vandálicos y malintencionados"
+        ]
+      },
+      {
+        "name": "Daños del Vehículo Asegurado",
+        "category": "basic",
+        "description": "Cubre la reparación, reposición o indemnización por daños al vehículo asegurado causados por accidentes de circulación, con opción a franquicia. Incluye reparaciones urgentes hasta 160 €. La indemnización se calcula según modalidad contratada (Básica o Mejorada) y puede incluir reposición de vehículo nuevo en los primeros años.",
+        "covered_events": [
+          "Accidentes de circulación con daños al vehículo asegurado"
+        ],
+        "benefits": [
+          "Reparación o indemnización por daños al vehículo asegurado",
+          "Reparaciones urgentes hasta 160 €",
+          "Indemnización por pérdida total según modalidad contratada (Básica o Mejorada)"
+        ],
+        "capital_or_limit": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños por uso normal, desgaste, vicio propio, o modificaciones no autorizadas",
+          "Exclusión de daños a neumáticos, catalizador, sistemas informáticos, equipamiento no declarado, y equipos extraíbles"
+        ]
+      },
+      {
+        "name": "Daños del Vehículo Asegurado por Fenómenos Atmosféricos",
+        "category": "optional",
+        "description": "Cubre daños materiales directos al vehículo asegurado por fenómenos atmosféricos como pedrisco, granizo, nieve, viento (más de 80 km/h), lluvia (más de 40 l/m²/h), e impactos de objetos proyectados. La cobertura requiere certificación oficial de la intensidad del fenómeno.",
+        "covered_events": [
+          "Daños por pedrisco, granizo, nieve, viento (>80 km/h), lluvia (>40 l/m²/h), o impactos de objetos proyectados"
+        ],
+        "benefits": [
+          "Indemnización por daños al vehículo por fenómenos atmosféricos"
+        ],
+        "capital_or_limit": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños por agua o nieve que penetre por aberturas mal cerradas",
+          "Exclusión de daños eléctricos o por accidente de circulación motivado por fenómenos atmosféricos"
+        ]
+      },
+      {
+        "name": "Daños del Vehículo Asegurado por Atropello de Especies Cinegéticas de Caza Mayor",
+        "category": "optional",
+        "description": "Cubre daños al vehículo asegurado por atropello de especies cinegéticas de caza mayor, siempre que se acredite el atropello con atestado policial o pruebas equivalentes.",
+        "covered_events": [
+          "Atropello de especies cinegéticas de caza mayor"
+        ],
+        "benefits": [
+          "Indemnización por daños al vehículo por atropello de especies cinegéticas"
+        ],
+        "capital_or_limit": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños no acreditados o sin intervención de especie cinegética identificada",
+          "Exclusión de daños a equipamiento no declarado"
+        ]
+      },
+      {
+        "name": "Vehículo de Sustitución",
+        "category": "optional",
+        "description": "Proporciona un vehículo de alquiler en régimen de sustitución durante la inmovilización del vehículo asegurado por reparación de daños cubiertos, con un máximo de 3 siniestros por año y hasta 15 días consecutivos. Incluye indemnización en caso de no disponibilidad de vehículo.",
+        "covered_events": [
+          "Inmovilización del vehículo asegurado por reparación de daños cubiertos"
+        ],
+        "benefits": [
+          "Vehículo de alquiler de sustitución (hasta 15 días consecutivos, máximo 3 siniestros/año)",
+          "Indemnización en caso de no disponibilidad de vehículo (según Condiciones Particulares)"
+        ],
+        "capital_or_limit": "Hasta 15 días consecutivos por siniestro",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de inmovilización por avería mecánica, rotura de lunas, o otras contingencias de Asistencia en Viaje",
+          "Reserva del vehículo debe solicitarse en un plazo máximo de 40 días desde la comunicación del siniestro"
+        ]
+      },
+      {
+        "name": "Gestiones para la Defensa en Multas y Orientación al Asegurado",
+        "category": "optional",
+        "description": "Servicio de orientación y gestión de multas de tráfico, incluyendo información sobre sanciones, preparación de escritos de alegaciones y recursos, y asesoramiento en trámites administrativos relacionados con el vehículo. Incluye cobertura para multas en Estados miembros de la UE con intercambio transfronterizo de información.",
+        "covered_events": [
+          "Multas de tráfico y sanciones administrativas relacionadas con el vehículo asegurado"
+        ],
+        "benefits": [
+          "Información sobre sanciones de tráfico",
+          "Preparación y redacción de escritos de alegaciones y recursos",
+          "Asesoramiento en trámites administrativos relacionados con el vehículo",
+          "Cobertura para multas en Estados miembros de la UE con intercambio transfronterizo de información"
+        ],
+        "capital_or_limit": "Sin límite monetario, cobertura de servicios",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de recursos contencioso-administrativos o judiciales",
+          "Exclusión de multas cometidas antes de la fecha de efecto de la cobertura"
+        ]
+      },
+      {
+        "name": "Subsidio por Privación del Permiso de Conducir",
+        "category": "optional",
+        "description": "Indemnización diaria por la realización de cursos de sensibilización y reeducación vial tras la pérdida de puntos o privación del permiso de conducir, con un máximo de 3 meses. Incluye subsidio por recuperación parcial de puntos (1 mes) y por recuperación del permiso (3 meses).",
+        "covered_events": [
+          "Pérdida de puntos o privación del permiso de conducir por resolución administrativa o judicial"
+        ],
+        "benefits": [
+          "Indemnización diaria por subsidio (37 €/día)",
+          "Subsidio por recuperación parcial de puntos (1 mes)",
+          "Subsidio por recuperación del permiso (3 meses)"
+        ],
+        "capital_or_limit": "37 €/día (hasta 3 meses)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de sanciones por conducción bajo influencia de alcohol/drogas o delitos contra la seguridad vial",
+          "Exclusión de privación cautelar del permiso o pérdida de vigencia por desaparición de requisitos"
+        ]
+      },
+      {
+        "name": "Intereses y Gastos del Préstamo para la Reparación del Vehículo Asegurado",
+        "category": "optional",
+        "description": "Cubre el pago de intereses y gastos financieros de un préstamo para reparar el vehículo asegurado, con un límite máximo del 15% de TAE y hasta 3.600 €. Incluye préstamos para reparación en caso de pérdida total del vehículo para adquisición de uno nuevo.",
+        "covered_events": [
+          "Reparación del vehículo asegurado con coste superior a 300 €",
+          "Pérdida total del vehículo asegurado"
+        ],
+        "benefits": [
+          "Cobertura de intereses y gastos financieros de préstamo para reparación (hasta 3.600 €)",
+          "Cobertura de intereses y gastos financieros de préstamo para adquisición de vehículo nuevo en caso de pérdida total (hasta 3.600 €)"
+        ],
+        "capital_or_limit": "3.600 €",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de penalizaciones por mora o plazos de carencia en el préstamo",
+          "Exclusión de operaciones de crédito no consideradas de consumo"
+        ]
+      },
+      {
+        "name": "Indemnización de Grandes Daños",
+        "category": "optional",
+        "description": "Indemnización por pérdida total del vehículo asegurado en accidentes de circulación por colisión directa con otro vehículo identificado, con indemnización según antigüedad del vehículo. Para vehículos con más de 10 años, la indemnización máxima es 1.250 €.",
+        "covered_events": [
+          "Pérdida total del vehículo asegurado por colisión directa con otro vehículo identificado"
+        ],
+        "benefits": [
+          "Indemnización por pérdida total del vehículo según antigüedad (valor de nuevo o valor de mercado)"
+        ],
+        "capital_or_limit": "Hasta 1.250 € para vehículos con más de 10 años",
+        "waiting_period_days": null,
+        "conditions": [
+          "Exclusión de daños no causados por colisión directa con otro vehículo identificado",
+          "Exclusión de daños por fenómenos atmosféricos o causas distintas a colisión"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Lesiones o fallecimiento del conductor del vehículo asegurado (en seguro obligatorio de responsabilidad civil)",
+        "category": "General",
+        "legal_reference": "Ley sobre Responsabilidad Civil y Seguro en la Circulación de Vehículos a Motor (Real Decreto Legislativo 8/2004)"
+      },
+      {
+        "description": "Daños sufridos por el vehículo asegurado, por las cosas en él transportadas, y por los bienes de los que sean titulares el tomador, asegurado, propietario, conductor, así como los del cónyuge o los parientes hasta el tercer grado de consanguinidad o afinidad de los anteriores",
+        "category": "General",
+        "legal_reference": "Ley sobre Responsabilidad Civil y Seguro en la Circulación de Vehículos a Motor (Real Decreto Legislativo 8/2004)"
+      },
+      {
+        "description": "Daños a las personas y en los bienes causados por un vehículo robado",
+        "category": "General",
+        "legal_reference": "Ley sobre Responsabilidad Civil y Seguro en la Circulación de Vehículos a Motor (Real Decreto Legislativo 8/2004)"
+      },
+      {
+        "description": "Daños producidos por la conducción del vehículo por quien carezca de permiso de conducir",
+        "category": "General",
+        "legal_reference": "Ley sobre Responsabilidad Civil y Seguro en la Circulación de Vehículos a Motor (Real Decreto Legislativo 8/2004)"
+      },
+      {
+        "description": "Daños causados intencionadamente por el asegurado, salvo que haya sido impulsado por un estado de necesidad",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos de carácter extraordinario cubiertos por el Consorcio de Compensación de Seguros",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos cuando el conductor del vehículo se encuentre en estado de embriaguez o bajo la influencia de drogas tóxicas, estupefacientes o sustancias psicotrópicas, o cuando la tasa de alcohol en sangre o aire espirado supere la permitida reglamentariamente",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos cuando el conductor del vehículo no disponga de permiso o licencia vigente que habilite a la conducción del vehículo asegurado",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que se produzcan con ocasión de la sustracción ilegítima del vehículo asegurado",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que se produzcan cuando por el asegurado o por el conductor se hubiesen infringido las disposiciones reglamentarias en cuanto a requisitos y número de personas transportadas, peso o medida de la carga y dicha infracción haya sido la causa determinante del accidente",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños provocados por carburantes, esencias minerales y otras materias inflamables, explosivas o tóxicas transportadas en el vehículo asegurado",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de la utilización del vehículo en eventos y actividades automovilísticos como carreras, competiciones, entrenamientos, pruebas y demostraciones",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de la realización de tareas industriales o agrícolas por vehículos a motor especialmente destinados para ello",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Circulación dentro del recinto de acceso restringido de aeropuertos",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Conflictos armados (haya mediado o no declaración oficial de guerra)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que tengan su origen o deriven, directa o indirectamente, de la energía nuclear o de energías similares, o de la contaminación radiactiva",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños en el vehículo por uso o desgaste normal, depreciación gradual o vicio propio, así como por modificación de la instalación eléctrica no prevista por el fabricante",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por congelación del refrigerante de sistemas de tracción o elementos adicionales",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños causados al vehículo asegurado por los objetos y mercancías por él transportados, así como por operaciones de carga, descarga, almacenaje o manipulación",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten exclusivamente a los neumáticos del vehículo asegurado (cubiertas y cámaras) y al equilibrado de las ruedas",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten únicamente al catalizador o a los sistemas informáticos del vehículo (software o hardware)",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten al equipamiento, accesorios o piezas del vehículo asegurado instalados con posterioridad a su salida de fábrica y no declarados en las Condiciones Particulares",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten a equipos extraíbles de telefonía y orientación",
+        "category": "Específica a cobertura de Daños del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por dolo o culpa grave del tomador del seguro, del propietario, del conductor del vehículo asegurado o de las personas que de ellos dependan o que con ellos convivan, que hayan propiciado la sustracción",
+        "category": "Específica a cobertura de Robo del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Sustracción de las llaves cuando éstas sean el único elemento sustraído del vehículo",
+        "category": "Específica a cobertura de Robo del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Sustracción del vehículo asegurado por quien tenga obligación por cualquier título de su entrega o devolución",
+        "category": "Específica a cobertura de Robo del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Actos vandálicos y malintencionados",
+        "category": "Específica a cobertura de Robo del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños en equipos extraíbles de telefonía y orientación, incluso para sustracción del vehículo completo",
+        "category": "Específica a cobertura de Robo del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños por agua o nieve que penetre por puertas, ventanas u otras aberturas mal cerradas, así como oxidaciones, goteras, filtraciones, humedades, condensaciones u oxidaciones producidas de forma paulatina",
+        "category": "Específica a cobertura de Daños por Fenómenos Atmosféricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños eléctricos en la instalación eléctrica o en aparatos que generen o se alimenten de energía eléctrica",
+        "category": "Específica a cobertura de Daños por Fenómenos Atmosféricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños al vehículo asegurado como consecuencia de un accidente de circulación motivado por fenómenos atmosféricos",
+        "category": "Específica a cobertura de Daños por Fenómenos Atmosféricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros cuya cobertura corresponde al Consorcio de Compensación de Seguros, aunque no admita la efectividad del derecho del asegurado por incumplimiento de disposiciones legales",
+        "category": "Específica a cobertura de Daños por Fenómenos Atmosféricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros calificados por el Gobierno de la Nación como de 'catástrofe o calamidad nacional'",
+        "category": "Específica a cobertura de Daños por Fenómenos Atmosféricos",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños en el vehículo por uso o desgaste normal, depreciación gradual o vicio propio, así como por modificación de la instalación eléctrica no prevista por el fabricante (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños causados a los remolques y caravanas arrastrados por el vehículo asegurado",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten exclusivamente a los neumáticos del vehículo asegurado (cubiertas y cámaras) y al equilibrado de las ruedas (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten únicamente al catalizador o a los sistemas informáticos del vehículo (software o hardware) (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten al equipamiento, accesorios o piezas del vehículo asegurado instalados con posterioridad a su salida de fábrica y no declarados en las Condiciones Particulares (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que afecten a equipos extraíbles de telefonía y orientación (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños provocados por dolo o culpa grave del asegurado, del tomador o del conductor del vehículo (en cobertura de Incendio)",
+        "category": "Específica a cobertura de Incendio del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños a cristales, ópticas, tulipas de vidrio o plástico, espejos interiores y exteriores, y otras superficies acristaladas distintas a parabrisas, ventanas laterales y luna trasera (en cobertura de Rotura de Parabrisas y Lunas)",
+        "category": "Específica a cobertura de Rotura de Parabrisas y Lunas del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Rayados ocasionados por el uso (en cobertura de Rotura de Parabrisas y Lunas)",
+        "category": "Específica a cobertura de Rotura de Parabrisas y Lunas del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Huellas y otras marcas superficiales que no constituyan rotura total o parcial y que no impidan la normal visibilidad (en cobertura de Rotura de Parabrisas y Lunas)",
+        "category": "Específica a cobertura de Rotura de Parabrisas y Lunas del Vehículo Asegurado",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de hechos que no tengan la consideración legal o reglamentaria de hecho de la circulación",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños provocados por carburantes, esencias minerales u otras materias inflamables, explosivas o tóxicas transportadas en el vehículo asegurado, aunque se hubiesen producido como consecuencia de un accidente cubierto por el seguro",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de la utilización del vehículo en eventos y actividades automovilísticos como carreras, competiciones, entrenamientos, pruebas y demostraciones",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que tengan su origen o deriven, directa o indirectamente, de la energía nuclear o de energías similares, o de la contaminación radiactiva",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños causados deliberadamente por el asegurado, salvo que se dé un estado de necesidad",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos cuando el conductor del vehículo se encuentre en estado de embriaguez o bajo la influencia de drogas tóxicas, estupefacientes o sustancias psicotrópicas o no disponga de permiso o licencia vigente",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños ocasionados cuando por el asegurado o por el conductor se hubiesen infringido las disposiciones reglamentarias en cuanto a requisitos y número de personas transportadas, peso o medida de la carga",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños provocados por carburantes, esencias minerales u otras materias inflamables, explosivas o tóxicas transportadas en el vehículo asegurado",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de la utilización del vehículo en eventos y actividades automovilísticos como carreras, competiciones, entrenamientos, pruebas y demostraciones",
+        "category": "General (IPID)",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que tengan su origen o deriven, directa o indirectamente, de la energía nuclear o de energías similares, o de la contaminación radiactiva, con independencia de otras causas concurrentes",
+        "category": "General (IPID)",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Seguro Obligatorio de Responsabilidad Civil en la Circulación",
+        "limit_type": "maximum_amount",
+        "limit_value": "70.000.000 € por daños a personas / 15.000.000 € por daños a bienes por accidente",
+        "conditions": "Límites establecidos por ley. Exclusión de daños al conductor y a bienes propios o de personas vinculadas al asegurado"
+      },
+      {
+        "coverage_name": "Responsabilidad Civil Suplementaria",
+        "limit_type": "maximum_amount",
+        "limit_value": "50.000.000 € por accidente",
+        "conditions": "Se aplica después de agotar los límites del seguro obligatorio"
+      },
+      {
+        "coverage_name": "Responsabilidad Civil Ampliada",
+        "limit_type": "maximum_amount",
+        "limit_value": "60.200 € por siniestro",
+        "conditions": "Solo aplicable si está expresamente contratada"
+      },
+      {
+        "coverage_name": "Seguro del Conductor - Accidentes Personales",
+        "limit_type": "maximum_amount",
+        "limit_value": "Hasta 250.000 € (según garantías contratadas)",
+        "conditions": "Capitales contratables desde 30.000 € hasta 250.000 € para fallecimiento, invalidez permanente y asistencia sanitaria"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.000 € por accidente",
+        "conditions": "Incluye honorarios de abogado y procurador, constitución de fianza y reclamación de daños frente a terceros"
+      },
+      {
+        "coverage_name": "Asistencia en Viaje",
+        "limit_type": "maximum_amount",
+        "limit_value": "Variables según prestación (ej. 220 € para vehículo de alquiler, 50 €/noche para alojamiento, 460 € para préstamo en extranjero)",
+        "conditions": "Límites específicos para cada prestación. Cobertura en España y Europa según tipo de contingencia"
+      },
+      {
+        "coverage_name": "Incendio del Vehículo Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "conditions": "Exclusión de daños por dolo o culpa grave"
+      },
+      {
+        "coverage_name": "Rotura de Parabrisas y Lunas del Vehículo Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "Coste de reparación o reposición según factura presentada",
+        "conditions": "Exclusión de daños a otros elementos acristalados no mencionados"
+      },
+      {
+        "coverage_name": "Robo del Vehículo Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "conditions": "Exclusión de sustracción por negligencia grave, llaves como único elemento, y actos vandálicos"
+      },
+      {
+        "coverage_name": "Daños del Vehículo Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "conditions": "Exclusión de daños por uso normal, desgaste, vicio propio, o modificaciones no autorizadas. Opción a franquicia"
+      },
+      {
+        "coverage_name": "Daños del Vehículo Asegurado por Fenómenos Atmosféricos",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "conditions": "Exclusión de daños por agua o nieve que penetre por aberturas mal cerradas, daños eléctricos, o accidentes de circulación motivados por fenómenos atmosféricos"
+      },
+      {
+        "coverage_name": "Daños del Vehículo Asegurado por Atropello de Especies Cinegéticas de Caza Mayor",
+        "limit_type": "maximum_amount",
+        "limit_value": "Valor de nuevo o valor de mercado según modalidad contratada",
+        "conditions": "Exclusión de daños no acreditados o sin intervención de especie cinegética identificada"
+      },
+      {
+        "coverage_name": "Vehículo de Sustitución",
+        "limit_type": "sessions_per_year",
+        "limit_value": "Hasta 15 días consecutivos por siniestro / máximo 3 siniestros por año",
+        "conditions": "Reserva del vehículo debe solicitarse en un plazo máximo de 40 días desde la comunicación del siniestro"
+      },
+      {
+        "coverage_name": "Gestiones para la Defensa en Multas y Orientación al Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "Sin límite monetario, cobertura de servicios",
+        "conditions": "Exclusión de recursos contencioso-administrativos o judiciales, y multas cometidas antes de la fecha de efecto de la cobertura"
+      },
+      {
+        "coverage_name": "Subsidio por Privación del Permiso de Conducir",
+        "limit_type": "days_per_year",
+        "limit_value": "37 €/día / hasta 3 meses",
+        "conditions": "Exclusión de sanciones por conducción bajo influencia de alcohol/drogas o delitos contra la seguridad vial"
+      },
+      {
+        "coverage_name": "Intereses y Gastos del Préstamo para la Reparación del Vehículo Asegurado",
+        "limit_type": "maximum_amount",
+        "limit_value": "3.600 €",
+        "conditions": "Exclusión de penalizaciones por mora o plazos de carencia en el préstamo"
+      },
+      {
+        "coverage_name": "Indemnización de Grandes Daños",
+        "limit_type": "maximum_amount",
+        "limit_value": "Hasta 1.250 € para vehículos con más de 10 años",
+        "conditions": "Exclusión de daños no causados por colisión directa con otro vehículo identificado"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar el seguro en los términos y plazos acordados",
+        "Facilitar a la aseguradora toda la información necesaria para valorar el riesgo antes de formalizar el contrato",
+        "Comunicar a la aseguradora cualquier cambio en la información dada en la contratación durante toda la vigencia del contrato",
+        "Comunicar a la aseguradora los hechos que puedan dar lugar a indemnización u otras prestaciones, en el plazo de siete días desde que se conozcan, aportando la información y documentación necesaria para comprobar y valorar los daños",
+        "Permitir la actuación de los técnicos nombrados por la aseguradora para peritar los daños",
+        "Emplear los medios a su alcance para aminorar las consecuencias del siniestro",
+        "No negociar, admitir ni rechazar reclamaciones de terceros perjudicados sin autorización expresa de la aseguradora",
+        "Facilitar a la aseguradora toda clase de informaciones sobre las circunstancias y consecuencias del siniestro",
+        "Prestar la necesaria colaboración para la correcta tramitación del siniestro, incluyendo la comunicación de notificaciones judiciales, extrajudiciales o administrativas relacionadas con el siniestro",
+        "Realizar la tasación y reparación de los daños materiales en talleres ubicados en España, salvo que el vehículo esté inmovilizado en otro país por imposibilidad de continuar el viaje"
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro a la aseguradora dentro del plazo máximo de 7 días desde que lo haya conocido",
+        "Facilitar a la aseguradora cuanta información pueda necesitar respecto de las circunstancias del siniestro",
+        "Transmitir cualquier notificación judicial, extrajudicial o administrativa que llegue a su conocimiento y esté relacionada con el siniestro",
+        "No negociar, admitir ni rechazar reclamaciones de terceros perjudicados sin autorización expresa de la aseguradora",
+        "Permitir la actuación de los técnicos nombrados por la aseguradora para peritar los daños",
+        "Seguir las prescripciones médicas y mantener informada a la aseguradora de la evolución de sus lesiones (en cobertura de Seguro del Conductor - Accidentes Personales)",
+        "Presentar los informes médicos que acrediten secuelas para la indemnización por invalidez permanente (en cobertura de Seguro del Conductor - Accidentes Personales)",
+        "Entregar las llaves y firmar los documentos necesarios para transferir la propiedad del vehículo en caso de pérdida total por robo no recuperado (en cobertura de Robo del Vehículo Asegurado)"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática, salvo oposición con 1 mes de antelación por el tomador o 2 meses por la aseguradora",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 1,
+      "cancellation_notice_days_insurer": 2,
+      "termination_causes": [
+        "Pérdida total del vehículo asegurado",
+        "Falta de pago de la prima",
+        "Rescisión por mutuo acuerdo",
+        "Rescisión por agravación del riesgo no aceptada por la aseguradora",
+        "Rescisión por incumplimiento grave de las obligaciones del tomador o asegurado",
+        "Extinción por transcurso del plazo pactado sin prórroga"
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados por la aseguradora",
+      "payment_frequency": [
+        "anual",
+        "fraccionada (según pacto en Condiciones Particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "No aplica franquicia fija en la póliza, pero puede pactarse en Condiciones Particulares para coberturas como Daños del Vehículo Asegurado",
+      "pricing_factors": [
+        "Edad del conductor",
+        "Antigüedad del permiso de conducir",
+        "Historial de siniestralidad",
+        "Características del vehículo (marca, modelo, uso, código postal de circulación)",
+        "Coberturas contratadas",
+        "Modalidad de indemnización elegida (Básica o Mejorada para pérdida total)"
+      ],
+      "discounts": [
+        "Descuentos por historial de siniestralidad favorable",
+        "Descuentos por contratación de múltiples coberturas",
+        "Descuentos por pago anual frente a fraccionado"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "Espacio Económico Europeo y Estados adheridos al Acuerdo entre las oficinas nacionales de seguros (Estados miembros de la UE, Islandia, Noruega, Liechtenstein, Andorra, Serbia, Suiza, Reino Unido, Bosnia-Herzegovina y Montenegro) y Gibraltar",
+      "worldwide_coverage": [
+        "Responsabilidad Civil Suplementaria",
+        "Seguro del Conductor - Accidentes Personales",
+        "Defensa Jurídica"
+      ],
+      "special_conditions_abroad": "Para coberturas como Daños del Vehículo Asegurado por Fenómenos Atmosféricos, Vehículo de Sustitución y Gestiones para la Defensa en Multas, la cobertura se limita a España. La cobertura de Asistencia en Viaje se extiende a todos los países de Europa y países ribereños del Mediterráneo no europeos."
+    },
+    "source_documents": [
+      {
+        "filename": "coche_cg_0900ab44c391e066.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "terceros_ampliado_ipid_0900ab44c48adb67.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "terceros_ampliado_nota_0900ab44c48b2c7b.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

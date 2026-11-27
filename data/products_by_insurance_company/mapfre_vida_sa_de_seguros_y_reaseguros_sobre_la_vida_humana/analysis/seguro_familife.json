@@ -1,0 +1,298 @@
+{
+  "product_id": "urn:C0511-02",
+  "company_key": "C0511",
+  "product_name": "seguro_familife",
+  "branches": [
+    "00"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-vida/familiar-familife/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:31:15.934249+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "507e72341e043e78f01a1423a95381d4986b30eaaa16bd43b7ddad96c4d7ca11",
+      "markdown_hashes": {
+        "familife_nota_0900ab44bf99ad68.md": "507e72341e043e78f01a1423a95381d4986b30eaaa16bd43b7ddad96c4d7ca11"
+      },
+      "markdown_files": [
+        "familife_nota_0900ab44bf99ad68.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida Temporal Renovable",
+      "target_audience": "Particulares (familias con hijos menores de 17 años)",
+      "description_es": "Seguro de vida temporal renovable anualmente que garantiza el pago del capital asegurado a los Beneficiarios en caso de fallecimiento del Asegurado por cualquier causa. Incluye prestaciones por enfermedad grave de los hijos (entre 1 y 17 años) y, de forma opcional, cobertura por invalidez absoluta permanente del Asegurado. El producto está diseñado para ofrecer protección financiera a las familias ante eventos adversos como el fallecimiento del asegurado o enfermedades graves en los hijos.",
+      "description_en": "Renewable annual term life insurance that guarantees payment of the insured capital to the beneficiaries in the event of the insured's death from any cause. It includes benefits for serious illness in children (aged 1 to 17) and, optionally, coverage for permanent absolute disability of the insured. The product is designed to provide financial protection to families against adverse events such as the death of the insured or serious illnesses in children.",
+      "key_benefits": [
+        "Cobertura por fallecimiento por cualquier causa",
+        "Prestaciones por enfermedad grave en hijos (cáncer, parálisis de extremidades, meningitis bacteriana, quemaduras graves)",
+        "Opción de cobertura por invalidez absoluta permanente del Asegurado",
+        "Cobertura mundial para garantías derivadas de accidentes (con excepciones)",
+        "Renovación anual automática hasta la edad de salida establecida",
+        "Capital asegurado configurable según necesidades"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "00"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por cualquier causa",
+        "category": "basic",
+        "description": "Garantiza el pago del capital asegurado a los Beneficiarios en caso de fallecimiento del Asegurado por cualquier causa y en cualquier lugar del mundo.",
+        "covered_events": [
+          "Fallecimiento del Asegurado por cualquier causa"
+        ],
+        "benefits": [
+          "Pago del capital asegurado a los Beneficiarios"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "Cobertura aplicable desde la entrada en vigor del contrato"
+        ]
+      },
+      {
+        "name": "Enfermedad grave de los hijos",
+        "category": "basic",
+        "description": "Garantiza el pago del capital asegurado en caso de que a alguno de los hijos del Asegurado (entre 1 y 17 años) le diagnostiquen cáncer, parálisis de las extremidades, meningitis bacteriana o quemaduras graves.",
+        "covered_events": [
+          "Diagnóstico de cáncer en hijos",
+          "Parálisis de las extremidades en hijos",
+          "Meningitis bacteriana en hijos",
+          "Quemaduras graves en hijos"
+        ],
+        "benefits": [
+          "Pago del capital asegurado por cada hijo afectado",
+          "Máximo de tres prestaciones durante la vigencia del seguro (la tercera prestación finaliza la cobertura)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 180,
+        "conditions": [
+          "Solo se contempla una prestación por cada hijo del Asegurado",
+          "El pago de la prestación se devengará tras un periodo de supervivencia de un mes desde el diagnóstico",
+          "Cobertura limitada a hijos entre 1 y 17 años"
+        ]
+      },
+      {
+        "name": "Invalidez absoluta permanente",
+        "category": "optional",
+        "description": "Garantiza el pago de un capital en caso de invalidez absoluta permanente del Asegurado por cualquier causa. La contratación de esta garantía es opcional para el Tomador y/o Asegurado.",
+        "covered_events": [
+          "Invalidez absoluta permanente del Asegurado"
+        ],
+        "benefits": [
+          "Pago del capital asegurado"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La invalidez debe ser irreversible y debe inhabilitar por completo al Asegurado para el mantenimiento de cualquier relación laboral o actividad profesional",
+          "La contratación es opcional"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Siniestros producidos como consecuencia directa o indirecta de la reacción o radicación nuclear o contaminación radiactiva.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros producidos a consecuencia de guerra, invasión, hostilidades u operaciones bélicas con o sin declaración de guerra, guerra civil, derrocamiento de gobierno, revolución, rebelión, sedición, insurrección, poder militar o usurpado, ley marcial, terrorismo, motín, tumulto o conmoción civil.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros relacionados directa o indirectamente con el desarrollo, tenencia o uso de armas atómicas, bacteriológicas o químicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros que sean consecuencia de enfermedad o accidente conocida por el Asegurado o diagnosticada con anterioridad a la entrada en vigor del seguro y que no hayan sido comunicados al Asegurador en el cuestionario de salud incluido en la solicitud.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros acaecidos como consecuencia de epidemias o pandemias declaradas oficialmente por un organismo nacional o internacional.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos de carácter extraordinario sobre las personas, cubiertos o no por no tener residencia habitual en España, o excluidos por el Consorcio de Compensación de Seguros en los términos recogidos en cada momento en la legislación vigente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros que tengan su origen en actos de imprudencia temeraria o negligencia grave del Asegurado, así como los derivados de actos delictivos, altercados o riñas, siempre que el Asegurado no hubiese actuado en legítima defensa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros causados voluntariamente por el Asegurado. Excepción: en caso de suicidio transcurrido el primer año de vigencia del contrato, el Asegurador dará cobertura únicamente por la garantía de fallecimiento por cualquier causa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros sufridos por el Asegurado en situación de enajenación mental, bajo el efecto de bebidas alcohólicas, o por el uso de drogas tóxicas, estupefacientes o sustancias psicotrópicas no prescritas médicamente. Se considera que el Asegurado está bajo el efecto de bebidas alcohólicas cuando la tasa de alcohol en aire espirado o en la sangre sea superior al autorizado en la legislación española sobre Tráfico, Circulación de Vehículos y Seguridad Vial.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros ocasionados por competiciones, apuestas, tentativas de récord y en general, todos los actos notoriamente peligrosos que no estén justificados por ninguna necesidad profesional, salvo los que sobrevengan en las tentativas de salvamento de personas o bienes.",
+        "category": "Específico a coberturas accidentales",
+        "legal_reference": null
+      },
+      {
+        "description": "Lesiones y enfermedades que sean consecuencia de intervenciones quirúrgicas o tratamientos médicos no motivados por un accidente cubierto por la póliza, así como enfermedades de cualquier naturaleza (incluidas las de origen infeccioso), infarto, episodios cardiovasculares, ataques de epilepsia y pérdidas de facultades mentales, salvo que sean ocasionadas por un accidente cubierto por la póliza.",
+        "category": "Específico a coberturas accidentales",
+        "legal_reference": null
+      },
+      {
+        "description": "Consecuencias de la utilización o el uso como conductor u ocupante de motocicletas con cilindrada superior a 250 c.c., así como la utilización de quads de cualquier cilindrada.",
+        "category": "Específico a coberturas accidentales",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros ocurridos viajando el Asegurado, ya sea en calidad de pasajero o tripulante en aeronaves de capacidad inferior a diez plazas de pasajeros.",
+        "category": "Específico a coberturas accidentales",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros derivados de la práctica de los siguientes deportes: automovilismo y motociclismo en cualquiera de sus modalidades, caza mayor fuera del territorio europeo, submarinismo con uso de pulmón artificial, hípica, escalada, espeleología, boxeo, lucha en cualquiera de sus modalidades, artes marciales, paracaidismo, aerostación, vuelo libre, vuelo sin motor y en general, cualquier deporte o actividad recreativa de carácter notoriamente peligroso.",
+        "category": "Específico a coberturas accidentales",
+        "legal_reference": null
+      },
+      {
+        "description": "Tumores histológicamente clasificados como pre-malignos y no invasivos, carcinomas in situ, cáncer papilar de tiroides menor de 1 cm de diámetro e histológicamente descrito como T1N0M0, carcinoma de células basales, carcinoma de células escamosas de piel y melanoma maligno en estadio IA (T1aN0M0) a menos que haya evidencia de metástasis, linfoma MALT gástrico que pueda ser tratado mediante la erradicación del Helicobacter Pylori, tumor del estroma gastrointestinal (GIST) en estadio I y II, estadio I del tumor de Wilms e histología favorable (sin anaplasia).",
+        "category": "Específico a cobertura de enfermedad grave de los hijos (cáncer)",
+        "legal_reference": null
+      },
+      {
+        "description": "Parálisis debida a trastornos psicológicos o por autolesión, parálisis debida a anormalidades congénitas del cerebro y/o de la médula espinal, síndrome de Guillain-Barré, parálisis periódica o hereditaria.",
+        "category": "Específico a cobertura de enfermedad grave de los hijos (parálisis de extremidades)",
+        "legal_reference": null
+      },
+      {
+        "description": "Meningitis aséptica, viral, parasitaria o no infecciosa.",
+        "category": "Específico a cobertura de enfermedad grave de los hijos (meningitis bacteriana)",
+        "legal_reference": null
+      },
+      {
+        "description": "Quemaduras de tercer grado por lesiones autoinfligidas, quemaduras de tercer grado debido a abuso infantil o agresión causada por padres, tutor legal o su cónyuge/pareja de hecho, quemaduras de primer grado o segundo grado.",
+        "category": "Específico a cobertura de enfermedad grave de los hijos (quemaduras graves)",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Enfermedad grave de los hijos",
+        "limit_type": "maximum_prestations",
+        "limit_value": "3 prestaciones",
+        "conditions": "Solo se contempla una prestación por cada hijo del Asegurado. El pago de la tercera prestación que se produzca por esta garantía pondrá fin a la misma."
+      },
+      {
+        "coverage_name": "Enfermedad grave de los hijos (cáncer)",
+        "limit_type": "specific_exclusions",
+        "limit_value": "Tumores pre-malignos, carcinomas in situ, cáncer papilar de tiroides menor de 1 cm (T1N0M0), carcinoma de células basales, carcinoma de células escamosas de piel, melanoma maligno en estadio IA (T1aN0M0) sin metástasis, linfoma MALT gástrico tratable con erradicación de Helicobacter Pylori, GIST en estadio I y II, tumor de Wilms en estadio I con histología favorable.",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Enfermedad grave de los hijos (parálisis de extremidades)",
+        "limit_type": "specific_exclusions",
+        "limit_value": "Parálisis debida a trastornos psicológicos, anormalidades congénitas, síndrome de Guillain-Barré, parálisis periódica o hereditaria.",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Enfermedad grave de los hijos (meningitis bacteriana)",
+        "limit_type": "specific_exclusions",
+        "limit_value": "Meningitis aséptica, viral, parasitaria o no infecciosa.",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Enfermedad grave de los hijos (quemaduras graves)",
+        "limit_type": "specific_exclusions",
+        "limit_value": "Quemaduras de tercer grado autoinfligidas, quemaduras de tercer grado por abuso infantil o agresión, quemaduras de primer o segundo grado.",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura por accidente",
+        "limit_type": "geographic_exclusion",
+        "limit_value": "Países desaconsejados por el Ministerio de Asuntos Exteriores de España en su página web oficial de seguridad.",
+        "conditions": "El ámbito de cobertura para las garantías derivadas de accidentes es mundial, excepto en los países desaconsejados."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar todas las circunstancias relacionadas con el estado de salud del Asegurado que puedan influir en la valoración del riesgo mediante el cuestionario de salud proporcionado por la Aseguradora.",
+        "Comunicar al Asegurador cualquier enfermedad o accidente conocido o diagnosticado con anterioridad a la entrada en vigor del seguro que no haya sido declarado en el cuestionario de salud.",
+        "Pagar las primas correspondientes en los plazos establecidos.",
+        "Notificar al Asegurador cualquier cambio en las circunstancias declaradas que puedan afectar al riesgo asegurado.",
+        "Actuar con buena fe en todas las comunicaciones con la Aseguradora."
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Presentar la documentación requerida por la Aseguradora para la tramitación del siniestro (informes médicos, certificados de defunción, etc.).",
+        "Facilitar toda la información solicitada por la Aseguradora para la evaluación del siniestro.",
+        "Cumplir con los plazos establecidos por la Aseguradora para la presentación de reclamaciones o documentación adicional."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con renovación automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Pago total del capital correspondiente a la garantía principal o complementaria que tenga como consecuencia la anulación de la póliza",
+        "Al finalizar la anualidad del seguro dentro de la cual cumpla la edad de salida de la garantía principal establecida en las Condiciones Particulares",
+        "Oposición a la prórroga del contrato por cualquiera de las partes con notificación escrita con al menos un mes (Tomador) o dos meses (Asegurador) de antelación"
+      ],
+      "payment_method": "Transferencia bancaria o domiciliación bancaria",
+      "payment_frequency": [
+        "annual"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Edad del Asegurado",
+        "Capital asegurado",
+        "Coberturas contratadas (básicas y opcionales)",
+        "Estado de salud declarado en el cuestionario de salud",
+        "Historial médico del Asegurado y sus hijos"
+      ],
+      "discounts": [
+        "Descuentos por contratación de coberturas opcionales (ej. invalidez absoluta permanente)",
+        "Descuentos por pago anual de la prima"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Fallecimiento por cualquier causa",
+        "Invalidez absoluta permanente"
+      ],
+      "special_conditions_abroad": "Para garantías derivadas de accidentes, la cobertura es mundial excepto en países desaconsejados por el Ministerio de Asuntos Exteriores de España en su página web oficial de seguridad."
+    },
+    "source_documents": [
+      {
+        "filename": "familife_nota_0900ab44bf99ad68.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

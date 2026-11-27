@@ -1,0 +1,344 @@
+{
+  "product_id": "urn:C0058-10",
+  "company_key": "C0058",
+  "product_name": "seguro_dental",
+  "branches": [
+    "02"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-dentales/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:37:31.992809+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "807d8f4542459488e6c2d3c29d5f2f67f9b9a6dd84eeba9c02fcdc1cf84b46a1",
+      "markdown_hashes": {
+        "dental_cg_0900ab44c6322d70.md": "0dfd2c651e5c0664f6a49699823819959f66057295fc8a3cb571f9b7c0cde1f9",
+        "dental_ipid_0900ab44c63209ea.md": "f7f07a1b002308f8f7f1567a99f5914bb5603092504b991553ae3511cbc15428",
+        "dental_nota_0900ab44c63209e6.md": "a2b733253c198fbd899c25f4bb11ef22a5abf379b2a44d33891c91aae57a9626"
+      },
+      "markdown_files": [
+        "dental_cg_0900ab44c6322d70.md",
+        "dental_ipid_0900ab44c63209ea.md",
+        "dental_nota_0900ab44c63209e6.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro Dental",
+      "target_audience": "Particulares (individuos y familias)",
+      "description_es": "Seguro de salud dental que cubre servicios odontológicos básicos y avanzados, así como una indemnización diaria por hospitalización por cualquier causa derivada de enfermedad o accidente. Incluye acceso a una red de profesionales y centros concertados, con precios convenidos para determinados servicios. El asegurado puede elegir libremente entre los profesionales del cuadro médico concertado.",
+      "description_en": "Dental health insurance covering basic and advanced dental services, as well as a daily indemnity for hospitalization due to any cause resulting from illness or accident. Includes access to a network of contracted professionals and centers, with agreed prices for certain services. The insured can freely choose among the professionals in the contracted medical network.",
+      "key_benefits": [
+        "Cobertura odontológica integral con acceso a profesionales concertados",
+        "Indemnización diaria por hospitalización por cualquier causa (enfermedad o accidente)",
+        "Precios convenidos para servicios odontológicos específicos",
+        "Garantía de calidad en materiales y tratamientos (1 año para materiales, 5 años para implantes con seguimiento de indicaciones)",
+        "Bonificación del 50% en indemnización por hospitalización en provincia distinta a la de residencia habitual",
+        "Asistencia telefónica para consultas y presupuestos bucodentales",
+        "Tarjeta sanitaria identificativa para acceso a servicios concertados"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Cobertura Odontológica",
+        "category": "basic",
+        "description": "Garantiza servicios odontoestomatológicos básicos sin coste y otros servicios específicos con precios convenidos, según la tabla de actos y precios detallada en el Anexo I. Incluye odontología general, preventiva, conservadora, endodoncia, prótesis removibles y fijas, cirugía estomatológica, periodoncia, ortodoncia, articulación temporomandibular (ATM), radiología estomatológica e implantes. Los materiales tienen garantía de 1 año (5 años para implantes con seguimiento de indicaciones).",
+        "covered_events": [
+          "Consultas odontológicas generales y preventivas",
+          "Tratamientos conservadores (obturaciones, reconstrucciones)",
+          "Endodoncias (unirradiculares, birradiculares, polirradiculares)",
+          "Prótesis dentales (removibles, fijas, híbridas)",
+          "Cirugía estomatológica (extracciones, apicectomías, frenectomías)",
+          "Periodoncia (tratamientos no quirúrgicos y quirúrgicos)",
+          "Ortodoncia (fija, removible, invisible)",
+          "Tratamientos de ATM (articulación temporomandibular)",
+          "Radiología estomatológica (ortopantomografías, TAC, radiografías seriadas)",
+          "Implantes dentales (fase quirúrgica y protésica)"
+        ],
+        "benefits": [
+          "Acceso a profesionales concertados en el cuadro médico",
+          "Precios convenidos para servicios específicos (según Anexo I)",
+          "Garantía de calidad en materiales (ISO/ADA) y tratamientos",
+          "Documentación obligatoria post-tratamiento (presupuesto, facturas, comprobantes)",
+          "Asistencia telefónica para consultas y presupuestos"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 30,
+        "conditions": [
+          "Uso preferente de profesionales concertados en la provincia de residencia (libre elección a nivel nacional)",
+          "Presentación obligatoria de tarjeta sanitaria para acceso a servicios",
+          "Presupuesto bucodental previo firmado por asegurado y profesional",
+          "Pago directo al profesional de los precios convenidos correspondientes",
+          "Garantía de materiales: 1 año (5 años para implantes con seguimiento de indicaciones)",
+          "Límites anuales para ciertas prestaciones (ej. propuestas de tratamiento, radiografías, revisiones ortodóncicas)"
+        ]
+      },
+      {
+        "name": "Indemnización por Hospitalización por Cualquier Causa",
+        "category": "basic",
+        "description": "Indemnización diaria en metálico por cada día de hospitalización del asegurado (más de 24 horas) debido a enfermedad o accidente cubierto por la póliza. La indemnización se abona sin relación con el coste real de la asistencia sanitaria y puede destinarse libremente por el beneficiario.",
+        "covered_events": [
+          "Hospitalización por enfermedad cubierta",
+          "Hospitalización por accidente cubierto"
+        ],
+        "benefits": [
+          "Indemnización diaria en metálico",
+          "Bonificación del 50% si la hospitalización ocurre en provincia distinta a la de residencia habitual",
+          "Pago mediante transferencia bancaria",
+          "Indemnización máxima de 365 días por siniestro (excepto para enfermedades psiquiátricas: 20 días)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 30,
+        "conditions": [
+          "Hospitalización mínima de 24 horas",
+          "Comunicación del siniestro en plazo máximo de 7 días",
+          "Documentación requerida: informe clínico, solicitud de indemnización, y cualquier otra información adicional solicitada por la aseguradora",
+          "Pago de indemnización basado en la suma asegurada vigente al inicio de la hospitalización",
+          "En caso de reingreso por misma causa en menos de 12 meses, se considera prolongación del primer internamiento"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Servicios odontoestomatológicos ordenados por facultativos no concertados con Mapfre España, salvo autorización previa y por escrito de la Compañía.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Honorarios profesionales, gastos hospitalarios y de anestesia cuando se precise medio hospitalario para la realización de los actos garantizados.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades, defectos y malformaciones preexistentes a la fecha de contratación del seguro que, siendo conocidas por el asegurado, no hayan sido declaradas en el cuestionario de salud.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Accidentes producidos con anterioridad a la entrada en vigor de la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Esterilizaciones para ambos sexos, fecundación in vitro, inseminación artificial y estudio o tratamiento de la esterilidad.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Tratamientos para adelgazar, curas de sueño o reposo y tratamientos psicológicos.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Suicidio y sus tentativas, así como la autolesión.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Actos de guerra (haya o no declaración de guerra), terremotos, huracanes, erupciones volcánicas, fugas radioactivas y otros hechos declarados de carácter extraordinario o catastrófico.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades psiquiátricas o trastornos psicológicos que no requieran ingreso hospitalario.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Consumo por parte del asegurado de estupefacientes no prescritos médicamente, ingestión de bebidas alcohólicas, toxicomanía y alcoholismo.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Cirugía de refracción (corrección de miopía, hipermetropía, astigmatismo, etc.) y cirugía de la presbicia.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Intervenciones y/o tratamientos por razones estéticas, salvo si son necesarios como consecuencia de un accidente cubierto por la póliza.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Epidemias oficialmente declaradas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Utilización como pasajero o tripulante de cualquier medio de navegación aérea no autorizado para el transporte público de viajeros.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Práctica como profesional de cualquier deporte y práctica como profesional o aficionado de actividades aéreas, submarinismo con uso de pulmón artificial, boxeo, escalada, carreras de vehículos (incluidos entrenamientos), espeleología, toreo, encierro de reses bravas y cualquier otro deporte de alto riesgo.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Interrupción voluntaria del embarazo, así como toda indemnización relacionada con dicha interrupción.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Participación del asegurado en apuestas, desafíos y riñas, salvo que en este último caso actuase en legítima defensa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Enfermedades psiquiátricas y trastornos psicológicos que no requieran hospitalización (exclusión específica para la cobertura de hospitalización).",
+        "category": "Specific to coverage",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "3 propuestas de tratamiento (incluye radiografías) al año",
+        "conditions": "Para menores de 15 años: incluye odontología general, preventiva, conservadora, endodoncia, prótesis removibles y fijas, cirugía estomatológica, ATM y radiología estomatológica. Para mayores de 15 años: incluye odontología general y preventiva, propuestas de tratamiento periodontal (máx. 3 al año), periodoncia, cirugía estomatológica y radiología estomatológica."
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "1 propuesta de tratamiento de ortodoncia al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "1 propuesta de tratamiento de ATM al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "1 limpieza de boca al año (mantenimiento)",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "6 revisiones en fase de retención con aparatología ortodóncica al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "6 placas para radiografías seriadas al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Cobertura Odontológica",
+        "limit_type": "annual_max_sessions",
+        "limit_value": "12 placas para series periapicales al año",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Indemnización por Hospitalización por Cualquier Causa",
+        "limit_type": "max_days_per_claim",
+        "limit_value": "365 días",
+        "conditions": "Excepto para enfermedades psiquiátricas y trastornos psicológicos, cuyo período máximo indemnizable es de 20 días por asegurado y año."
+      },
+      {
+        "coverage_name": "Indemnización por Hospitalización por Cualquier Causa",
+        "limit_type": "bonus_condition",
+        "limit_value": "50% de incremento en indemnización diaria si hospitalización en provincia distinta a la de residencia habitual",
+        "conditions": "Se considera domicilio habitual el declarado en la póliza."
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar con veracidad todas las circunstancias relacionadas con el estado de salud en el cuestionario de salud al contratar el seguro.",
+        "Comunicar a la aseguradora cualquier cambio en la información dada en la contratación durante toda la vigencia del contrato.",
+        "Pagar las primas en los plazos y condiciones establecidos en la póliza.",
+        "Utilizar preferentemente el cuadro de dentistas concertados en la provincia de residencia (libre elección a nivel nacional).",
+        "Presentar la tarjeta sanitaria para acceder a los servicios concertados.",
+        "Firmar el presupuesto bucodental previo al tratamiento.",
+        "Pagar directamente al profesional los precios convenidos correspondientes a los actos incluidos en el presupuesto.",
+        "Entregar al asegurado comprobantes de todos los actos realizados y justificantes de los precios convenidos pagados.",
+        "Comunicar a la aseguradora cualquier agravación del riesgo (ej. cambio de domicilio, actividad profesional).",
+        "Comunicar a la aseguradora los hechos que puedan dar lugar a indemnización u otras prestaciones en el plazo de 7 días desde que se conozcan."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Aminorar las consecuencias del siniestro empleando los medios a su alcance para el pronto restablecimiento.",
+        "Comunicar el siniestro a la aseguradora en el plazo máximo de 7 días desde que se conozca.",
+        "Presentar la documentación requerida por la aseguradora (solicitud de indemnización, informe clínico, etc.).",
+        "Permitir y facilitar al asegurador los actos de comprobación, seguimiento y control necesarios para determinar la procedencia del pago.",
+        "Autorizarse y colaborar en cuantos exámenes, reconocimientos o pruebas médicas considere necesarios el asegurador.",
+        "No incumplir los deberes de comunicación y colaboración, ya que podría derivar en la pérdida del derecho a la prestación."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": 60,
+      "termination_causes": [
+        "Oposición a la prórroga por cualquiera de las partes con el plazo de preaviso correspondiente.",
+        "Falta de pago de la prima (suspensión de cobertura tras 1 mes de impago, extinción tras 6 meses de impago).",
+        "Extravío o destrucción de la póliza (se expide duplicado).",
+        "Agravación del riesgo no comunicada (rescisión por asegurador).",
+        "Disminución del riesgo (reducción de prima o resolución del contrato).",
+        "Traslado del domicilio del asegurado fuera de España (extinción automática).",
+        "Edad del asegurado superior a 65 años (no asegurables).",
+        "Contratación a distancia: desistimiento del contrato en 14 días naturales sin penalización (para tomadores consumidores)."
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados por la aseguradora.",
+      "payment_frequency": [
+        "annual",
+        "semestral",
+        "trimestral",
+        "monthly"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Participación en el coste de determinados servicios mediante el pago de precios convenidos detallados en el Anexo I.",
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Zona de residencia",
+        "Historial de siniestralidad",
+        "Frecuencia de utilización de servicios médicos",
+        "Incorporación de innovaciones tecnológicas u otras mejoras en la póliza"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Las coberturas se extinguen automáticamente si el asegurado traslada su domicilio fuera de España."
+    },
+    "source_documents": [
+      {
+        "filename": "dental_cg_0900ab44c6322d70.md",
+        "document_type": "general_conditions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "dental_ipid_0900ab44c63209ea.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "dental_nota_0900ab44c63209e6.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

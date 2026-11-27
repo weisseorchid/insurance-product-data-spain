@@ -1,0 +1,238 @@
+{
+  "product_id": "urn:C0511-03",
+  "company_key": "C0511",
+  "product_name": "seguro_amortizacion_cuota_constante",
+  "branches": [
+    "00"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-de-vida/capital-temporal-fijo/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:31:33.554343+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "d02e4303fa6f6375e7e55e4c58acd67dc4626279ef5de2732d56890436bfd529",
+      "markdown_hashes": {
+        "amortizacion_cuota_constante_nota_0900ab44c6a27dc0.md": "d02e4303fa6f6375e7e55e4c58acd67dc4626279ef5de2732d56890436bfd529"
+      },
+      "markdown_files": [
+        "amortizacion_cuota_constante_nota_0900ab44c6a27dc0.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida para Amortización de Préstamos con Cuota Constante",
+      "target_audience": "Personas con préstamos hipotecarios o personales que deseen garantizar su amortización en caso de fallecimiento o invalidez absoluta permanente del titular del préstamo",
+      "description_es": "Seguro de vida a plazo determinado que garantiza la cancelación de un préstamo (hipotecario o personal) en caso de fallecimiento del Asegurado, que a su vez es el titular del préstamo. Opcionalmente, puede cubrir un capital por invalidez absoluta permanente. El seguro está diseñado para proteger al titular del préstamo y a sus beneficiarios frente a eventos que impidan el pago del mismo.",
+      "description_en": "Life insurance for loan amortization with constant installments that guarantees the cancellation of a loan (mortgage or personal) in the event of the insured's death, who is also the loan holder. It may optionally cover a capital amount for permanent absolute disability. The insurance is designed to protect the loan holder and their beneficiaries against events that prevent repayment.",
+      "key_benefits": [
+        "Garantía principal de fallecimiento por cualquier causa para amortizar el préstamo",
+        "Cobertura opcional de invalidez absoluta permanente",
+        "Protección financiera para el titular del préstamo y sus beneficiarios",
+        "Posibilidad de extinción del contrato en caso de amortización anticipada del préstamo con reintegro proporcional de prima",
+        "Derecho de resolución del contrato en 30 días desde la entrega de la póliza"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "00"
+    },
+    "coverages": [
+      {
+        "name": "Fallecimiento por cualquier causa",
+        "category": "basic",
+        "description": "Garantía principal que cubre el fallecimiento del Asegurado por cualquier causa, garantizando la cancelación del préstamo (hipotecario o personal) del que es titular. El capital asegurado se destina a amortizar el préstamo pendiente en el momento del siniestro.",
+        "covered_events": [
+          "Fallecimiento del Asegurado por cualquier causa"
+        ],
+        "benefits": [
+          "Amortización del préstamo pendiente en el momento del siniestro",
+          "El capital asegurado se calcula en función del importe pendiente del préstamo en el momento del fallecimiento"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El Asegurado debe ser el titular del préstamo",
+          "La cobertura se activa desde la entrada en vigor del contrato",
+          "El capital asegurado se ajusta al importe pendiente del préstamo en el momento del siniestro"
+        ]
+      },
+      {
+        "name": "Invalidez absoluta permanente",
+        "category": "optional",
+        "description": "Cobertura complementaria que garantiza el pago de un capital en caso de que el Asegurado sufra una invalidez absoluta permanente que le inhabilite por completo para el mantenimiento de cualquier relación laboral o actividad profesional. Esta cobertura es opcional y debe ser contratada expresamente.",
+        "covered_events": [
+          "Invalidez absoluta permanente del Asegurado"
+        ],
+        "benefits": [
+          "Pago de un capital asegurado por invalidez absoluta permanente",
+          "El capital se destina a amortizar el préstamo pendiente"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "La invalidez debe ser irreversible y total",
+          "Edad máxima de contratación: 67 años",
+          "Debe ser contratada expresamente en las Condiciones Particulares",
+          "No cubre enfermedades o lesiones preexistentes no declaradas"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Siniestros producidos como consecuencia directa o indirecta de reacción o radiación nuclear o contaminación radiactiva.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros producidos a consecuencia de guerra, invasión, hostilidades u operaciones bélicas con o sin declaración de guerra, guerra civil, derrocamiento de gobierno, revolución, rebelión, sedición, insurrección, poder militar o usurpado, ley marcial, terrorismo, motín, tumulto o conmoción civil.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros relacionados directa o indirectamente con el desarrollo, tenencia o uso de armas atómicas, bacteriológicas o químicas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros que sean consecuencia de enfermedad o accidente conocida por el Asegurado o diagnosticada con anterioridad a la entrada en vigor del seguro, y que no hayan sido comunicados al Asegurador en el cuestionario de salud incluido en la solicitud.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros acaecidos como consecuencia de epidemias o pandemias declaradas oficialmente por un organismo nacional o internacional.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Riesgos de carácter extraordinario sobre las personas, cubiertos o no cubiertos por no tener residencia habitual en España, o excluidos por el Consorcio de Compensación de Seguros en los términos recogidos en cada momento en la legislación vigente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros que tengan su origen en actos de imprudencia temeraria o negligencia grave del Asegurado, así como los derivados de actos delictivos, altercados o riñas, siempre que el Asegurado no hubiese actuado en legítima defensa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros causados voluntariamente por el Asegurado. En caso de suicidio transcurrido el primer año de vigencia del contrato, se dará cobertura únicamente por la garantía de fallecimiento por cualquier causa.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros sufridos por el Asegurado en situación de enajenación mental, bajo el efecto de bebidas alcohólicas, o por el uso de drogas tóxicas, estupefacientes o sustancias psicotrópicas no prescritas médicamente.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros ocasionados por competiciones, apuestas, tentativas de récord y en general, todos los actos notoriamente peligrosos que no estén justificados por ninguna necesidad profesional, salvo los que sobrevengan en las tentativas de salvamento de personas o bienes.",
+        "category": "Específica a cobertura de invalidez",
+        "legal_reference": null
+      },
+      {
+        "description": "Lesiones y enfermedades que sean consecuencia de intervenciones quirúrgicas o tratamientos médicos no motivados por un accidente cubierto por la póliza, así como enfermedades de cualquier naturaleza (incluidas las de origen infeccioso), infarto, episodios cardiovasculares, ataques de epilepsia y pérdidas de facultades mentales, salvo que sean ocasionadas por un accidente cubierto por la póliza.",
+        "category": "Específica a cobertura de invalidez",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros ocasionados por la utilización o el uso como conductor u ocupante de motocicletas con cilindrada superior a 250 c.c., así como la utilización de quads de cualquier cilindrada.",
+        "category": "Específica a cobertura de invalidez",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros ocurridos viajando el Asegurado, ya sea en calidad de pasajero o tripulante en aeronaves de capacidad inferior a diez plazas de pasajeros.",
+        "category": "Específica a cobertura de invalidez",
+        "legal_reference": null
+      },
+      {
+        "description": "Siniestros derivados de la práctica de los siguientes deportes: automovilismo y motociclismo en cualquiera de sus modalidades, caza mayor fuera del territorio europeo, submarinismo con uso de pulmón artificial, hípica, escalada, espeleología, boxeo, lucha en cualquiera de sus modalidades, artes marciales, paracaidismo, aerostación, vuelo libre, vuelo sin motor y en general, cualquier deporte o actividad recreativa de carácter notoriamente peligroso.",
+        "category": "Específica a cobertura de invalidez",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Fallecimiento por cualquier causa",
+        "limit_type": "maximum_age",
+        "limit_value": "75 años",
+        "conditions": "Edad máxima de permanencia en la póliza"
+      },
+      {
+        "coverage_name": "Invalidez absoluta permanente",
+        "limit_type": "maximum_age",
+        "limit_value": "67 años",
+        "conditions": "Edad máxima de contratación"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Declarar todas las circunstancias relacionadas con el estado de salud que puedan influir en la valoración del riesgo mediante el cuestionario de salud proporcionado por la aseguradora.",
+        "Comunicar al asegurador cualquier enfermedad o accidente conocido o diagnosticado con anterioridad a la entrada en vigor del seguro.",
+        "Pagar las primas en los plazos establecidos.",
+        "No incurrir en reserva, inexactitud u omisión en las declaraciones del cuestionario de salud.",
+        "Designar beneficiarios para la prestación en caso de fallecimiento.",
+        "Notificar al asegurador cualquier cambio en las circunstancias que puedan afectar al riesgo asegurado."
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "Comunicar al asegurador el siniestro en el plazo establecido en las Condiciones Particulares.",
+        "Presentar la documentación requerida por el asegurador para la tramitación del siniestro (certificado de defunción, informe médico de invalidez, etc.).",
+        "Facilitar toda la información y documentación necesaria para la evaluación del siniestro."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Plazo determinado según lo establecido en las Condiciones Particulares (generalmente vinculado a la duración del préstamo).",
+      "renewal_type": "No aplica (seguro a plazo determinado).",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Extinción del contrato por pago total del capital correspondiente a la garantía principal o complementaria.",
+        "Rescisión del contrato por reserva, inexactitud u omisión en las declaraciones de salud.",
+        "Resolución del contrato por el tomador dentro de los 30 días siguientes a la entrega de la póliza.",
+        "Amortización anticipada total o parcial del préstamo con extinción del seguro y reintegro proporcional de prima.",
+        "Falta de pago de la prima (suspensión de garantías tras 1 mes de impago y resolución del contrato si no se regulariza)."
+      ],
+      "payment_method": "Transferencia bancaria, domiciliación bancaria u otros medios establecidos por la aseguradora.",
+      "payment_frequency": [
+        "anual",
+        "fraccionada (según lo pactado en Condiciones Particulares)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Edad del asegurado",
+        "Importe del préstamo",
+        "Duración del préstamo",
+        "Coberturas contratadas (fallecimiento e invalidez absoluta permanente)",
+        "Estado de salud del asegurado (según cuestionario de salud)",
+        "Historial médico y factores de riesgo"
+      ],
+      "discounts": null
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": [
+        "Fallecimiento por cualquier causa"
+      ],
+      "special_conditions_abroad": "Para la garantía de fallecimiento, el ámbito de cobertura es mundial, excepto en países desaconsejados por el Ministerio de Asuntos Exteriores de España en su página web oficial en el momento de iniciar el viaje. Para la cobertura de invalidez absoluta permanente, el ámbito es España."
+    },
+    "source_documents": [
+      {
+        "filename": "amortizacion_cuota_constante_nota_0900ab44c6a27dc0.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

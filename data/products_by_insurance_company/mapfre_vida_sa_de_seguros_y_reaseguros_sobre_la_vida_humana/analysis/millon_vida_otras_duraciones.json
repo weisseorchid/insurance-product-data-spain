@@ -1,0 +1,217 @@
+{
+  "product_id": "urn:C0511-05",
+  "company_key": "C0511",
+  "product_name": "millon_vida_otras_duraciones",
+  "branches": [
+    "00"
+  ],
+  "source_url": "https://www.mapfre.es/ahorro-inversion/ahorro/seguro-ahorro-garantizado/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:32:38.254116+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "0250b6e6cf5565703aaf1aca24558cbff4fc9b6fc99e93aa3a75ab5085cf2918",
+      "markdown_hashes": {
+        "millon_vida_kid_mv_2_anos_0900ab44c814dee7.md": "958c4e2997d8094080f8aa33aa882a033871f92cbc80107e3e80d3fc6f5d1092",
+        "millon_vida_kid_mv_3_anos_0900ab44c862a99b.md": "96368684e7f6ad7fbfab471a84e7cdfcdcd0caf76d616cc5414b9a8dc8aacb5b",
+        "millon_vida_nota_0900ab44c6a27dc8.md": "4d2d722b482124b0b3b315d30967e14361c6166658e4eece7af9561bbffb0307"
+      },
+      "markdown_files": [
+        "millon_vida_kid_mv_2_anos_0900ab44c814dee7.md",
+        "millon_vida_kid_mv_3_anos_0900ab44c862a99b.md",
+        "millon_vida_nota_0900ab44c6a27dc8.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Vida Ahorro a Prima Única con Garantía de Capital",
+      "target_audience": "Personas interesadas en inversión a plazo fijo con garantía de capital y rentabilidad, sin necesidad de experiencia previa en mercados financieros",
+      "description_es": "Seguro de vida ahorro a prima única que garantiza un capital al vencimiento en caso de supervivencia del asegurado, así como un capital en caso de fallecimiento del asegurado antes del vencimiento. El capital está garantizado a vencimiento y no depende de la evolución de los mercados financieros. El producto permite elegir la duración del contrato (múltiplos de 1 año, con ejemplos de 2 y 3 años) y ofrece la posibilidad de rescate total una vez transcurrida la primera anualidad, aunque con posibles pérdidas en caso de rescate anticipado. Las inversiones vinculadas están principalmente compuestas por deuda emitida por gobiernos y entidades públicas de la Zona Euro, así como renta fija privada de emisores de la misma zona.",
+      "description_en": "Single-premium life insurance savings product that guarantees a capital at maturity in case of the insured's survival, as well as a capital in case of the insured's death before maturity. The capital is guaranteed at maturity and does not depend on the evolution of financial markets. The product allows choosing the contract duration (multiples of 1 year, with examples of 2 and 3 years) and offers the possibility of total redemption once the first year has elapsed, although with possible losses in case of early redemption. The linked investments are mainly composed of debt issued by governments and public entities in the Eurozone, as well as private fixed income from issuers in the same area.",
+      "key_benefits": [
+        "Garantía de capital al vencimiento en caso de supervivencia del asegurado",
+        "Capital garantizado en caso de fallecimiento del asegurado antes del vencimiento",
+        "Posibilidad de elegir la duración del contrato (múltiplos de 1 año)",
+        "Rescate total posible tras la primera anualidad (con posibles pérdidas en caso de rescate anticipado)",
+        "Inversiones principalmente en deuda pública y renta fija privada de la Zona Euro",
+        "Tipo de interés técnico garantizado durante toda la vigencia del seguro"
+      ],
+      "insurance_company": "MAPFRE VIDA, S.A. DE SEGUROS Y REASEGUROS SOBRE LA VIDA HUMANA",
+      "administrative_code": "C-0737"
+    },
+    "coverages": [
+      {
+        "name": "Capital garantizado por supervivencia",
+        "category": "basic",
+        "description": "En caso de supervivencia del asegurado a la fecha de vencimiento de la póliza, se abonará el capital garantizado establecido en las Condiciones Particulares. El capital está garantizado a vencimiento y no depende de la evolución de los mercados financieros.",
+        "covered_events": [
+          "Supervivencia del asegurado hasta la fecha de vencimiento del contrato"
+        ],
+        "benefits": [
+          "Pago del capital garantizado al vencimiento"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El capital garantizado se establece en las Condiciones Particulares de la póliza",
+          "El tipo de interés técnico garantizado se detalla en las Condiciones Particulares"
+        ]
+      },
+      {
+        "name": "Capital garantizado por fallecimiento",
+        "category": "basic",
+        "description": "En caso de fallecimiento del asegurado antes de la fecha de vencimiento de la póliza, se abonará a los beneficiarios designados el capital garantizado, que corresponde a la prima satisfecha capitalizada al tipo de interés técnico durante el período comprendido entre la fecha de efecto de la póliza y la fecha de fallecimiento.",
+        "covered_events": [
+          "Fallecimiento del asegurado antes del vencimiento del contrato"
+        ],
+        "benefits": [
+          "Pago del capital garantizado a los beneficiarios designados"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": [
+          "El capital garantizado se calcula como la prima satisfecha capitalizada al tipo de interés técnico",
+          "Se considera la fracción de año en curso como anualidad completa",
+          "La prima de riesgo biométrica está incluida en los costes totales"
+        ]
+      },
+      {
+        "name": "Derecho de rescate",
+        "category": "basic",
+        "description": "Una vez transcurrida la primera anualidad de la póliza y satisfecha la prima correspondiente, el tomador podrá solicitar el rescate total del seguro, lo que implica la extinción de la póliza. No se admiten rescates parciales.",
+        "covered_events": [
+          "Solicitud de rescate total por parte del tomador tras la primera anualidad"
+        ],
+        "benefits": [
+          "Extinción de la póliza y pago del valor de rescate"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": 365,
+        "conditions": [
+          "El rescate total solo puede ejercitarse tras la primera anualidad",
+          "No se permiten rescates parciales",
+          "El valor de rescate depende de la evolución de los mercados financieros y puede ser inferior a la prima pagada"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Pérdidas financieras por impago de MAPFRE VIDA (no existe régimen de compensación o garantía que proteja al inversor minorista en ese caso)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Pérdidas en caso de rescate anticipado antes de la primera anualidad (no se permite el rescate en este período)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Pérdidas en caso de rescate anticipado tras la primera anualidad, debido a la evolución negativa de los mercados financieros (el valor de rescate puede ser inferior a la prima pagada)",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Pérdidas en caso de que el valor de realización de los activos asignados a la póliza sea inferior a la prima pagada (depende de la evolución de los mercados financieros)",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Capital garantizado por fallecimiento",
+        "limit_type": "maximum_amount",
+        "limit_value": "Prima satisfecha capitalizada al tipo de interés técnico",
+        "conditions": "El capital garantizado se calcula como la prima satisfecha capitalizada al tipo de interés técnico durante el período comprendido entre la fecha de efecto de la póliza y la fecha de fallecimiento"
+      },
+      {
+        "coverage_name": "Valor de rescate",
+        "limit_type": "maximum_amount",
+        "limit_value": "Provisión matemática calculada con las bases técnicas utilizadas para el cálculo de la prima (como máximo, el 100% de las provisiones matemáticas)",
+        "conditions": "El valor de rescate no podrá ser superior al de realización de los activos asignados a la póliza, a la fecha de su solicitud. Depende de la evolución de los mercados financieros y puede ser inferior a la prima pagada"
+      },
+      {
+        "coverage_name": "Prima de riesgo biométrico",
+        "limit_type": "percentage_of_premium",
+        "limit_value": "0,0% a 0,1% de la prima (según duración del contrato)",
+        "conditions": "La prima de riesgo biométrica está destinada a asegurar el capital de fallecimiento y está incluida en los costes totales del producto"
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar la prima única inicial en el momento de la contratación",
+        "Comprender y aceptar las características del seguro antes de contratar el producto",
+        "Mantener la inversión durante el plazo recomendado para garantizar las prestaciones",
+        "Notificar cualquier cambio en los datos personales o contractuales al asegurador",
+        "Cumplir con las obligaciones fiscales derivadas de las prestaciones del seguro"
+      ],
+      "claim_notification_deadline_days": null,
+      "claim_obligations": [
+        "En caso de fallecimiento del asegurado, los beneficiarios deben notificar el siniestro al asegurador",
+        "Proporcionar la documentación requerida por el asegurador para el pago de las prestaciones",
+        "En caso de rescate, solicitar el valor de rescate mediante los procedimientos establecidos por el asegurador"
+      ]
+    },
+    "contract_terms": {
+      "duration": "Múltiplos de 1 año (ejemplos: 2 años, 3 años)",
+      "renewal_type": "No aplicable (contrato de duración determinada sin renovación automática)",
+      "cancellation_notice_days_policyholder": null,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Fallecimiento del asegurado",
+        "Devolución o impago del recibo de la prima (anulación automática de la póliza)",
+        "Rescate total por parte del tomador tras la primera anualidad",
+        "Vencimiento del contrato"
+      ],
+      "payment_method": "Prima única inicial",
+      "payment_frequency": null
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": null,
+      "pricing_factors": [
+        "Duración del contrato (ejemplo: 2 años vs. 3 años)",
+        "Tipo de interés técnico garantizado (establecido en Condiciones Particulares)",
+        "Prima de riesgo biométrica (0,0% a 0,1% de la prima, según duración)",
+        "Costes de gestión y distribución (incluidos en la prima)",
+        "Evolución de los mercados financieros (afecta al valor de rescate y rentabilidad)"
+      ],
+      "discounts": [
+        "No se mencionan descuentos específicos en los documentos analizados"
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "No aplicable (el producto está diseñado para inversores en España)"
+    },
+    "source_documents": [
+      {
+        "filename": "millon_vida_kid_mv_2_anos_0900ab44c814dee7.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "millon_vida_kid_mv_3_anos_0900ab44c862a99b.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "millon_vida_nota_0900ab44c6a27dc8.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}

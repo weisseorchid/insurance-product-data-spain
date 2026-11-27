@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "analyzed_at": "2026-11-27T10:53:54.146050+00:00",
+  "analyzer": {
+    "name": "analyze_products",
+    "version": "1.0.0",
+    "model": "mistral-small-latest",
+    "schema_version": "1.0"
+  },
+  "company_key": "C0058",
+  "summary": {
+    "total_products": 11,
+    "successful": 10,
+    "skipped": 0,
+    "failed": 1,
+    "quality_issues": 0,
+    "total_markdown_files": 29,
+    "by_provider_mistral": 10,
+    "fallbacks": 0
+  },
+  "products": [
+    {
+      "product_name": "seguro_terceros",
+      "product_id": "urn:C0058-01",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_terceros_ampliado",
+      "product_id": "urn:C0058-02",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_todo_riesgo",
+      "product_id": "urn:C0058-03",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_moto_terceros_ampliado",
+      "product_id": "urn:C0058-04",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 2,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_hogar_tu_eliges",
+      "product_id": "urn:C0058-05",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_hogar_familiar",
+      "product_id": "urn:C0058-06",
+      "success": false,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 0,
+      "error": "mistral rate limited after one retry pass: API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}",
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_hogar_platino",
+      "product_id": "urn:C0058-07",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_asistencia_sanitaria_tu_eliges",
+      "product_id": "urn:C0058-08",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_asistencia_sanitaria_sin_copago",
+      "product_id": "urn:C0058-09",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_dental",
+      "product_id": "urn:C0058-10",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "product_name": "seguro_decesos_siempre",
+      "product_id": "urn:C0058-11",
+      "success": true,
+      "skipped": false,
+      "skip_reason": null,
+      "has_quality_issues": false,
+      "markdown_files_processed": 3,
+      "error": null,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ],
+  "notes": "Aggregated from the 27 Nov 2026 analyze_products runs (provider=mistral, model=mistral-small-latest), including the one allowed retry pass. seguro_hogar_familiar was not analysed: Mistral returned 429 after that retry."
+}

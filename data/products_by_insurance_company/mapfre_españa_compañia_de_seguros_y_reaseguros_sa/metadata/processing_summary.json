@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "processed_at": "2026-11-26T10:21:42.853583+00:00",
+  "processor": {
+    "name": "process_pdfs",
+    "version": "1.0.0",
+    "converter": "markitdown[pdf]"
+  },
+  "company_key": "C0058",
+  "summary": {
+    "total_files": 29,
+    "successful": 29,
+    "failed": 0
+  },
+  "products": [
+    {
+      "product_name": "seguro_asistencia_sanitaria_sin_copago",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "94ec1cc48ee114231270c1878bfba5c741b07aa9d90721a5980dddd8ba3f36ac.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "c036790857bd28ea543fe5d475e281dd98c347f1a4fc40b87f86dcf24e2168ee.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "415c5dcee573f9a72a19ecfd74848f80ae81ac46a48ede076b046cd203b6e6b6.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_asistencia_sanitaria_tu_eliges",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "73742abe2c29de3706412abdaa32370e94638acd2133173dcde2069b6e9b6139.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "4d5acc61a6e6231d6b72ce890326f065774e1870a798e415caa20ad8b45879dc.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_decesos_siempre",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "2e5a54cc4132112b3a0e86bb0376699c5d4b52b62e25749071eda8c71790430a.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "5cd7f54e587f5186dfd05d0386617c2ca72ae9259c95280a35fbb4d5ea54a5f2.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "a915a787bd3f55e20cd5782ee2e3eb19d26b574ea87cec2b6ec4df6dd9a1fc32.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_dental",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "27a4b7a99bc5b905671f561c157eb6de531edb0f3fcb8c271474407f741b6c6e.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "23bc5938ee341b566af8283ced8e66d4f400c9bd6ffd3a91f60034d1abd1f322.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "eb5f7dd5ad5cff88ac7093fd0bf7d084e1a6f348fe91ae04e16283676317cf24.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_hogar_familiar",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "4151e65bb56949f858963a5c165de202472e4295ab61829ca58afd4f9e08af4c.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "6fc6a42bbc827d4381ed1e460fc1a1a5b58604ee40cad28cd5798750f3aac3aa.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "f1335905be96f22707aa5b72e28b0cefdd800be1e72735e9e0cb000045b15f31.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_hogar_platino",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "c43d2eda72d9bd366ba993dd9dc2116d9edf50fc4dddad80422c0f9c9a9f4ff3.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "07b4a1fdbc1eb5f3ae65bf00fa0e4eaea5e91257f5d7223d2c3cadbc40fcea2a.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "fb0727713d57158a2604a3081056b43d59595f1c4b584ab959e55f16a8b57ee4.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_hogar_tu_eliges",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "53969f243db492dcef7f1ad1f48f862379ec25d524d60601ed9f0362e0eb8d2c.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "cd5a641efc1a13a126f5ad732f07c4a80fc00bda76888b8203b82ced7c98f342.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "9de308dee64d446fb24b363313d0967932f8842f89ce59f22f5c2bb49f9b3f0b.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_moto_terceros_ampliado",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "a8c899a8eca943512255ad1b229ee6955177d87cf473f425286bc455501fbdf3.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "f0371bdc9b61881ea0f692995c726f4769047a879129ad677d21fe479efc3808.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_terceros",
+      "total_files": 3,
+      "successful": 3,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "87b629e8d3a979863835dc39b49e94c37775b7537f0680ccc2e788a077a19416.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "46da3390ad232a9663398bae0ecb7e5132b4e6cccf689c78bb746790cfd127d2.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "9cd6d0b5bc641b392793f1cab82288ba86a74842404eaafc56cb9f8d8d6474d7.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_terceros_ampliado",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "d0f59825f75099d716b1b35ff583fbd0f13aec4a4f058bd9f566dadf4b4a0cda.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "1c9a4e5b436ad6bd9bc743b137e2803e7e047938086fc331afdab119136c95ba.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "product_name": "seguro_todo_riesgo",
+      "total_files": 2,
+      "successful": 2,
+      "failed": 0,
+      "files": [
+        {
+          "file_name": "6b122da9b0830d4b9e156126b007eb36dcbc00e21cfed147b894978926546828.pdf",
+          "success": true,
+          "error": null
+        },
+        {
+          "file_name": "e5d14e86d2b7565d2625a3572e26a52c475045589f76bdb62711d6406e8cbde0.pdf",
+          "success": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

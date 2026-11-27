@@ -1,0 +1,365 @@
+{
+  "product_id": "urn:C0058-04",
+  "company_key": "C0058",
+  "product_name": "seguro_moto_terceros_ampliado",
+  "branches": [
+    "03",
+    "10"
+  ],
+  "source_url": "https://www.mapfre.es/particulares/seguros-para-motos/moto-terceros-ampliado/",
+  "document_references": [],
+  "analysis_path": null,
+  "fetched_at": null,
+  "metadata": {
+    "analyzed_at": "2026-11-27T10:35:15.615125+00:00",
+    "analyzer_version": "1.0.0",
+    "quality_flags": {
+      "has_known_quality_issues": false,
+      "untrusted": false,
+      "incomplete_inputs": false
+    },
+    "analysis_provenance": {
+      "provider": "mistral",
+      "model": "mistral-small-latest",
+      "schema_version": "1.0",
+      "input_hash": "06934d512e44782474bd414a8d82e146eb5034549bcc20755fc14cc2b9563dac",
+      "markdown_hashes": {
+        "moto_terceros_ampliado_ipid_0900ab44c48abf87.md": "1c9cc035a727a4bd84470e716bdf1446ad286b33f396e674c4daba25fa911c5f",
+        "moto_terceros_ampliado_nota_0900ab44c48b2c7a.md": "8f73692d6df462305e48e031fded217b7544ebc0388924c18633c37ca5049912"
+      },
+      "markdown_files": [
+        "moto_terceros_ampliado_ipid_0900ab44c48abf87.md",
+        "moto_terceros_ampliado_nota_0900ab44c48b2c7a.md"
+      ]
+    }
+  },
+  "analysis": {
+    "product_summary": {
+      "product_type": "Seguro de Moto (Terceros Ampliado)",
+      "target_audience": "Particulares (propietarios y conductores de motocicletas)",
+      "description_es": "Seguro de motocicletas que cubre la responsabilidad civil obligatoria en la circulación, complementado con coberturas voluntarias para la moto, el conductor y los ocupantes. Incluye garantías como responsabilidad civil suplementaria, seguro de conductor (accidentes personales), defensa jurídica, asistencia en viaje, incendio, robo, y otras coberturas opcionales.",
+      "description_en": "Motorcycle insurance that covers mandatory civil liability in traffic, complemented with voluntary coverages for the motorcycle, driver, and passengers. Includes guarantees such as supplementary civil liability, driver insurance (personal accidents), legal defense, travel assistance, fire, theft, and other optional coverages.",
+      "key_benefits": [
+        "Cobertura obligatoria de responsabilidad civil en circulación (daños a personas y bienes hasta 70.000.000€ y 15.000.000€ por accidente, respectivamente)",
+        "Responsabilidad civil suplementaria hasta 50.000.000€ por accidente",
+        "Seguro de conductor: fallecimiento (8.000€), invalidez permanente (hasta 8.000€ por accidente), y asistencia sanitaria (hasta 8.000€ por accidente, máximo 365 días)",
+        "Defensa jurídica hasta 3.000€ por accidente",
+        "Asistencia en viaje",
+        "Cobertura de incendio y robo de la moto asegurada",
+        "Posibilidad de contratar coberturas adicionales como daños por atropello de especies cinegéticas, intereses y gastos de préstamo para reparación, y gestiones para defensa en multas"
+      ],
+      "insurance_company": "MAPFRE ESPAÑA, COMPAÑÍA DE SEGUROS Y REASEGUROS, S.A.",
+      "administrative_code": "C-0058"
+    },
+    "coverages": [
+      {
+        "name": "Responsabilidad Civil Obligatoria (RCO)",
+        "category": "basic",
+        "description": "Cobertura obligatoria que garantiza la indemnización por daños a terceros (personas y bienes) causados con motivo de la circulación de la motocicleta asegurada. Incluye daños a personas hasta 70.000.000€ por accidente y daños a bienes hasta 15.000.000€ por accidente.",
+        "covered_events": [
+          "Daños a terceros (personas y bienes) causados durante la circulación de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Indemnización por daños a terceros hasta los límites establecidos (70.000.000€ para personas y 15.000.000€ para bienes por accidente)"
+        ],
+        "capital_or_limit": "70.000.000€ (personas) / 15.000.000€ (bienes) por accidente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Responsabilidad Civil Suplementaria",
+        "category": "basic",
+        "description": "Cobertura que amplía la indemnización por daños a terceros más allá de los límites de la responsabilidad civil obligatoria.",
+        "covered_events": [
+          "Daños a terceros (personas y bienes) causados durante la circulación de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Indemnización adicional por daños a terceros hasta 50.000.000€ por accidente"
+        ],
+        "capital_or_limit": "50.000.000€ por accidente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Seguro de Conductor - Accidentes Personales",
+        "category": "basic",
+        "description": "Cobertura que indemniza al conductor de la motocicleta asegurada en caso de sufrir accidentes personales durante la circulación.",
+        "covered_events": [
+          "Accidentes personales sufridos por el conductor de la motocicleta asegurada durante la circulación"
+        ],
+        "benefits": [
+          "Fallecimiento: 8.000€",
+          "Invalidez permanente: hasta 8.000€ por accidente (según tabla de valoración)",
+          "Asistencia sanitaria: hasta 8.000€ por accidente (máximo 365 días)"
+        ],
+        "capital_or_limit": "8.000€ (fallecimiento) / hasta 8.000€ (invalidez permanente) / hasta 8.000€ (asistencia sanitaria) por accidente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Defensa Jurídica",
+        "category": "basic",
+        "description": "Cobertura que garantiza la defensa legal del asegurado en caso de reclamaciones derivadas de la circulación de la motocicleta asegurada.",
+        "covered_events": [
+          "Reclamaciones legales derivadas de la circulación de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Cobertura de gastos legales hasta 3.000€ por accidente"
+        ],
+        "capital_or_limit": "3.000€ por accidente",
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Asistencia en Viaje",
+        "category": "basic",
+        "description": "Cobertura que proporciona asistencia en caso de averías, accidentes o imprevistos durante viajes con la motocicleta asegurada.",
+        "covered_events": [
+          "Averías, accidentes o imprevistos durante viajes con la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Asistencia en carretera, remolque, alojamiento, transporte de la motocicleta, etc."
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Incendio de la Moto Asegurada",
+        "category": "basic",
+        "description": "Cobertura que indemniza al asegurado en caso de incendio de la motocicleta asegurada.",
+        "covered_events": [
+          "Incendio de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Indemnización por el valor de la motocicleta en el momento del siniestro (según condiciones de la póliza)"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Robo de la Moto Asegurada",
+        "category": "basic",
+        "description": "Cobertura que indemniza al asegurado en caso de robo de la motocicleta asegurada. Puede contratarse con franquicia (150€ a 600€ por siniestro).",
+        "covered_events": [
+          "Robo de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Indemnización por el valor de la motocicleta en el momento del siniestro (según condiciones de la póliza), menos la franquicia aplicable"
+        ],
+        "capital_or_limit": "Valor de la motocicleta en el momento del siniestro (menos franquicia)",
+        "waiting_period_days": null,
+        "conditions": [
+          "La cobertura de robo se contrata con franquicia entre 150€ y 600€ por siniestro"
+        ]
+      },
+      {
+        "name": "Daños de la Moto por Atropello de Especies Cinegéticas",
+        "category": "optional",
+        "description": "Cobertura opcional que indemniza los daños sufridos por la motocicleta asegurada como consecuencia del atropello de especies cinegéticas de caza mayor.",
+        "covered_events": [
+          "Daños a la motocicleta asegurada por atropello de especies cinegéticas de caza mayor"
+        ],
+        "benefits": [
+          "Indemnización por los daños sufridos por la motocicleta"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      },
+      {
+        "name": "Intereses y Gastos del Préstamo para Reparación",
+        "category": "optional",
+        "description": "Cobertura opcional que cubre los intereses y gastos de un préstamo solicitado para reparar la motocicleta asegurada tras un siniestro. Aplicable cuando el coste de reparación supere 300€, con límite máximo de 3.600€ y siempre que no sea pérdida total.",
+        "covered_events": [
+          "Reparación de la motocicleta asegurada tras un siniestro"
+        ],
+        "benefits": [
+          "Cobertura de intereses y gastos de préstamo hasta 3.600€, siempre que el coste de reparación supere 300€ y no sea pérdida total"
+        ],
+        "capital_or_limit": "3.600€ (máximo)",
+        "waiting_period_days": null,
+        "conditions": [
+          "Aplicable cuando el coste de reparación supere 300€ y no sea pérdida total"
+        ]
+      },
+      {
+        "name": "Gestiones para la Defensa en Multas y Orientación al Asegurado",
+        "category": "optional",
+        "description": "Cobertura opcional que incluye gestiones para la defensa en multas y orientación al asegurado.",
+        "covered_events": [
+          "Multas y reclamaciones administrativas derivadas de la circulación de la motocicleta asegurada"
+        ],
+        "benefits": [
+          "Gestiones para la defensa en multas y orientación al asegurado"
+        ],
+        "capital_or_limit": null,
+        "waiting_period_days": null,
+        "conditions": null
+      }
+    ],
+    "exclusions": [
+      {
+        "description": "Daños en los bienes y personas causados deliberadamente por el asegurado, salvo que se dé un estado de necesidad.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos cuando el conductor de la moto asegurada se encuentre en estado de embriaguez o bajo la influencia de sustancias estupefacientes, psicotrópicas o tóxicas, o no disponga de permiso o licencia vigente que habilite a la conducción de la moto asegurada.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños ocasionados cuando, por el asegurado o por el conductor, se hubiesen infringido las disposiciones reglamentarias en cuanto a requisitos y número de personas transportadas, peso o medida de la carga.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños provocados por carburantes, esencias minerales u otras materias inflamables, explosivas o tóxicas transportadas en la moto asegurada, aunque se hubiesen producido como consecuencia de un accidente cubierto por el seguro.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de la utilización del vehículo en eventos y actividades automovilísticos tales como carreras, competiciones, entrenamientos, pruebas y demostraciones, aunque no tengan autorización ni tengan lugar en zonas restringidas.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños que tengan su origen o deriven, directa o indirectamente, de la energía nuclear o de energías similares, o de la contaminación radiactiva, con independencia de otras causas concurrentes.",
+        "category": "General",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños sufridos por la moto asegurada, salvo los incluidos en el seguro voluntario y las garantías que se contraten opcionalmente.",
+        "category": "Específico a cobertura",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños producidos en las cosas transportadas en la moto asegurada y en los bienes de los que sean titulares el contratante, asegurado, propietario, conductor, así como los del cónyuge o los parientes hasta el tercer grado de consanguinidad o afinidad de los anteriores.",
+        "category": "Específico a cobertura",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños cubiertos por el Consorcio de Compensación de Seguros.",
+        "category": "Específico a cobertura",
+        "legal_reference": null
+      },
+      {
+        "description": "Daños derivados de hechos que no tengan la consideración legal o reglamentaria de hecho de la circulación.",
+        "category": "General",
+        "legal_reference": null
+      }
+    ],
+    "limits_and_restrictions": [
+      {
+        "coverage_name": "Robo de la Moto Asegurada",
+        "limit_type": "franquicia",
+        "limit_value": "Entre 150€ y 600€ por siniestro",
+        "conditions": "La franquicia se aplica al importe de la indemnización en caso de robo"
+      },
+      {
+        "coverage_name": "Intereses y Gastos del Préstamo para Reparación",
+        "limit_type": "máximo_por_siniestro",
+        "limit_value": "3.600€",
+        "conditions": "Aplicable cuando el coste de reparación supere 300€ y no sea pérdida total"
+      },
+      {
+        "coverage_name": "Pérdida Total de la Moto Asegurada",
+        "limit_type": "valor_indemnizable",
+        "limit_value": "100% del valor de nuevo (primer año desde primera matriculación) o 100% del valor de mercado (resto de casos)",
+        "conditions": "Se considera pérdida total cuando el coste de reparación supere el precio de una moto similar en el mercado"
+      },
+      {
+        "coverage_name": "Defensa Jurídica",
+        "limit_type": "máximo_por_siniestro",
+        "limit_value": "3.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Seguro de Conductor - Fallecimiento",
+        "limit_type": "capital_asegurado",
+        "limit_value": "8.000€",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Seguro de Conductor - Invalidez Permanente",
+        "limit_type": "capital_asegurado",
+        "limit_value": "Hasta 8.000€ por accidente (según tabla de valoración)",
+        "conditions": null
+      },
+      {
+        "coverage_name": "Seguro de Conductor - Asistencia Sanitaria",
+        "limit_type": "máximo_por_siniestro",
+        "limit_value": "8.000€ (máximo 365 días)",
+        "conditions": null
+      }
+    ],
+    "obligations": {
+      "general_obligations": [
+        "Pagar el seguro en los términos acordados (anual o fraccionado).",
+        "Facilitar a la aseguradora toda la información necesaria para valorar el riesgo antes de formalizar el contrato.",
+        "Comunicar a la aseguradora cualquier cambio en la información proporcionada durante la vigencia del contrato.",
+        "Comunicar a la aseguradora los hechos que puedan dar lugar a indemnización u otras prestaciones en el plazo de siete días desde que se conozcan, aportando la información y documentación necesaria.",
+        "Permitir la actuación de los técnicos nombrados por la aseguradora para comprobar y valorar los daños."
+      ],
+      "claim_notification_deadline_days": 7,
+      "claim_obligations": [
+        "Comunicar el siniestro a la aseguradora lo antes posible y, en todo caso, dentro de los 7 días siguientes desde que se conozca.",
+        "Facilitar cuanta información pueda necesitar la aseguradora respecto a las circunstancias del siniestro.",
+        "Transmitir cualquier notificación judicial, extrajudicial o administrativa relacionada con el siniestro.",
+        "En caso de pérdida total, permitir la valoración del vehículo por parte de la aseguradora."
+      ]
+    },
+    "contract_terms": {
+      "duration": "Anual con prórroga automática (salvo denuncia por el contratante)",
+      "renewal_type": "automatic",
+      "cancellation_notice_days_policyholder": 30,
+      "cancellation_notice_days_insurer": null,
+      "termination_causes": [
+        "Incumplimiento de obligaciones por parte del asegurado (ej. no pago de primas).",
+        "Conducción bajo los efectos del alcohol o drogas sin permiso de conducir.",
+        "Uso del vehículo en actividades no autorizadas (ej. competiciones no declaradas).",
+        "Falta de veracidad en la información proporcionada al contratar el seguro.",
+        "Rescisión por parte del contratante con 1 mes de antelación a la conclusión del periodo en curso."
+      ],
+      "payment_method": "Domiciliación bancaria, tarjeta de crédito/débito u otros medios aceptados por la aseguradora.",
+      "payment_frequency": [
+        "anual",
+        "fraccionado (según acuerdo en póliza)"
+      ]
+    },
+    "pricing": {
+      "base_premium": null,
+      "copay_info": "Franquicia aplicable en cobertura de robo (150€ a 600€ por siniestro).",
+      "pricing_factors": [
+        "Datos del conductor (edad, antigüedad del carnet, etc.).",
+        "Datos del vehículo (marca, modelo, uso, código postal de circulación, etc.).",
+        "Historial de siniestralidad.",
+        "Coberturas contratadas (básicas y opcionales).",
+        "Franquicias aplicables."
+      ],
+      "discounts": [
+        "Posibles descuentos por bundling con otros productos de MAPFRE (no especificados en los documentos).",
+        "Descuentos por buena siniestralidad (no especificados en los documentos)."
+      ]
+    },
+    "geographic_coverage": {
+      "primary_territory": "España y Espacio Económico Europeo (incluyendo Islandia, Noruega, Liechtenstein, Andorra, Reino Unido, Serbia, Suiza, Bosnia-Herzegovina, Montenegro y Gibraltar)",
+      "worldwide_coverage": null,
+      "special_conditions_abroad": "Las coberturas de Daños del vehículo asegurado por fenómenos atmosféricos, Vehículo de sustitución y Gestiones para la defensa en multas y orientación al asegurado se garantizan en España. La Asistencia en viaje se garantiza en todos los países de Europa y los países ribereños del Mediterráneo no europeos."
+    },
+    "source_documents": [
+      {
+        "filename": "moto_terceros_ampliado_ipid_0900ab44c48abf87.md",
+        "document_type": "pid",
+        "extraction_confidence": 1.0
+      },
+      {
+        "filename": "moto_terceros_ampliado_nota_0900ab44c48b2c7a.md",
+        "document_type": "other",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+}
